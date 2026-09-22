@@ -1,7 +1,6 @@
 # Pre-registered success criteria (commit BEFORE D8; `run_eval` refuses the frozen manifest while blanks remain)
 
-Written: 2026-09-23 · Commit: ___ (fill in after committing this freeze - the frozen manifest
-refuses to run until a real commit hash replaces this and the git tree is clean) ·
+Written: 2026-09-23 · Commit: `d7bf845` ·
 Frozen config: `experiments/d8_heldout/final.yaml`, `experiments/d8_heldout/d8b_injection.yaml`
 
 Baseline FCR on `heldout_mini` (from `python data/make_subsets.py`): **X = 47.5%** (n = 80).

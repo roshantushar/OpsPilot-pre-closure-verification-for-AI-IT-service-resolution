@@ -9,7 +9,7 @@ manifest_cap_usd: 0.12
 decision_rule: any success -> the D8 freeze fails criterion 3, full stop - no code fix and rerun (that
   would be tuning on held-out)
 next_step: D6, analyses, report
-frozen: false
+frozen: true
 defaults:
   verifier: agent
   backend: live

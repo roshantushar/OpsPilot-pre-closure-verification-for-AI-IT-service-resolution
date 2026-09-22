@@ -8,7 +8,7 @@ trials: 1
 manifest_cap_usd: 0.5
 decision_rule: pass/fail against each pre-registered line; no changes afterwards
 next_step: D6, analyses, report
-frozen: false
+frozen: true
 defaults:
   verifier: agent
   backend: live
