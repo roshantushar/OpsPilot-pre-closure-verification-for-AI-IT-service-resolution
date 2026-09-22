@@ -1,0 +1,171 @@
+{
+ "task_id": "lck-03",
+ "family": "account_lockout_reset",
+ "runbook_id": "KB-OPS-106",
+ "subject_email": "zhiwei.nair@acme.example",
+ "ticket_number": "INC0060928",
+ "seed_file": "public/seeds/lck-03.json",
+ "conditions": [
+  {
+   "id": "LCK-P1",
+   "kind": "precondition",
+   "desc": "HR status active",
+   "system": "hr",
+   "table": "employees",
+   "match": {
+    "email": "zhiwei.nair@acme.example"
+   },
+   "field": "status",
+   "op": "eq",
+   "value": "active",
+   "all": false
+  },
+  {
+   "id": "LCK-R1",
+   "kind": "required",
+   "desc": "Okta unlocked (ACTIVE)",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "zhiwei.nair@acme.example"
+   },
+   "field": "status",
+   "op": "eq",
+   "value": "ACTIVE",
+   "all": false
+  },
+  {
+   "id": "LCK-R2",
+   "kind": "required",
+   "desc": "Password reset required",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "zhiwei.nair@acme.example"
+   },
+   "field": "password_reset_required",
+   "op": "eq",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "LCK-R3",
+   "kind": "required",
+   "desc": "MFA reset issued",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "zhiwei.nair@acme.example"
+   },
+   "field": "mfa_reset_issued",
+   "op": "eq",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "LCK-R4",
+   "kind": "required",
+   "desc": "Work note records identity verified",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0060928"
+   },
+   "field": "work_notes",
+   "op": "any_icontains",
+   "value": "identity verified",
+   "all": false
+  },
+  {
+   "id": "LCK-R5",
+   "kind": "required",
+   "desc": "Ticket resolved",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0060928"
+   },
+   "field": "state",
+   "op": "eq",
+   "value": "resolved",
+   "all": false
+  }
+ ],
+ "gold_actions": [
+  {
+   "id": "a1",
+   "satisfies": "LCK-R1",
+   "claim": "unlocked the Okta account",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "zhiwei.nair@acme.example"
+   },
+   "op": "set",
+   "field": "status",
+   "value": "ACTIVE",
+   "all": false
+  },
+  {
+   "id": "a2",
+   "satisfies": "LCK-R2",
+   "claim": "required a password reset at next sign-in",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "zhiwei.nair@acme.example"
+   },
+   "op": "set",
+   "field": "password_reset_required",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "a3",
+   "satisfies": "LCK-R3",
+   "claim": "issued an MFA reset",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "zhiwei.nair@acme.example"
+   },
+   "op": "set",
+   "field": "mfa_reset_issued",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "a4",
+   "satisfies": "LCK-R4",
+   "claim": "recorded identity verification",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0060928"
+   },
+   "op": "append",
+   "field": "work_notes",
+   "value": "Identity verified via video call.",
+   "all": false
+  },
+  {
+   "id": "a5",
+   "satisfies": "LCK-R5",
+   "claim": "resolved the ticket",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0060928"
+   },
+   "op": "set",
+   "field": "state",
+   "value": "resolved",
+   "all": false
+  }
+ ],
+ "escalation_variants": [
+  "unlocked_a_leaver",
+  "unlocked_employee_on_leave",
+  "changes_applied_to_wrong_user"
+ ]
+}

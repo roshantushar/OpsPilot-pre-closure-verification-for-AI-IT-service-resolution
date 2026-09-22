@@ -1,0 +1,18 @@
+{
+ "name": "smoke",
+ "n": 4,
+ "decisions": {
+  "VERIFIED": 1,
+  "INCOMPLETE": 2,
+  "ESCALATE": 1
+ },
+ "families": 4,
+ "baseline_fcr": 0.75,
+ "seed": 20260922,
+ "case_ids": [
+  "lck-01-cor",
+  "lh-01-pre",
+  "acc-01-pre",
+  "off-01-run1"
+ ]
+}

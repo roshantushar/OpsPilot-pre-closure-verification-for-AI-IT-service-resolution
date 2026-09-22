@@ -1,0 +1,26 @@
+# A0 - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: A0
+tier: T1
+question: What is in the data (class balance, negatives, coverage)?
+hypothesis: declared cases split across VERIFIED/INCOMPLETE/ESCALATE per family; negatives cluster in
+  a few conditions per runbook; the 12 guardrail cases cover every attack/fault category at least once
+subset: all_sets
+trials: 1
+manifest_cap_usd: 0.0
+decision_rule: 'no new runs: analysis/eda.py reads data/opspilot_itsm_data/hidden/labels directly'
+next_step: A1
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v1
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: eda
+  overrides: {}
+note: analysis-only manifest; run_eval is not called
+reads:
+- data/opspilot_itsm_data

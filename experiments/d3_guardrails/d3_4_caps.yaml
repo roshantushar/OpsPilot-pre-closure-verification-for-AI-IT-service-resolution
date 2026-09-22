@@ -1,0 +1,24 @@
+# D3-4 - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: D3-4
+tier: T1
+question: Where should the step and budget caps sit?
+hypothesis: cap at p95 of legitimate turns + 2 truncates < 2% of correct runs
+subset: dev_mini
+trials: 1
+manifest_cap_usd: 0.0
+decision_rule: offline counterfactual over caps 6/8/10/12 and $0.005/0.01/0.02/0.05; one confirming run
+  if cap changes
+next_step: freeze caps
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v2
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: from_logs
+  overrides: {}
+note: analysis-only; a confirming run (if the cap changes) draws from the reserve, not this cap (F5)

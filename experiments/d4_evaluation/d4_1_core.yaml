@@ -1,0 +1,22 @@
+# D4-1 - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: D4-1
+tier: T1
+question: Does verification reduce false completion enough to justify its cost?
+hypothesis: OpsPilot FCR <= half the resolver-alone FCR on dev_mini at FBR < 10%
+subset: dev_mini
+trials: 1
+manifest_cap_usd: 0.15
+decision_rule: go if FCR halves with FBR < 10%; else inspect traces before D4-2
+next_step: D4-2
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v1
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: opspilot_v1
+  overrides: {}

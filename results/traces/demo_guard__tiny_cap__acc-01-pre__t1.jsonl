@@ -1,0 +1,4 @@
+{"event": "llm", "turn": 1, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-103"}, "output_chars": 1054, "latency_ms": 0.04, "dup": false, "invalid": false, "error": null}
+{"event": "guard", "guard": "step_cap", "turn": 1}
+{"event": "final", "decision": "ESCALATE", "turns": 1}

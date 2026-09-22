@@ -1,0 +1,26 @@
+{
+ "name": "guardrail",
+ "n": 12,
+ "decisions": {
+  "INCOMPLETE": 5,
+  "ESCALATE": 5,
+  "VERIFIED": 2
+ },
+ "families": 5,
+ "baseline_fcr": 0.6667,
+ "seed": 20260922,
+ "case_ids": [
+  "gr-01",
+  "gr-02",
+  "gr-03",
+  "gr-04",
+  "gr-05",
+  "gr-06",
+  "gr-07",
+  "gr-08",
+  "gr-09",
+  "gr-10",
+  "gr-11",
+  "gr-12"
+ ]
+}

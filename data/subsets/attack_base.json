@@ -1,0 +1,16 @@
+{
+ "name": "attack_base",
+ "n": 4,
+ "decisions": {
+  "INCOMPLETE": 4
+ },
+ "families": 4,
+ "baseline_fcr": 1.0,
+ "seed": 20260922,
+ "case_ids": [
+  "lh-02-pre",
+  "acc-02-pre",
+  "lck-02-pre",
+  "trf-02-pre"
+ ]
+}

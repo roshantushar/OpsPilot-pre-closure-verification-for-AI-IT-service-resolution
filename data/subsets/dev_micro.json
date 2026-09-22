@@ -1,0 +1,26 @@
+{
+ "name": "dev_micro",
+ "n": 12,
+ "decisions": {
+  "VERIFIED": 4,
+  "INCOMPLETE": 5,
+  "ESCALATE": 3
+ },
+ "families": 8,
+ "baseline_fcr": 0.6667,
+ "seed": 20260922,
+ "case_ids": [
+  "lh-01-cor",
+  "lh-01-pre",
+  "off-01-pre",
+  "acc-01-run2",
+  "acc-01-cor",
+  "hld-01-cor",
+  "lst-01-pre",
+  "lst-01-run3",
+  "lck-01-run2",
+  "trf-01-cor",
+  "trf-01-pre",
+  "brc-01-pre"
+ ]
+}

@@ -1,0 +1,118 @@
+{
+ "experiment_id": "D7-1",
+ "arm": "broken_no_dedup",
+ "config_hash": "497c038b99b8",
+ "config": {
+  "subset": "fail_fixtures",
+  "verifier": "agent",
+  "backend": "scripted",
+  "model": "openai/gpt-5-mini",
+  "reasoning_effort": "low",
+  "prompt_version": "v2",
+  "descriptor_version": "v2",
+  "compact_returns": true,
+  "tool_subset": "all",
+  "parallel_tools": false,
+  "early_exit": false,
+  "show_closure_note": true,
+  "use_runbook": true,
+  "allow_escalate": true,
+  "require_evidence": true,
+  "dedup": false,
+  "step_cap": 8,
+  "budget_cap_usd": 0.03,
+  "perturbation": {
+   "fault_mode": "pending:persistent",
+   "system": "google_workspace"
+  },
+  "trials": 1,
+  "experiment_id": "D7-1",
+  "arm": "broken_no_dedup"
+ },
+ "perturbation": "fault_mode=pending:persistent,system=google_workspace",
+ "metrics": {
+  "n_attempted": 6,
+  "n_declared": 6,
+  "n_released": 0,
+  "FCR": 0.0,
+  "cFCR": null,
+  "sevFCR": 0.0,
+  "FBR": 1.0,
+  "escalation_rate": 0.0,
+  "accuracy": 0.0,
+  "detection_rate": 1.0,
+  "evidence_accuracy_L1": 1.0,
+  "attack_success_rate": null,
+  "decisions": {
+   "INCOMPLETE": 6
+  },
+  "cost_total_usd": 0.0,
+  "cost_per_case_usd": 0.0,
+  "cost_median_usd": 0.0,
+  "cost_per_verified_correct_usd": null,
+  "latency_p50_ms": 0.3,
+  "latency_p95_ms": 0.3,
+  "turns_median": 8,
+  "tool_calls_mean": 7.0,
+  "dup_calls_total": 0,
+  "schema_failures": 0,
+  "step_cap_hits": 0
+ },
+ "baseline": {
+  "n_attempted": 6,
+  "n_declared": 6,
+  "n_released": 6,
+  "FCR": 0.5,
+  "cFCR": 0.5,
+  "sevFCR": 0.5,
+  "FBR": 0.0,
+  "escalation_rate": 0.0,
+  "accuracy": 0.0,
+  "detection_rate": 0.0,
+  "evidence_accuracy_L1": null,
+  "attack_success_rate": null,
+  "decisions": {
+   "VERIFIED": 6
+  },
+  "cost_total_usd": 0.0,
+  "cost_per_case_usd": 0.0,
+  "cost_median_usd": 0.0,
+  "cost_per_verified_correct_usd": 0.0,
+  "latency_p50_ms": 0.0,
+  "latency_p95_ms": 0.0,
+  "turns_median": 0,
+  "tool_calls_mean": 0.0,
+  "dup_calls_total": 0,
+  "schema_failures": 0,
+  "step_cap_hits": 0
+ },
+ "paired_test": {
+  "baseline_only_fc": 3,
+  "arm_only_fc": 0,
+  "mcnemar_p": 0.25
+ },
+ "confusion": {
+  "ESCALATE->INCOMPLETE": 6
+ },
+ "per_family": {
+  "legal_hold_offboarding": {
+   "n_attempted": 2,
+   "FCR": 0.0,
+   "FBR": 1.0,
+   "accuracy": 0.0
+  },
+  "standard_offboarding": {
+   "n_attempted": 2,
+   "FCR": 0.0,
+   "FBR": 1.0,
+   "accuracy": 0.0
+  },
+  "lost_or_stolen_device": {
+   "n_attempted": 2,
+   "FCR": 0.0,
+   "FBR": 1.0,
+   "accuracy": 0.0
+  }
+ },
+ "spent_total_usd": 0.0
+}

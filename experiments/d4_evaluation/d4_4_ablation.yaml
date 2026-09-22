@@ -1,0 +1,40 @@
+# D4-4 - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: D4-4
+tier: T1
+question: Which components do useful work?
+hypothesis: runbook and evidence requirement matter most; dedup matters for cost not accuracy
+subset: dev_micro
+trials: 1
+manifest_cap_usd: 0.35
+decision_rule: report each arm vs full; a component 'matters' if FCR or FBR moves by >= 1 case/12 or cost
+  by >= 20%
+next_step: D4-5
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v2
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: full
+  overrides: {}
+- arm: minus_runbook
+  overrides:
+    use_runbook: false
+- arm: minus_escalation
+  overrides:
+    allow_escalate: false
+- arm: minus_evidence_req
+  overrides:
+    require_evidence: false
+- arm: minus_dedup
+  overrides:
+    dedup: false
+- arm: minus_closure_note
+  overrides:
+    show_closure_note: false
+- arm: minus_deterministic_checks
+  reuse_from: D4-2/agent vs hybrid

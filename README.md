@@ -1,1 +1,106 @@
-# OpsPilot-pre-closure-verification-for-AI-IT-service-resolution
+# OpsPilot — pre-closure verification for AI IT-service resolution
+
+**PE6201 Emerging AI Technologies · NTU MSc Enterprise AI · End-of-course project**
+
+AI service-desk agents sometimes declare a ticket resolved while required work in other systems is
+unfinished. **OpsPilot** sits between the resolver and closure. It reads the runbook, inspects enterprise
+state through **read-only** tools, and returns `VERIFIED`, `INCOMPLETE` or `ESCALATE` with evidence.
+
+- **Headline metric:** False Completion Rate (FCR) ÷ tasks attempted.
+- **Guardrails:** FBR < 10%, escalation rate, attack success = 0, cost and latency.
+- **Plan:** `docs/PROJECT_PLAN.md`. **Rules for contributors (and Claude Code):** `CLAUDE.md`.
+
+## Quick start (no API key needed)
+
+```bash
+pip install -r requirements.txt
+cp .env.example .env                 # BACKEND=scripted by default -> $0
+python data/make_subsets.py          # 9 fixed subsets -> data/subsets/
+python data/check_my_data.py         # dataset labels + subset sanity (expect 0 errors)
+python -m pytest                     # metrics, guardrails, perturbations, schema, cache, no-leakage
+python -m src.run_eval --manifest experiments/a_setup/a1_harness_sanity.yaml   # A1 corners
+python analysis/run_all.py           # regenerate tables/figures from results/
+```
+
+Live runs: put `OPENROUTER_API_KEY` in `.env`, then run a manifest (manifests default to `backend: live`):
+
+```bash
+python -m src.run_eval --manifest experiments/a_setup/a2_cost_probe.yaml
+python -m src.run_eval --manifest experiments/d4_evaluation/d4_1_core.yaml --backend scripted   # dry run at $0
+```
+
+Every LLM call is cached (`.cache/llm/`) and logged in `results/ledger.csv`. The run stops hard at
+`MAX_BUDGET_USD=3.50`, and it asks before any batch projected above its manifest cap.
+
+## Architecture
+
+```
+ticket + closure claim ──► verifier (agent | rules | hybrid | workflow | read_note)
+                               │  tool calls only through ToolRuntime:
+                               │  allowlist → dedup → perturbation → MockITSM (read-only) → compact/raw → trace
+                               ▼
+                 Decision {VERIFIED|INCOMPLETE|ESCALATE, cited_conditions, evidence, confidence}
+                               │  code guards: step cap, per-case budget, schema repair → fail-safe ESCALATE,
+                               │  evidence guard, early exit
+                               ▼
+            run JSON + trace JSONL + master CSV ──► scoring.py (the ONLY place labels are joined)
+```
+
+| Module | Role |
+|---|---|
+| `src/config.py` | `.env` settings and `RunConfig` (one arm; hash used for reuse) |
+| `src/data.py` | public-data loaders (no hidden access) |
+| `src/tools.py` | tool descriptors v1 / v2 / v1_history, `ToolRuntime`, compact vs raw returns |
+| `src/perturb.py` | runtime attack / fault / conflict / stale / unavailable modes and their expected-decision rules |
+| `src/guardrails.py` | step cap, budget cap, early-exit signals |
+| `src/schema.py` | `Decision` model, fail-safe parser, evidence guard, "− escalation" flag |
+| `src/prompt.py` | PROMPT_V1 / V2 (+ changelog), read-note, workflow and hybrid prompts |
+| `src/backends.py` | `ScriptedBackend` (reference policy, $0) and `LiveBackend` (OpenRouter) |
+| `src/llm.py`, `src/budget.py` | cache, retries, real cost, ledger, hard stop |
+| `src/agent_loop.py` | the bounded loop shared by the agent |
+| `src/verifiers/` | agent, rules, hybrid, workflow, read_note, always_verified, always_escalate |
+| `src/harness.py`, `src/run_eval.py` | `run_eval(...)` and the manifest CLI (held-out lock, freeze gate) |
+| `src/scoring.py` | FCR, cFCR, sevFCR, FBR, escalation, accuracy, detection, evidence L1, attack success, CI, McNemar |
+| `src/judge.py` | L2 evidence judge (separate model) |
+| `src/resolver.py` | D4-8 retry recovery (Tier 2 stub) |
+
+## Deliverables map
+
+| Deliverable | Implementation | Manifests / evidence |
+|---|---|---|
+| D0 Why an agent | `docs/D0_AGENT_JUSTIFICATION.md` | `experiments/d0_justification/`, `analysis/d0_trajectories.py` |
+| D1 Agent loop | `src/agent_loop.py`, `src/verifiers/agent.py`, `src/guardrails.py` | traces |
+| D2 Tools | `src/tools.py` | `experiments/d2a_tools/` … `d2d_early_exit/` |
+| D3 Guardrails | `src/guardrails.py`, `src/perturb.py` | `experiments/d3_guardrails/`, `analysis/d3_caps.py` |
+| D4 Evaluation | `src/harness.py`, `src/scoring.py`, `src/judge.py` | `experiments/d4_evaluation/` (D4-1 … D4-9) |
+| D5 Scripted + models | `src/backends.py` | `experiments/a_setup/a1_harness_sanity.yaml`, `experiments/d5_models/` |
+| D6 Cost | `analysis/d6_cost.py`, `a1`, `a2`, `a7` | `docs/cost_assumptions.md` |
+| D7 Failures | perturbations + flags | `experiments/d7_failures/` |
+| D8 Held-out | frozen manifest | `experiments/d8_heldout/final.yaml` (run once) |
+| D9 Governance + demo | `docs/D9_GOVERNANCE.md`, `app/streamlit_app.py` | — |
+
+Manifests are generated by `experiments/_generate_manifests.py`. Edit that script, or the YAML directly,
+and commit **before** each run.
+
+## Scaffold status (scripted backend, $0)
+
+| Check | Result |
+|---|---|
+| Tests | 63 pass |
+| Dataset validation | 56 tasks, 292 cases, 0 errors; subsets consistent, no dev/held-out overlap |
+| A1: always-VERIFIED | FCR 52.1% on `dev_runs` = dataset baseline |
+| A1: always-ESCALATE | FCR 0%, FBR 100% |
+| Rules verifier | 288 / 292 correct across all sets; all 4 misses are GEN-F1 wrong-user changes (not visible to per-subject read-only tools) |
+| Scripted agent | same decisions as rules through the full loop |
+| Step cap 8 | fully used by one-call-per-turn legal-hold / offboarding / lost-device runs, so a single retry trips the cap (D3-4 evidence) |
+| Held-out X | baseline FCR on `heldout_mini` = **47.5%** → target ≤ 23.8% |
+
+## Limitations
+
+See `docs/limitations.md`. The data are synthetic and the same author wrote the runbooks and the checker.
+There is a GEN-F1 blind spot, n is small under a fixed budget, and attacks and faults are simulated.
+
+## Course rule
+
+A2 (`PE6201-A2-Outpatient-Referral-Agent`) is reused for **techniques and structure only**. No A2 code,
+data or text is copied.

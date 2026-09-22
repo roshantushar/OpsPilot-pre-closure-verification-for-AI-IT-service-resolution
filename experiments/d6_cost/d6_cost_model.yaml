@@ -1,0 +1,23 @@
+# D6 - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: D6
+tier: T1
+question: Is OpsPilot deployable at a sensible cost to serve?
+hypothesis: cost per verified-correct closure falls vs baseline once failure cost is included
+subset: heldout_mini
+trials: 1
+manifest_cap_usd: 0.0
+decision_rule: 'analysis only: analysis/d6_cost.py + docs/cost_assumptions.md'
+next_step: D9
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v2
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: from_logs
+  overrides: {}
+note: analysis-only manifest

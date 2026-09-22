@@ -1,0 +1,37 @@
+# D7-2 - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: D7-2
+tier: T1
+question: 'Tool-interface layer: does a fat record with history cause a stale read?'
+hypothesis: v1_history -> wrong VERIFIED on some premature cases; the SAME stale fixture under compact
+  v2 (current state only) fixes it - same case, same perturbation, only the descriptor changes
+subset: fail_fixtures
+trials: 1
+manifest_cap_usd: 0.15
+decision_rule: the fix belongs in the interface, not in more prompt text
+next_step: Tier 2 / freeze
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v2
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: working
+  overrides: {}
+- arm: broken_history
+  overrides:
+    descriptor_version: v1_history
+    perturbation:
+      stale: okta
+      field: status
+      old_value: SUSPENDED
+- arm: restored
+  overrides:
+    descriptor_version: v2
+    perturbation:
+      stale: okta
+      field: status
+      old_value: SUSPENDED

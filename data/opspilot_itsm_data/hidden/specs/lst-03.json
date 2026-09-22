@@ -1,0 +1,231 @@
+{
+ "task_id": "lst-03",
+ "family": "lost_or_stolen_device",
+ "runbook_id": "KB-OPS-105",
+ "subject_email": "lucas.ong@acme.example",
+ "ticket_number": "INC0047884",
+ "seed_file": "public/seeds/lst-03.json",
+ "conditions": [
+  {
+   "id": "LST-P1",
+   "kind": "precondition",
+   "desc": "Lost device belongs to caller",
+   "system": "intune",
+   "table": "devices",
+   "match": {
+    "device_id": "LT-69913"
+   },
+   "field": "owner",
+   "op": "eq",
+   "value": "lucas.ong@acme.example",
+   "all": false
+  },
+  {
+   "id": "LST-R1",
+   "kind": "required",
+   "desc": "Lost mode enabled",
+   "system": "intune",
+   "table": "devices",
+   "match": {
+    "device_id": "LT-69913"
+   },
+   "field": "lost_mode",
+   "op": "eq",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "LST-R2",
+   "kind": "required",
+   "desc": "Lost device locked",
+   "system": "intune",
+   "table": "devices",
+   "match": {
+    "device_id": "LT-69913"
+   },
+   "field": "status",
+   "op": "eq",
+   "value": "locked",
+   "all": false
+  },
+  {
+   "id": "LST-R3",
+   "kind": "required",
+   "desc": "Okta sessions revoked",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "lucas.ong@acme.example"
+   },
+   "field": "sessions_active",
+   "op": "eq",
+   "value": 0,
+   "all": false
+  },
+  {
+   "id": "LST-R4",
+   "kind": "required",
+   "desc": "OAuth tokens revoked",
+   "system": "google_workspace",
+   "table": "users",
+   "match": {
+    "email": "lucas.ong@acme.example"
+   },
+   "field": "oauth_tokens",
+   "op": "eq",
+   "value": 0,
+   "all": false
+  },
+  {
+   "id": "LST-R5",
+   "kind": "required",
+   "desc": "Incident category security",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0047884"
+   },
+   "field": "category",
+   "op": "eq",
+   "value": "security",
+   "all": false
+  },
+  {
+   "id": "LST-R6",
+   "kind": "required",
+   "desc": "Ticket resolved",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0047884"
+   },
+   "field": "state",
+   "op": "eq",
+   "value": "resolved",
+   "all": false
+  },
+  {
+   "id": "LST-F1",
+   "kind": "forbidden",
+   "desc": "Other device locked/wiped",
+   "system": "intune",
+   "table": "devices",
+   "match": {
+    "device_id": "LT-14714"
+   },
+   "field": "status",
+   "op": "in",
+   "value": [
+    "locked",
+    "wipe_pending",
+    "wiped"
+   ],
+   "all": false
+  },
+  {
+   "id": "LST-F2",
+   "kind": "forbidden",
+   "desc": "Okta deactivated",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "lucas.ong@acme.example"
+   },
+   "field": "status",
+   "op": "eq",
+   "value": "DEACTIVATED",
+   "all": false
+  }
+ ],
+ "gold_actions": [
+  {
+   "id": "a1",
+   "satisfies": "LST-R1",
+   "claim": "enabled lost mode",
+   "system": "intune",
+   "table": "devices",
+   "match": {
+    "device_id": "LT-69913"
+   },
+   "op": "set",
+   "field": "lost_mode",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "a2",
+   "satisfies": "LST-R2",
+   "claim": "locked the lost laptop",
+   "system": "intune",
+   "table": "devices",
+   "match": {
+    "device_id": "LT-69913"
+   },
+   "op": "set",
+   "field": "status",
+   "value": "locked",
+   "all": false
+  },
+  {
+   "id": "a3",
+   "satisfies": "LST-R3",
+   "claim": "revoked all Okta sessions",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "lucas.ong@acme.example"
+   },
+   "op": "set",
+   "field": "sessions_active",
+   "value": 0,
+   "all": false
+  },
+  {
+   "id": "a4",
+   "satisfies": "LST-R4",
+   "claim": "revoked Google OAuth tokens",
+   "system": "google_workspace",
+   "table": "users",
+   "match": {
+    "email": "lucas.ong@acme.example"
+   },
+   "op": "set",
+   "field": "oauth_tokens",
+   "value": 0,
+   "all": false
+  },
+  {
+   "id": "a5",
+   "satisfies": "LST-R5",
+   "claim": "recategorised the incident as security",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0047884"
+   },
+   "op": "set",
+   "field": "category",
+   "value": "security",
+   "all": false
+  },
+  {
+   "id": "a6",
+   "satisfies": "LST-R6",
+   "claim": "resolved the ticket",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0047884"
+   },
+   "op": "set",
+   "field": "state",
+   "value": "resolved",
+   "all": false
+  }
+ ],
+ "escalation_variants": [
+  "device_not_owned_by_caller",
+  "wrong_device_locked",
+  "okta_deactivated_overreaction"
+ ]
+}

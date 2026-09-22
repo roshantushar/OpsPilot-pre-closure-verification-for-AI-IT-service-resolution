@@ -1,0 +1,161 @@
+{
+ "experiment_id": "D4-2",
+ "arm": "rules",
+ "run_id": "D4-2__rules__lh-02-run1__t1",
+ "trial": 1,
+ "timestamp": "2026-09-22T16:20:11",
+ "git_commit": "9cb211a-dirty",
+ "config_hash": "25e237447231",
+ "dataset_version": "synthetic-v1",
+ "case_id": "lh-02-run1",
+ "task_id": "lh-02",
+ "family": "legal_hold_offboarding",
+ "subset": "dev_mini",
+ "verifier": "rules",
+ "backend": "scripted",
+ "model": "openai/gpt-5-mini",
+ "reasoning_effort": "low",
+ "prompt_version": "v1",
+ "descriptor_version": "v2",
+ "compact_returns": true,
+ "tool_subset": "all",
+ "parallel_tools": false,
+ "early_exit": false,
+ "show_closure_note": true,
+ "use_runbook": true,
+ "allow_escalate": true,
+ "require_evidence": true,
+ "dedup": true,
+ "step_cap": 8,
+ "budget_cap_usd": 0.03,
+ "perturbation": null,
+ "difficulty": "medium",
+ "declared": true,
+ "decision": "ESCALATE",
+ "reason": "precondition failed []; forbidden ['LH-F1']; problems []",
+ "cited_conditions": [
+  "LH-F1",
+  "LH-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LH-P1",
+   "observed": "true",
+   "source": "list_security_exceptions",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F1",
+   "observed": "\"DEACTIVATED\"",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LH-F2",
+   "observed": "null",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F3",
+   "observed": "\"on_hold\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F4",
+   "observed": "false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R1",
+   "observed": "\"DEACTIVATED\"",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LH-R2",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R3",
+   "observed": "\"/Legal Hold\"",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R4",
+   "observed": "0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R5",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R6",
+   "observed": "true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R7",
+   "observed": "\"on_hold\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R8",
+   "observed": "\"Legal Hold\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R9",
+   "observed": "\"Legal\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "confidence": 1.0,
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "list_security_exceptions",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "tool_call_count": 7,
+ "duplicate_tool_calls": 0,
+ "invalid_tool_calls": 0,
+ "tool_latency_ms": 0.09,
+ "observation_chars": 2758,
+ "turns": 0,
+ "step_cap_hit": false,
+ "budget_cap_hit": false,
+ "early_exit_triggered": false,
+ "schema_validation_failed": false,
+ "input_tokens": 0,
+ "output_tokens": 0,
+ "reasoning_tokens": 0,
+ "cached_tokens": 0,
+ "total_tokens": 0,
+ "llm_cost_usd": 0.0,
+ "total_cost_usd": 0.0,
+ "latency_ms": 0.2,
+ "llm_latency_ms": 0.0,
+ "retry_attempted": false,
+ "retry_success": null,
+ "state_hash_before": "da0e614fbc6a",
+ "state_hash_after": "da0e614fbc6a",
+ "error_type": null,
+ "reused_from": "A1__rules__lh-02-run1__t1"
+}

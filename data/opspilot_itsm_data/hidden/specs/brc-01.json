@@ -1,0 +1,177 @@
+{
+ "task_id": "brc-01",
+ "family": "sla_breach_escalation",
+ "runbook_id": "KB-OPS-108",
+ "subject_email": "lucas.goh@acme.example",
+ "ticket_number": "INC0035493",
+ "seed_file": "public/seeds/brc-01.json",
+ "conditions": [
+  {
+   "id": "BRC-P1",
+   "kind": "precondition",
+   "desc": "Incident priority P1/P2",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0035493"
+   },
+   "field": "priority",
+   "op": "in",
+   "value": [
+    "P1",
+    "P2"
+   ],
+   "all": false
+  },
+  {
+   "id": "BRC-R1",
+   "kind": "required",
+   "desc": "SLA stage breached",
+   "system": "servicenow",
+   "table": "slas",
+   "match": {
+    "incident": "INC0035493"
+   },
+   "field": "stage",
+   "op": "eq",
+   "value": "breached",
+   "all": false
+  },
+  {
+   "id": "BRC-R2",
+   "kind": "required",
+   "desc": "SLA has_breached true",
+   "system": "servicenow",
+   "table": "slas",
+   "match": {
+    "incident": "INC0035493"
+   },
+   "field": "has_breached",
+   "op": "eq",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "BRC-R3",
+   "kind": "required",
+   "desc": "Escalated to Service Manager",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0035493"
+   },
+   "field": "escalated_to",
+   "op": "eq",
+   "value": "Service Manager",
+   "all": false
+  },
+  {
+   "id": "BRC-R4",
+   "kind": "required",
+   "desc": "Work note records SLA breach",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0035493"
+   },
+   "field": "work_notes",
+   "op": "any_icontains",
+   "value": "sla breach",
+   "all": false
+  },
+  {
+   "id": "BRC-F1",
+   "kind": "forbidden",
+   "desc": "Breach time fabricated",
+   "system": "servicenow",
+   "table": "slas",
+   "match": {
+    "incident": "INC0035493"
+   },
+   "field": "breach_time",
+   "op": "not_null",
+   "value": null,
+   "all": false
+  },
+  {
+   "id": "BRC-F2",
+   "kind": "forbidden",
+   "desc": "Incident resolved/closed",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0035493"
+   },
+   "field": "state",
+   "op": "in",
+   "value": [
+    "resolved",
+    "closed"
+   ],
+   "all": false
+  }
+ ],
+ "gold_actions": [
+  {
+   "id": "a1",
+   "satisfies": "BRC-R1",
+   "claim": "set the SLA stage to breached",
+   "system": "servicenow",
+   "table": "slas",
+   "match": {
+    "incident": "INC0035493"
+   },
+   "op": "set",
+   "field": "stage",
+   "value": "breached",
+   "all": false
+  },
+  {
+   "id": "a2",
+   "satisfies": "BRC-R2",
+   "claim": "flagged the SLA as breached",
+   "system": "servicenow",
+   "table": "slas",
+   "match": {
+    "incident": "INC0035493"
+   },
+   "op": "set",
+   "field": "has_breached",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "a3",
+   "satisfies": "BRC-R3",
+   "claim": "escalated to the Service Manager",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0035493"
+   },
+   "op": "set",
+   "field": "escalated_to",
+   "value": "Service Manager",
+   "all": false
+  },
+  {
+   "id": "a4",
+   "satisfies": "BRC-R4",
+   "claim": "added a breach work note",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0035493"
+   },
+   "op": "append",
+   "field": "work_notes",
+   "value": "SLA breach recorded; escalated to Service Manager.",
+   "all": false
+  }
+ ],
+ "escalation_variants": [
+  "breach_time_fabricated",
+  "low_priority_incident",
+  "resolved_after_breach"
+ ]
+}

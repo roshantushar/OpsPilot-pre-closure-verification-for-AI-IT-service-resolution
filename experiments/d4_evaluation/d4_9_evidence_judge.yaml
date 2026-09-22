@@ -1,0 +1,23 @@
+# D4-9 - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: D4-9
+tier: T1
+question: Does the reason name the real problem (L1 code, L2 judge)?
+hypothesis: L1 >= 0.8 on caught negatives; judge-human agreement >= 0.8 on 24 hand labels
+subset: dev_mini
+trials: 1
+manifest_cap_usd: 0.03
+decision_rule: use L2 only if agreement >= 0.8
+next_step: D2
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v2
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: judge_on_best
+  overrides: {}
+note: run src/judge.py over logged D4 runs; hand labels in docs/D4_EVALUATION.md

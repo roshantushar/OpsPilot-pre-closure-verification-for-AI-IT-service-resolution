@@ -1,0 +1,36 @@
+# D4-2 - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: D4-2
+tier: T1
+question: 'Rules vs read-note vs workflow vs agent vs hybrid: which design?'
+hypothesis: read-note misses false closures; rules near-perfect on known runbooks; agent/hybrid close
+  with less effort
+subset: dev_mini
+trials: 1
+manifest_cap_usd: 0.15
+decision_rule: best FCR at FBR < 10% and lowest cost becomes the base config
+next_step: D4-3 on the chosen base
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v1
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: rules
+  overrides:
+    verifier: rules
+- arm: read_note
+  overrides:
+    verifier: read_note
+    require_evidence: false
+- arm: workflow
+  overrides:
+    verifier: workflow
+- arm: agent
+  reuse_from: D4-1/opspilot_v1
+- arm: hybrid
+  overrides:
+    verifier: hybrid

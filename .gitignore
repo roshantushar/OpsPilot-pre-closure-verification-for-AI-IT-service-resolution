@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# Environments
+.venv/
+venv/
+.env
+
+# LLM response cache (see CACHE_DIR in .env.example)
+.cache/
+
+# OS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+
+# Notebooks
+.ipynb_checkpoints/

@@ -1,0 +1,115 @@
+{
+ "experiment_id": "D4-1",
+ "arm": "opspilot_v1",
+ "run_id": "D4-1__opspilot_v1__brc-01-run2__t1",
+ "trial": 1,
+ "timestamp": "2026-09-22T16:20:11",
+ "git_commit": "9cb211a-dirty",
+ "config_hash": "4e79bdbb3b78",
+ "dataset_version": "synthetic-v1",
+ "case_id": "brc-01-run2",
+ "task_id": "brc-01",
+ "family": "sla_breach_escalation",
+ "subset": "dev_mini",
+ "verifier": "agent",
+ "backend": "scripted",
+ "model": "openai/gpt-5-mini",
+ "reasoning_effort": "low",
+ "prompt_version": "v1",
+ "descriptor_version": "v2",
+ "compact_returns": true,
+ "tool_subset": "all",
+ "parallel_tools": false,
+ "early_exit": false,
+ "show_closure_note": true,
+ "use_runbook": true,
+ "allow_escalate": true,
+ "require_evidence": true,
+ "dedup": true,
+ "step_cap": 8,
+ "budget_cap_usd": 0.03,
+ "perturbation": null,
+ "difficulty": "easy",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "reason": "required conditions not met: ['BRC-R2']",
+ "cited_conditions": [
+  "BRC-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "BRC-P1",
+   "observed": "\"P1\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-F1",
+   "observed": "null",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-F2",
+   "observed": "\"in_progress\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R1",
+   "observed": "\"breached\"",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R2",
+   "observed": "false",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "BRC-R3",
+   "observed": "\"Service Manager\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R4",
+   "observed": "[\"SLA breach recorded; escalated to Service Manager.\"]",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "confidence": 1.0,
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_incident",
+  "list_slas"
+ ],
+ "tool_call_count": 4,
+ "duplicate_tool_calls": 0,
+ "invalid_tool_calls": 0,
+ "tool_latency_ms": 0.07,
+ "observation_chars": 1833,
+ "turns": 5,
+ "step_cap_hit": false,
+ "budget_cap_hit": false,
+ "early_exit_triggered": false,
+ "schema_validation_failed": false,
+ "input_tokens": 0,
+ "output_tokens": 0,
+ "reasoning_tokens": 0,
+ "cached_tokens": 0,
+ "total_tokens": 0,
+ "llm_cost_usd": 0.0,
+ "total_cost_usd": 0.0,
+ "latency_ms": 0.2,
+ "llm_latency_ms": 0.0,
+ "retry_attempted": false,
+ "retry_success": null,
+ "state_hash_before": "c661d1238106",
+ "state_hash_after": "c661d1238106",
+ "error_type": null,
+ "reused_from": "A1__scripted_agent__brc-01-run2__t1"
+}

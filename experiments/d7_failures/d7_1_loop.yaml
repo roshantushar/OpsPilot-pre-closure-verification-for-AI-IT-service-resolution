@@ -1,0 +1,35 @@
+# D7-1 - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: D7-1
+tier: T1
+question: 'Loop layer: without dedup, does a ''call again'' response cause a loop?'
+hypothesis: dedup off -> repeated identical calls, more tokens/cost, risk of hitting the step cap; restored
+  dedup returns the cached result instead of re-asking the system
+subset: fail_fixtures
+trials: 1
+manifest_cap_usd: 0.15
+decision_rule: show turns/tokens/cost/result and the trace lines that exposed it
+next_step: D7-2
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v2
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: working
+  overrides: {}
+- arm: broken_no_dedup
+  overrides:
+    dedup: false
+    perturbation:
+      fault_mode: pending:persistent
+      system: google_workspace
+- arm: restored
+  overrides:
+    dedup: true
+    perturbation:
+      fault_mode: pending:persistent
+      system: google_workspace

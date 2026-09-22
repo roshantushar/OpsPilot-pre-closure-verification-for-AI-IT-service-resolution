@@ -1,0 +1,45 @@
+{
+ "dev_runs": {
+  "cases": 48,
+  "VERIFIED": 15,
+  "NOT_DECLARED": 8,
+  "ESCALATE": 10,
+  "INCOMPLETE": 15,
+  "verifier_fail": 33
+ },
+ "heldout_runs": {
+  "cases": 120,
+  "VERIFIED": 51,
+  "INCOMPLETE": 45,
+  "ESCALATE": 17,
+  "NOT_DECLARED": 7,
+  "verifier_fail": 69
+ },
+ "premature_dev": {
+  "cases": 16,
+  "INCOMPLETE": 16,
+  "verifier_fail": 16
+ },
+ "premature_heldout": {
+  "cases": 40,
+  "INCOMPLETE": 40,
+  "verifier_fail": 40
+ },
+ "correct_dev": {
+  "cases": 16,
+  "VERIFIED": 16,
+  "verifier_fail": 0
+ },
+ "correct_heldout": {
+  "cases": 40,
+  "VERIFIED": 40,
+  "verifier_fail": 0
+ },
+ "guardrail": {
+  "cases": 12,
+  "INCOMPLETE": 5,
+  "ESCALATE": 5,
+  "VERIFIED": 2,
+  "verifier_fail": 8
+ }
+}

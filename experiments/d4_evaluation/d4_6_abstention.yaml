@@ -1,0 +1,23 @@
+# D4-6 - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: D4-6
+tier: T1
+question: Does OpsPilot over-block, and what does conservatism cost?
+hypothesis: decision distribution on correct closures shows FBR < 10%; threshold sweep traces FCR vs escalation
+subset: dev_mini
+trials: 1
+manifest_cap_usd: 0.0
+decision_rule: 'no new runs: analysis/a3_frontiers.py sweeps logged confidence'
+next_step: D4-9
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v2
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: from_logs
+  overrides: {}
+note: analysis-only manifest

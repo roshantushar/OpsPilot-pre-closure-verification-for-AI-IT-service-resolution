@@ -1,0 +1,21 @@
+{
+ "name": "hard_negatives",
+ "n": 8,
+ "decisions": {
+  "INCOMPLETE": 4,
+  "ESCALATE": 4
+ },
+ "families": 4,
+ "baseline_fcr": 1.0,
+ "seed": 20260922,
+ "case_ids": [
+  "lh-02-pre",
+  "lh-02-run1",
+  "off-02-pre",
+  "off-01-run1",
+  "lst-02-pre",
+  "lst-01-run3",
+  "acc-02-pre",
+  "acc-01-run2"
+ ]
+}

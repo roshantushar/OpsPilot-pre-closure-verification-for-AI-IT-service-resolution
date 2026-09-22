@@ -1,0 +1,22 @@
+# D4-7 - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: D4-7
+tier: T2
+question: Is the verifier consistent across repeated trials?
+hypothesis: pass^3 >= 0.8 on hard negatives
+subset: hard_negatives
+trials: 3
+manifest_cap_usd: 0.14
+decision_rule: report pass@k vs pass^k and flip rate
+next_step: A4
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v2
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: best_x3
+  overrides: {}

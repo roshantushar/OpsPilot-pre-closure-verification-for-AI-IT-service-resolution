@@ -1,0 +1,136 @@
+{
+ "experiment_id": "D4-5",
+ "arm": "baseline_ladder",
+ "run_id": "D4-5__baseline_ladder__off-01-pre__t1",
+ "trial": 1,
+ "timestamp": "2026-09-22T16:20:12",
+ "git_commit": "9cb211a-dirty",
+ "config_hash": "2866ff49da9a",
+ "dataset_version": "synthetic-v1",
+ "case_id": "off-01-pre",
+ "task_id": "off-01",
+ "family": "standard_offboarding",
+ "subset": "premature_dev",
+ "verifier": "agent",
+ "backend": "scripted",
+ "model": "openai/gpt-5-mini",
+ "reasoning_effort": "low",
+ "prompt_version": "v2",
+ "descriptor_version": "v2",
+ "compact_returns": true,
+ "tool_subset": "all",
+ "parallel_tools": false,
+ "early_exit": false,
+ "show_closure_note": true,
+ "use_runbook": true,
+ "allow_escalate": true,
+ "require_evidence": true,
+ "dedup": true,
+ "step_cap": 8,
+ "budget_cap_usd": 0.03,
+ "perturbation": null,
+ "difficulty": "medium",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "reason": "required conditions not met: ['OFF-R7']",
+ "cited_conditions": [
+  "OFF-R7"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OFF-P1",
+   "observed": "\"terminated\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-P2",
+   "observed": "false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R1",
+   "observed": "\"DEACTIVATED\"",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R2",
+   "observed": "[]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "\"zhiwei.lau@acme.example\"",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "[\"wipe_pending\", \"wipe_pending\"]",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R7",
+   "observed": "\"in_progress\"",
+   "source": "get_incident",
+   "holds": false
+  }
+ ],
+ "confidence": 1.0,
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident"
+ ],
+ "tool_call_count": 7,
+ "duplicate_tool_calls": 0,
+ "invalid_tool_calls": 0,
+ "tool_latency_ms": 0.11,
+ "observation_chars": 2774,
+ "turns": 8,
+ "step_cap_hit": false,
+ "budget_cap_hit": false,
+ "early_exit_triggered": false,
+ "schema_validation_failed": false,
+ "input_tokens": 0,
+ "output_tokens": 0,
+ "reasoning_tokens": 0,
+ "cached_tokens": 0,
+ "total_tokens": 0,
+ "llm_cost_usd": 0.0,
+ "total_cost_usd": 0.0,
+ "latency_ms": 0.3,
+ "llm_latency_ms": 0.0,
+ "retry_attempted": false,
+ "retry_success": null,
+ "state_hash_before": "d000cc155094",
+ "state_hash_after": "d000cc155094",
+ "error_type": null,
+ "reused_from": "D2a__all_tools__off-01-pre__t1"
+}

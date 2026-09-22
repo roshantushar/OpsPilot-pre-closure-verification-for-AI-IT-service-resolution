@@ -1,0 +1,2 @@
+{"event": "llm", "turn": 1, "cost_usd": 0.0, "n_checks": 9}
+{"event": "final", "decision": "INCOMPLETE", "turns": 1}

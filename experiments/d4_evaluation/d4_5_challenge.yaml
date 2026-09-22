@@ -1,0 +1,36 @@
+# D4-5 - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: D4-5
+tier: T1
+question: Where does detection fail as difficulty rises?
+hypothesis: easy/medium near-perfect; conflict and stale reduce detection
+subset: premature_dev
+trials: 1
+manifest_cap_usd: 0.25
+decision_rule: report detection by missing-state category and by difficulty; fixes go to D2b/D7-2
+next_step: D4-6
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v2
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: baseline_ladder
+  overrides: {}
+- arm: hard_conflict
+  overrides:
+    perturbation:
+      conflict: okta
+      field: status
+      value: ACTIVE
+- arm: very_hard_stale
+  overrides:
+    descriptor_version: v1_history
+    perturbation:
+      stale: okta
+      field: status
+      old_value: SUSPENDED
+note: adjust stale/conflict system per family if okta is not the failing system

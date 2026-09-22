@@ -1,0 +1,86 @@
+# D3-3 - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: D3-3
+tier: T2
+question: Does it retry, escalate, hallucinate or wrongly verify under faults?
+hypothesis: transient -> retry and correct; persistent -> ESCALATE
+subset: fault_base
+trials: 1
+manifest_cap_usd: 0.15
+decision_rule: 'classify each outcome: retried / escalated / hallucinated / wrongly verified'
+next_step: D3-4
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v2
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 10
+  budget_cap_usd: 0.03
+arms:
+- arm: timeout_transient
+  overrides:
+    perturbation:
+      fault_mode: timeout:transient
+      system: okta
+- arm: timeout_persistent
+  overrides:
+    perturbation:
+      fault_mode: timeout:persistent
+      system: okta
+- arm: http_500_transient
+  overrides:
+    perturbation:
+      fault_mode: http_500:transient
+      system: okta
+- arm: http_500_persistent
+  overrides:
+    perturbation:
+      fault_mode: http_500:persistent
+      system: okta
+- arm: empty_transient
+  overrides:
+    perturbation:
+      fault_mode: empty:transient
+      system: okta
+- arm: empty_persistent
+  overrides:
+    perturbation:
+      fault_mode: empty:persistent
+      system: okta
+- arm: malformed_json_transient
+  overrides:
+    perturbation:
+      fault_mode: malformed_json:transient
+      system: okta
+- arm: malformed_json_persistent
+  overrides:
+    perturbation:
+      fault_mode: malformed_json:persistent
+      system: okta
+- arm: auth_error_transient
+  overrides:
+    perturbation:
+      fault_mode: auth_error:transient
+      system: okta
+- arm: auth_error_persistent
+  overrides:
+    perturbation:
+      fault_mode: auth_error:persistent
+      system: okta
+- arm: conflict
+  overrides:
+    perturbation:
+      conflict: okta
+      field: status
+      value: ACTIVE
+- arm: unavailable
+  overrides:
+    perturbation:
+      unavailable: okta
+- arm: pending_persistent
+  overrides:
+    perturbation:
+      fault_mode: pending:persistent
+      system: okta
+note: 'step_cap 10: scripted runs showed 8 leaves no headroom for one retry on 7-call families'

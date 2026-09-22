@@ -1,0 +1,19 @@
+{
+ "name": "fail_fixtures",
+ "n": 6,
+ "decisions": {
+  "VERIFIED": 3,
+  "INCOMPLETE": 3
+ },
+ "families": 3,
+ "baseline_fcr": 0.5,
+ "seed": 20260922,
+ "case_ids": [
+  "lh-02-cor",
+  "lh-02-pre",
+  "off-02-cor",
+  "off-02-pre",
+  "lst-02-cor",
+  "lst-02-pre"
+ ]
+}

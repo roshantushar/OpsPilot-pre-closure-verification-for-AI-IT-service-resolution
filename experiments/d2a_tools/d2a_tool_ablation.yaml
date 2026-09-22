@@ -1,0 +1,49 @@
+# D2a - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: D2a
+tier: T1
+question: Which tools are essential, replaceable, redundant or confusable?
+hypothesis: removing a redundant tool changes nothing; removing an essential one forces ESCALATE
+subset: dev_micro
+trials: 1
+manifest_cap_usd: 0.15
+decision_rule: pick the two ablated tools from D4 usage logs first (edit tool_subset before committing)
+next_step: D2b
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v2
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: all_tools
+  overrides: {}
+- arm: minus_redundant
+  overrides:
+    tool_subset:
+    - get_hr_employee
+    - get_okta_user
+    - get_google_user
+    - get_slack_user
+    - list_devices
+    - get_device
+    - get_incident
+    - list_slas
+    - list_approvals
+    - list_security_exceptions
+- arm: minus_essential
+  overrides:
+    tool_subset:
+    - get_hr_employee
+    - get_google_user
+    - get_slack_user
+    - list_devices
+    - get_device
+    - get_incident
+    - list_slas
+    - list_approvals
+    - list_security_exceptions
+    - lookup_runbook
+note: 'placeholder choice: redundant=lookup_runbook?, essential=get_okta_user - confirm from logs'

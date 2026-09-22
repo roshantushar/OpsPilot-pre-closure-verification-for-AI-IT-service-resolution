@@ -1,0 +1,516 @@
+{
+ "hr": {
+  "employees": {
+   "E93224": {
+    "emp_id": "E93224",
+    "name": "Divya Lim",
+    "email": "divya.lim@acme.example",
+    "department": "Engineering",
+    "manager_email": "kenji.ng@acme.example",
+    "status": "active",
+    "legal_hold": false,
+    "notes": ""
+   },
+   "E87929": {
+    "emp_id": "E87929",
+    "name": "Nikhil Lau",
+    "email": "nikhil.lau@acme.example",
+    "department": "Marketing",
+    "manager_email": "grace.chen@acme.example",
+    "status": "active",
+    "legal_hold": false,
+    "notes": ""
+   },
+   "E69082": {
+    "emp_id": "E69082",
+    "name": "Kenji Nair",
+    "email": "kenji.nair@acme.example",
+    "department": "HR",
+    "manager_email": "farah.ng@acme.example",
+    "status": "active",
+    "legal_hold": false,
+    "notes": ""
+   },
+   "E79734": {
+    "emp_id": "E79734",
+    "name": "Grace Chen",
+    "email": "grace.chen@acme.example",
+    "department": "Engineering",
+    "manager_email": "kenji.ng@acme.example",
+    "status": "active",
+    "legal_hold": false,
+    "notes": ""
+   },
+   "E61067": {
+    "emp_id": "E61067",
+    "name": "Mei Lau",
+    "email": "mei.lau@acme.example",
+    "department": "HR",
+    "manager_email": "lucas.kumar@acme.example",
+    "status": "active",
+    "legal_hold": false,
+    "notes": ""
+   },
+   "E92631": {
+    "emp_id": "E92631",
+    "name": "Aisha Singh",
+    "email": "aisha.singh@acme.example",
+    "department": "Support",
+    "manager_email": "lucas.kumar@acme.example",
+    "status": "active",
+    "legal_hold": false,
+    "notes": ""
+   },
+   "E56242": {
+    "emp_id": "E56242",
+    "name": "Lucas Kumar",
+    "email": "lucas.kumar@acme.example",
+    "department": "HR",
+    "manager_email": "kenji.ng@acme.example",
+    "status": "active",
+    "legal_hold": false,
+    "notes": ""
+   },
+   "E18607": {
+    "emp_id": "E18607",
+    "name": "Rahul Iyer",
+    "email": "rahul.iyer@acme.example",
+    "department": "HR",
+    "manager_email": "aisha.singh@acme.example",
+    "status": "active",
+    "legal_hold": false,
+    "notes": ""
+   },
+   "E13433": {
+    "emp_id": "E13433",
+    "name": "Farah Ng",
+    "email": "farah.ng@acme.example",
+    "department": "Engineering",
+    "manager_email": "nikhil.lau@acme.example",
+    "status": "active",
+    "legal_hold": false,
+    "notes": ""
+   },
+   "E17898": {
+    "emp_id": "E17898",
+    "name": "Kenji Ng",
+    "email": "kenji.ng@acme.example",
+    "department": "Sales",
+    "manager_email": "lucas.kumar@acme.example",
+    "status": "active",
+    "legal_hold": false,
+    "notes": ""
+   }
+  }
+ },
+ "okta": {
+  "users": {
+   "00u7386899": {
+    "okta_id": "00u7386899",
+    "email": "divya.lim@acme.example",
+    "status": "ACTIVE",
+    "groups": [
+     "all-staff",
+     "eng-all",
+     "github-developers",
+     "finance-reporting-extended"
+    ],
+    "sessions_active": 1,
+    "password_reset_required": false,
+    "mfa_reset_issued": false
+   },
+   "00u1813260": {
+    "okta_id": "00u1813260",
+    "email": "nikhil.lau@acme.example",
+    "status": "ACTIVE",
+    "groups": [
+     "all-staff",
+     "marketing-all",
+     "cms-editors"
+    ],
+    "sessions_active": 3,
+    "password_reset_required": false,
+    "mfa_reset_issued": false
+   },
+   "00u5449515": {
+    "okta_id": "00u5449515",
+    "email": "kenji.nair@acme.example",
+    "status": "ACTIVE",
+    "groups": [
+     "all-staff",
+     "hr-all",
+     "workday-hr"
+    ],
+    "sessions_active": 1,
+    "password_reset_required": false,
+    "mfa_reset_issued": false
+   },
+   "00u9165371": {
+    "okta_id": "00u9165371",
+    "email": "grace.chen@acme.example",
+    "status": "ACTIVE",
+    "groups": [
+     "all-staff",
+     "eng-all",
+     "github-developers"
+    ],
+    "sessions_active": 4,
+    "password_reset_required": false,
+    "mfa_reset_issued": false
+   },
+   "00u4925666": {
+    "okta_id": "00u4925666",
+    "email": "mei.lau@acme.example",
+    "status": "ACTIVE",
+    "groups": [
+     "all-staff",
+     "hr-all",
+     "workday-hr"
+    ],
+    "sessions_active": 4,
+    "password_reset_required": false,
+    "mfa_reset_issued": false
+   },
+   "00u9357807": {
+    "okta_id": "00u9357807",
+    "email": "aisha.singh@acme.example",
+    "status": "ACTIVE",
+    "groups": [
+     "all-staff",
+     "support-all",
+     "zendesk-agents"
+    ],
+    "sessions_active": 3,
+    "password_reset_required": false,
+    "mfa_reset_issued": false
+   },
+   "00u7308827": {
+    "okta_id": "00u7308827",
+    "email": "lucas.kumar@acme.example",
+    "status": "ACTIVE",
+    "groups": [
+     "all-staff",
+     "hr-all",
+     "workday-hr"
+    ],
+    "sessions_active": 1,
+    "password_reset_required": false,
+    "mfa_reset_issued": false
+   },
+   "00u8290860": {
+    "okta_id": "00u8290860",
+    "email": "rahul.iyer@acme.example",
+    "status": "ACTIVE",
+    "groups": [
+     "all-staff",
+     "hr-all",
+     "workday-hr"
+    ],
+    "sessions_active": 3,
+    "password_reset_required": false,
+    "mfa_reset_issued": false
+   },
+   "00u4786699": {
+    "okta_id": "00u4786699",
+    "email": "farah.ng@acme.example",
+    "status": "ACTIVE",
+    "groups": [
+     "all-staff",
+     "eng-all",
+     "github-developers"
+    ],
+    "sessions_active": 2,
+    "password_reset_required": false,
+    "mfa_reset_issued": false
+   },
+   "00u7533817": {
+    "okta_id": "00u7533817",
+    "email": "kenji.ng@acme.example",
+    "status": "ACTIVE",
+    "groups": [
+     "all-staff",
+     "sales-all",
+     "crm-users"
+    ],
+    "sessions_active": 2,
+    "password_reset_required": false,
+    "mfa_reset_issued": false
+   }
+  }
+ },
+ "google_workspace": {
+  "users": {
+   "divya.lim@acme.example": {
+    "email": "divya.lim@acme.example",
+    "suspended": false,
+    "org_unit": "/Staff/Engineering",
+    "oauth_tokens": 5,
+    "force_password_reset": false,
+    "data_transfer_to": null,
+    "deleted": false
+   },
+   "nikhil.lau@acme.example": {
+    "email": "nikhil.lau@acme.example",
+    "suspended": false,
+    "org_unit": "/Staff/Marketing",
+    "oauth_tokens": 15,
+    "force_password_reset": false,
+    "data_transfer_to": null,
+    "deleted": false
+   },
+   "kenji.nair@acme.example": {
+    "email": "kenji.nair@acme.example",
+    "suspended": false,
+    "org_unit": "/Staff/HR",
+    "oauth_tokens": 6,
+    "force_password_reset": false,
+    "data_transfer_to": null,
+    "deleted": false
+   },
+   "grace.chen@acme.example": {
+    "email": "grace.chen@acme.example",
+    "suspended": false,
+    "org_unit": "/Staff/Engineering",
+    "oauth_tokens": 5,
+    "force_password_reset": false,
+    "data_transfer_to": null,
+    "deleted": false
+   },
+   "mei.lau@acme.example": {
+    "email": "mei.lau@acme.example",
+    "suspended": false,
+    "org_unit": "/Staff/HR",
+    "oauth_tokens": 16,
+    "force_password_reset": false,
+    "data_transfer_to": null,
+    "deleted": false
+   },
+   "aisha.singh@acme.example": {
+    "email": "aisha.singh@acme.example",
+    "suspended": false,
+    "org_unit": "/Staff/Support",
+    "oauth_tokens": 9,
+    "force_password_reset": false,
+    "data_transfer_to": null,
+    "deleted": false
+   },
+   "lucas.kumar@acme.example": {
+    "email": "lucas.kumar@acme.example",
+    "suspended": false,
+    "org_unit": "/Staff/HR",
+    "oauth_tokens": 12,
+    "force_password_reset": false,
+    "data_transfer_to": null,
+    "deleted": false
+   },
+   "rahul.iyer@acme.example": {
+    "email": "rahul.iyer@acme.example",
+    "suspended": false,
+    "org_unit": "/Staff/HR",
+    "oauth_tokens": 4,
+    "force_password_reset": false,
+    "data_transfer_to": null,
+    "deleted": false
+   },
+   "farah.ng@acme.example": {
+    "email": "farah.ng@acme.example",
+    "suspended": false,
+    "org_unit": "/Staff/Engineering",
+    "oauth_tokens": 16,
+    "force_password_reset": false,
+    "data_transfer_to": null,
+    "deleted": false
+   },
+   "kenji.ng@acme.example": {
+    "email": "kenji.ng@acme.example",
+    "suspended": false,
+    "org_unit": "/Staff/Sales",
+    "oauth_tokens": 4,
+    "force_password_reset": false,
+    "data_transfer_to": null,
+    "deleted": false
+   }
+  }
+ },
+ "slack": {
+  "users": {
+   "U03080596": {
+    "slack_id": "U03080596",
+    "email": "divya.lim@acme.example",
+    "deactivated": false
+   },
+   "U08517824": {
+    "slack_id": "U08517824",
+    "email": "nikhil.lau@acme.example",
+    "deactivated": false
+   },
+   "U05593138": {
+    "slack_id": "U05593138",
+    "email": "kenji.nair@acme.example",
+    "deactivated": false
+   },
+   "U01234733": {
+    "slack_id": "U01234733",
+    "email": "grace.chen@acme.example",
+    "deactivated": false
+   },
+   "U04986219": {
+    "slack_id": "U04986219",
+    "email": "mei.lau@acme.example",
+    "deactivated": false
+   },
+   "U01334683": {
+    "slack_id": "U01334683",
+    "email": "aisha.singh@acme.example",
+    "deactivated": false
+   },
+   "U09421225": {
+    "slack_id": "U09421225",
+    "email": "lucas.kumar@acme.example",
+    "deactivated": false
+   },
+   "U02607595": {
+    "slack_id": "U02607595",
+    "email": "rahul.iyer@acme.example",
+    "deactivated": false
+   },
+   "U01417828": {
+    "slack_id": "U01417828",
+    "email": "farah.ng@acme.example",
+    "deactivated": false
+   },
+   "U01680852": {
+    "slack_id": "U01680852",
+    "email": "kenji.ng@acme.example",
+    "deactivated": false
+   }
+  }
+ },
+ "intune": {
+  "devices": {
+   "LT-92616": {
+    "device_id": "LT-92616",
+    "owner": "divya.lim@acme.example",
+    "model": "MacBook Air 13",
+    "status": "active",
+    "lost_mode": false
+   },
+   "LT-12689": {
+    "device_id": "LT-12689",
+    "owner": "nikhil.lau@acme.example",
+    "model": "MacBook Pro 14",
+    "status": "active",
+    "lost_mode": false
+   },
+   "LT-28672": {
+    "device_id": "LT-28672",
+    "owner": "kenji.nair@acme.example",
+    "model": "MacBook Air 13",
+    "status": "active",
+    "lost_mode": false
+   },
+   "LT-98006": {
+    "device_id": "LT-98006",
+    "owner": "grace.chen@acme.example",
+    "model": "MacBook Air 13",
+    "status": "active",
+    "lost_mode": false
+   },
+   "LT-46282": {
+    "device_id": "LT-46282",
+    "owner": "mei.lau@acme.example",
+    "model": "Dell Latitude 7450",
+    "status": "active",
+    "lost_mode": false
+   },
+   "LT-26338": {
+    "device_id": "LT-26338",
+    "owner": "aisha.singh@acme.example",
+    "model": "MacBook Pro 14",
+    "status": "active",
+    "lost_mode": false
+   },
+   "LT-54115": {
+    "device_id": "LT-54115",
+    "owner": "lucas.kumar@acme.example",
+    "model": "MacBook Air 13",
+    "status": "active",
+    "lost_mode": false
+   },
+   "LT-60829": {
+    "device_id": "LT-60829",
+    "owner": "rahul.iyer@acme.example",
+    "model": "ThinkPad X1 Carbon",
+    "status": "active",
+    "lost_mode": false
+   },
+   "LT-48910": {
+    "device_id": "LT-48910",
+    "owner": "farah.ng@acme.example",
+    "model": "MacBook Pro 14",
+    "status": "active",
+    "lost_mode": false
+   },
+   "LT-35892": {
+    "device_id": "LT-35892",
+    "owner": "kenji.ng@acme.example",
+    "model": "Dell Latitude 7450",
+    "status": "active",
+    "lost_mode": false
+   }
+  }
+ },
+ "servicenow": {
+  "incidents": {
+   "INC0048361": {
+    "number": "INC0048361",
+    "short_description": "Monitor flickering",
+    "caller_email": "farah.ng@acme.example",
+    "subject_email": "farah.ng@acme.example",
+    "category": "hardware",
+    "priority": "P4",
+    "state": "in_progress",
+    "hold_reason": null,
+    "escalated_to": null,
+    "work_notes": []
+   },
+   "INC0079845": {
+    "number": "INC0079845",
+    "short_description": "Monitor flickering",
+    "caller_email": "farah.ng@acme.example",
+    "subject_email": "farah.ng@acme.example",
+    "category": "hardware",
+    "priority": "P4",
+    "state": "in_progress",
+    "hold_reason": null,
+    "escalated_to": null,
+    "work_notes": []
+   },
+   "INC0067740": {
+    "number": "INC0067740",
+    "short_description": "Access request: finance-reporting-extended",
+    "caller_email": "divya.lim@acme.example",
+    "subject_email": "divya.lim@acme.example",
+    "category": "access",
+    "priority": "P4",
+    "state": "resolved",
+    "hold_reason": null,
+    "escalated_to": null,
+    "work_notes": [
+     "Access granted per approval APR0073883."
+    ]
+   }
+  },
+  "slas": {},
+  "approvals": {
+   "APR0073883": {
+    "approval_id": "APR0073883",
+    "ticket": "INC0067740",
+    "group": "finance-reporting-extended",
+    "approver": "kenji.ng@acme.example",
+    "state": "approved"
+   }
+  },
+  "security_exceptions": {}
+ }
+}

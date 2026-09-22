@@ -1,0 +1,114 @@
+{
+ "experiment_id": "A1",
+ "arm": "rules",
+ "run_id": "A1__rules__trf-01-run3__t1",
+ "trial": 1,
+ "timestamp": "2026-09-22T15:03:34",
+ "git_commit": "9cb211a",
+ "config_hash": "25e237447231",
+ "dataset_version": "synthetic-v1",
+ "case_id": "trf-01-run3",
+ "task_id": "trf-01",
+ "family": "role_transfer",
+ "subset": "dev_runs",
+ "verifier": "rules",
+ "backend": "scripted",
+ "model": "openai/gpt-5-mini",
+ "reasoning_effort": "low",
+ "prompt_version": "v1",
+ "descriptor_version": "v2",
+ "compact_returns": true,
+ "tool_subset": "all",
+ "parallel_tools": false,
+ "early_exit": false,
+ "show_closure_note": true,
+ "use_runbook": true,
+ "allow_escalate": true,
+ "require_evidence": true,
+ "dedup": true,
+ "step_cap": 8,
+ "budget_cap_usd": 0.03,
+ "perturbation": null,
+ "difficulty": "easy",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "reason": "required conditions not met: ['TRF-R3']",
+ "cited_conditions": [
+  "TRF-R3"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "\"HR\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "[\"all-staff\", \"workday-hr\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "[\"all-staff\", \"workday-hr\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "[\"all-staff\", \"workday-hr\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "[\"all-staff\", \"workday-hr\"]",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "[\"all-staff\", \"workday-hr\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "confidence": 1.0,
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_incident"
+ ],
+ "tool_call_count": 4,
+ "duplicate_tool_calls": 0,
+ "invalid_tool_calls": 0,
+ "tool_latency_ms": 0.06,
+ "observation_chars": 2232,
+ "turns": 0,
+ "step_cap_hit": false,
+ "budget_cap_hit": false,
+ "early_exit_triggered": false,
+ "schema_validation_failed": false,
+ "input_tokens": 0,
+ "output_tokens": 0,
+ "reasoning_tokens": 0,
+ "cached_tokens": 0,
+ "total_tokens": 0,
+ "llm_cost_usd": 0.0,
+ "total_cost_usd": 0.0,
+ "latency_ms": 0.1,
+ "llm_latency_ms": 0.0,
+ "retry_attempted": false,
+ "retry_success": null,
+ "state_hash_before": "174e59d67461",
+ "state_hash_after": "174e59d67461",
+ "error_type": null
+}

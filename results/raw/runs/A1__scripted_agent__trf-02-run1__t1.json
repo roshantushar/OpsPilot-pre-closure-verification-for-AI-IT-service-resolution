@@ -1,0 +1,112 @@
+{
+ "experiment_id": "A1",
+ "arm": "scripted_agent",
+ "run_id": "A1__scripted_agent__trf-02-run1__t1",
+ "trial": 1,
+ "timestamp": "2026-09-22T15:03:34",
+ "git_commit": "9cb211a",
+ "config_hash": "4e79bdbb3b78",
+ "dataset_version": "synthetic-v1",
+ "case_id": "trf-02-run1",
+ "task_id": "trf-02",
+ "family": "role_transfer",
+ "subset": "dev_runs",
+ "verifier": "agent",
+ "backend": "scripted",
+ "model": "openai/gpt-5-mini",
+ "reasoning_effort": "low",
+ "prompt_version": "v1",
+ "descriptor_version": "v2",
+ "compact_returns": true,
+ "tool_subset": "all",
+ "parallel_tools": false,
+ "early_exit": false,
+ "show_closure_note": true,
+ "use_runbook": true,
+ "allow_escalate": true,
+ "require_evidence": true,
+ "dedup": true,
+ "step_cap": 8,
+ "budget_cap_usd": 0.03,
+ "perturbation": null,
+ "difficulty": "easy",
+ "declared": true,
+ "decision": "VERIFIED",
+ "reason": "all preconditions hold, all required conditions met, nothing forbidden observed",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "\"Sales\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "[\"all-staff\", \"sales-all\", \"crm-users\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "[\"all-staff\", \"sales-all\", \"crm-users\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "[\"all-staff\", \"sales-all\", \"crm-users\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "[\"all-staff\", \"sales-all\", \"crm-users\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "[\"all-staff\", \"sales-all\", \"crm-users\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "confidence": 1.0,
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_incident"
+ ],
+ "tool_call_count": 4,
+ "duplicate_tool_calls": 0,
+ "invalid_tool_calls": 0,
+ "tool_latency_ms": 0.07,
+ "observation_chars": 2241,
+ "turns": 5,
+ "step_cap_hit": false,
+ "budget_cap_hit": false,
+ "early_exit_triggered": false,
+ "schema_validation_failed": false,
+ "input_tokens": 0,
+ "output_tokens": 0,
+ "reasoning_tokens": 0,
+ "cached_tokens": 0,
+ "total_tokens": 0,
+ "llm_cost_usd": 0.0,
+ "total_cost_usd": 0.0,
+ "latency_ms": 0.2,
+ "llm_latency_ms": 0.0,
+ "retry_attempted": false,
+ "retry_success": null,
+ "state_hash_before": "b95661b90847",
+ "state_hash_after": "b95661b90847",
+ "error_type": null
+}

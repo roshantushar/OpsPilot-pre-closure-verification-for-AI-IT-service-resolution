@@ -1,0 +1,16 @@
+{"event": "llm", "turn": 1, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-101"}, "output_chars": 1528, "latency_ms": 0.04, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "get_hr_employee", "args": {"email": "zhiwei.lee@acme.example"}, "output_chars": 223, "latency_ms": 0.02, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 3, "name": "list_security_exceptions", "args": {"employee_email": "zhiwei.lee@acme.example"}, "output_chars": 162, "latency_ms": 0.01, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 4, "name": "get_okta_user", "args": {"email": "zhiwei.lee@acme.example"}, "output_chars": 247, "latency_ms": 0.01, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 5, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 5, "name": "get_google_user", "args": {"email": "zhiwei.lee@acme.example"}, "output_chars": 196, "latency_ms": 0.01, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 6, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 6, "name": "get_slack_user", "args": {"email": "zhiwei.lee@acme.example"}, "output_chars": 111, "latency_ms": 0.01, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 7, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 7, "name": "get_incident", "args": {"number": "INC0095019"}, "output_chars": 321, "latency_ms": 0.01, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 8, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "INCOMPLETE", "turns": 8}

@@ -1,0 +1,159 @@
+{
+ "task_id": "hld-05",
+ "family": "incident_on_hold_sla",
+ "runbook_id": "KB-OPS-104",
+ "subject_email": "grace.iyer@acme.example",
+ "ticket_number": "INC0076812",
+ "seed_file": "public/seeds/hld-05.json",
+ "conditions": [
+  {
+   "id": "HLD-P1",
+   "kind": "precondition",
+   "desc": "SLA not already breached",
+   "system": "servicenow",
+   "table": "slas",
+   "match": {
+    "incident": "INC0076812"
+   },
+   "field": "has_breached",
+   "op": "eq",
+   "value": false,
+   "all": false
+  },
+  {
+   "id": "HLD-R1",
+   "kind": "required",
+   "desc": "Incident on hold",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0076812"
+   },
+   "field": "state",
+   "op": "eq",
+   "value": "on_hold",
+   "all": false
+  },
+  {
+   "id": "HLD-R2",
+   "kind": "required",
+   "desc": "Hold reason Awaiting Caller",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0076812"
+   },
+   "field": "hold_reason",
+   "op": "eq",
+   "value": "Awaiting Caller",
+   "all": false
+  },
+  {
+   "id": "HLD-R3",
+   "kind": "required",
+   "desc": "SLA paused",
+   "system": "servicenow",
+   "table": "slas",
+   "match": {
+    "incident": "INC0076812"
+   },
+   "field": "stage",
+   "op": "eq",
+   "value": "paused",
+   "all": false
+  },
+  {
+   "id": "HLD-R4",
+   "kind": "required",
+   "desc": "Work note mentions awaiting caller",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0076812"
+   },
+   "field": "work_notes",
+   "op": "any_icontains",
+   "value": "awaiting caller",
+   "all": false
+  },
+  {
+   "id": "HLD-F1",
+   "kind": "forbidden",
+   "desc": "Incident resolved/closed",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0076812"
+   },
+   "field": "state",
+   "op": "in",
+   "value": [
+    "resolved",
+    "closed"
+   ],
+   "all": false
+  }
+ ],
+ "gold_actions": [
+  {
+   "id": "a1",
+   "satisfies": "HLD-R1",
+   "claim": "put the incident on hold",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0076812"
+   },
+   "op": "set",
+   "field": "state",
+   "value": "on_hold",
+   "all": false
+  },
+  {
+   "id": "a2",
+   "satisfies": "HLD-R2",
+   "claim": "set hold reason to Awaiting Caller",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0076812"
+   },
+   "op": "set",
+   "field": "hold_reason",
+   "value": "Awaiting Caller",
+   "all": false
+  },
+  {
+   "id": "a3",
+   "satisfies": "HLD-R3",
+   "claim": "paused the SLA timer",
+   "system": "servicenow",
+   "table": "slas",
+   "match": {
+    "incident": "INC0076812"
+   },
+   "op": "set",
+   "field": "stage",
+   "value": "paused",
+   "all": false
+  },
+  {
+   "id": "a4",
+   "satisfies": "HLD-R4",
+   "claim": "added a work note",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0076812"
+   },
+   "op": "append",
+   "field": "work_notes",
+   "value": "On hold: awaiting caller response with logs.",
+   "all": false
+  }
+ ],
+ "escalation_variants": [
+  "sla_already_breached",
+  "resolved_instead_of_hold"
+ ]
+}

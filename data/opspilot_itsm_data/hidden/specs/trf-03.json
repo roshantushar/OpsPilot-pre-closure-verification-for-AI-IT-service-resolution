@@ -1,0 +1,184 @@
+{
+ "task_id": "trf-03",
+ "family": "role_transfer",
+ "runbook_id": "KB-OPS-107",
+ "subject_email": "emily.koh@acme.example",
+ "ticket_number": "INC0069928",
+ "seed_file": "public/seeds/trf-03.json",
+ "conditions": [
+  {
+   "id": "TRF-P1",
+   "kind": "precondition",
+   "desc": "HR shows new department",
+   "system": "hr",
+   "table": "employees",
+   "match": {
+    "email": "emily.koh@acme.example"
+   },
+   "field": "department",
+   "op": "eq",
+   "value": "Sales",
+   "all": false
+  },
+  {
+   "id": "TRF-R1",
+   "kind": "required",
+   "desc": "Removed from hr-all",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "emily.koh@acme.example"
+   },
+   "field": "groups",
+   "op": "not_contains",
+   "value": "hr-all",
+   "all": false
+  },
+  {
+   "id": "TRF-R2",
+   "kind": "required",
+   "desc": "Removed from workday-hr",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "emily.koh@acme.example"
+   },
+   "field": "groups",
+   "op": "not_contains",
+   "value": "workday-hr",
+   "all": false
+  },
+  {
+   "id": "TRF-R3",
+   "kind": "required",
+   "desc": "Added to sales-all",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "emily.koh@acme.example"
+   },
+   "field": "groups",
+   "op": "contains",
+   "value": "sales-all",
+   "all": false
+  },
+  {
+   "id": "TRF-R4",
+   "kind": "required",
+   "desc": "Added to crm-users",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "emily.koh@acme.example"
+   },
+   "field": "groups",
+   "op": "contains",
+   "value": "crm-users",
+   "all": false
+  },
+  {
+   "id": "TRF-R5",
+   "kind": "required",
+   "desc": "Ticket resolved",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0069928"
+   },
+   "field": "state",
+   "op": "eq",
+   "value": "resolved",
+   "all": false
+  },
+  {
+   "id": "TRF-F1",
+   "kind": "forbidden",
+   "desc": "Baseline all-staff removed",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "emily.koh@acme.example"
+   },
+   "field": "groups",
+   "op": "not_contains",
+   "value": "all-staff",
+   "all": false
+  }
+ ],
+ "gold_actions": [
+  {
+   "id": "a1",
+   "satisfies": "TRF-R1",
+   "claim": "removed hr-all",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "emily.koh@acme.example"
+   },
+   "op": "remove_item",
+   "field": "groups",
+   "value": "hr-all",
+   "all": false
+  },
+  {
+   "id": "a2",
+   "satisfies": "TRF-R2",
+   "claim": "removed workday-hr",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "emily.koh@acme.example"
+   },
+   "op": "remove_item",
+   "field": "groups",
+   "value": "workday-hr",
+   "all": false
+  },
+  {
+   "id": "a3",
+   "satisfies": "TRF-R3",
+   "claim": "added sales-all",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "emily.koh@acme.example"
+   },
+   "op": "add_item",
+   "field": "groups",
+   "value": "sales-all",
+   "all": false
+  },
+  {
+   "id": "a4",
+   "satisfies": "TRF-R4",
+   "claim": "added crm-users",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "emily.koh@acme.example"
+   },
+   "op": "add_item",
+   "field": "groups",
+   "value": "crm-users",
+   "all": false
+  },
+  {
+   "id": "a5",
+   "satisfies": "TRF-R5",
+   "claim": "resolved the ticket",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0069928"
+   },
+   "op": "set",
+   "field": "state",
+   "value": "resolved",
+   "all": false
+  }
+ ],
+ "escalation_variants": [
+  "transfer_not_confirmed_by_hr",
+  "baseline_group_removed"
+ ]
+}

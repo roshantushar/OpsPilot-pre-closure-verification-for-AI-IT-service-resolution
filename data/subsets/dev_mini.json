@@ -1,0 +1,38 @@
+{
+ "name": "dev_mini",
+ "n": 24,
+ "decisions": {
+  "VERIFIED": 8,
+  "INCOMPLETE": 10,
+  "ESCALATE": 6
+ },
+ "families": 8,
+ "baseline_fcr": 0.6667,
+ "seed": 20260922,
+ "case_ids": [
+  "lh-01-cor",
+  "lh-01-pre",
+  "lh-02-run1",
+  "off-01-cor",
+  "off-01-pre",
+  "off-01-run1",
+  "acc-01-cor",
+  "acc-01-pre",
+  "acc-01-run2",
+  "hld-01-cor",
+  "hld-01-pre",
+  "hld-01-run1",
+  "lst-01-cor",
+  "lst-01-pre",
+  "lst-01-run3",
+  "lck-01-cor",
+  "lck-01-pre",
+  "lck-01-run2",
+  "trf-01-cor",
+  "trf-01-pre",
+  "trf-02-pre",
+  "brc-01-cor",
+  "brc-01-pre",
+  "brc-01-run2"
+ ]
+}

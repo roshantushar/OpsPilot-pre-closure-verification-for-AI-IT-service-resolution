@@ -1,0 +1,2 @@
+{"event": "llm", "turn": 1, "cost_usd": 0.0, "records_chars": 3049}
+{"event": "final", "decision": "ESCALATE", "turns": 1}

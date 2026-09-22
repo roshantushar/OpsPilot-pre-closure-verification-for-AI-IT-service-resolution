@@ -1,0 +1,31 @@
+# D5 - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: D5
+tier: T2
+question: Which model gives the best safety per dollar?
+hypothesis: a cheaper model matches FCR but loses on evidence or hostile cases
+subset: dev_mini
+trials: 1
+manifest_cap_usd: 0.1
+decision_rule: report FCR/FBR/$ per verified closure and where models disagree; keep protocol failures
+next_step: freeze
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v2
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: primary
+  reuse_from: D4 best
+- arm: gpt4omini
+  overrides:
+    model: openai/gpt-4o-mini
+- arm: gemini_flash_lite
+  overrides:
+    model: google/gemini-2.5-flash-lite
+- arm: free
+  overrides:
+    model: REPLACE_WITH_DEV_FREE_MODEL

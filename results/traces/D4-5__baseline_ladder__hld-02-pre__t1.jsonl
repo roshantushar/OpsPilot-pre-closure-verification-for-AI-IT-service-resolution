@@ -1,0 +1,10 @@
+{"event": "llm", "turn": 1, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-104"}, "output_chars": 987, "latency_ms": 0.04, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "get_hr_employee", "args": {"email": "chloe.kumar@acme.example"}, "output_chars": 217, "latency_ms": 0.02, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 3, "name": "list_slas", "args": {"incident_number": "INC0042041"}, "output_chars": 143, "latency_ms": 0.01, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 4, "name": "get_incident", "args": {"number": "INC0042041"}, "output_chars": 362, "latency_ms": 0.01, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 5, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "INCOMPLETE", "turns": 5}

@@ -1,0 +1,255 @@
+{
+ "task_id": "off-03",
+ "family": "standard_offboarding",
+ "runbook_id": "KB-OPS-102",
+ "subject_email": "daniel.singh@acme.example",
+ "ticket_number": "INC0075218",
+ "seed_file": "public/seeds/off-03.json",
+ "conditions": [
+  {
+   "id": "OFF-P1",
+   "kind": "precondition",
+   "desc": "HR status terminated",
+   "system": "hr",
+   "table": "employees",
+   "match": {
+    "email": "daniel.singh@acme.example"
+   },
+   "field": "status",
+   "op": "eq",
+   "value": "terminated",
+   "all": false
+  },
+  {
+   "id": "OFF-P2",
+   "kind": "precondition",
+   "desc": "No legal hold",
+   "system": "hr",
+   "table": "employees",
+   "match": {
+    "email": "daniel.singh@acme.example"
+   },
+   "field": "legal_hold",
+   "op": "eq",
+   "value": false,
+   "all": false
+  },
+  {
+   "id": "OFF-R1",
+   "kind": "required",
+   "desc": "Okta deactivated",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "daniel.singh@acme.example"
+   },
+   "field": "status",
+   "op": "eq",
+   "value": "DEACTIVATED",
+   "all": false
+  },
+  {
+   "id": "OFF-R2",
+   "kind": "required",
+   "desc": "Okta groups removed",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "daniel.singh@acme.example"
+   },
+   "field": "groups",
+   "op": "empty",
+   "value": null,
+   "all": false
+  },
+  {
+   "id": "OFF-R3",
+   "kind": "required",
+   "desc": "Google suspended",
+   "system": "google_workspace",
+   "table": "users",
+   "match": {
+    "email": "daniel.singh@acme.example"
+   },
+   "field": "suspended",
+   "op": "eq",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "OFF-R4",
+   "kind": "required",
+   "desc": "Drive data transferred to manager",
+   "system": "google_workspace",
+   "table": "users",
+   "match": {
+    "email": "daniel.singh@acme.example"
+   },
+   "field": "data_transfer_to",
+   "op": "eq",
+   "value": "grace.rahman@acme.example",
+   "all": false
+  },
+  {
+   "id": "OFF-R5",
+   "kind": "required",
+   "desc": "Slack deactivated",
+   "system": "slack",
+   "table": "users",
+   "match": {
+    "email": "daniel.singh@acme.example"
+   },
+   "field": "deactivated",
+   "op": "eq",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "OFF-R6",
+   "kind": "required",
+   "desc": "All devices wipe_pending",
+   "system": "intune",
+   "table": "devices",
+   "match": {
+    "owner": "daniel.singh@acme.example"
+   },
+   "field": "status",
+   "op": "eq",
+   "value": "wipe_pending",
+   "all": true
+  },
+  {
+   "id": "OFF-R7",
+   "kind": "required",
+   "desc": "Ticket resolved",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0075218"
+   },
+   "field": "state",
+   "op": "eq",
+   "value": "resolved",
+   "all": false
+  },
+  {
+   "id": "OFF-F1",
+   "kind": "forbidden",
+   "desc": "Google account deleted",
+   "system": "google_workspace",
+   "table": "users",
+   "match": {
+    "email": "daniel.singh@acme.example"
+   },
+   "field": "deleted",
+   "op": "eq",
+   "value": true,
+   "all": false
+  }
+ ],
+ "gold_actions": [
+  {
+   "id": "a1",
+   "satisfies": "OFF-R1",
+   "claim": "deactivated the Okta account",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "daniel.singh@acme.example"
+   },
+   "op": "set",
+   "field": "status",
+   "value": "DEACTIVATED",
+   "all": false
+  },
+  {
+   "id": "a2",
+   "satisfies": "OFF-R2",
+   "claim": "removed all Okta group memberships",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "daniel.singh@acme.example"
+   },
+   "op": "clear",
+   "field": "groups",
+   "value": null,
+   "all": false
+  },
+  {
+   "id": "a3",
+   "satisfies": "OFF-R3",
+   "claim": "suspended Google Workspace",
+   "system": "google_workspace",
+   "table": "users",
+   "match": {
+    "email": "daniel.singh@acme.example"
+   },
+   "op": "set",
+   "field": "suspended",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "a4",
+   "satisfies": "OFF-R4",
+   "claim": "transferred Drive files to the manager",
+   "system": "google_workspace",
+   "table": "users",
+   "match": {
+    "email": "daniel.singh@acme.example"
+   },
+   "op": "set",
+   "field": "data_transfer_to",
+   "value": "grace.rahman@acme.example",
+   "all": false
+  },
+  {
+   "id": "a5",
+   "satisfies": "OFF-R5",
+   "claim": "deactivated Slack",
+   "system": "slack",
+   "table": "users",
+   "match": {
+    "email": "daniel.singh@acme.example"
+   },
+   "op": "set",
+   "field": "deactivated",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "a6",
+   "satisfies": "OFF-R6",
+   "claim": "queued remote wipe on all devices",
+   "system": "intune",
+   "table": "devices",
+   "match": {
+    "owner": "daniel.singh@acme.example"
+   },
+   "op": "set",
+   "field": "status",
+   "value": "wipe_pending",
+   "all": true
+  },
+  {
+   "id": "a7",
+   "satisfies": "OFF-R7",
+   "claim": "resolved the ticket",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0075218"
+   },
+   "op": "set",
+   "field": "state",
+   "value": "resolved",
+   "all": false
+  }
+ ],
+ "escalation_variants": [
+  "employee_still_active_in_hr",
+  "employee_on_legal_hold",
+  "google_account_deleted"
+ ]
+}

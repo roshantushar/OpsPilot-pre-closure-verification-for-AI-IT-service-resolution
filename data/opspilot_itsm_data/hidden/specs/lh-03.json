@@ -1,0 +1,344 @@
+{
+ "task_id": "lh-03",
+ "family": "legal_hold_offboarding",
+ "runbook_id": "KB-OPS-101",
+ "subject_email": "nikhil.lau@acme.example",
+ "ticket_number": "INC0039054",
+ "seed_file": "public/seeds/lh-03.json",
+ "conditions": [
+  {
+   "id": "LH-P1",
+   "kind": "precondition",
+   "desc": "Active legal-hold exception exists",
+   "system": "servicenow",
+   "table": "security_exceptions",
+   "match": {
+    "employee_email": "nikhil.lau@acme.example",
+    "type": "legal_hold"
+   },
+   "field": "active",
+   "op": "eq",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "LH-R1",
+   "kind": "required",
+   "desc": "Okta account suspended",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "nikhil.lau@acme.example"
+   },
+   "field": "status",
+   "op": "eq",
+   "value": "SUSPENDED",
+   "all": false
+  },
+  {
+   "id": "LH-R2",
+   "kind": "required",
+   "desc": "Google account suspended",
+   "system": "google_workspace",
+   "table": "users",
+   "match": {
+    "email": "nikhil.lau@acme.example"
+   },
+   "field": "suspended",
+   "op": "eq",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "LH-R3",
+   "kind": "required",
+   "desc": "Google account in /Legal Hold OU",
+   "system": "google_workspace",
+   "table": "users",
+   "match": {
+    "email": "nikhil.lau@acme.example"
+   },
+   "field": "org_unit",
+   "op": "eq",
+   "value": "/Legal Hold",
+   "all": false
+  },
+  {
+   "id": "LH-R4",
+   "kind": "required",
+   "desc": "No third-party OAuth tokens",
+   "system": "google_workspace",
+   "table": "users",
+   "match": {
+    "email": "nikhil.lau@acme.example"
+   },
+   "field": "oauth_tokens",
+   "op": "eq",
+   "value": 0,
+   "all": false
+  },
+  {
+   "id": "LH-R5",
+   "kind": "required",
+   "desc": "Password reset forced",
+   "system": "google_workspace",
+   "table": "users",
+   "match": {
+    "email": "nikhil.lau@acme.example"
+   },
+   "field": "force_password_reset",
+   "op": "eq",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "LH-R6",
+   "kind": "required",
+   "desc": "Slack deactivated",
+   "system": "slack",
+   "table": "users",
+   "match": {
+    "email": "nikhil.lau@acme.example"
+   },
+   "field": "deactivated",
+   "op": "eq",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "LH-R7",
+   "kind": "required",
+   "desc": "Ticket on hold",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0039054"
+   },
+   "field": "state",
+   "op": "eq",
+   "value": "on_hold",
+   "all": false
+  },
+  {
+   "id": "LH-R8",
+   "kind": "required",
+   "desc": "Hold reason Legal Hold",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0039054"
+   },
+   "field": "hold_reason",
+   "op": "eq",
+   "value": "Legal Hold",
+   "all": false
+  },
+  {
+   "id": "LH-R9",
+   "kind": "required",
+   "desc": "Escalated to Legal",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0039054"
+   },
+   "field": "escalated_to",
+   "op": "eq",
+   "value": "Legal",
+   "all": false
+  },
+  {
+   "id": "LH-F1",
+   "kind": "forbidden",
+   "desc": "Okta deactivated",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "nikhil.lau@acme.example"
+   },
+   "field": "status",
+   "op": "eq",
+   "value": "DEACTIVATED",
+   "all": false
+  },
+  {
+   "id": "LH-F2",
+   "kind": "forbidden",
+   "desc": "Data transferred",
+   "system": "google_workspace",
+   "table": "users",
+   "match": {
+    "email": "nikhil.lau@acme.example"
+   },
+   "field": "data_transfer_to",
+   "op": "not_null",
+   "value": null,
+   "all": false
+  },
+  {
+   "id": "LH-F3",
+   "kind": "forbidden",
+   "desc": "Ticket resolved/closed",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0039054"
+   },
+   "field": "state",
+   "op": "in",
+   "value": [
+    "resolved",
+    "closed"
+   ],
+   "all": false
+  },
+  {
+   "id": "LH-F4",
+   "kind": "forbidden",
+   "desc": "Google account deleted",
+   "system": "google_workspace",
+   "table": "users",
+   "match": {
+    "email": "nikhil.lau@acme.example"
+   },
+   "field": "deleted",
+   "op": "eq",
+   "value": true,
+   "all": false
+  }
+ ],
+ "gold_actions": [
+  {
+   "id": "a1",
+   "satisfies": "LH-R1",
+   "claim": "suspended the Okta account",
+   "system": "okta",
+   "table": "users",
+   "match": {
+    "email": "nikhil.lau@acme.example"
+   },
+   "op": "set",
+   "field": "status",
+   "value": "SUSPENDED",
+   "all": false
+  },
+  {
+   "id": "a2",
+   "satisfies": "LH-R2",
+   "claim": "suspended the Google Workspace account",
+   "system": "google_workspace",
+   "table": "users",
+   "match": {
+    "email": "nikhil.lau@acme.example"
+   },
+   "op": "set",
+   "field": "suspended",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "a3",
+   "satisfies": "LH-R3",
+   "claim": "moved the Google account to the Legal Hold OU",
+   "system": "google_workspace",
+   "table": "users",
+   "match": {
+    "email": "nikhil.lau@acme.example"
+   },
+   "op": "set",
+   "field": "org_unit",
+   "value": "/Legal Hold",
+   "all": false
+  },
+  {
+   "id": "a4",
+   "satisfies": "LH-R4",
+   "claim": "revoked all third-party OAuth tokens",
+   "system": "google_workspace",
+   "table": "users",
+   "match": {
+    "email": "nikhil.lau@acme.example"
+   },
+   "op": "set",
+   "field": "oauth_tokens",
+   "value": 0,
+   "all": false
+  },
+  {
+   "id": "a5",
+   "satisfies": "LH-R5",
+   "claim": "forced a password reset",
+   "system": "google_workspace",
+   "table": "users",
+   "match": {
+    "email": "nikhil.lau@acme.example"
+   },
+   "op": "set",
+   "field": "force_password_reset",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "a6",
+   "satisfies": "LH-R6",
+   "claim": "deactivated Slack",
+   "system": "slack",
+   "table": "users",
+   "match": {
+    "email": "nikhil.lau@acme.example"
+   },
+   "op": "set",
+   "field": "deactivated",
+   "value": true,
+   "all": false
+  },
+  {
+   "id": "a7",
+   "satisfies": "LH-R7",
+   "claim": "placed the ticket on hold",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0039054"
+   },
+   "op": "set",
+   "field": "state",
+   "value": "on_hold",
+   "all": false
+  },
+  {
+   "id": "a8",
+   "satisfies": "LH-R8",
+   "claim": "set hold reason to Legal Hold",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0039054"
+   },
+   "op": "set",
+   "field": "hold_reason",
+   "value": "Legal Hold",
+   "all": false
+  },
+  {
+   "id": "a9",
+   "satisfies": "LH-R9",
+   "claim": "escalated to Legal",
+   "system": "servicenow",
+   "table": "incidents",
+   "match": {
+    "number": "INC0039054"
+   },
+   "op": "set",
+   "field": "escalated_to",
+   "value": "Legal",
+   "all": false
+  }
+ ],
+ "escalation_variants": [
+  "legal_hold_not_confirmed",
+  "ticket_resolved_instead_of_hold",
+  "okta_deactivated_under_hold",
+  "data_transferred_under_hold"
+ ]
+}

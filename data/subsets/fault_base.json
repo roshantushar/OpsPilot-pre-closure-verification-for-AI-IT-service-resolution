@@ -1,0 +1,15 @@
+{
+ "name": "fault_base",
+ "n": 2,
+ "decisions": {
+  "VERIFIED": 1,
+  "INCOMPLETE": 1
+ },
+ "families": 1,
+ "baseline_fcr": 0.5,
+ "seed": 20260922,
+ "case_ids": [
+  "off-02-cor",
+  "off-02-pre"
+ ]
+}

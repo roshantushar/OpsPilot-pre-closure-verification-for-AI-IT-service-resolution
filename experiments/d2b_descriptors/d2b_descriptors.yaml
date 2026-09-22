@@ -1,0 +1,31 @@
+# D2b - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: D2b
+tier: T1
+question: Do tool names/args and return size matter?
+hypothesis: v1 raises tool errors and tokens; raw returns raise tokens and may flip decisions
+subset: dev_micro
+trials: 1
+manifest_cap_usd: 0.22
+decision_rule: document >= 2 poka-yoke changes with the error each makes impossible
+next_step: D2c
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v2
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: v2_compact
+  reuse_from: D4-4/full
+- arm: v1
+  overrides:
+    descriptor_version: v1
+    compact_returns: false
+  live_only: true
+- arm: v2_raw
+  overrides:
+    compact_returns: false
+note: 'v1 arm is live_only: the scripted backend speaks v2 tool names only (F8)'

@@ -1,0 +1,110 @@
+{
+ "experiment_id": "A1",
+ "arm": "rules",
+ "run_id": "A1__rules__hld-01-run2__t1",
+ "trial": 1,
+ "timestamp": "2026-09-22T15:03:34",
+ "git_commit": "9cb211a",
+ "config_hash": "25e237447231",
+ "dataset_version": "synthetic-v1",
+ "case_id": "hld-01-run2",
+ "task_id": "hld-01",
+ "family": "incident_on_hold_sla",
+ "subset": "dev_runs",
+ "verifier": "rules",
+ "backend": "scripted",
+ "model": "openai/gpt-5-mini",
+ "reasoning_effort": "low",
+ "prompt_version": "v1",
+ "descriptor_version": "v2",
+ "compact_returns": true,
+ "tool_subset": "all",
+ "parallel_tools": false,
+ "early_exit": false,
+ "show_closure_note": true,
+ "use_runbook": true,
+ "allow_escalate": true,
+ "require_evidence": true,
+ "dedup": true,
+ "step_cap": 8,
+ "budget_cap_usd": 0.03,
+ "perturbation": null,
+ "difficulty": "easy",
+ "declared": true,
+ "decision": "ESCALATE",
+ "reason": "precondition failed []; forbidden ['HLD-F1']; problems []",
+ "cited_conditions": [
+  "HLD-F1",
+  "HLD-R1",
+  "HLD-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "false",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-F1",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "HLD-R1",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "null",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "\"paused\"",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "[\"On hold: awaiting caller response with logs.\"]",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "confidence": 1.0,
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "list_slas",
+  "get_incident"
+ ],
+ "tool_call_count": 4,
+ "duplicate_tool_calls": 0,
+ "invalid_tool_calls": 0,
+ "tool_latency_ms": 0.08,
+ "observation_chars": 1689,
+ "turns": 0,
+ "step_cap_hit": false,
+ "budget_cap_hit": false,
+ "early_exit_triggered": false,
+ "schema_validation_failed": false,
+ "input_tokens": 0,
+ "output_tokens": 0,
+ "reasoning_tokens": 0,
+ "cached_tokens": 0,
+ "total_tokens": 0,
+ "llm_cost_usd": 0.0,
+ "total_cost_usd": 0.0,
+ "latency_ms": 0.1,
+ "llm_latency_ms": 0.0,
+ "retry_attempted": false,
+ "retry_success": null,
+ "state_hash_before": "f0efecb48d70",
+ "state_hash_after": "f0efecb48d70",
+ "error_type": null
+}

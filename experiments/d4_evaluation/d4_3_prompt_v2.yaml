@@ -1,0 +1,25 @@
+# D4-3 - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: D4-3
+tier: T1
+question: Does prompt v2 (each change tied to a v1 failure) help?
+hypothesis: v2 lowers FCR and raises evidence accuracy without FBR > 10%
+subset: dev_mini
+trials: 1
+manifest_cap_usd: 0.15
+decision_rule: adopt v2 if FCR not worse and FBR < 10%; if FBR > 10% try v2b once
+next_step: update BEST defaults
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v1
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: v1
+  reuse_from: D4-1/opspilot_v1
+- arm: v2
+  overrides:
+    prompt_version: v2

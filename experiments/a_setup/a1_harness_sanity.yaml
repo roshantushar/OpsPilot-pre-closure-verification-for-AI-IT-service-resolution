@@ -1,0 +1,34 @@
+# A1 - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: A1
+tier: T1
+question: Does the harness compute the right metrics end to end?
+hypothesis: always_verified reproduces baseline FCR; always_escalate gives FCR 0 / FBR 100; scripted agent
+  ~ rules
+subset: dev_runs
+trials: 1
+manifest_cap_usd: 0.0
+decision_rule: all four corners match expectations, else fix harness before any paid run
+next_step: A2 cost probe
+frozen: false
+defaults:
+  verifier: agent
+  backend: scripted
+  prompt_version: v1
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: always_verified
+  overrides:
+    verifier: always_verified
+- arm: always_escalate
+  overrides:
+    verifier: always_escalate
+- arm: rules
+  overrides:
+    verifier: rules
+- arm: scripted_agent
+  overrides:
+    verifier: agent
+    backend: scripted

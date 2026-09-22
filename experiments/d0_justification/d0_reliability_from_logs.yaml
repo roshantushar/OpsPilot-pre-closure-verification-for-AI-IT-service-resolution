@@ -1,0 +1,29 @@
+# D0 - written and committed BEFORE the run (CLAUDE.md rule 3)
+experiment_id: D0
+tier: T1
+question: Do trajectories vary by ticket, and how does reliability fall with turns?
+hypothesis: tools/turns differ across families; s = P^(1/T) predicts lower end-to-end reliability for
+  long paths
+subset: dev_mini
+trials: 1
+manifest_cap_usd: 0.0
+decision_rule: 'no new runs: analysis/d0_trajectories.py reads D4-1/D4-5 traces'
+next_step: D0 doc tables
+frozen: false
+defaults:
+  verifier: agent
+  backend: live
+  prompt_version: v1
+  descriptor_version: v2
+  compact_returns: true
+  step_cap: 8
+  budget_cap_usd: 0.03
+arms:
+- arm: from_d4_logs
+  overrides:
+    verifier: agent
+note: analysis-only manifest; run_eval is not called
+reads:
+- D4-1
+- D4-5
+- D8
