@@ -1,0 +1,67 @@
+{
+ "ts": "2026-09-22T22:25:05",
+ "case_id": "acc-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.5,
+ "reason": "unmappable conditions ['ACC-P2', 'GEN-F1']; precondition failed ['ACC-P1']; forbidden ['ACC-F1']; problems []",
+ "cited_conditions": [
+  "ACC-P2",
+  "GEN-F1",
+  "ACC-P1",
+  "ACC-F1",
+  "ACC-R1",
+  "ACC-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "ACC-P1",
+   "observed": "null",
+   "source": "list_approvals",
+   "holds": false
+  },
+  {
+   "condition_id": "HR-STATUS",
+   "observed": "\"active\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-F1",
+   "observed": "[\"all-staff\", \"eng-all\", \"github-developers\"]",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "ACC-R1",
+   "observed": "[\"all-staff\", \"eng-all\", \"github-developers\"]",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "[\"Access granted per approval APR0073883.\"]",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "ACC-R3",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "list_approvals",
+  "get_okta_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 699,
+ "tokens_out": 1061,
+ "cost_usd": 0.00229675,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

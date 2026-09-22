@@ -1,0 +1,87 @@
+{
+ "ts": "2026-09-22T21:39:19",
+ "case_id": "off-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.9,
+ "reason": "All runbook preconditions and required end-state checks are met: HR shows terminated with no legal hold, accounts and services are deactivated/suspended or transferred as required, devices are queued for wipe, and the incident is resolved.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "OFF-P1",
+   "observed": "terminated",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-P2",
+   "observed": "legal_hold: false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R1",
+   "observed": "Okta status: DEACTIVATED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R2",
+   "observed": "Okta groups: []",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "Google suspended: true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "data_transfer_to: zhiwei.lau@acme.example (matches HR manager)",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "Slack deactivated: true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "devices statuses: [wipe_pending, wipe_pending]",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R7",
+   "observed": "incident state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "google deleted: false",
+   "source": "get_google_user",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "list_devices",
+  "get_slack_user",
+  "get_incident",
+  "lookup_runbook"
+ ],
+ "guard": "none",
+ "turns": 8,
+ "tokens_in": 11356,
+ "tokens_out": 990,
+ "cost_usd": 0.0030622,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

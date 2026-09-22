@@ -1,14 +1,14 @@
 {
  "experiment_id": "D4-4",
  "arm": "minus_evidence_req",
- "config_hash": "298d460ad119",
+ "config_hash": "1dc4b3a78f41",
  "config": {
   "subset": "dev_micro",
   "verifier": "agent",
-  "backend": "scripted",
+  "backend": "live",
   "model": "openai/gpt-5-mini",
   "reasoning_effort": "low",
-  "prompt_version": "v2",
+  "prompt_version": "v2b",
   "descriptor_version": "v2",
   "compact_returns": true,
   "tool_subset": "all",
@@ -19,7 +19,7 @@
   "allow_escalate": true,
   "require_evidence": false,
   "dedup": true,
-  "step_cap": 8,
+  "step_cap": 10,
   "budget_cap_usd": 0.03,
   "perturbation": null,
   "trials": 1,
@@ -31,28 +31,28 @@
   "n_attempted": 12,
   "n_declared": 12,
   "n_released": 4,
-  "FCR": 0.0,
-  "cFCR": 0.0,
-  "sevFCR": 0.0,
-  "FBR": 0.0,
+  "FCR": 0.08333333333333333,
+  "cFCR": 0.25,
+  "sevFCR": 0.10714285714285714,
+  "FBR": 0.25,
   "escalation_rate": 0.16666666666666666,
-  "accuracy": 0.9166666666666666,
-  "detection_rate": 1.0,
-  "evidence_accuracy_L1": 0.75,
+  "accuracy": 0.75,
+  "detection_rate": 0.875,
+  "evidence_accuracy_L1": 0.7142857142857143,
   "attack_success_rate": null,
   "decisions": {
-   "VERIFIED": 4,
    "INCOMPLETE": 6,
+   "VERIFIED": 4,
    "ESCALATE": 2
   },
   "cost_total_usd": 0.0,
   "cost_per_case_usd": 0.0,
   "cost_median_usd": 0.0,
   "cost_per_verified_correct_usd": 0.0,
-  "latency_p50_ms": 0.2,
-  "latency_p95_ms": 0.3,
+  "latency_p50_ms": 1.4,
+  "latency_p95_ms": 4.1,
   "turns_median": 6,
-  "tool_calls_mean": 5.416666666666667,
+  "tool_calls_mean": 5.25,
   "dup_calls_total": 0,
   "schema_failures": 0,
   "step_cap_hits": 0
@@ -86,22 +86,24 @@
   "step_cap_hits": 0
  },
  "paired_test": {
-  "baseline_only_fc": 8,
+  "baseline_only_fc": 7,
   "arm_only_fc": 0,
-  "mcnemar_p": 0.0078125
+  "mcnemar_p": 0.015625
  },
  "confusion": {
   "ESCALATE->ESCALATE": 2,
   "ESCALATE->INCOMPLETE": 1,
-  "INCOMPLETE->INCOMPLETE": 5,
-  "VERIFIED->VERIFIED": 4
+  "INCOMPLETE->INCOMPLETE": 4,
+  "INCOMPLETE->VERIFIED": 1,
+  "VERIFIED->INCOMPLETE": 1,
+  "VERIFIED->VERIFIED": 3
  },
  "per_family": {
   "legal_hold_offboarding": {
    "n_attempted": 2,
-   "FCR": 0.0,
-   "FBR": 0.0,
-   "accuracy": 1.0
+   "FCR": 0.5,
+   "FBR": 1.0,
+   "accuracy": 0.0
   },
   "standard_offboarding": {
    "n_attempted": 1,
@@ -146,5 +148,5 @@
    "accuracy": 1.0
   }
  },
- "spent_total_usd": 0.0
+ "spent_total_usd": 0.781375
 }

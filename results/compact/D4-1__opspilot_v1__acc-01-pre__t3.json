@@ -1,0 +1,57 @@
+{
+ "ts": "2026-09-22T21:50:18",
+ "case_id": "acc-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.9,
+ "reason": "The ticket is resolved and approval is recorded by the manager, but the user is not a member of the requested group, so closure requirements are not met.",
+ "cited_conditions": [
+  "ACC-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "ACC-R1",
+   "observed": "['all-staff','eng-all','github-developers']",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "['Access granted per approval APR0073883.']",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R3",
+   "observed": "resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-P1",
+   "observed": "approved",
+   "source": "list_approvals",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-P2",
+   "observed": "kenji.ng@acme.example",
+   "source": "get_hr_employee",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "get_okta_user",
+  "list_approvals",
+  "get_hr_employee"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 8905,
+ "tokens_out": 877,
+ "cost_usd": 0.00268425,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

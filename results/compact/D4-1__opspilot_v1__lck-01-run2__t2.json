@@ -1,0 +1,65 @@
+{
+ "ts": "2026-09-22T21:43:51",
+ "case_id": "lck-01-run2",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.9,
+ "reason": "Okta account remains LOCKED_OUT and password/MFA reset flags were not set though identity verification and ticket resolution are recorded.",
+ "cited_conditions": [
+  "LCK-R1",
+  "LCK-R2",
+  "LCK-R3"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LCK-P1",
+   "observed": "active",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R1",
+   "observed": "LOCKED_OUT",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R2",
+   "observed": "password_reset_required=false",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R3",
+   "observed": "mfa_reset_issued=false",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R4",
+   "observed": "Work notes include 'Identity verified via video call.'",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R5",
+   "observed": "state=resolved",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "lookup_runbook",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 8050,
+ "tokens_out": 718,
+ "cost_usd": 0.00176995,
+ "expected_decision": "ESCALATE",
+ "correct": false
+}

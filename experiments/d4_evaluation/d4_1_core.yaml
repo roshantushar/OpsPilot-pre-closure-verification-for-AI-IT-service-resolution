@@ -15,7 +15,7 @@ defaults:
   prompt_version: v1
   descriptor_version: v2
   compact_returns: true
-  step_cap: 8
+  step_cap: 10
   budget_cap_usd: 0.03
 arms:
 - arm: opspilot_v1

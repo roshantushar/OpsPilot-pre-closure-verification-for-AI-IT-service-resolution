@@ -1,0 +1,12 @@
+{"event": "llm", "turn": 1, "input_tokens": 1291, "output_tokens": 45, "reasoning_tokens": 107, "cached_tokens": 0, "cost_usd": 0.00041275, "latency_ms": 2918.2, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-101"}, "output_chars": 1528, "latency_ms": 0.31, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1723, "output_tokens": 146, "reasoning_tokens": 64, "cached_tokens": 1152, "cost_usd": 0.00046355, "latency_ms": 4570.8, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "list_security_exceptions", "args": {"employee_email": "mei.koh@acme.example"}, "output_chars": 159, "latency_ms": 0.1, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1810, "output_tokens": 26, "reasoning_tokens": 0, "cached_tokens": 1664, "cost_usd": 0.0001301, "latency_ms": 1191.2, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 3, "name": "get_okta_user", "args": {"email": "mei.koh@acme.example"}, "output_chars": 242, "latency_ms": 0.18, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 1920, "output_tokens": 25, "reasoning_tokens": 0, "cached_tokens": 1664, "cost_usd": 0.0001556, "latency_ms": 1969.8, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 4, "name": "get_google_user", "args": {"email": "mei.koh@acme.example"}, "output_chars": 193, "latency_ms": 0.07, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 5, "input_tokens": 2010, "output_tokens": 26, "reasoning_tokens": 0, "cached_tokens": 1792, "cost_usd": 0.0001513, "latency_ms": 1555.3, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 5, "name": "get_slack_user", "args": {"email": "mei.koh@acme.example"}, "output_chars": 108, "latency_ms": 0.07, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 6, "input_tokens": 2083, "output_tokens": 912, "reasoning_tokens": 512, "cached_tokens": 1920, "cost_usd": 0.00191275, "latency_ms": 11030.4, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "ESCALATE", "turns": 6}

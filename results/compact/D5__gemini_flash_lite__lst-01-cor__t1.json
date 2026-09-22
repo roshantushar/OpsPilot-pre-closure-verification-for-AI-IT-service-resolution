@@ -1,0 +1,68 @@
+{
+ "ts": "2026-09-23T03:42:42",
+ "case_id": "lst-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 1.0,
+ "reason": "All preconditions and required end states from the runbook KB-OPS-105 are met. The lost device belongs to the caller, lost mode is enabled, the device is locked, Okta sessions and Google OAuth tokens are revoked, the incident category is security, and the ticket is resolved.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "The lost device LT-52424 is owned by hannah.singh@acme.example.",
+   "source": "",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "Lost mode is enabled on device LT-52424.",
+   "source": "",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "Device LT-52424 is locked.",
+   "source": "",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "There are 0 active Okta sessions for hannah.singh@acme.example.",
+   "source": "",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "There are 0 Google OAuth tokens for hannah.singh@acme.example.",
+   "source": "",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "The incident category is 'security'.",
+   "source": "",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "The incident state is 'resolved'.",
+   "source": "",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_device",
+  "list_devices",
+  "get_okta_user",
+  "get_google_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 5010,
+ "tokens_out": 1705,
+ "cost_usd": 0.00106006,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

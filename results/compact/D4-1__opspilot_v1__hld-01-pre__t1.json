@@ -1,0 +1,49 @@
+{
+ "ts": "2026-09-22T21:26:51",
+ "case_id": "hld-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.9,
+ "reason": "SLA is still in progress rather than paused as required by the runbook.",
+ "cited_conditions": [
+  "HLD-R3"
+ ],
+ "evidence": [
+  {
+   "condition_id": "HLD-R1",
+   "observed": "on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "Awaiting Caller",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "stage = in_progress, has_breached = false",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "Work note: 'On hold: awaiting caller response with logs.'",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 5040,
+ "tokens_out": 513,
+ "cost_usd": 0.0017388,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

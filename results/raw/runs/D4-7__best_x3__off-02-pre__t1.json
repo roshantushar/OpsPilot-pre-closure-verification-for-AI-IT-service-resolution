@@ -3,19 +3,19 @@
  "arm": "best_x3",
  "run_id": "D4-7__best_x3__off-02-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:12",
- "git_commit": "9cb211a-dirty",
- "config_hash": "2866ff49da9a",
+ "timestamp": "2026-09-23T02:01:44",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "b2ca1772387e",
  "dataset_version": "synthetic-v1",
  "case_id": "off-02-pre",
  "task_id": "off-02",
  "family": "standard_offboarding",
  "subset": "hard_negatives",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": "all",
@@ -26,79 +26,85 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "medium",
  "declared": true,
  "decision": "INCOMPLETE",
- "reason": "required conditions not met: ['OFF-R2']",
+ "reason": "Okta groups were not removed (OFF-R2 failed); all other required conditions have evidence.",
  "cited_conditions": [
   "OFF-R2"
  ],
  "evidence": [
   {
    "condition_id": "OFF-P1",
-   "observed": "\"terminated\"",
+   "observed": "terminated",
    "source": "get_hr_employee",
    "holds": true
   },
   {
    "condition_id": "OFF-P2",
-   "observed": "false",
+   "observed": "legal_hold: false",
    "source": "get_hr_employee",
    "holds": true
   },
   {
-   "condition_id": "OFF-F1",
-   "observed": "false",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
    "condition_id": "OFF-R1",
-   "observed": "\"DEACTIVATED\"",
+   "observed": "DEACTIVATED",
    "source": "get_okta_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R2",
-   "observed": "[\"all-staff\", \"sales-all\", \"crm-users\"]",
+   "observed": "groups: [\"all-staff\",\"sales-all\",\"crm-users\"]",
    "source": "get_okta_user",
    "holds": false
   },
   {
    "condition_id": "OFF-R3",
-   "observed": "true",
+   "observed": "suspended: true",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R4",
-   "observed": "\"kenji.kumar@acme.example\"",
+   "observed": "data_transfer_to: kenji.kumar@acme.example",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R5",
-   "observed": "true",
+   "observed": "deactivated: true",
    "source": "get_slack_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R6",
-   "observed": "[\"wipe_pending\", \"wipe_pending\"]",
+   "observed": "[{\"device_id\":\"LT-39982\",\"status\":\"wipe_pending\"},{\"device_id\":\"LT-47191\",\"status\":\"wipe_pending\"}]",
    "source": "list_devices",
    "holds": true
   },
   {
    "condition_id": "OFF-R7",
-   "observed": "\"resolved\"",
+   "observed": "state: resolved",
    "source": "get_incident",
    "holds": true
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "deleted: false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify across all accounts/devices with provided tools",
+   "source": "list_devices",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.88,
  "tools_called": [
   "lookup_runbook",
   "get_hr_employee",
@@ -111,22 +117,22 @@
  "tool_call_count": 7,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.15,
+ "tool_latency_ms": 1.2,
  "observation_chars": 2848,
  "turns": 8,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.4,
- "llm_latency_ms": 0.0,
+ "input_tokens": 16116,
+ "output_tokens": 1438,
+ "reasoning_tokens": 676,
+ "cached_tokens": 12928,
+ "total_tokens": 17554,
+ "llm_cost_usd": 0.0039962,
+ "total_cost_usd": 0.0039962,
+ "latency_ms": 29676.0,
+ "llm_latency_ms": 29612.6,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "961b8201097a",

@@ -1,0 +1,24 @@
+{
+ "ts": "2026-09-23T01:32:39",
+ "case_id": "lst-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.25,
+ "reason": "Could not retrieve runbook KB-OPS-105 \u2014 get_doc returned an error after retries, so required conditions could not be read or verified.",
+ "cited_conditions": [
+  "KB-OPS-105:RUNBOOK_UNAVAILABLE"
+ ],
+ "evidence": [],
+ "tools_called": [
+  "get_doc",
+  "get_doc",
+  "get_doc"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 4391,
+ "tokens_out": 650,
+ "cost_usd": 0.00193695,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

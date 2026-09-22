@@ -1,0 +1,66 @@
+{
+ "ts": "2026-09-23T00:21:47",
+ "case_id": "hld-02-pre",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.9,
+ "reason": "All preconditions and required end states have tool-confirmed evidence; the uncheckable never-do (modify others' records) cannot be verified with these tools and is noted.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "no SLA breach found (has_breached: false)",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R1",
+   "observed": "state: on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "hold_reason: Awaiting Caller",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "SLA stage: paused (stage: paused, has_breached: false)",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "work_notes contains: \"On hold: awaiting caller response with logs.\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-F1",
+   "observed": "state is on_hold (not resolved/closed)",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify via available single-subject lookup tools (not checked)",
+   "source": "list_security_exceptions",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas",
+  "list_security_exceptions"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 8910,
+ "tokens_out": 1465,
+ "cost_usd": 0.00317455,
+ "expected_decision": "ESCALATE",
+ "correct": false
+}

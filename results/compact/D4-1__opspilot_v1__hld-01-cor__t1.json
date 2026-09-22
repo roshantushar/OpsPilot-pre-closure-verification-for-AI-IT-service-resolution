@@ -1,0 +1,53 @@
+{
+ "ts": "2026-09-22T21:26:38",
+ "case_id": "hld-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.98,
+ "reason": "All required end states met and precondition satisfied: incident is on hold with reason 'Awaiting Caller', SLA is paused, and work notes mention awaiting caller; no forbidden changes detected.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "SLA has_breached=false",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R1",
+   "observed": "state=on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "hold_reason='Awaiting Caller'",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "stage='paused'",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "work_notes contains 'awaiting caller'",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 5059,
+ "tokens_out": 572,
+ "cost_usd": 0.00186155,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

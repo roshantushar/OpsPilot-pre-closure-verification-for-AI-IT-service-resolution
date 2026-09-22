@@ -1,0 +1,8 @@
+{"event": "llm", "turn": 1, "input_tokens": 1020, "output_tokens": 52, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.000359, "latency_ms": 2269.5, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "get_doc", "args": {"name": "KB-OPS-106"}, "output_chars": 55, "latency_ms": 0.04, "dup": false, "invalid": true, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1067, "output_tokens": 24, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.00031475, "latency_ms": 1051.9, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "get_doc", "args": {"name": "KB-OPS-106.runbook"}, "output_chars": 55, "latency_ms": 0.05, "dup": false, "invalid": true, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1116, "output_tokens": 25, "reasoning_tokens": 0, "cached_tokens": 1024, "cost_usd": 9.86e-05, "latency_ms": 1312.1, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 3, "name": "get_doc", "args": {"name": "lookup_runbook KB-OPS-106"}, "output_chars": 55, "latency_ms": 0.05, "dup": false, "invalid": true, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 1166, "output_tokens": 574, "reasoning_tokens": 448, "cached_tokens": 1024, "cost_usd": 0.0012091, "latency_ms": 7217.0, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "ESCALATE", "turns": 4}

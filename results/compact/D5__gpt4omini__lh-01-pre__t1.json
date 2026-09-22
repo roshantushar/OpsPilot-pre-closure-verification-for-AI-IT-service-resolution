@@ -1,0 +1,86 @@
+{
+ "ts": "2026-09-23T03:37:03",
+ "case_id": "lh-01-pre",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 1.0,
+ "reason": "All required conditions for offboarding Zhi Wei Lee under legal hold have been met and verified.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "LH-P1",
+   "observed": "true",
+   "source": "list_security_exceptions",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R1",
+   "observed": "SUSPENDED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R2",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R3",
+   "observed": "/Legal Hold",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R4",
+   "observed": "0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R5",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R6",
+   "observed": "true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R7",
+   "observed": "on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R8",
+   "observed": "Legal Hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R9",
+   "observed": "Legal",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_security_exceptions",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 3,
+ "tokens_in": 5364,
+ "tokens_out": 420,
+ "cost_usd": 0.0008262,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

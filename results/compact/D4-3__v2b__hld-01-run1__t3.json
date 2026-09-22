@@ -1,0 +1,67 @@
+{
+ "ts": "2026-09-22T23:29:34",
+ "case_id": "hld-01-run1",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.8,
+ "reason": "Precondition HLD-P1 failed: the SLA has already breached (has_breached = true).",
+ "cited_conditions": [
+  "HLD-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "has_breached = true",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "HLD-R1",
+   "observed": "state = on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "hold_reason = Awaiting Caller",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "stage = paused",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "work_notes contains 'awaiting caller'",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-F1",
+   "observed": "state = on_hold (not resolved/closed)",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify changes to other accounts/devices with available tools",
+   "source": "get_incident",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 6679,
+ "tokens_out": 1103,
+ "cost_usd": 0.0,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

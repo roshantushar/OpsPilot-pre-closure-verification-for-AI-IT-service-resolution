@@ -1,0 +1,66 @@
+{
+ "ts": "2026-09-22T23:53:23",
+ "case_id": "hld-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.9,
+ "reason": "All required end-state conditions are observed true (incident on hold, hold reason Awaiting Caller, SLA paused, work note mentions awaiting caller) and the precondition (SLA not breached) is met; the unverifiable 'do not modify others' rule is noted but does not block verification.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "has_breached: false",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R1",
+   "observed": "state: on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "hold_reason: Awaiting Caller",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "stage: paused",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "work_notes: [\"On hold: awaiting caller response with logs.\"]",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-F1",
+   "observed": "state: on_hold (not resolved/closed)",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify 'do not modify others' with available per-subject lookups",
+   "source": "list_security_exceptions",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas",
+  "list_security_exceptions"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 8686,
+ "tokens_out": 1769,
+ "cost_usd": 0.0042983,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

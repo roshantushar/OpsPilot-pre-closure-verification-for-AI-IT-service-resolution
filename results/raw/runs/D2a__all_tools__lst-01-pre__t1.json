@@ -3,19 +3,19 @@
  "arm": "all_tools",
  "run_id": "D2a__all_tools__lst-01-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:10",
- "git_commit": "9cb211a-dirty",
- "config_hash": "2866ff49da9a",
+ "timestamp": "2026-09-23T01:13:23",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "b2ca1772387e",
  "dataset_version": "synthetic-v1",
  "case_id": "lst-01-pre",
  "task_id": "lst-01",
  "family": "lost_or_stolen_device",
  "subset": "dev_micro",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": "all",
@@ -26,104 +26,110 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "medium",
  "declared": true,
  "decision": "INCOMPLETE",
- "reason": "required conditions not met: ['LST-R2']",
+ "reason": "Lost device is in lost mode but there is no evidence the device is locked; required condition LST-R2 is not met.",
  "cited_conditions": [
   "LST-R2"
  ],
  "evidence": [
   {
    "condition_id": "LST-P1",
-   "observed": "\"hannah.singh@acme.example\"",
+   "observed": "owner = hannah.singh@acme.example",
    "source": "get_device",
    "holds": true
   },
   {
-   "condition_id": "LST-F1",
-   "observed": "\"active\"",
-   "source": "list_devices",
-   "holds": true
-  },
-  {
-   "condition_id": "LST-F2",
-   "observed": "\"ACTIVE\"",
-   "source": "get_okta_user",
-   "holds": true
-  },
-  {
    "condition_id": "LST-R1",
-   "observed": "true",
+   "observed": "lost_mode = true",
    "source": "get_device",
    "holds": true
   },
   {
    "condition_id": "LST-R2",
-   "observed": "\"active\"",
+   "observed": "status = active (no explicit locked state reported)",
    "source": "get_device",
    "holds": false
   },
   {
    "condition_id": "LST-R3",
-   "observed": "0",
+   "observed": "sessions_active = 0",
    "source": "get_okta_user",
    "holds": true
   },
   {
    "condition_id": "LST-R4",
-   "observed": "0",
+   "observed": "oauth_tokens = 0",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "LST-R5",
-   "observed": "\"security\"",
+   "observed": "category = security",
    "source": "get_incident",
    "holds": true
   },
   {
    "condition_id": "LST-R6",
-   "observed": "\"resolved\"",
+   "observed": "state = resolved",
    "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-70320 status = active, lost_mode = false",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "okta status = ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "no modifications observed to accounts/devices of non-subject users in checked systems",
+   "source": "list_devices",
    "holds": true
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.7,
  "tools_called": [
   "lookup_runbook",
-  "get_hr_employee",
   "get_device",
+  "list_devices",
   "get_okta_user",
   "get_google_user",
-  "get_incident",
-  "list_devices"
+  "get_incident"
  ],
- "tool_call_count": 7,
+ "tool_call_count": 6,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.11,
- "observation_chars": 2530,
- "turns": 8,
+ "tool_latency_ms": 0.96,
+ "observation_chars": 2303,
+ "turns": 7,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.3,
- "llm_latency_ms": 0.0,
+ "input_tokens": 12392,
+ "output_tokens": 2003,
+ "reasoning_tokens": 1216,
+ "cached_tokens": 9600,
+ "total_tokens": 14395,
+ "llm_cost_usd": 0.004944,
+ "total_cost_usd": 0.004944,
+ "latency_ms": 36656.7,
+ "llm_latency_ms": 36615.2,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "5a65cbe5d86e",
  "state_hash_after": "5a65cbe5d86e",
- "error_type": null
+ "error_type": null,
+ "reused_from": "D4-3__v2b__lst-01-pre__t1"
 }

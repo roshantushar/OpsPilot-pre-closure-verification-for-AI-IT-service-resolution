@@ -1,0 +1,165 @@
+{
+ "experiment_id": "D4-7",
+ "arm": "best_x3",
+ "run_id": "D4-7__best_x3__lh-02-run1__t5",
+ "trial": 5,
+ "timestamp": "2026-09-23T02:07:21",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "b2ca1772387e",
+ "dataset_version": "synthetic-v1",
+ "case_id": "lh-02-run1",
+ "task_id": "lh-02",
+ "family": "legal_hold_offboarding",
+ "subset": "hard_negatives",
+ "verifier": "agent",
+ "backend": "live",
+ "model": "openai/gpt-5-mini",
+ "reasoning_effort": "low",
+ "prompt_version": "v2b",
+ "descriptor_version": "v2",
+ "compact_returns": true,
+ "tool_subset": "all",
+ "parallel_tools": false,
+ "early_exit": false,
+ "show_closure_note": true,
+ "use_runbook": true,
+ "allow_escalate": true,
+ "require_evidence": true,
+ "dedup": true,
+ "step_cap": 10,
+ "budget_cap_usd": 0.03,
+ "perturbation": null,
+ "difficulty": "medium",
+ "declared": true,
+ "decision": "ESCALATE",
+ "reason": "Okta account is DEACTIVATED (violates never-do LH-F1) and therefore the required state LH-R1 (Okta suspended) is not met; escalate per runbook.",
+ "cited_conditions": [
+  "LH-F1",
+  "LH-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LH-P1",
+   "observed": "type=legal_hold, active=true, exception_id=SEC0058499",
+   "source": "list_security_exceptions",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R1",
+   "observed": "status=DEACTIVATED",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LH-R2",
+   "observed": "suspended=true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R3",
+   "observed": "org_unit=/Legal Hold",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R4",
+   "observed": "oauth_tokens=0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R5",
+   "observed": "force_password_reset=true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R6",
+   "observed": "deactivated=true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R7",
+   "observed": "state=on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R8",
+   "observed": "hold_reason=Legal Hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R9",
+   "observed": "escalated_to=Legal",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F1",
+   "observed": "Okta status=DEACTIVATED (deactivated rather than suspended)",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LH-F2",
+   "observed": "data_transfer_to=null",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F3",
+   "observed": "ticket state=on_hold (ticket not resolved/closed)",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F4",
+   "observed": "deleted=false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify modification of accounts/devices/records for other users with these tools",
+   "source": "list_security_exceptions",
+   "holds": null
+  }
+ ],
+ "confidence": 0.9,
+ "tools_called": [
+  "lookup_runbook",
+  "list_security_exceptions",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "tool_call_count": 6,
+ "duplicate_tool_calls": 0,
+ "invalid_tool_calls": 0,
+ "tool_latency_ms": 0.88,
+ "observation_chars": 2539,
+ "turns": 7,
+ "step_cap_hit": false,
+ "budget_cap_hit": false,
+ "early_exit_triggered": false,
+ "schema_validation_failed": false,
+ "input_tokens": 13863,
+ "output_tokens": 1740,
+ "reasoning_tokens": 802,
+ "cached_tokens": 11520,
+ "total_tokens": 15603,
+ "llm_cost_usd": 0.00435375,
+ "total_cost_usd": 0.00435375,
+ "latency_ms": 34963.0,
+ "llm_latency_ms": 34901.3,
+ "retry_attempted": false,
+ "retry_success": null,
+ "state_hash_before": "da0e614fbc6a",
+ "state_hash_after": "da0e614fbc6a",
+ "error_type": null
+}

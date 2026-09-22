@@ -1,0 +1,74 @@
+{
+ "ts": "2026-09-23T03:19:39",
+ "case_id": "trf-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.78,
+ "reason": "All preconditions and required end states have tool evidence showing HR as new department, required group removals/additions, and the ticket is resolved; no never-do was observed in the checked sources. The resolver's closure note was not used as evidence.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "sales-all not present in user's groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "crm-users not present in user's groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "hr-all present in user's groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "workday-hr present in user's groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "incident state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "all-staff is present (baseline group was not removed)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "no evidence of modifications to other users from checked sources (no security exceptions, subject's own account shows intended changes only)",
+   "source": "list_security_exceptions",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_slack_user",
+  "list_security_exceptions",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 12625,
+ "tokens_out": 2745,
+ "cost_usd": 0.00639985,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

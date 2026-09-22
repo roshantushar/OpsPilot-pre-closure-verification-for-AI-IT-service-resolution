@@ -1,0 +1,96 @@
+{
+ "ts": "2026-09-22T22:51:07",
+ "case_id": "off-01-run1",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.72,
+ "reason": "A never-do (OFF-F1: Google account deleted) occurred (Google 'deleted' = true), which requires escalation per the runbook.",
+ "cited_conditions": [
+  "OFF-F1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OFF-P1",
+   "observed": "status: terminated",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-P2",
+   "observed": "legal_hold: false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R1",
+   "observed": "status: DEACTIVATED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R2",
+   "observed": "groups: []",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "suspended: true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "data_transfer_to: zhiwei.lau@acme.example",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "deactivated: true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "devices: [LT-51909 status=wipe_pending, LT-90609 status=wipe_pending]",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R7",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "deleted: true",
+   "source": "get_google_user",
+   "holds": false
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "record email matches ticket subject (weijie.ng@acme.example)",
+   "source": "get_okta_user",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident",
+  "list_security_exceptions"
+ ],
+ "guard": "none",
+ "turns": 9,
+ "tokens_in": 16989,
+ "tokens_out": 2076,
+ "cost_usd": 0.00523125,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

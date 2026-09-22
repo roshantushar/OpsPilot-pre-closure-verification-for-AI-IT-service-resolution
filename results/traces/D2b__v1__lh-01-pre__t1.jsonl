@@ -1,0 +1,6 @@
+{"event": "llm", "turn": 1, "input_tokens": 1055, "output_tokens": 54, "reasoning_tokens": 105, "cached_tokens": 0, "cost_usd": 0.00037175, "latency_ms": 2428.6, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "get_doc", "args": {"name": "KB-OPS-101"}, "output_chars": 55, "latency_ms": 0.05, "dup": false, "invalid": true, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1102, "output_tokens": 25, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.0003255, "latency_ms": 1105.5, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "get_doc", "args": {"name": "lookup_runbook KB-OPS-101"}, "output_chars": 55, "latency_ms": 0.04, "dup": false, "invalid": true, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1152, "output_tokens": 557, "reasoning_tokens": 448, "cached_tokens": 1024, "cost_usd": 0.0011716, "latency_ms": 7261.5, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "ESCALATE", "turns": 3}

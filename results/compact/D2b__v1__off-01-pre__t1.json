@@ -1,0 +1,31 @@
+{
+ "ts": "2026-09-23T01:31:59",
+ "case_id": "off-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.7,
+ "reason": "Unable to retrieve runbook KB-OPS-102 (get_doc returned an error after repeated attempts), so required runbook conditions cannot be checked.",
+ "cited_conditions": [
+  "KB-OPS-102:RUNBOOK-ACCESS"
+ ],
+ "evidence": [
+  {
+   "condition_id": "KB-OPS-102:RUNBOOK-ACCESS",
+   "observed": "error: missing argument 'runbook_id'",
+   "source": "get_doc",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "get_doc",
+  "get_doc",
+  "get_doc"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 4386,
+ "tokens_out": 721,
+ "cost_usd": 0.0020777,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

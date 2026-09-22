@@ -1,0 +1,43 @@
+{
+ "ts": "2026-09-22T20:36:54",
+ "case_id": "acc-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.8,
+ "reason": "The user's membership in the requested group could not be verified with the available tools.",
+ "cited_conditions": [
+  "ACC-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "ACC-R1",
+   "observed": "User membership in 'finance-reporting-extended' group is not verifiable.",
+   "source": "OpsPilot",
+   "holds": false
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "Approval APR0073883 is referenced in work notes.",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R3",
+   "observed": "Ticket state is 'resolved'.",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_approvals",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 3,
+ "tokens_in": 3296,
+ "tokens_out": 1220,
+ "cost_usd": 0.0008176,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

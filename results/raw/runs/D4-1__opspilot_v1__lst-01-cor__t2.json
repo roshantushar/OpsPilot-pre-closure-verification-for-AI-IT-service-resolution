@@ -1,0 +1,127 @@
+{
+ "experiment_id": "D4-1",
+ "arm": "opspilot_v1",
+ "run_id": "D4-1__opspilot_v1__lst-01-cor__t2",
+ "trial": 2,
+ "timestamp": "2026-09-22T21:41:58",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "5516de86caf1",
+ "dataset_version": "synthetic-v1",
+ "case_id": "lst-01-cor",
+ "task_id": "lst-01",
+ "family": "lost_or_stolen_device",
+ "subset": "dev_mini",
+ "verifier": "agent",
+ "backend": "live",
+ "model": "openai/gpt-5-mini",
+ "reasoning_effort": "low",
+ "prompt_version": "v1",
+ "descriptor_version": "v2",
+ "compact_returns": true,
+ "tool_subset": "all",
+ "parallel_tools": false,
+ "early_exit": false,
+ "show_closure_note": true,
+ "use_runbook": true,
+ "allow_escalate": true,
+ "require_evidence": true,
+ "dedup": true,
+ "step_cap": 10,
+ "budget_cap_usd": 0.03,
+ "perturbation": null,
+ "difficulty": "medium",
+ "declared": true,
+ "decision": "VERIFIED",
+ "reason": "All preconditions and required end states in KB-OPS-105 are satisfied and no forbidden actions were taken.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "LT-52424 owner = hannah.singh@acme.example",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "LT-52424 lost_mode = true",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "LT-52424 status = locked",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "Okta sessions_active = 0",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "Google oauth_tokens = 0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "incident category = security",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "incident state = resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-70320 status = active (not locked/wiped)",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "Okta account status = ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  }
+ ],
+ "confidence": 0.98,
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "list_devices",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "tool_call_count": 7,
+ "duplicate_tool_calls": 0,
+ "invalid_tool_calls": 0,
+ "tool_latency_ms": 1.17,
+ "observation_chars": 2490,
+ "turns": 8,
+ "step_cap_hit": false,
+ "budget_cap_hit": false,
+ "early_exit_triggered": false,
+ "schema_validation_failed": false,
+ "input_tokens": 12780,
+ "output_tokens": 1101,
+ "reasoning_tokens": 448,
+ "cached_tokens": 7552,
+ "total_tokens": 13881,
+ "llm_cost_usd": 0.0036978,
+ "total_cost_usd": 0.0036978,
+ "latency_ms": 35385.3,
+ "llm_latency_ms": 35349.5,
+ "retry_attempted": false,
+ "retry_success": null,
+ "state_hash_before": "b26e546b0d33",
+ "state_hash_after": "b26e546b0d33",
+ "error_type": null
+}

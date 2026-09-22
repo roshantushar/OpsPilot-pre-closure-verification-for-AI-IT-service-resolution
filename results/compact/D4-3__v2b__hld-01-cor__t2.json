@@ -1,0 +1,66 @@
+{
+ "ts": "2026-09-22T23:21:24",
+ "case_id": "hld-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.9,
+ "reason": "All preconditions and required end states have tool-backed evidence; no forbidden changes found for the ticket subject. The unverifiable global never-do (modify others' records) cannot be checked and is noted.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "has_breached=false",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R1",
+   "observed": "state=on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "hold_reason=Awaiting Caller",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "stage=paused",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "work_notes contains 'awaiting caller'",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-F1",
+   "observed": "state=on_hold (not resolved/closed)",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "no global check performed for modifications to other users' records (tool cannot verify)",
+   "source": "list_security_exceptions",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas",
+  "list_security_exceptions"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 8596,
+ "tokens_out": 994,
+ "cost_usd": 0.0030714,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

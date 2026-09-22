@@ -1,0 +1,77 @@
+{
+ "ts": "2026-09-22T22:58:25",
+ "case_id": "trf-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.66,
+ "reason": "Missing required group hr-all (TRF-R3) and conflicting records between HR (department=HR) and Google (org_unit=/Staff/Sales) block closure.",
+ "cited_conditions": [
+  "TRF-R3",
+  "TRF-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "okta groups: [\"all-staff\",\"workday-hr\"] (sales-all not present)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "okta groups: [\"all-staff\",\"workday-hr\"] (crm-users not present)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "okta groups: [\"all-staff\",\"workday-hr\"] (hr-all NOT present)",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "okta groups: [\"all-staff\",\"workday-hr\"] (workday-hr present)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "incident state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "okta groups include all-staff",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "no evidence of modifications to other accounts; subject's Slack active, Okta and Google exist but Google org_unit remains /Staff/Sales",
+   "source": "get_google_user",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 12299,
+ "tokens_out": 2281,
+ "cost_usd": 0.00544795,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

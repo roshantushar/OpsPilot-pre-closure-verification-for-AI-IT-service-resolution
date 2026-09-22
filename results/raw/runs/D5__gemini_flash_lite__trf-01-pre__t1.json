@@ -3,19 +3,19 @@
  "arm": "gemini_flash_lite",
  "run_id": "D5__gemini_flash_lite__trf-01-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:12",
- "git_commit": "9cb211a-dirty",
- "config_hash": "2866ff49da9a",
+ "timestamp": "2026-09-23T03:44:09",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "b7f27601dc83",
  "dataset_version": "synthetic-v1",
  "case_id": "trf-01-pre",
  "task_id": "trf-01",
  "family": "role_transfer",
  "subset": "dev_mini",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "google/gemini-2.5-flash-lite",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": "all",
@@ -26,57 +26,54 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "easy",
  "declared": true,
- "decision": "INCOMPLETE",
- "reason": "required conditions not met: ['TRF-R3']",
+ "decision": "ESCALATE",
+ "reason": "The runbook requires removal from old department groups (Sales: sales-all, crm-users) and addition to new department groups (HR: hr-all, workday-hr). The user's Okta groups show 'workday-hr' but not 'hr-all', and it's unclear if 'sales-all' and 'crm-users' were removed, as the runbook implies two old groups should be removed and two new groups added.",
  "cited_conditions": [
-  "TRF-R3"
+  "TRF-R1",
+  "TRF-R2",
+  "TRF-R3",
+  "TRF-R4"
  ],
  "evidence": [
   {
    "condition_id": "TRF-P1",
-   "observed": "\"HR\"",
+   "observed": "HR shows new department: HR",
    "source": "get_hr_employee",
    "holds": true
   },
   {
-   "condition_id": "TRF-F1",
-   "observed": "[\"all-staff\", \"workday-hr\"]",
-   "source": "get_okta_user",
-   "holds": true
-  },
-  {
    "condition_id": "TRF-R1",
-   "observed": "[\"all-staff\", \"workday-hr\"]",
+   "observed": "User's groups: ['all-staff', 'workday-hr']",
    "source": "get_okta_user",
-   "holds": true
+   "holds": false
   },
   {
    "condition_id": "TRF-R2",
-   "observed": "[\"all-staff\", \"workday-hr\"]",
+   "observed": "User's groups: ['all-staff', 'workday-hr']",
    "source": "get_okta_user",
-   "holds": true
+   "holds": false
   },
   {
    "condition_id": "TRF-R3",
-   "observed": "[\"all-staff\", \"workday-hr\"]",
+   "observed": "User's groups: ['all-staff', 'workday-hr']",
    "source": "get_okta_user",
    "holds": false
   },
   {
    "condition_id": "TRF-R4",
-   "observed": "[\"all-staff\", \"workday-hr\"]",
+   "observed": "User's groups: ['all-staff', 'workday-hr']",
    "source": "get_okta_user",
-   "holds": true
+   "holds": false
   },
   {
-   "condition_id": "TRF-R5",
-   "observed": "\"resolved\"",
-   "source": "get_incident",
+   "condition_id": "TRF-F1",
+   "observed": "User's groups: ['all-staff', 'workday-hr']",
+   "source": "get_okta_user",
    "holds": true
   }
  ],
@@ -84,32 +81,30 @@
  "tools_called": [
   "lookup_runbook",
   "get_hr_employee",
-  "get_okta_user",
-  "get_incident"
+  "get_okta_user"
  ],
- "tool_call_count": 4,
+ "tool_call_count": 3,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.07,
- "observation_chars": 2232,
- "turns": 5,
+ "tool_latency_ms": 0.63,
+ "observation_chars": 1925,
+ "turns": 4,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.2,
- "llm_latency_ms": 0.0,
+ "input_tokens": 6553,
+ "output_tokens": 1718,
+ "reasoning_tokens": 1131,
+ "cached_tokens": 1364,
+ "total_tokens": 8271,
+ "llm_cost_usd": 0.00121974,
+ "total_cost_usd": 0.00121974,
+ "latency_ms": 8570.0,
+ "llm_latency_ms": 8521.9,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "174e59d67461",
  "state_hash_after": "174e59d67461",
- "error_type": null,
- "reused_from": "D2a__all_tools__trf-01-pre__t1"
+ "error_type": null
 }

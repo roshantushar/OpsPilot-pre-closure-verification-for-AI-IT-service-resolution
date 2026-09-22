@@ -1,0 +1,72 @@
+{
+ "ts": "2026-09-22T23:29:34",
+ "case_id": "brc-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.9,
+ "reason": "All preconditions and required end-state conditions have tool-backed observations showing the SLA was marked breached, has_breached true, escalated to Service Manager, and a breach work note exists; the unverifiable 'do not modify others' condition is noted.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "BRC-P1",
+   "observed": "P1",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R1",
+   "observed": "breached",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R2",
+   "observed": "true",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R3",
+   "observed": "Service Manager",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R4",
+   "observed": "SLA breach recorded; escalated to Service Manager.",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-F1",
+   "observed": "breach_time: null",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-F2",
+   "observed": "state: in_progress",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not verifiable with available tools",
+   "source": "list_security_exceptions",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas",
+  "list_security_exceptions"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 8760,
+ "tokens_out": 1407,
+ "cost_usd": 0.0,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

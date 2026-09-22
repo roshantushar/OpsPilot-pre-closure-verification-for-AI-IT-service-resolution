@@ -3,19 +3,19 @@
  "arm": "parallel",
  "run_id": "D2c__parallel__lh-01-cor__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:10",
- "git_commit": "9cb211a-dirty",
- "config_hash": "101ae02e6b3e",
+ "timestamp": "2026-09-23T03:19:47",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "73952c90fb2f",
  "dataset_version": "synthetic-v1",
  "case_id": "lh-01-cor",
  "task_id": "lh-01",
  "family": "legal_hold_offboarding",
  "subset": "dev_micro",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": "all",
@@ -26,54 +26,30 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "medium",
  "declared": true,
  "decision": "VERIFIED",
- "reason": "all preconditions hold, all required conditions met, nothing forbidden observed",
+ "reason": "All preconditions and required end states have tool-evidence showing they hold; the unverifiable general never-do (modify others) cannot be checked but does not block closure.",
  "cited_conditions": [],
  "evidence": [
   {
    "condition_id": "LH-P1",
-   "observed": "true",
+   "observed": "{\"exception_id\":\"SEC0044120\",\"type\":\"legal_hold\",\"active\":true}",
    "source": "list_security_exceptions",
    "holds": true
   },
   {
-   "condition_id": "LH-F1",
-   "observed": "\"SUSPENDED\"",
-   "source": "get_okta_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F2",
-   "observed": "null",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F3",
-   "observed": "\"on_hold\"",
-   "source": "get_incident",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F4",
-   "observed": "false",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
    "condition_id": "LH-R1",
-   "observed": "\"SUSPENDED\"",
+   "observed": "{\"status\":\"SUSPENDED\",\"okta_id\":\"00u2304926\"}",
    "source": "get_okta_user",
    "holds": true
   },
   {
    "condition_id": "LH-R2",
-   "observed": "true",
+   "observed": "{\"suspended\":true}",
    "source": "get_google_user",
    "holds": true
   },
@@ -97,7 +73,7 @@
   },
   {
    "condition_id": "LH-R6",
-   "observed": "true",
+   "observed": "{\"deactivated\":true,\"slack_id\":\"U01762969\"}",
    "source": "get_slack_user",
    "holds": true
   },
@@ -118,37 +94,66 @@
    "observed": "\"Legal\"",
    "source": "get_incident",
    "holds": true
+  },
+  {
+   "condition_id": "LH-F1",
+   "observed": "{\"status\":\"SUSPENDED\"}",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F2",
+   "observed": "{\"data_transfer_to\":null}",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F3",
+   "observed": "{\"state\":\"on_hold\"}",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F4",
+   "observed": "false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "",
+   "source": "",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.9,
  "tools_called": [
   "lookup_runbook",
-  "get_hr_employee",
   "list_security_exceptions",
   "get_okta_user",
   "get_google_user",
   "get_slack_user",
   "get_incident"
  ],
- "tool_call_count": 7,
+ "tool_call_count": 6,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.15,
- "observation_chars": 2784,
+ "tool_latency_ms": 0.6,
+ "observation_chars": 2561,
  "turns": 3,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 1.6,
- "llm_latency_ms": 0.0,
+ "input_tokens": 5356,
+ "output_tokens": 1544,
+ "reasoning_tokens": 832,
+ "cached_tokens": 2944,
+ "total_tokens": 6900,
+ "llm_cost_usd": 0.0037646,
+ "total_cost_usd": 0.0037646,
+ "latency_ms": 25144.8,
+ "llm_latency_ms": 25110.2,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "eaec092b123d",

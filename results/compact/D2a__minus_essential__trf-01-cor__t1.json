@@ -1,0 +1,74 @@
+{
+ "ts": "2026-09-23T01:25:22",
+ "case_id": "trf-01-cor",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.74,
+ "reason": "All group membership changes on the subject are verified, but the required condition TRF-R5 (ticket resolved) has no tool-backed evidence and cannot be confirmed.",
+ "cited_conditions": [
+  "TRF-R5"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "okta groups do not include 'sales-all' (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "okta groups do not include 'crm-users' (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "okta groups include 'hr-all' (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "okta groups include 'workday-hr' (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "no ticket-state tool was checked; no tool-backed evidence that ticket is resolved",
+   "source": "",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "baseline 'all-staff' still present (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"]); baseline removal did not occur",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not checked by these tools (cannot verify modifications to other employees)",
+   "source": "",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 8873,
+ "tokens_out": 1853,
+ "cost_usd": 0.00442665,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

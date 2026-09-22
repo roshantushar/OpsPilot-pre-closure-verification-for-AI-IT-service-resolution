@@ -3,19 +3,19 @@
  "arm": "minus_evidence_req",
  "run_id": "D4-4__minus_evidence_req__lh-01-cor__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:11",
- "git_commit": "9cb211a-dirty",
- "config_hash": "298d460ad119",
+ "timestamp": "2026-09-22T23:56:50",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "1dc4b3a78f41",
  "dataset_version": "synthetic-v1",
  "case_id": "lh-01-cor",
  "task_id": "lh-01",
  "family": "legal_hold_offboarding",
  "subset": "dev_micro",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": "all",
@@ -26,48 +26,26 @@
  "allow_escalate": true,
  "require_evidence": false,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "medium",
  "declared": true,
- "decision": "VERIFIED",
- "reason": "all preconditions hold, all required conditions met, nothing forbidden observed",
- "cited_conditions": [],
+ "decision": "INCOMPLETE",
+ "reason": "Required condition LH-R8 (hold reason must be 'Legal Hold') does not match the incident value ('Legal').",
+ "cited_conditions": [
+  "LH-R8"
+ ],
  "evidence": [
   {
    "condition_id": "LH-P1",
-   "observed": "true",
+   "observed": "active",
    "source": "list_security_exceptions",
    "holds": true
   },
   {
-   "condition_id": "LH-F1",
-   "observed": "\"SUSPENDED\"",
-   "source": "get_okta_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F2",
-   "observed": "null",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F3",
-   "observed": "\"on_hold\"",
-   "source": "get_incident",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F4",
-   "observed": "false",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
    "condition_id": "LH-R1",
-   "observed": "\"SUSPENDED\"",
+   "observed": "SUSPENDED",
    "source": "get_okta_user",
    "holds": true
   },
@@ -79,7 +57,7 @@
   },
   {
    "condition_id": "LH-R3",
-   "observed": "\"/Legal Hold\"",
+   "observed": "/Legal Hold",
    "source": "get_google_user",
    "holds": true
   },
@@ -103,51 +81,80 @@
   },
   {
    "condition_id": "LH-R7",
-   "observed": "\"on_hold\"",
+   "observed": "on_hold",
    "source": "get_incident",
    "holds": true
   },
   {
    "condition_id": "LH-R8",
-   "observed": "\"Legal Hold\"",
+   "observed": "Legal",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "LH-R9",
+   "observed": "Legal",
    "source": "get_incident",
    "holds": true
   },
   {
-   "condition_id": "LH-R9",
-   "observed": "\"Legal\"",
+   "condition_id": "LH-F1",
+   "observed": "SUSPENDED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F2",
+   "observed": "null",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F3",
+   "observed": "on_hold",
    "source": "get_incident",
    "holds": true
+  },
+  {
+   "condition_id": "LH-F4",
+   "observed": "false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "",
+   "source": "list_devices",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.82,
  "tools_called": [
   "lookup_runbook",
-  "get_hr_employee",
   "list_security_exceptions",
   "get_okta_user",
   "get_google_user",
   "get_slack_user",
   "get_incident"
  ],
- "tool_call_count": 7,
+ "tool_call_count": 6,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.1,
- "observation_chars": 2784,
- "turns": 8,
+ "tool_latency_ms": 0.22,
+ "observation_chars": 2561,
+ "turns": 7,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
+ "input_tokens": 13915,
+ "output_tokens": 1319,
+ "reasoning_tokens": 448,
+ "cached_tokens": 8832,
+ "total_tokens": 15234,
  "llm_cost_usd": 0.0,
  "total_cost_usd": 0.0,
- "latency_ms": 0.3,
+ "latency_ms": 4.1,
  "llm_latency_ms": 0.0,
  "retry_attempted": false,
  "retry_success": null,

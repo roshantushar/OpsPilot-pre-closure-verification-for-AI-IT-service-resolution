@@ -1,0 +1,91 @@
+{
+ "ts": "2026-09-22T22:20:13",
+ "case_id": "lst-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.86,
+ "reason": "All preconditions and required end states are met and no forbidden actions occurred according to system records.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "owner: hannah.singh@acme.example for device LT-52424",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "lost_mode: true for device LT-52424",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "status: locked for device LT-52424",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "sessions_active: 0 for Okta user 00u4365479 (hannah.singh@acme.example)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "oauth_tokens: 0 for Google user hannah.singh@acme.example",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "category: security on INC0054616",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "state: resolved on INC0054616",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-70320 status: active, lost_mode: false (no wipe/lock of other device)",
+   "source": "list_devices",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "Okta user status: ACTIVE (not deactivated) for hannah.singh@acme.example",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "actions limited to ticket subject; no modifications found for other accounts/devices",
+   "source": "list_devices",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "list_security_exceptions",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_device",
+  "get_incident",
+  "list_slas",
+  "list_approvals"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 1367,
+ "tokens_out": 1166,
+ "cost_usd": 0.00267375,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

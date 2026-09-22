@@ -1,1 +1,8 @@
-{"event": "reused", "from": "D2a__all_tools__brc-01-pre__t1"}
+{"event": "llm", "turn": 1, "input_tokens": 1282, "output_tokens": 21, "reasoning_tokens": 0, "cached_tokens": 1024, "cost_usd": 0.0001281, "latency_ms": 1198.2, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-108"}, "output_chars": 1097, "latency_ms": 0.24, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1606, "output_tokens": 73, "reasoning_tokens": 0, "cached_tokens": 1280, "cost_usd": 0.0001887, "latency_ms": 1722.4, "cache_hit": false, "n_tool_calls": 3}
+{"event": "tool", "turn": 2, "name": "list_slas", "args": {"incident_number": "INC0035493"}, "output_chars": 142, "latency_ms": 0.1, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_incident", "args": {"number": "INC0035493"}, "output_chars": 374, "latency_ms": 0.08, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "list_approvals", "args": {"ticket_number": "INC0035493"}, "output_chars": 34, "latency_ms": 0.03, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1883, "output_tokens": 147, "reasoning_tokens": 0, "cached_tokens": 1536, "cost_usd": 0.00025545, "latency_ms": 2965.9, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "VERIFIED", "turns": 3}

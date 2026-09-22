@@ -1,18 +1,18 @@
-{"event": "llm", "turn": 1, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
-{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-102"}, "output_chars": 1442, "latency_ms": 0.04, "dup": false, "invalid": false, "error": null}
-{"event": "llm", "turn": 2, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
-{"event": "tool", "turn": 2, "name": "get_hr_employee", "args": {"email": "weijie.sharma@acme.example"}, "output_chars": 230, "latency_ms": 0.02, "dup": false, "invalid": false, "error": null}
-{"event": "llm", "turn": 3, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
+{"event": "llm", "turn": 1, "input_tokens": 1385, "output_tokens": 59, "reasoning_tokens": 107, "cached_tokens": 0, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": true, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-102"}, "output_chars": 1442, "latency_ms": 0.15, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1801, "output_tokens": 160, "reasoning_tokens": 128, "cached_tokens": 1280, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": true, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "get_hr_employee", "args": {"email": "weijie.sharma@acme.example"}, "output_chars": 230, "latency_ms": 0.03, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1904, "output_tokens": 28, "reasoning_tokens": 0, "cached_tokens": 1664, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": true, "n_tool_calls": 1}
 {"event": "tool", "turn": 3, "name": "get_okta_user", "args": {"email": "weijie.sharma@acme.example"}, "output_chars": 58, "latency_ms": 0.01, "dup": false, "invalid": false, "error": "504 Gateway Timeout"}
-{"event": "llm", "turn": 4, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
-{"event": "tool", "turn": 4, "name": "get_okta_user", "args": {"email": "weijie.sharma@acme.example"}, "output_chars": 58, "latency_ms": 0.01, "dup": true, "invalid": false, "error": "504 Gateway Timeout"}
-{"event": "llm", "turn": 5, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
-{"event": "tool", "turn": 5, "name": "get_google_user", "args": {"email": "weijie.sharma@acme.example"}, "output_chars": 224, "latency_ms": 0.02, "dup": false, "invalid": false, "error": null}
-{"event": "llm", "turn": 6, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
-{"event": "tool", "turn": 6, "name": "get_slack_user", "args": {"email": "weijie.sharma@acme.example"}, "output_chars": 114, "latency_ms": 0.01, "dup": false, "invalid": false, "error": null}
-{"event": "llm", "turn": 7, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
-{"event": "tool", "turn": 7, "name": "list_devices", "args": {"owner_email": "weijie.sharma@acme.example"}, "output_chars": 295, "latency_ms": 0.02, "dup": false, "invalid": false, "error": null}
-{"event": "llm", "turn": 8, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
-{"event": "tool", "turn": 8, "name": "get_incident", "args": {"number": "INC0061418"}, "output_chars": 301, "latency_ms": 0.02, "dup": false, "invalid": false, "error": null}
-{"event": "llm", "turn": 9, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 0}
+{"event": "llm", "turn": 4, "input_tokens": 1958, "output_tokens": 27, "reasoning_tokens": 0, "cached_tokens": 1792, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": true, "n_tool_calls": 1}
+{"event": "tool", "turn": 4, "name": "get_google_user", "args": {"email": "weijie.sharma@acme.example"}, "output_chars": 224, "latency_ms": 0.02, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 5, "input_tokens": 2060, "output_tokens": 28, "reasoning_tokens": 0, "cached_tokens": 1920, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": true, "n_tool_calls": 1}
+{"event": "tool", "turn": 5, "name": "get_slack_user", "args": {"email": "weijie.sharma@acme.example"}, "output_chars": 114, "latency_ms": 0.02, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 6, "input_tokens": 2137, "output_tokens": 27, "reasoning_tokens": 0, "cached_tokens": 1920, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": true, "n_tool_calls": 1}
+{"event": "tool", "turn": 6, "name": "list_devices", "args": {"owner_email": "weijie.sharma@acme.example"}, "output_chars": 295, "latency_ms": 0.02, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 7, "input_tokens": 2261, "output_tokens": 142, "reasoning_tokens": 64, "cached_tokens": 2048, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": true, "n_tool_calls": 1}
+{"event": "tool", "turn": 7, "name": "get_okta_user", "args": {"email": "weijie.sharma@acme.example"}, "output_chars": 58, "latency_ms": 0.01, "dup": true, "invalid": false, "error": "504 Gateway Timeout"}
+{"event": "llm", "turn": 8, "input_tokens": 2315, "output_tokens": 360, "reasoning_tokens": 320, "cached_tokens": 1792, "cost_usd": 0.00089555, "latency_ms": 6552.3, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 8, "name": "get_incident", "args": {"number": "INC0061418"}, "output_chars": 301, "latency_ms": 0.12, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 9, "input_tokens": 2430, "output_tokens": 860, "reasoning_tokens": 512, "cached_tokens": 2176, "cost_usd": 0.0018379, "latency_ms": 13779.2, "cache_hit": false, "n_tool_calls": 0}
 {"event": "final", "decision": "ESCALATE", "turns": 9}

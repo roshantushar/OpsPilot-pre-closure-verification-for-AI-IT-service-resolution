@@ -1,0 +1,56 @@
+{
+ "ts": "2026-09-22T21:41:47",
+ "case_id": "hld-01-run1",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.9,
+ "reason": "Runbook precondition HLD-P1 (SLA not already breached) is violated: the SLA shows it has already breached, so a human must review before closing.",
+ "cited_conditions": [
+  "HLD-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "HLD-R1",
+   "observed": "on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "Awaiting Caller",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "On hold: awaiting caller response with logs.",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "stage=paused, has_breached=true",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-P1",
+   "observed": "has_breached=true",
+   "source": "list_slas",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "get_incident",
+  "list_slas",
+  "list_approvals",
+  "lookup_runbook"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 6166,
+ "tokens_out": 539,
+ "cost_usd": 0.00115465,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

@@ -1,1 +1,9 @@
-{"event": "reused", "from": "D4-3__v2__lst-01-cor__t1"}
+{"event": "llm", "turn": 1, "input_tokens": 1302, "output_tokens": 21, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.0002079, "latency_ms": 1606.3, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-105"}, "output_chars": 1125, "latency_ms": 0.33, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1633, "output_tokens": 104, "reasoning_tokens": 0, "cached_tokens": 1280, "cost_usd": 0.00021135, "latency_ms": 2514.0, "cache_hit": false, "n_tool_calls": 4}
+{"event": "tool", "turn": 2, "name": "list_devices", "args": {"owner_email": "hannah.singh@acme.example"}, "output_chars": 276, "latency_ms": 0.11, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_okta_user", "args": {"email": "hannah.singh@acme.example"}, "output_chars": 242, "latency_ms": 0.06, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_google_user", "args": {"email": "hannah.singh@acme.example"}, "output_chars": 207, "latency_ms": 0.05, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_device", "args": {"device_id": "LT-52424"}, "output_chars": 154, "latency_ms": 0.04, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 2075, "output_tokens": 223, "reasoning_tokens": 0, "cached_tokens": 1664, "cost_usd": 0.00032025, "latency_ms": 3115.7, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "VERIFIED", "turns": 3}

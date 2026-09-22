@@ -1,0 +1,46 @@
+{
+ "ts": "2026-09-22T22:15:36",
+ "case_id": "acc-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.55,
+ "reason": "No evidence that the user was added to the requested group; approver identity (manager) is not confirmed.",
+ "cited_conditions": [
+  "ACC-R1",
+  "ACC-P2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "ACC-R1",
+   "observed": "No statement or work note shown that the user was made a member of 'finance-reporting-extended'.",
+   "source": "get_ticket",
+   "holds": false
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "Resolver closure note states approval was recorded in the work notes.",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R3",
+   "observed": "Resolver proposed ticket state: resolved.",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-P2",
+   "observed": "No explicit approver identity shown to confirm the approver is the user's manager.",
+   "source": "get_ticket",
+   "holds": false
+  }
+ ],
+ "tools_called": [],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 638,
+ "tokens_out": 901,
+ "cost_usd": 0.0019615,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

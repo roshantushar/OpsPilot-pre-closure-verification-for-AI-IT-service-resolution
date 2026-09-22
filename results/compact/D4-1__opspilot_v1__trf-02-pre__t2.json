@@ -1,0 +1,62 @@
+{
+ "ts": "2026-09-22T21:44:44",
+ "case_id": "trf-02-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.86,
+ "reason": "Okta shows sales-all added but crm-users (the second Sales group) is not present, so the runbook's required end state is not fully met.",
+ "cited_conditions": [
+  "TRF-R4"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: Sales",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "hr-all not present in groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "workday-hr not present in groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "sales-all present in groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "crm-users NOT present in groups (groups: [\"all-staff\",\"sales-all\"])",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "resolver set ticket state to resolved in closure note",
+   "source": "lookup_runbook",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_okta_user",
+  "get_google_user",
+  "get_hr_employee",
+  "lookup_runbook"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 6360,
+ "tokens_out": 827,
+ "cost_usd": 0.0024952,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

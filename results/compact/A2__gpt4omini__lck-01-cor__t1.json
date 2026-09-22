@@ -1,0 +1,61 @@
+{
+ "ts": "2026-09-22T21:12:08",
+ "case_id": "lck-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 1.0,
+ "reason": "The Okta account is active, a password reset is required, and an MFA reset has been issued. Identity verification was recorded, and the incident is in a resolved state. [evidence guard: missing ['LCK-R1', 'LCK-R2', 'LCK-R3', 'LCK-R4', 'LCK-R5']] [evidence guard: source tool never called for ['okta_status', 'password_reset_required', 'mfa_reset_issued', 'hr_status', 'security_exceptions', 'incident_state']]",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "okta_status",
+   "observed": "ACTIVE",
+   "source": "Okta",
+   "holds": true
+  },
+  {
+   "condition_id": "password_reset_required",
+   "observed": "true",
+   "source": "Okta",
+   "holds": true
+  },
+  {
+   "condition_id": "mfa_reset_issued",
+   "observed": "true",
+   "source": "Okta",
+   "holds": true
+  },
+  {
+   "condition_id": "hr_status",
+   "observed": "active",
+   "source": "HR",
+   "holds": true
+  },
+  {
+   "condition_id": "security_exceptions",
+   "observed": "0",
+   "source": "Security Exceptions",
+   "holds": true
+  },
+  {
+   "condition_id": "incident_state",
+   "observed": "resolved",
+   "source": "ServiceNow",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_okta_user",
+  "get_hr_employee",
+  "list_security_exceptions",
+  "get_incident",
+  "list_approvals"
+ ],
+ "guard": "none",
+ "turns": 2,
+ "tokens_in": 2228,
+ "tokens_out": 310,
+ "cost_usd": 0.0005202,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

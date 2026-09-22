@@ -1,0 +1,10 @@
+{"event": "llm", "turn": 1, "input_tokens": 870, "output_tokens": 326, "reasoning_tokens": 297, "cached_tokens": 0, "cost_usd": 0.0002174, "latency_ms": 5805.7, "cache_hit": false, "n_tool_calls": 2}
+{"event": "tool", "turn": 1, "name": "get_hr_employee", "args": {"email": "lina.ong@acme.example"}, "output_chars": 213, "latency_ms": 0.11, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 1, "name": "get_okta_user", "args": {"email": "lina.ong@acme.example"}, "output_chars": 230, "latency_ms": 0.06, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1015, "output_tokens": 658, "reasoning_tokens": 388, "cached_tokens": 0, "cost_usd": 0.0003647, "latency_ms": 2961.8, "cache_hit": false, "n_tool_calls": 0}
+{"event": "guard", "guard": "schema_repair", "turn": 2, "error": "ValidationError: 2 validation errors for Decision\nevidence.2.observed\n  Input should be a valid string [type=string_type, input_value=True, input_type=bool]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type\nevidence.3.observed\n  Input should be a valid string [type=string_type, input_v"}
+{"event": "llm", "turn": 3, "input_tokens": 1305, "output_tokens": 464, "reasoning_tokens": 435, "cached_tokens": 0, "cost_usd": 0.0003161, "latency_ms": 2664.7, "cache_hit": false, "n_tool_calls": 2}
+{"event": "tool", "turn": 3, "name": "get_hr_employee", "args": {"email": "lina.ong@acme.example"}, "output_chars": 279, "latency_ms": 0.05, "dup": true, "invalid": false, "error": null}
+{"event": "tool", "turn": 3, "name": "get_okta_user", "args": {"email": "lina.ong@acme.example"}, "output_chars": 296, "latency_ms": 0.02, "dup": true, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 1450, "output_tokens": 270, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.000253, "latency_ms": 1219.8, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "ESCALATE", "turns": 4}

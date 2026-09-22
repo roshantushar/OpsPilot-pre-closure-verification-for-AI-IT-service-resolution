@@ -29,7 +29,7 @@ for f in sorted((HERE / "subsets").glob("*.json")):
     ids = s["case_ids"]
     missing = [i for i in ids if i not in public]
     dupes = len(ids) - len(set(ids))
-    held = s["name"] == "heldout_mini"
+    held = s["name"] in ("heldout_mini", "attack_heldout")  # both draw from held-out task ids
     wrong_split = [i for i in ids if i in public and (public[i]["task_id"] in dev_tasks) == held
                    and public[i]["set"] != "guardrail"]
     ok = not (missing or dupes or wrong_split)

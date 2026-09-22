@@ -1,0 +1,55 @@
+{
+ "ts": "2026-09-22T22:15:47",
+ "case_id": "hld-01-cor",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.25,
+ "reason": "Runbook-required states (on hold, hold reason, SLA paused, work note) were asserted by the resolver but not verifiable from the ticket data; precondition SLA breach status also not checked. Cannot close without verifying those system states.",
+ "cited_conditions": [
+  "HLD-P1",
+  "HLD-R1",
+  "HLD-R2",
+  "HLD-R3",
+  "HLD-R4"
+ ],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "SLA breach status not present in ticket data; no check performed",
+   "source": "get_sla_status",
+   "holds": false
+  },
+  {
+   "condition_id": "HLD-R1",
+   "observed": "No system evidence the incident state is 'on_hold'; resolver note asserts it was set",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "Hold reason not visible in provided ticket data; resolver note asserts 'Awaiting Caller'",
+   "source": "get_hold_reason",
+   "holds": false
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "No verification that SLA timer was paused; resolver note asserts SLA paused",
+   "source": "get_sla_status",
+   "holds": false
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "Work notes not provided; resolver note asserts a work note mentioning awaiting caller was added",
+   "source": "get_work_notes",
+   "holds": false
+  }
+ ],
+ "tools_called": [],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 632,
+ "tokens_out": 593,
+ "cost_usd": 0.001344,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

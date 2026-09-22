@@ -1,0 +1,68 @@
+{
+ "ts": "2026-09-22T22:14:10",
+ "case_id": "brc-01-run2",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 1.0,
+ "reason": "required conditions not met: ['BRC-R2']",
+ "cited_conditions": [
+  "BRC-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "BRC-P1",
+   "observed": "\"P1\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-F1",
+   "observed": "null",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-F2",
+   "observed": "\"in_progress\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R1",
+   "observed": "\"breached\"",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R2",
+   "observed": "false",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "BRC-R3",
+   "observed": "\"Service Manager\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R4",
+   "observed": "[\"SLA breach recorded; escalated to Service Manager.\"]",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_incident",
+  "list_slas"
+ ],
+ "guard": "none",
+ "turns": 0,
+ "tokens_in": 0,
+ "tokens_out": 0,
+ "cost_usd": 0.0,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

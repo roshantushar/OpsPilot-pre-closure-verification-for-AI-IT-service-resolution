@@ -12,7 +12,7 @@ from .config import SETTINGS
 
 PUBLIC_SETS = ["dev_runs", "heldout_runs", "premature_dev", "premature_heldout",
                "correct_dev", "correct_heldout", "guardrail"]
-HELDOUT_SUBSETS = {"heldout_mini", "heldout_runs", "premature_heldout", "correct_heldout"}
+HELDOUT_SUBSETS = {"heldout_mini", "heldout_runs", "premature_heldout", "correct_heldout", "attack_heldout"}
 
 
 @lru_cache(maxsize=None)
@@ -50,6 +50,25 @@ def is_heldout(subset: str) -> bool:
 def runbook_text(runbook_id: str) -> str | None:
     p = SETTINGS.data_dir / "runbooks" / f"{runbook_id}.md"
     return p.read_text() if p.exists() else None
+
+
+@lru_cache(maxsize=None)
+def load_perturb_fixture(name: str) -> dict[str, dict]:
+    """case_id -> perturbation, from data/subsets/fixtures/<name>.json (EXPERIMENTS_FOR_CLAUDE_CODE.md
+    F1). Built by data/make_perturb_fixtures.py; carries no label, only a system/field/value chosen
+    per case's own runbook - safe for OpsPilot code to read, unlike the labels that picked it."""
+    path = SETTINGS.subsets_dir / "fixtures" / f"{name}.json"
+    if not path.exists():
+        raise FileNotFoundError(f"{path} missing - run: python data/make_perturb_fixtures.py")
+    return json.loads(path.read_text())
+
+
+def resolve_perturbation(perturbation: dict | None, case_id: str) -> dict | None:
+    """{"fixture": "<name>"} -> that case's real entry (or None if the case has none); anything
+    else passes through unchanged."""
+    if perturbation and "fixture" in perturbation:
+        return load_perturb_fixture(perturbation["fixture"]).get(case_id)
+    return perturbation
 
 
 def declared(case: dict) -> bool:

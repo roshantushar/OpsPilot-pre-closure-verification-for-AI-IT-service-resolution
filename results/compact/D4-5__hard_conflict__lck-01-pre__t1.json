@@ -1,0 +1,68 @@
+{
+ "ts": "2026-09-23T00:23:10",
+ "case_id": "lck-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.8,
+ "reason": "Okta records for the ticket subject are duplicated/conflicting (LOCKED_OUT and ACTIVE), which triggers escalation per the runbook.",
+ "cited_conditions": [
+  "LCK-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LCK-P1",
+   "observed": "active",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R1",
+   "observed": "two Okta records returned for the user: one status=LOCKED_OUT and one status=ACTIVE (conflict)",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R2",
+   "observed": "password_reset_required=true (present in the Okta records)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R3",
+   "observed": "mfa_reset_issued=true (present in the Okta records)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R4",
+   "observed": "work_notes contain: \"Identity verified via video call.\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R5",
+   "observed": "state=resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify (tools only return the ticket subject; condition not checkable here)",
+   "source": "",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 8783,
+ "tokens_out": 1191,
+ "cost_usd": 0.0025103,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

@@ -1,0 +1,68 @@
+{
+ "ts": "2026-09-22T22:54:25",
+ "case_id": "hld-01-run1",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.55,
+ "reason": "Precondition HLD-P1 failed: the incident's SLA has already breached; all required end states are present but the breached SLA prevents placing on hold per runbook.",
+ "cited_conditions": [
+  "HLD-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "has_breached=true",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "HLD-R1",
+   "observed": "state=on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "hold_reason=Awaiting Caller",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "stage=paused",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "work_notes contains 'awaiting caller'",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-F1",
+   "observed": "state=on_hold (not resolved/closed)",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "employee status=active for ticket subject kenji.iyer@acme.example",
+   "source": "get_hr_employee",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas",
+  "get_hr_employee"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 7780,
+ "tokens_out": 1020,
+ "cost_usd": 0.00202185,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

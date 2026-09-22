@@ -1,0 +1,34 @@
+{
+ "ts": "2026-09-22T21:41:26",
+ "case_id": "hld-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.92,
+ "reason": "Incident is in 'on_hold' with hold reason 'Awaiting Caller', SLA stage is 'paused', and a work note indicating awaiting caller was added\u2014matching the runbook's required end state. [evidence guard: missing ['HLD-R1', 'HLD-R2', 'HLD-R3', 'HLD-R4']]",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "incident_state_and_hold_reason",
+   "observed": "{\"state\":\"on_hold\",\"hold_reason\":\"Awaiting Caller\",\"work_notes\":[\"On hold: awaiting caller response with logs.\"]}",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "sla_paused",
+   "observed": "{\"stage\":\"paused\",\"has_breached\":false}",
+   "source": "list_slas",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_incident",
+  "list_slas"
+ ],
+ "guard": "none",
+ "turns": 3,
+ "tokens_in": 3353,
+ "tokens_out": 370,
+ "cost_usd": 0.00134785,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

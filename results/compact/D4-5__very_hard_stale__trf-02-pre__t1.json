@@ -1,0 +1,76 @@
+{
+ "ts": "2026-09-23T00:29:27",
+ "case_id": "trf-02-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.57,
+ "reason": "CRM group (TRF-R4) is not present on the subject's account.",
+ "cited_conditions": [
+  "TRF-R4"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "Sales",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "[\"all-staff\",\"sales-all\"] (hr-all not present)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "[\"all-staff\",\"sales-all\"] (workday-hr not present)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "[\"all-staff\",\"sales-all\"] (sales-all present)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "[\"all-staff\",\"sales-all\"] (crm-users missing)",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "all-staff present (baseline not removed)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not checked (cannot verify modifications to other accounts with these tools)",
+   "source": "",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 16483,
+ "tokens_out": 1680,
+ "cost_usd": 0.0039322,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

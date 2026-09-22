@@ -1,0 +1,74 @@
+{
+ "ts": "2026-09-22T22:37:40",
+ "case_id": "hld-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.5,
+ "reason": "unmappable conditions ['GEN-F1_no_unauthorized_modifications_checked']; required conditions not met: ['HLD-R3_sla_paused']",
+ "cited_conditions": [
+  "GEN-F1_no_unauthorized_modifications_checked",
+  "HLD-R3_sla_paused"
+ ],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1_sla_not_breached",
+   "observed": "false",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "subject_is_active_employee",
+   "observed": "\"active\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-F1_not_resolved_not_closed",
+   "observed": "\"on_hold\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-F1_not_closed_check2",
+   "observed": "\"on_hold\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3_sla_paused",
+   "observed": "\"in_progress\"",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "HLD-R1_incident_on_hold",
+   "observed": "\"on_hold\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2_hold_reason_awaiting_caller",
+   "observed": "\"Awaiting Caller\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R4_work_note_mentions_awaiting_caller",
+   "observed": "[\"On hold: awaiting caller response with logs.\"]",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "list_slas",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 964,
+ "tokens_out": 1615,
+ "cost_usd": 0.003471,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

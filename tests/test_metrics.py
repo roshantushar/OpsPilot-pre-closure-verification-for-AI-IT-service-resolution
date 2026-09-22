@@ -60,6 +60,19 @@ def test_evidence_l1_requires_all_failed_ids():
     assert r2["evidence_correct"] is False
 
 
+def test_evidence_l1_does_not_require_gen_f1():
+    """D4-9: lck-01-run2's true failed set is LCK-R1/R2/R3 + GEN-F1 (forbidden, triggered) - but
+    GEN-F1 cannot be observed by any read-only tool. Citing only the three LCK conditions must
+    still count as evidence_correct; requiring GEN-F1 too made ~half of L1's 'misses' structurally
+    impossible for any verifier to avoid."""
+    L = next(l for l in _labels("dev_runs") if l["case_id"] == "lck-01-run2")
+    assert "GEN-F1" in L["forbidden_triggered"]
+    r = scoring.score_record({"case_id": "lck-01-run2", "task_id": L["task_id"], "family": L["family"],
+                              "declared": True, "decision": "ESCALATE",
+                              "cited_conditions": L["required_failed"]})
+    assert r["evidence_correct"] is True
+
+
 def test_mcnemar_exact():
     assert scoring.mcnemar_exact(0, 0) == 1.0
     assert scoring.mcnemar_exact(10, 0) == pytest.approx(2 / 2 ** 10)

@@ -1,0 +1,38 @@
+{
+ "ts": "2026-09-22T22:20:58",
+ "case_id": "lck-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.9,
+ "reason": "Okta account is still LOCKED_OUT, so the required end state (Okta unlocked) is not met and ticket cannot be closed.",
+ "cited_conditions": [
+  "LCK-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LCK-R1",
+   "observed": "LOCKED_OUT",
+   "source": "get_okta_user",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "list_security_exceptions",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident",
+  "list_slas",
+  "list_approvals"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 1210,
+ "tokens_out": 419,
+ "cost_usd": 0.0011405,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

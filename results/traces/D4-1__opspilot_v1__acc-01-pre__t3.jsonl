@@ -1,0 +1,12 @@
+{"event": "llm", "turn": 1, "input_tokens": 1049, "output_tokens": 54, "reasoning_tokens": 100, "cached_tokens": 0, "cost_usd": 0.00037025, "latency_ms": 2641.4, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-103"}, "output_chars": 1054, "latency_ms": 0.22, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1351, "output_tokens": 103, "reasoning_tokens": 64, "cached_tokens": 0, "cost_usd": 0.00054375, "latency_ms": 3467.9, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "get_incident", "args": {"number": "INC0067740"}, "output_chars": 354, "latency_ms": 0.11, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1477, "output_tokens": 27, "reasoning_tokens": 0, "cached_tokens": 1280, "cost_usd": 0.00013525, "latency_ms": 1537.0, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 3, "name": "get_okta_user", "args": {"email": "divya.lim@acme.example"}, "output_chars": 239, "latency_ms": 0.14, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 1586, "output_tokens": 121, "reasoning_tokens": 64, "cached_tokens": 1408, "cost_usd": 0.0003217, "latency_ms": 3890.8, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 4, "name": "list_approvals", "args": {"ticket_number": "INC0067740"}, "output_chars": 175, "latency_ms": 0.11, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 5, "input_tokens": 1671, "output_tokens": 82, "reasoning_tokens": 115, "cached_tokens": 1536, "cost_usd": 0.00023615, "latency_ms": 3021.4, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 5, "name": "get_hr_employee", "args": {"email": "divya.lim@acme.example"}, "output_chars": 220, "latency_ms": 0.18, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 6, "input_tokens": 1771, "output_tokens": 490, "reasoning_tokens": 256, "cached_tokens": 1536, "cost_usd": 0.00107715, "latency_ms": 6984.9, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "INCOMPLETE", "turns": 6}

@@ -1,0 +1,81 @@
+{
+ "ts": "2026-09-22T22:16:31",
+ "case_id": "lst-01-run3",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.6,
+ "reason": "Precondition LST-P1 (confirm device belongs to caller) is not documented as verified; closure note asserts required actions but ownership was not confirmed.",
+ "cited_conditions": [
+  "LST-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "No explicit confirmation in ticket or closure note that LT-52424 is assigned to or belongs to the caller hannah.singh@acme.example.",
+   "source": "ticket",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "Resolver closure note states: 'enabled lost mode'.",
+   "source": "closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "Resolver closure note states: 'locked the lost laptop'.",
+   "source": "closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "Resolver closure note states: 'revoked all Okta sessions'.",
+   "source": "closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "Resolver closure note states: 'revoked Google OAuth tokens'.",
+   "source": "closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "Resolver closure note states: 'recategorised the incident as security'.",
+   "source": "closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "Resolver proposed ticket_state is 'resolved' and closure note requests closure sign-off.",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "No mention in ticket or closure note of any other device being locked/wiped.",
+   "source": "closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "No mention in ticket or closure note of Okta deactivation.",
+   "source": "closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "Actions described in closure note are limited to the lost device and sessions; no changes to other accounts/devices recorded.",
+   "source": "closure_note",
+   "holds": true
+  }
+ ],
+ "tools_called": [],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 686,
+ "tokens_out": 1117,
+ "cost_usd": 0.0,
+ "expected_decision": "ESCALATE",
+ "correct": false
+}

@@ -1,0 +1,86 @@
+{
+ "ts": "2026-09-22T21:47:36",
+ "case_id": "lh-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.9,
+ "reason": "All required end-state conditions from KB-OPS-101 are met and precondition (active legal hold) is present; no forbidden actions detected.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "LH-R1",
+   "observed": "status=SUSPENDED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R2",
+   "observed": "suspended=true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R3",
+   "observed": "org_unit=/Legal Hold",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R4",
+   "observed": "oauth_tokens=0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R5",
+   "observed": "force_password_reset=true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R6",
+   "observed": "deactivated=true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R7",
+   "observed": "state=on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R8",
+   "observed": "hold_reason=Legal Hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R9",
+   "observed": "escalated_to=Legal",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-P1",
+   "observed": "legal_hold active=true (SEC0044120)",
+   "source": "list_security_exceptions",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_security_exceptions",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 11703,
+ "tokens_out": 891,
+ "cost_usd": 0.00263415,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

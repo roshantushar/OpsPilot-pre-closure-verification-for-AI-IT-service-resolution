@@ -1,0 +1,27 @@
+{
+ "ts": "2026-09-22T22:14:18",
+ "case_id": "lh-01-cor",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.67,
+ "reason": "The resolver's note does not confirm the required precondition that an active legal-hold exception exists (LH-P1), which must be verified before closing or leaving the ticket.",
+ "cited_conditions": [
+  "LH-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LH-P1",
+   "observed": "Active legal-hold exception not confirmed in resolver closure note or ticket data",
+   "source": "resolver_claim",
+   "holds": false
+  }
+ ],
+ "tools_called": [],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 808,
+ "tokens_out": 587,
+ "cost_usd": 0.001376,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

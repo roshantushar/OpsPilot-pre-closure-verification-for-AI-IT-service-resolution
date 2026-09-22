@@ -1,0 +1,97 @@
+{
+ "ts": "2026-09-23T03:11:52",
+ "case_id": "off-02-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.75,
+ "reason": "Okta could not be checked (503 Service Unavailable) after one retry, blocking verification of OFF-R1 and OFF-R2; per runbook, an unreadable/unchecked required system causes escalation.",
+ "cited_conditions": [
+  "OFF-R1",
+  "OFF-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OFF-P1",
+   "observed": "terminated",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-P2",
+   "observed": "legal_hold: false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R1",
+   "observed": "Error: 503 Service Unavailable",
+   "source": "get_okta_user",
+   "holds": null
+  },
+  {
+   "condition_id": "OFF-R2",
+   "observed": "Error: 503 Service Unavailable",
+   "source": "get_okta_user",
+   "holds": null
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "suspended: true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "data_transfer_to: kenji.kumar@acme.example",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "deactivated: true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "devices: [LT-39982 status=wipe_pending, LT-47191 status=wipe_pending]",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R7",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "deleted: false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "Cannot verify with available single-subject lookups",
+   "source": "get_hr_employee",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_okta_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 9,
+ "tokens_in": 18259,
+ "tokens_out": 2099,
+ "cost_usd": 0.00428905,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

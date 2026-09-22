@@ -1,0 +1,89 @@
+{
+ "ts": "2026-09-23T00:22:08",
+ "case_id": "lst-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.8,
+ "reason": "Device records for LT-52424 are duplicated/conflicting (one entry active, one locked) for required device state, triggering escalation per runbook; precondition that device belongs to caller is true but duplicates block verification.",
+ "cited_conditions": [
+  "LST-R2",
+  "LST-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "Owner of LT-52424 is hannah.singh@acme.example (device present in inventory)",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "lost_mode=true present in device records, but duplicate records exist",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "Two records for LT-52424: one status=\"active\", one status=\"locked\" (conflicting)",
+   "source": "get_device",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "sessions_active=0",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "oauth_tokens=0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "category=security",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "state=resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "Other listed device LT-70320 status=\"active\", not locked/wiped",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "Okta user status=ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "Cannot verify non-subject modifications with available single-subject queries",
+   "source": "list_devices",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_devices",
+  "get_device",
+  "get_okta_user",
+  "get_google_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 13593,
+ "tokens_out": 1478,
+ "cost_usd": 0.0035034,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

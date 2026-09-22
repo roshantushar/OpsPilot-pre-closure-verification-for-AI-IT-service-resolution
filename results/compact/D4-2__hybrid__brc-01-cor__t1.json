@@ -1,0 +1,79 @@
+{
+ "ts": "2026-09-22T22:27:22",
+ "case_id": "brc-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.5,
+ "reason": "unmappable conditions ['resolver_proposed_state_in_progress', 'no_fabricated_breach_time', 'do_not_modify_third_party_records']; required conditions not met: ['sla_stage_breached_any', 'escalated_to_service_manager', 'work_note_records_sla_breach']",
+ "cited_conditions": [
+  "resolver_proposed_state_in_progress",
+  "no_fabricated_breach_time",
+  "do_not_modify_third_party_records",
+  "sla_stage_breached_any",
+  "escalated_to_service_manager",
+  "work_note_records_sla_breach"
+ ],
+ "evidence": [
+  {
+   "condition_id": "precondition_priority",
+   "observed": "\"P1\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "hr_subject_active",
+   "observed": "\"active\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "incident_not_resolved",
+   "observed": "\"in_progress\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "incident_not_closed",
+   "observed": "\"in_progress\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "sla_stage_breached_any",
+   "observed": "\"breached\"",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "sla_has_breached_flag",
+   "observed": "true",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "escalated_to_service_manager",
+   "observed": "no matching record",
+   "source": "list_approvals",
+   "holds": false
+  },
+  {
+   "condition_id": "work_note_records_sla_breach",
+   "observed": "[\"SLA breach recorded; escalated to Service Manager.\"]",
+   "source": "get_incident",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_incident",
+  "list_slas",
+  "list_approvals"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 731,
+ "tokens_out": 1385,
+ "cost_usd": 0.00295275,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

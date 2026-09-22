@@ -1,0 +1,76 @@
+{
+ "ts": "2026-09-22T22:59:06",
+ "case_id": "trf-02-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.78,
+ "reason": "Required end state TRF-R4 (crm-users added) is not met; Okta shows sales-all but crm-users is missing.",
+ "cited_conditions": [
+  "TRF-R4"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: Sales",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "hr-all not present in groups (groups: [\"all-staff\",\"sales-all\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "workday-hr not present in groups (groups: [\"all-staff\",\"sales-all\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "sales-all present in groups (groups: [\"all-staff\",\"sales-all\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "crm-users NOT present in groups (groups: [\"all-staff\",\"sales-all\"])",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "all-staff present (groups: [\"all-staff\",\"sales-all\"]), baseline not removed",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "no evidence of modifications to other users/devices in the checked systems (HR, Okta, Google, Slack, Incident) based on queried records",
+   "source": "get_okta_user",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 12283,
+ "tokens_out": 1575,
+ "cost_usd": 0.00403195,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

@@ -1,0 +1,57 @@
+{
+ "ts": "2026-09-22T21:40:50",
+ "case_id": "acc-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.9,
+ "reason": "The runbook requires the user to be a member of the requested group, but Okta shows Divya is not in 'finance-reporting-extended' despite the ticket being resolved and approval recorded.",
+ "cited_conditions": [
+  "ACC-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "ACC-R1",
+   "observed": "groups: [\"all-staff\",\"eng-all\",\"github-developers\"] (no 'finance-reporting-extended')",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "work_notes: [\"Access granted per approval APR0073883.\"]",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R3",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-P1",
+   "observed": "approval APR0073883 state: approved",
+   "source": "list_approvals",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-P2",
+   "observed": "approver: kenji.ng@acme.example is manager_email for divya.lim@acme.example",
+   "source": "get_hr_employee",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "get_okta_user",
+  "list_approvals",
+  "get_hr_employee"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 8659,
+ "tokens_out": 1080,
+ "cost_usd": 0.00308635,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

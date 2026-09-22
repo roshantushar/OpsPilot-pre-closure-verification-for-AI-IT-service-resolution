@@ -1,0 +1,48 @@
+{
+ "ts": "2026-09-22T22:17:45",
+ "case_id": "brc-01-run2",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.2,
+ "reason": "I cannot verify the required end-state fields in the systems from the provided data; the resolver's note asserts completion but there is no system evidence to confirm BRC-R1\u2013R4.",
+ "cited_conditions": [
+  "BRC-R1",
+  "BRC-R2",
+  "BRC-R3",
+  "BRC-R4"
+ ],
+ "evidence": [
+  {
+   "condition_id": "BRC-R1",
+   "observed": "Closure note states SLA stage set to breached",
+   "source": "get_closure_note",
+   "holds": null
+  },
+  {
+   "condition_id": "BRC-R2",
+   "observed": "Closure note states SLA flagged as breached (has_breached true)",
+   "source": "get_closure_note",
+   "holds": null
+  },
+  {
+   "condition_id": "BRC-R3",
+   "observed": "Closure note states incident escalated to the Service Manager",
+   "source": "get_closure_note",
+   "holds": null
+  },
+  {
+   "condition_id": "BRC-R4",
+   "observed": "Closure note states a breach work note was added",
+   "source": "get_closure_note",
+   "holds": null
+  }
+ ],
+ "tools_called": [],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 668,
+ "tokens_out": 679,
+ "cost_usd": 0.001525,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

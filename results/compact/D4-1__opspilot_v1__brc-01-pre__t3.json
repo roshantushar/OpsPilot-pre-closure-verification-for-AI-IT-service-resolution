@@ -1,0 +1,49 @@
+{
+ "ts": "2026-09-22T21:54:49",
+ "case_id": "brc-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.9,
+ "reason": "SLA record shows stage still 'in_progress' rather than 'breached', so the runbook required end state BRC-R1 is not met though other requirements are satisfied.",
+ "cited_conditions": [
+  "BRC-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "BRC-R1",
+   "observed": "in_progress",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "BRC-R2",
+   "observed": "true",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R3",
+   "observed": "Service Manager",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R4",
+   "observed": "SLA breach recorded; escalated to Service Manager.",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 5511,
+ "tokens_out": 648,
+ "cost_usd": 0.00235695,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

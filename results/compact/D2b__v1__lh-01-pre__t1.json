@@ -1,0 +1,30 @@
+{
+ "ts": "2026-09-23T01:31:48",
+ "case_id": "lh-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.3,
+ "reason": "Could not retrieve the runbook KB-OPS-101 (get_doc returned an error after retries), so I cannot enumerate or verify the runbook conditions required for closure.",
+ "cited_conditions": [
+  "RUNBOOK-UNAVAILABLE"
+ ],
+ "evidence": [
+  {
+   "condition_id": "RUNBOOK-UNAVAILABLE",
+   "observed": "{\"ok\":false,\"error\":\"missing argument 'runbook_id'\"}",
+   "source": "get_doc",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "get_doc",
+  "get_doc"
+ ],
+ "guard": "none",
+ "turns": 3,
+ "tokens_in": 3309,
+ "tokens_out": 636,
+ "cost_usd": 0.00186885,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

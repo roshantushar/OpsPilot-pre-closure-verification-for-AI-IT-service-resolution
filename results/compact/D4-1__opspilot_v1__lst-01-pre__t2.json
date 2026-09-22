@@ -1,0 +1,83 @@
+{
+ "ts": "2026-09-22T21:42:33",
+ "case_id": "lst-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.85,
+ "reason": "Lost mode is enabled but there is no evidence the lost device is 'locked' per the runbook; all other required end states that are checkable are met.",
+ "cited_conditions": [
+  "LST-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "device owner matches caller (hannah.singh@acme.example)",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "lost_mode=true for LT-52424",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "no explicit 'locked' attribute present for LT-52424 (status=active, lost_mode=true)",
+   "source": "get_device",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "Okta sessions_active=0 and status=ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "oauth_tokens=0 for Google account",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "incident category=security",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "incident state=resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-70320 status=active and lost_mode=false (no lock/wipe)",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "Okta account status=ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_incident",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "list_devices",
+  "lookup_runbook",
+  "get_device"
+ ],
+ "guard": "none",
+ "turns": 8,
+ "tokens_in": 11689,
+ "tokens_out": 1020,
+ "cost_usd": 0.00311905,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

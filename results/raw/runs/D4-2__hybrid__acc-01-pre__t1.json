@@ -3,16 +3,16 @@
  "arm": "hybrid",
  "run_id": "D4-2__hybrid__acc-01-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:11",
- "git_commit": "9cb211a-dirty",
- "config_hash": "62959828b73e",
+ "timestamp": "2026-09-22T22:25:05",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "dbb711590ab3",
  "dataset_version": "synthetic-v1",
  "case_id": "acc-01-pre",
  "task_id": "acc-01",
  "family": "access_grant_with_approval",
  "subset": "dev_mini",
  "verifier": "hybrid",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
  "prompt_version": "v1",
@@ -26,34 +26,39 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "easy",
  "declared": true,
- "decision": "INCOMPLETE",
- "reason": "required conditions not met: ['ACC-R1']",
+ "decision": "ESCALATE",
+ "reason": "unmappable conditions ['ACC-P2', 'GEN-F1']; precondition failed ['ACC-P1']; forbidden ['ACC-F1']; problems []",
  "cited_conditions": [
-  "ACC-R1"
+  "ACC-P2",
+  "GEN-F1",
+  "ACC-P1",
+  "ACC-F1",
+  "ACC-R1",
+  "ACC-R2"
  ],
  "evidence": [
   {
    "condition_id": "ACC-P1",
-   "observed": "\"approved\"",
+   "observed": "null",
    "source": "list_approvals",
-   "holds": true
+   "holds": false
   },
   {
-   "condition_id": "ACC-P2",
-   "observed": "\"kenji.ng@acme.example\"",
-   "source": "list_approvals",
+   "condition_id": "HR-STATUS",
+   "observed": "\"active\"",
+   "source": "get_hr_employee",
    "holds": true
   },
   {
    "condition_id": "ACC-F1",
    "observed": "[\"all-staff\", \"eng-all\", \"github-developers\"]",
    "source": "get_okta_user",
-   "holds": true
+   "holds": false
   },
   {
    "condition_id": "ACC-R1",
@@ -65,7 +70,7 @@
    "condition_id": "ACC-R2",
    "observed": "[\"Access granted per approval APR0073883.\"]",
    "source": "get_incident",
-   "holds": true
+   "holds": false
   },
   {
    "condition_id": "ACC-R3",
@@ -74,7 +79,7 @@
    "holds": true
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.5,
  "tools_called": [
   "get_hr_employee",
   "list_approvals",
@@ -84,22 +89,22 @@
  "tool_call_count": 4,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.05,
+ "tool_latency_ms": 0.2,
  "observation_chars": 988,
  "turns": 1,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
+ "input_tokens": 699,
+ "output_tokens": 1061,
+ "reasoning_tokens": 576,
  "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.2,
- "llm_latency_ms": 0.0,
+ "total_tokens": 1760,
+ "llm_cost_usd": 0.00229675,
+ "total_cost_usd": 0.00229675,
+ "latency_ms": 18910.2,
+ "llm_latency_ms": 18902.8,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "27def8805ab0",

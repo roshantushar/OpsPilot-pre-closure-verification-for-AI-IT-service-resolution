@@ -1,0 +1,100 @@
+{
+ "ts": "2026-09-22T20:56:15",
+ "case_id": "lh-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 1.0,
+ "reason": "The employee is terminated and has an active legal hold. All systems checked (Okta, Google Workspace, Slack) reflect the expected suspended or deactivated state. The incident is marked as in progress with the correct hold reason, and no SLAs are breached or approvals pending. [evidence guard: missing ['LH-R1', 'LH-R2', 'LH-R3', 'LH-R4', 'LH-R5', 'LH-R6', 'LH-R7', 'LH-R8', 'LH-R9']]",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "HR_STATUS_TERMINATED",
+   "observed": "terminated",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "HR_LEGAL_HOLD_ACTIVE",
+   "observed": "true",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OKTA_STATUS_SUSPENDED",
+   "observed": "SUSPENDED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GOOGLE_SUSPENDED",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GOOGLE_ORG_UNIT_LEGAL_HOLD",
+   "observed": "/Legal Hold",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GOOGLE_FORCE_PASSWORD_RESET",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "SLACK_DEACTIVATED",
+   "observed": "true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "SECURITY_EXCEPTION_LEGAL_HOLD_ACTIVE",
+   "observed": "true",
+   "source": "list_security_exceptions",
+   "holds": true
+  },
+  {
+   "condition_id": "INCIDENT_STATE_IN_PROGRESS",
+   "observed": "in_progress",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "INCIDENT_HOLD_REASON_LEGAL_HOLD",
+   "observed": "Legal Hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "SLA_NOT_BREACHED",
+   "observed": "[]",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "APPROVALS_NONE_PENDING",
+   "observed": "[]",
+   "source": "list_approvals",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_security_exceptions",
+  "get_incident",
+  "list_slas",
+  "list_approvals"
+ ],
+ "guard": "none",
+ "turns": 3,
+ "tokens_in": 2318,
+ "tokens_out": 1532,
+ "cost_usd": 0.0,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

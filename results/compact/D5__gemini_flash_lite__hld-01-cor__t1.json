@@ -1,0 +1,53 @@
+{
+ "ts": "2026-09-23T03:42:27",
+ "case_id": "hld-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 1.0,
+ "reason": "All conditions from the runbook KB-OPS-104 are met: the incident is on hold with the correct reason, the SLA is paused and not breached, and the work notes indicate the reason for the hold.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "false",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R1",
+   "observed": "on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "Awaiting Caller",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "paused",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "On hold: awaiting caller response with logs.",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_slas",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 4630,
+ "tokens_out": 1410,
+ "cost_usd": 0.00090568,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

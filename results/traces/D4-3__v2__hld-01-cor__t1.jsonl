@@ -1,1 +1,12 @@
-{"event": "reused", "from": "D2a__all_tools__hld-01-cor__t1"}
+{"event": "llm", "turn": 1, "input_tokens": 1190, "output_tokens": 45, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.0003875, "latency_ms": 1716.6, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-104"}, "output_chars": 987, "latency_ms": 2.18, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1487, "output_tokens": 164, "reasoning_tokens": 128, "cached_tokens": 1152, "cost_usd": 0.00044055, "latency_ms": 3056.4, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "get_incident", "args": {"number": "INC0050199"}, "output_chars": 356, "latency_ms": 0.18, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1614, "output_tokens": 49, "reasoning_tokens": 95, "cached_tokens": 1408, "cost_usd": 0.0001847, "latency_ms": 2413.0, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 3, "name": "list_slas", "args": {"incident_number": "INC0050199"}, "output_chars": 138, "latency_ms": 0.09, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 1692, "output_tokens": 803, "reasoning_tokens": 768, "cached_tokens": 1536, "cost_usd": 0.0016834, "latency_ms": 11322.6, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 4, "name": "get_okta_user", "args": {"email": "emily.pillai@acme.example"}, "output_chars": 243, "latency_ms": 0.09, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 5, "input_tokens": 1803, "output_tokens": 507, "reasoning_tokens": 448, "cached_tokens": 1536, "cost_usd": 0.00111915, "latency_ms": 9018.3, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 5, "name": "get_okta_user", "args": {"email": "kenji.iyer@acme.example"}, "output_chars": 241, "latency_ms": 0.12, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 6, "input_tokens": 1914, "output_tokens": 782, "reasoning_tokens": 384, "cached_tokens": 1664, "cost_usd": 0.0016681, "latency_ms": 10300.2, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "VERIFIED", "turns": 6}

@@ -1,0 +1,95 @@
+{
+ "ts": "2026-09-22T23:52:02",
+ "case_id": "off-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.9,
+ "reason": "All preconditions and most required end states are met, but the incident is still in_progress (OFF-R7), so the ticket is not resolved.",
+ "cited_conditions": [
+  "OFF-R7"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OFF-P1",
+   "observed": "terminated",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-P2",
+   "observed": "false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R1",
+   "observed": "DEACTIVATED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R2",
+   "observed": "[]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "data_transfer_to: zhiwei.lau@acme.example (matches HR manager zhiwei.lau@acme.example)",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "deactivated",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "[{\"device_id\":\"LT-51909\",\"status\":\"wipe_pending\"},{\"device_id\":\"LT-90609\",\"status\":\"wipe_pending\"}]",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R7",
+   "observed": "in_progress",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "deleted: false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot_verify_with_available_tools",
+   "source": "list_devices",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 8,
+ "tokens_in": 16198,
+ "tokens_out": 1657,
+ "cost_usd": 0.0044547,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

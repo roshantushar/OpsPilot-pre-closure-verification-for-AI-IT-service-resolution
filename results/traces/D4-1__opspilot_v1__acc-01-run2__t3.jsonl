@@ -1,0 +1,12 @@
+{"event": "llm", "turn": 1, "input_tokens": 1059, "output_tokens": 88, "reasoning_tokens": 114, "cached_tokens": 0, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": true, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-103"}, "output_chars": 1054, "latency_ms": 0.09, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1361, "output_tokens": 143, "reasoning_tokens": 64, "cached_tokens": 1024, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": true, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "get_okta_user", "args": {"email": "divya.lim@acme.example"}, "output_chars": 268, "latency_ms": 0.05, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1476, "output_tokens": 22, "reasoning_tokens": 0, "cached_tokens": 1280, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": true, "n_tool_calls": 1}
+{"event": "tool", "turn": 3, "name": "get_incident", "args": {"number": "INC0067740"}, "output_chars": 354, "latency_ms": 0.05, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 1602, "output_tokens": 179, "reasoning_tokens": 128, "cached_tokens": 1408, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": true, "n_tool_calls": 1}
+{"event": "tool", "turn": 4, "name": "list_approvals", "args": {"ticket_number": "INC0067740"}, "output_chars": 176, "latency_ms": 0.04, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 5, "input_tokens": 1687, "output_tokens": 107, "reasoning_tokens": 64, "cached_tokens": 0, "cost_usd": 0.00063575, "latency_ms": 2710.6, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 5, "name": "get_hr_employee", "args": {"email": "divya.lim@acme.example"}, "output_chars": 220, "latency_ms": 0.21, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 6, "input_tokens": 1787, "output_tokens": 573, "reasoning_tokens": 192, "cached_tokens": 1536, "cost_usd": 0.00124715, "latency_ms": 8071.1, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "ESCALATE", "turns": 6}

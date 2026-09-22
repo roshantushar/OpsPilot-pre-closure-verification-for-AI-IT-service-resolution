@@ -1,0 +1,67 @@
+{
+ "ts": "2026-09-23T00:27:22",
+ "case_id": "hld-02-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.82,
+ "reason": "SLA is currently running (not paused) though the runbook requires the SLA timer be paused when an incident is placed on hold.",
+ "cited_conditions": [
+  "HLD-R3"
+ ],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "has_breached: false",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R1",
+   "observed": "state: on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "hold_reason: Awaiting Caller",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "sla stage: in_progress (status_history shows it was paused then returned to in_progress)",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "work_notes: \"On hold: awaiting caller response with logs.\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-F1",
+   "observed": "state: on_hold (not resolved/closed)",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not verifiable with the available single-subject lookup tools",
+   "source": "",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 7165,
+ "tokens_out": 1331,
+ "cost_usd": 0.0028735,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

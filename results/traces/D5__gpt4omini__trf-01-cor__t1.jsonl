@@ -1,1 +1,14 @@
-{"event": "reused", "from": "D2a__all_tools__trf-01-cor__t1"}
+{"event": "llm", "turn": 1, "input_tokens": 1287, "output_tokens": 21, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.00020565, "latency_ms": 871.5, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-107"}, "output_chars": 1485, "latency_ms": 0.43, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1692, "output_tokens": 151, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.0003444, "latency_ms": 2169.7, "cache_hit": false, "n_tool_calls": 6}
+{"event": "tool", "turn": 2, "name": "get_hr_employee", "args": {"email": "kenji.iyer@acme.example"}, "output_chars": 217, "latency_ms": 0.17, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_okta_user", "args": {"email": "kenji.iyer@acme.example"}, "output_chars": 232, "latency_ms": 0.1, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_google_user", "args": {"email": "kenji.iyer@acme.example"}, "output_chars": 200, "latency_ms": 0.09, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_slack_user", "args": {"email": "kenji.iyer@acme.example"}, "output_chars": 112, "latency_ms": 0.08, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "list_devices", "args": {"owner_email": "kenji.iyer@acme.example"}, "output_chars": 153, "latency_ms": 0.09, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_incident", "args": {"number": "INC0063745"}, "output_chars": 307, "latency_ms": 0.1, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 2313, "output_tokens": 63, "reasoning_tokens": 0, "cached_tokens": 1280, "cost_usd": 0.00028875, "latency_ms": 3993.6, "cache_hit": false, "n_tool_calls": 2}
+{"event": "tool", "turn": 3, "name": "get_okta_user", "args": {"email": "kenji.iyer@acme.example"}, "output_chars": 298, "latency_ms": 0.04, "dup": true, "invalid": false, "error": null}
+{"event": "tool", "turn": 3, "name": "get_google_user", "args": {"email": "kenji.iyer@acme.example"}, "output_chars": 266, "latency_ms": 0.02, "dup": true, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 2551, "output_tokens": 176, "reasoning_tokens": 0, "cached_tokens": 2304, "cost_usd": 0.00031545, "latency_ms": 2537.1, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "INCOMPLETE", "turns": 4}

@@ -1,0 +1,86 @@
+{
+ "ts": "2026-09-22T23:22:31",
+ "case_id": "lst-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.9,
+ "reason": "All preconditions and required end states have tool-backed evidence showing the device is lost-mode and locked, sessions and OAuth tokens revoked, incident recategorized to security, and ticket resolved; the global never-do cannot be fully verified with available tools but does not block closure.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "device owner hannah.singh@acme.example matches ticket caller hannah.singh@acme.example",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "lost_mode=true",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "status=locked",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "sessions_active=0",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "oauth_tokens=0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "category=security",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "state=resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-70320 status=active, lost_mode=false",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "Okta status=ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify modifications to accounts/devices belonging to all other users with the available subject-limited tools",
+   "source": "list_devices",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_device",
+  "get_okta_user",
+  "get_google_user",
+  "get_incident",
+  "list_devices"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 13174,
+ "tokens_out": 1939,
+ "cost_usd": 0.0048387,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

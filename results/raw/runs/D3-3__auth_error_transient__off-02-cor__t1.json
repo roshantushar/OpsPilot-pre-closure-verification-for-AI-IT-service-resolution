@@ -3,19 +3,19 @@
  "arm": "auth_error_transient",
  "run_id": "D3-3__auth_error_transient__off-02-cor__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:11",
- "git_commit": "9cb211a-dirty",
- "config_hash": "247f8aa8fe74",
+ "timestamp": "2026-09-23T03:08:35",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "8da6eda862b5",
  "dataset_version": "synthetic-v1",
  "case_id": "off-02-cor",
  "task_id": "off-02",
  "family": "standard_offboarding",
  "subset": "fault_base",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": "all",
@@ -34,101 +34,109 @@
  },
  "difficulty": "medium",
  "declared": true,
- "decision": "VERIFIED",
- "reason": "all preconditions hold, all required conditions met, nothing forbidden observed",
- "cited_conditions": [],
+ "decision": "ESCALATE",
+ "reason": "Okta API returned an error on first call and succeeded on retry; the runbook requires escalation when a needed system returns an error after one retry.",
+ "cited_conditions": [
+  "OFF-R1"
+ ],
  "evidence": [
   {
    "condition_id": "OFF-P1",
-   "observed": "\"terminated\"",
+   "observed": "status: terminated",
    "source": "get_hr_employee",
    "holds": true
   },
   {
    "condition_id": "OFF-P2",
-   "observed": "false",
+   "observed": "legal_hold: false",
    "source": "get_hr_employee",
    "holds": true
   },
   {
-   "condition_id": "OFF-F1",
-   "observed": "false",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
    "condition_id": "OFF-R1",
-   "observed": "\"DEACTIVATED\"",
+   "observed": "first get_okta_user call returned error: '401 Unauthorized: token expired'; second get_okta_user call returned status: DEACTIVATED",
    "source": "get_okta_user",
-   "holds": true
+   "holds": false
   },
   {
    "condition_id": "OFF-R2",
-   "observed": "[]",
+   "observed": "groups: []",
    "source": "get_okta_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R3",
-   "observed": "true",
+   "observed": "suspended: true",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R4",
-   "observed": "\"kenji.kumar@acme.example\"",
+   "observed": "data_transfer_to: kenji.kumar@acme.example",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R5",
-   "observed": "true",
+   "observed": "deactivated: true",
    "source": "get_slack_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R6",
-   "observed": "[\"wipe_pending\", \"wipe_pending\"]",
+   "observed": "devices statuses: [\"wipe_pending\",\"wipe_pending\"]",
    "source": "list_devices",
    "holds": true
   },
   {
    "condition_id": "OFF-R7",
-   "observed": "\"resolved\"",
+   "observed": "incident state: resolved",
    "source": "get_incident",
    "holds": true
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "deleted: false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not verifiable with available single-subject lookups",
+   "source": "none",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.85,
  "tools_called": [
   "lookup_runbook",
   "get_hr_employee",
   "get_okta_user",
-  "get_okta_user",
   "get_google_user",
   "get_slack_user",
   "list_devices",
+  "get_okta_user",
   "get_incident"
  ],
  "tool_call_count": 8,
  "duplicate_tool_calls": 1,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.13,
+ "tool_latency_ms": 0.72,
  "observation_chars": 2883,
  "turns": 9,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.3,
- "llm_latency_ms": 0.0,
+ "input_tokens": 18359,
+ "output_tokens": 2237,
+ "reasoning_tokens": 1451,
+ "cached_tokens": 15104,
+ "total_tokens": 20596,
+ "llm_cost_usd": 0.00456125,
+ "total_cost_usd": 0.00456125,
+ "latency_ms": 39090.4,
+ "llm_latency_ms": 39025.2,
  "retry_attempted": true,
  "retry_success": true,
  "state_hash_before": "1f595d271093",

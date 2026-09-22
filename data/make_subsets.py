@@ -88,6 +88,18 @@ def main():
         held += [r["case_id"] for r in rng.sample(ch[f], k)]
     subsets["heldout_mini"] = held
 
+    # attack_heldout (EXPERIMENTS_FOR_CLAUDE_CODE.md F6 / D8-b): 4 premature_heldout cases, 4
+    # families never in heldout_mini, and complementary to D3-2's attack_base families (LH/ACC/
+    # LCK/TRF) so the two injection-matrix experiments together cover all 8 families.
+    ATTACK_HELDOUT_FAMILIES = ["standard_offboarding", "incident_on_hold_sla",
+                              "lost_or_stolen_device", "sla_breach_escalation"]
+    used = set(held)
+    attack_held = []
+    for f in ATTACK_HELDOUT_FAMILIES:
+        eligible = sorted(r["case_id"] for r in ph[f] if r["case_id"] not in used)
+        attack_held.append(rng.choice(eligible))
+    subsets["attack_heldout"] = attack_held
+
     labels = {r["case_id"]: r for rows in L.values() for r in rows}
     OUT.mkdir(exist_ok=True)
     print(f"{'subset':<16}{'n':>4}  decisions (declared)                 families  baseline FCR")

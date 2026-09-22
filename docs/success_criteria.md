@@ -1,6 +1,8 @@
 # Pre-registered success criteria (commit BEFORE D8; `run_eval` refuses the frozen manifest while blanks remain)
 
-Written: ___ (date) · Commit: ___ · Frozen config: `experiments/d8_heldout/final.yaml`
+Written: 2026-09-23 · Commit: ___ (fill in after committing this freeze - the frozen manifest
+refuses to run until a real commit hash replaces this and the git tree is clean) ·
+Frozen config: `experiments/d8_heldout/final.yaml`, `experiments/d8_heldout/d8b_injection.yaml`
 
 Baseline FCR on `heldout_mini` (from `python data/make_subsets.py`): **X = 47.5%** (n = 80).
 
@@ -16,4 +18,9 @@ On `heldout_mini`, OpsPilot succeeds if all hold:
 Statistics reported: cluster-bootstrap 95% CI (by task), exact McNemar p vs resolver alone, confusion matrix,
 per-family table. Power (A5): n = 80 gives ≈ 1.00 power for a halving at α = 0.05 under the simulation assumptions.
 
-Primary model: ___ (after A2 cost probe) · Prompt: ___ · Descriptors: ___ · Step cap: ___ · Budget cap/case: ___
+Primary model: `openai/gpt-5-mini` (A2: $0.00199/case measured, <<$0.009 threshold; D5 confirmed
+gpt-4o-mini and gemini-2.5-flash-lite are ~3x cheaper but genuinely unsafe - FCR 20.8% and 16.7%
+respectively on dev_mini, vs 0% for gpt-5-mini) · Prompt: v2b (D4-3: v2 fixed for the GEN-F1 blind
+spot and the "conditions the runbook doesn't list" over-check) · Descriptors: v2 (compact) ·
+Step cap: 10 (D4-1/D3-3 both showed step_cap=8 leaves zero headroom on 7+-call families) ·
+Budget cap/case: US$0.03

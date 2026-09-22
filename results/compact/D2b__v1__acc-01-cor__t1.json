@@ -1,0 +1,32 @@
+{
+ "ts": "2026-09-23T01:32:28",
+ "case_id": "acc-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.55,
+ "reason": "Could not retrieve the runbook KB-OPS-103 (get_doc returned errors after attempts), so required conditions cannot be checked.",
+ "cited_conditions": [
+  "KB-OPS-103-RUNBOOK-UNAVAILABLE"
+ ],
+ "evidence": [
+  {
+   "condition_id": "KB-OPS-103-RUNBOOK-UNAVAILABLE",
+   "observed": "{\"ok\": false, \"error\": \"missing argument 'runbook_id'\"}",
+   "source": "get_doc",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "get_doc",
+  "get_doc",
+  "get_doc",
+  "get_doc"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 5589,
+ "tokens_out": 847,
+ "cost_usd": 0.0,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

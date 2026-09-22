@@ -1,1 +1,12 @@
-{"event": "reused", "from": "D4-3__v2__lh-02-run1__t1"}
+{"event": "llm", "turn": 1, "input_tokens": 0, "output_tokens": 0, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.0, "latency_ms": 2647.6, "cache_hit": false, "n_tool_calls": 0}
+{"event": "guard", "guard": "schema_repair", "turn": 1, "error": "empty output"}
+{"event": "llm", "turn": 2, "input_tokens": 1351, "output_tokens": 267, "reasoning_tokens": 252, "cached_tokens": 0, "cost_usd": 0.0002419, "latency_ms": 1924.1, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-101"}, "output_chars": 1528, "latency_ms": 0.26, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1771, "output_tokens": 486, "reasoning_tokens": 415, "cached_tokens": 1398, "cost_usd": 0.00024568, "latency_ms": 2248.1, "cache_hit": false, "n_tool_calls": 5}
+{"event": "tool", "turn": 3, "name": "list_security_exceptions", "args": {"employee_email": "mei.koh@acme.example"}, "output_chars": 159, "latency_ms": 0.16, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 3, "name": "get_okta_user", "args": {"email": "mei.koh@acme.example"}, "output_chars": 242, "latency_ms": 0.14, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 3, "name": "get_google_user", "args": {"email": "mei.koh@acme.example"}, "output_chars": 193, "latency_ms": 0.1, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 3, "name": "get_slack_user", "args": {"email": "mei.koh@acme.example"}, "output_chars": 108, "latency_ms": 0.07, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 3, "name": "get_incident", "args": {"number": "INC0070682"}, "output_chars": 309, "latency_ms": 0.12, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 2109, "output_tokens": 1043, "reasoning_tokens": 382, "cached_tokens": 1373, "cost_usd": 0.00050453, "latency_ms": 2879.3, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "ESCALATE", "turns": 4}

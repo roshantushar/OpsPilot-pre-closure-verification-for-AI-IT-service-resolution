@@ -1,0 +1,54 @@
+{
+ "ts": "2026-09-22T23:47:58",
+ "case_id": "acc-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.86,
+ "reason": "Approval is present and approved, HR shows the employee active, Okta shows the user is a member of finance-reporting-extended, and the incident is in resolved state with work notes referencing the approval. [evidence guard: missing ['ACC-R3']]",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "ACC-P1",
+   "observed": "approved (APR0073883)",
+   "source": "list_approvals",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-P2",
+   "observed": "status: active",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R1",
+   "observed": "groups include finance-reporting-extended",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "state: resolved; work_notes mention APR0073883",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-F1",
+   "observed": "not checked (cannot verify modifications to other accounts)",
+   "source": "get_okta_user",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "get_incident",
+  "list_approvals",
+  "get_okta_user",
+  "get_hr_employee"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 7659,
+ "tokens_out": 1361,
+ "cost_usd": 0.00222345,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

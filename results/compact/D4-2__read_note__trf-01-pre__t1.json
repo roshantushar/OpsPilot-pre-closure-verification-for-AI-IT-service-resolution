@@ -1,0 +1,34 @@
+{
+ "ts": "2026-09-22T22:17:09",
+ "case_id": "trf-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.72,
+ "reason": "HR group hr-all was not added and HR department confirmation from HR record is not shown.",
+ "cited_conditions": [
+  "TRF-P1",
+  "TRF-R3"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "Ticket states employee moving to HR but no HR record or confirmation provided in ticket or closure note",
+   "source": "ticket",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "Closure note shows workday-hr was added but does not mention hr-all being added",
+   "source": "resolver_closure_note",
+   "holds": false
+  }
+ ],
+ "tools_called": [],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 740,
+ "tokens_out": 689,
+ "cost_usd": 0.001563,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

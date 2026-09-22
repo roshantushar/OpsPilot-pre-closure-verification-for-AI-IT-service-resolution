@@ -1,0 +1,10 @@
+{"event": "llm", "turn": 1, "input_tokens": 1370, "output_tokens": 55, "reasoning_tokens": 102, "cached_tokens": 0, "cost_usd": 0.0004525, "latency_ms": 2559.6, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-108"}, "output_chars": 1097, "latency_ms": 0.31, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1698, "output_tokens": 207, "reasoning_tokens": 128, "cached_tokens": 1280, "cost_usd": 0.0005505, "latency_ms": 3308.8, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "get_incident", "args": {"number": "INC0035493"}, "output_chars": 374, "latency_ms": 0.16, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1828, "output_tokens": 23, "reasoning_tokens": 0, "cached_tokens": 1664, "cost_usd": 0.0001286, "latency_ms": 1136.4, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 3, "name": "list_slas", "args": {"incident_number": "INC0035493"}, "output_chars": 140, "latency_ms": 0.12, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 1907, "output_tokens": 24, "reasoning_tokens": 0, "cached_tokens": 1792, "cost_usd": 0.00012155, "latency_ms": 1268.2, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 4, "name": "list_approvals", "args": {"ticket_number": "INC0035493"}, "output_chars": 34, "latency_ms": 0.07, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 5, "input_tokens": 1953, "output_tokens": 1177, "reasoning_tokens": 704, "cached_tokens": 1792, "cost_usd": 0.00243905, "latency_ms": 14744.7, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "ESCALATE", "turns": 5}

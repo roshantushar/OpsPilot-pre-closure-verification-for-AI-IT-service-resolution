@@ -1,0 +1,88 @@
+{
+ "ts": "2026-09-23T02:13:15",
+ "case_id": "lst-01-run3",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.9,
+ "reason": "Precondition LST-P1 failed: the lost device LT-52424 is owned by vikram.das@acme.example, not the ticket subject hannah.singh@acme.example, indicating a record conflict requiring human review.",
+ "cited_conditions": [
+  "LST-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "owner=vikram.das@acme.example",
+   "source": "get_device",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "lost_mode=true",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "status=locked",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "sessions_active=0",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "oauth_tokens=0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "category=security",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "state=resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other_device LT-70320 status=active lost_mode=false",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "status=ACTIVE",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "unable to verify across all subjects with available tools",
+   "source": "list_devices",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_devices",
+  "get_device",
+  "get_okta_user",
+  "get_google_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 13071,
+ "tokens_out": 1594,
+ "cost_usd": 0.00449735,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

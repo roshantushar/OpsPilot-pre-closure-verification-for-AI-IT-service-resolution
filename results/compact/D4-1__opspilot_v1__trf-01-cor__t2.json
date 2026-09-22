@@ -1,0 +1,61 @@
+{
+ "ts": "2026-09-22T21:44:05",
+ "case_id": "trf-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.9,
+ "reason": "HR shows new department 'HR' and Okta group membership matches the runbook required end state; the ticket is resolved in ServiceNow.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "sales-all not in groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "crm-users not in groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "hr-all present in groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "workday-hr present in groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "incident state: resolved",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 9137,
+ "tokens_out": 829,
+ "cost_usd": 0.00261745,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

@@ -1,0 +1,58 @@
+{
+ "ts": "2026-09-22T22:16:43",
+ "case_id": "lck-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.45,
+ "reason": "HR active status not provided and Okta unlocked state not explicitly confirmed in the provided closure note.",
+ "cited_conditions": [
+  "LCK-P1",
+  "LCK-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LCK-P1",
+   "observed": "HR status not present in ticket or closure note",
+   "source": "ticket",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R1",
+   "observed": "No explicit statement that Okta account is ACTIVE/unlocked; closure note implies access was restored but does not state Okta status",
+   "source": "resolver_claim",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R2",
+   "observed": "Closure note states 'required a password reset at next sign-in'",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R3",
+   "observed": "Closure note states 'issued an MFA reset'",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R4",
+   "observed": "Closure note states 'recorded identity verification'",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R5",
+   "observed": "Resolver proposed ticket state is 'resolved' and closure note requests closure sign-off",
+   "source": "resolver_claim",
+   "holds": true
+  }
+ ],
+ "tools_called": [],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 635,
+ "tokens_out": 1012,
+ "cost_usd": 0.00218275,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

@@ -1,1 +1,4 @@
-{"event": "reused", "from": "D4-3__v2__acc-01-pre__t1"}
+{"event": "llm", "turn": 1, "input_tokens": 0, "output_tokens": 0, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.0, "latency_ms": 2284.1, "cache_hit": false, "n_tool_calls": 0}
+{"event": "guard", "guard": "schema_repair", "turn": 1, "error": "empty output"}
+{"event": "llm", "turn": 2, "input_tokens": 0, "output_tokens": 0, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.0, "latency_ms": 2023.7, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "ESCALATE", "turns": 2}

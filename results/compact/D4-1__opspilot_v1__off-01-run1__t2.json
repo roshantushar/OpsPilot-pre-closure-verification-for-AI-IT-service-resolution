@@ -1,0 +1,77 @@
+{
+ "ts": "2026-09-22T21:40:09",
+ "case_id": "off-01-run1",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.85,
+ "reason": "Okta account shows active sessions remaining and Google account still has OAuth tokens; these indicate not all access was fully terminated per runbook.",
+ "cited_conditions": [
+  "okta_sessions_terminated",
+  "google_oauth_tokens_revoked"
+ ],
+ "evidence": [
+  {
+   "condition_id": "okta_sessions_terminated",
+   "observed": "sessions_active: 3",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "okta_account_deactivated",
+   "observed": "status: DEACTIVATED, groups: []",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "google_account_suspended_and_deleted",
+   "observed": "suspended: true, deleted: true, data_transfer_to: zhiwei.lau@acme.example",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "google_oauth_tokens_revoked",
+   "observed": "oauth_tokens: 16",
+   "source": "get_google_user",
+   "holds": false
+  },
+  {
+   "condition_id": "slack_deactivated",
+   "observed": "deactivated: true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "devices_wipe_queued",
+   "observed": "devices: [{device_id: LT-51909, status: wipe_pending}, {device_id: LT-90609, status: wipe_pending}]",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "hr_status_terminated",
+   "observed": "status: terminated, legal_hold: false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "incident_resolved",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 9295,
+ "tokens_out": 911,
+ "cost_usd": 0.00276335,
+ "expected_decision": "ESCALATE",
+ "correct": false
+}

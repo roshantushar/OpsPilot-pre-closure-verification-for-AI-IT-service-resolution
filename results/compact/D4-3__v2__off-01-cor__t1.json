@@ -1,0 +1,93 @@
+{
+ "ts": "2026-09-22T22:49:58",
+ "case_id": "off-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.9,
+ "reason": "All preconditions are met, no never-do conditions occurred, and every required end state has direct tool evidence showing completion.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "OFF-P1",
+   "observed": "status: terminated",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-P2",
+   "observed": "legal_hold: false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R1",
+   "observed": "status: DEACTIVATED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R2",
+   "observed": "groups: []",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "suspended: true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "data_transfer_to: zhiwei.lau@acme.example",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "deactivated: true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "devices: LT-51909 status wipe_pending; LT-90609 status wipe_pending",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R7",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "deleted: false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "Okta record shows email matching ticket subject and groups cleared (no other-account modifications observed)",
+   "source": "get_okta_user",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 8,
+ "tokens_in": 14661,
+ "tokens_out": 1897,
+ "cost_usd": 0.00478085,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

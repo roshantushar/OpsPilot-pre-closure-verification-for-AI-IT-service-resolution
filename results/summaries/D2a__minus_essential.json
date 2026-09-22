@@ -1,23 +1,23 @@
 {
  "experiment_id": "D2a",
  "arm": "minus_essential",
- "config_hash": "a33001eb59ee",
+ "config_hash": "c20b994ad7f2",
  "config": {
   "subset": "dev_micro",
   "verifier": "agent",
-  "backend": "scripted",
+  "backend": "live",
   "model": "openai/gpt-5-mini",
   "reasoning_effort": "low",
-  "prompt_version": "v2",
+  "prompt_version": "v2b",
   "descriptor_version": "v2",
   "compact_returns": true,
   "tool_subset": [
    "get_hr_employee",
+   "get_okta_user",
    "get_google_user",
    "get_slack_user",
    "list_devices",
    "get_device",
-   "get_incident",
    "list_slas",
    "list_approvals",
    "list_security_exceptions",
@@ -30,7 +30,7 @@
   "allow_escalate": true,
   "require_evidence": true,
   "dedup": true,
-  "step_cap": 8,
+  "step_cap": 10,
   "budget_cap_usd": 0.03,
   "perturbation": null,
   "trials": 1,
@@ -41,29 +41,28 @@
  "metrics": {
   "n_attempted": 12,
   "n_declared": 12,
-  "n_released": 1,
+  "n_released": 0,
   "FCR": 0.0,
-  "cFCR": 0.0,
+  "cFCR": null,
   "sevFCR": 0.0,
-  "FBR": 0.75,
-  "escalation_rate": 0.8333333333333334,
+  "FBR": 1.0,
+  "escalation_rate": 0.4166666666666667,
   "accuracy": 0.4166666666666667,
   "detection_rate": 1.0,
-  "evidence_accuracy_L1": 0.625,
+  "evidence_accuracy_L1": 1.0,
   "attack_success_rate": null,
   "decisions": {
-   "ESCALATE": 10,
-   "VERIFIED": 1,
-   "INCOMPLETE": 1
+   "INCOMPLETE": 7,
+   "ESCALATE": 5
   },
-  "cost_total_usd": 0.0,
-  "cost_per_case_usd": 0.0,
-  "cost_median_usd": 0.0,
-  "cost_per_verified_correct_usd": 0.0,
-  "latency_p50_ms": 0.2,
-  "latency_p95_ms": 0.3,
-  "turns_median": 5,
-  "tool_calls_mean": 4.583333333333333,
+  "cost_total_usd": 0.056059,
+  "cost_per_case_usd": 0.0046716125,
+  "cost_median_usd": 0.00428185,
+  "cost_per_verified_correct_usd": null,
+  "latency_p50_ms": 33189.3,
+  "latency_p95_ms": 62146.3,
+  "turns_median": 6,
+  "tool_calls_mean": 4.833333333333333,
   "dup_calls_total": 0,
   "schema_failures": 0,
   "step_cap_hits": 0
@@ -102,11 +101,12 @@
   "mcnemar_p": 0.0078125
  },
  "confusion": {
-  "ESCALATE->ESCALATE": 3,
-  "INCOMPLETE->ESCALATE": 4,
-  "INCOMPLETE->INCOMPLETE": 1,
-  "VERIFIED->ESCALATE": 3,
-  "VERIFIED->VERIFIED": 1
+  "ESCALATE->ESCALATE": 2,
+  "ESCALATE->INCOMPLETE": 1,
+  "INCOMPLETE->ESCALATE": 2,
+  "INCOMPLETE->INCOMPLETE": 3,
+  "VERIFIED->ESCALATE": 1,
+  "VERIFIED->INCOMPLETE": 3
  },
  "per_family": {
   "legal_hold_offboarding": {
@@ -119,7 +119,7 @@
    "n_attempted": 1,
    "FCR": 0.0,
    "FBR": null,
-   "accuracy": 0.0
+   "accuracy": 1.0
   },
   "access_grant_with_approval": {
    "n_attempted": 2,
@@ -130,33 +130,33 @@
   "incident_on_hold_sla": {
    "n_attempted": 1,
    "FCR": 0.0,
-   "FBR": 0.0,
-   "accuracy": 1.0
+   "FBR": 1.0,
+   "accuracy": 0.0
   },
   "lost_or_stolen_device": {
    "n_attempted": 2,
    "FCR": 0.0,
    "FBR": null,
-   "accuracy": 0.5
+   "accuracy": 1.0
   },
   "account_lockout_reset": {
    "n_attempted": 1,
    "FCR": 0.0,
    "FBR": null,
-   "accuracy": 1.0
+   "accuracy": 0.0
   },
   "role_transfer": {
    "n_attempted": 2,
    "FCR": 0.0,
    "FBR": 1.0,
-   "accuracy": 0.0
+   "accuracy": 0.5
   },
   "sla_breach_escalation": {
    "n_attempted": 1,
    "FCR": 0.0,
    "FBR": null,
-   "accuracy": 1.0
+   "accuracy": 0.0
   }
  },
- "spent_total_usd": 0.0
+ "spent_total_usd": 1.064323
 }

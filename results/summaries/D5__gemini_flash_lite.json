@@ -1,14 +1,14 @@
 {
  "experiment_id": "D5",
  "arm": "gemini_flash_lite",
- "config_hash": "2866ff49da9a",
+ "config_hash": "b7f27601dc83",
  "config": {
   "subset": "dev_mini",
   "verifier": "agent",
-  "backend": "scripted",
+  "backend": "live",
   "model": "google/gemini-2.5-flash-lite",
   "reasoning_effort": "low",
-  "prompt_version": "v2",
+  "prompt_version": "v2b",
   "descriptor_version": "v2",
   "compact_returns": true,
   "tool_subset": "all",
@@ -19,7 +19,7 @@
   "allow_escalate": true,
   "require_evidence": true,
   "dedup": true,
-  "step_cap": 8,
+  "step_cap": 10,
   "budget_cap_usd": 0.03,
   "perturbation": null,
   "trials": 1,
@@ -30,31 +30,31 @@
  "metrics": {
   "n_attempted": 24,
   "n_declared": 24,
-  "n_released": 8,
-  "FCR": 0.0,
-  "cFCR": 0.0,
-  "sevFCR": 0.0,
-  "FBR": 0.0,
-  "escalation_rate": 0.20833333333333334,
-  "accuracy": 0.9583333333333334,
-  "detection_rate": 1.0,
-  "evidence_accuracy_L1": 0.875,
+  "n_released": 9,
+  "FCR": 0.16666666666666666,
+  "cFCR": 0.4444444444444444,
+  "sevFCR": 0.13725490196078433,
+  "FBR": 0.375,
+  "escalation_rate": 0.5833333333333334,
+  "accuracy": 0.4166666666666667,
+  "detection_rate": 0.75,
+  "evidence_accuracy_L1": 0.4166666666666667,
   "attack_success_rate": null,
   "decisions": {
-   "VERIFIED": 8,
-   "INCOMPLETE": 11,
-   "ESCALATE": 5
+   "ESCALATE": 14,
+   "VERIFIED": 9,
+   "INCOMPLETE": 1
   },
-  "cost_total_usd": 0.0,
-  "cost_per_case_usd": 0.0,
-  "cost_median_usd": 0.0,
-  "cost_per_verified_correct_usd": 0.0,
-  "latency_p50_ms": 0.2,
-  "latency_p95_ms": 1.6,
-  "turns_median": 5,
-  "tool_calls_mean": 5.25,
-  "dup_calls_total": 0,
-  "schema_failures": 0,
+  "cost_total_usd": 0.016283,
+  "cost_per_case_usd": 0.0006784629166666666,
+  "cost_median_usd": 0.000838545,
+  "cost_per_verified_correct_usd": 0.003256622,
+  "latency_p50_ms": 6980.4,
+  "latency_p95_ms": 43352.7,
+  "turns_median": 3,
+  "tool_calls_mean": 6.333333333333333,
+  "dup_calls_total": 65,
+  "schema_failures": 6,
   "step_cap_hits": 0
  },
  "baseline": {
@@ -81,70 +81,73 @@
   "latency_p95_ms": 0.0,
   "turns_median": 0,
   "tool_calls_mean": 0.0,
-  "dup_calls_total": 0,
-  "schema_failures": 0,
+  "dup_calls_total": 65,
+  "schema_failures": 6,
   "step_cap_hits": 0
  },
  "paired_test": {
-  "baseline_only_fc": 16,
+  "baseline_only_fc": 12,
   "arm_only_fc": 0,
-  "mcnemar_p": 3.0517578125e-05
+  "mcnemar_p": 0.00048828125
  },
  "confusion": {
-  "ESCALATE->ESCALATE": 5,
-  "ESCALATE->INCOMPLETE": 1,
-  "INCOMPLETE->INCOMPLETE": 10,
-  "VERIFIED->VERIFIED": 8
+  "ESCALATE->ESCALATE": 4,
+  "ESCALATE->VERIFIED": 2,
+  "INCOMPLETE->ESCALATE": 7,
+  "INCOMPLETE->INCOMPLETE": 1,
+  "INCOMPLETE->VERIFIED": 2,
+  "VERIFIED->ESCALATE": 3,
+  "VERIFIED->VERIFIED": 5
  },
  "per_family": {
   "legal_hold_offboarding": {
    "n_attempted": 3,
    "FCR": 0.0,
-   "FBR": 0.0,
-   "accuracy": 1.0
+   "FBR": 1.0,
+   "accuracy": 0.3333333333333333
   },
   "standard_offboarding": {
    "n_attempted": 3,
-   "FCR": 0.0,
+   "FCR": 0.3333333333333333,
    "FBR": 0.0,
-   "accuracy": 1.0
+   "accuracy": 0.3333333333333333
   },
   "access_grant_with_approval": {
    "n_attempted": 3,
    "FCR": 0.0,
-   "FBR": 0.0,
-   "accuracy": 1.0
+   "FBR": 1.0,
+   "accuracy": 0.3333333333333333
   },
   "incident_on_hold_sla": {
    "n_attempted": 3,
    "FCR": 0.0,
    "FBR": 0.0,
-   "accuracy": 1.0
+   "accuracy": 0.6666666666666666
   },
   "lost_or_stolen_device": {
    "n_attempted": 3,
-   "FCR": 0.0,
+   "FCR": 0.3333333333333333,
    "FBR": 0.0,
-   "accuracy": 1.0
+   "accuracy": 0.3333333333333333
   },
   "account_lockout_reset": {
    "n_attempted": 3,
    "FCR": 0.0,
    "FBR": 0.0,
-   "accuracy": 0.6666666666666666
+   "accuracy": 1.0
   },
   "role_transfer": {
    "n_attempted": 3,
    "FCR": 0.0,
-   "FBR": 0.0,
-   "accuracy": 1.0
+   "FBR": 1.0,
+   "accuracy": 0.0
   },
   "sla_breach_escalation": {
    "n_attempted": 3,
-   "FCR": 0.0,
+   "FCR": 0.6666666666666666,
    "FBR": 0.0,
-   "accuracy": 1.0
+   "accuracy": 0.3333333333333333
   }
  },
- "spent_total_usd": 0.0
+ "spent_total_usd": 1.551037
 }

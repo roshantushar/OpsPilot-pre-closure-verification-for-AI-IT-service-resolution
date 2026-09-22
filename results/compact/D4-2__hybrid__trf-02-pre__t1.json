@@ -1,0 +1,76 @@
+{
+ "ts": "2026-09-22T22:27:09",
+ "case_id": "trf-02-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.5,
+ "reason": "unmappable conditions ['GEN-F1']; precondition failed ['HR-UNIQUE']; forbidden ['TRF-F1']; problems []",
+ "cited_conditions": [
+  "GEN-F1",
+  "HR-UNIQUE",
+  "TRF-F1",
+  "TRF-R4"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "\"Sales\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "HR-UNIQUE",
+   "observed": "null",
+   "source": "get_hr_employee",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "[\"all-staff\", \"sales-all\"]",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "[\"all-staff\", \"sales-all\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "[\"all-staff\", \"sales-all\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "[\"all-staff\", \"sales-all\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "[\"all-staff\", \"sales-all\"]",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 807,
+ "tokens_out": 1184,
+ "cost_usd": 0.00256975,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

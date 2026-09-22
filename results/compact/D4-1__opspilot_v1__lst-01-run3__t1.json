@@ -1,0 +1,79 @@
+{
+ "ts": "2026-09-22T21:27:58",
+ "case_id": "lst-01-run3",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.86,
+ "reason": "The reported device LT-52424 is not found in the device inventory (precondition LST-P1 fails), so lost-mode/lock (LST-R1/LST-R2) cannot be verified; incident recategorization and resolution (LST-R5/LST-R6) are also unverified.",
+ "cited_conditions": [
+  "LST-P1",
+  "LST-R1",
+  "LST-R2",
+  "LST-R5",
+  "LST-R6"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "Device list for user contains only LT-70320; LT-52424 not present",
+   "source": "list_devices",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "No record of lost_mode enabled for LT-52424 (device not found); user's devices show lost_mode=false for LT-70320",
+   "source": "list_devices",
+   "holds": null
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "No record that LT-52424 is locked (device not found); LT-70320 status=active",
+   "source": "list_devices",
+   "holds": null
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "Okta sessions_active=0 (no active sessions)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "Google oauth_tokens=0 (no OAuth tokens present)",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "Original ticket category=hardware; resolver claims recategorised to security but no system record available to verify",
+   "source": "ticket payload / resolver_claim",
+   "holds": null
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "Resolver proposed ticket_state=resolved but no authoritative ticketing system record was available to confirm",
+   "source": "resolver_claim",
+   "holds": null
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "Only the subject's devices/accounts were inspected; no modifications to other users observed (LT-70320 remains active)",
+   "source": "list_devices,get_okta_user",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "list_devices",
+  "get_okta_user",
+  "get_google_user"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 8527,
+ "tokens_out": 1173,
+ "cost_usd": 0.003207,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

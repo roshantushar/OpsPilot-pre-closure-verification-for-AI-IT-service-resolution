@@ -1,0 +1,49 @@
+{
+ "ts": "2026-09-22T23:50:01",
+ "case_id": "trf-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.7,
+ "reason": "Google org unit still shows /Staff/Sales (should be moved to HR); Okta and HR records meet their conditions.",
+ "cited_conditions": [
+  "R-2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "P-1",
+   "observed": "department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "R-1",
+   "observed": "groups: [\"all-staff\",\"workday-hr\"] (no sales-all, no crm-users)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "R-2",
+   "observed": "org_unit: \"/Staff/Sales\"",
+   "source": "get_google_user",
+   "holds": false
+  },
+  {
+   "condition_id": "F-1",
+   "observed": "not verifiable with available single-subject lookups",
+   "source": "get_okta_user",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "get_okta_user",
+  "get_hr_employee",
+  "get_google_user"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 5841,
+ "tokens_out": 1053,
+ "cost_usd": 0.00270225,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

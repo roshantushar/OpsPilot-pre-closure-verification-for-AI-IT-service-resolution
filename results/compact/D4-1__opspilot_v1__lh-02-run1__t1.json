@@ -1,0 +1,64 @@
+{
+ "ts": "2026-09-22T21:25:04",
+ "case_id": "lh-02-run1",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.82,
+ "reason": "Okta account shows an active session which indicates access may still be possible; this violates the runbook requirement to fully deactivate and terminate sessions before closure.",
+ "cited_conditions": [
+  "OKTA_SESSIONS_ACTIVE"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OKTA_SESSIONS_ACTIVE",
+   "observed": "sessions_active=1",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "GOOGLE_SUSPENDED_AND_OU",
+   "observed": "suspended=true, org_unit=/Legal Hold, oauth_tokens=0, force_password_reset=true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "SLACK_DEACTIVATED",
+   "observed": "deactivated=true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "HR_LEGAL_HOLD",
+   "observed": "legal_hold=true",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "SECURITY_EXCEPTION_ACTIVE",
+   "observed": "legal_hold active (SEC0058499)",
+   "source": "list_security_exceptions",
+   "holds": true
+  },
+  {
+   "condition_id": "INTUNE_DEVICE_PRESERVED",
+   "observed": "device LT-94109 status=active (not wiped)",
+   "source": "list_devices",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_google_user",
+  "get_okta_user",
+  "get_slack_user",
+  "list_security_exceptions",
+  "list_devices"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 8986,
+ "tokens_out": 733,
+ "cost_usd": 0.0023301,
+ "expected_decision": "ESCALATE",
+ "correct": false
+}

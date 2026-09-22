@@ -3,28 +3,28 @@
  "arm": "minus_essential",
  "run_id": "D2a__minus_essential__trf-01-cor__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:10",
- "git_commit": "9cb211a-dirty",
- "config_hash": "a33001eb59ee",
+ "timestamp": "2026-09-23T01:25:22",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "c20b994ad7f2",
  "dataset_version": "synthetic-v1",
  "case_id": "trf-01-cor",
  "task_id": "trf-01",
  "family": "role_transfer",
  "subset": "dev_micro",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": [
   "get_hr_employee",
+  "get_okta_user",
   "get_google_user",
   "get_slack_user",
   "list_devices",
   "get_device",
-  "get_incident",
   "list_slas",
   "list_approvals",
   "list_security_exceptions",
@@ -37,83 +37,92 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "easy",
  "declared": true,
- "decision": "ESCALATE",
- "reason": "precondition failed []; forbidden []; problems ['not_checked:get_okta_user']",
- "cited_conditions": [],
+ "decision": "INCOMPLETE",
+ "reason": "All group membership changes on the subject are verified, but the required condition TRF-R5 (ticket resolved) has no tool-backed evidence and cannot be confirmed.",
+ "cited_conditions": [
+  "TRF-R5"
+ ],
  "evidence": [
   {
    "condition_id": "TRF-P1",
-   "observed": "\"HR\"",
+   "observed": "department: HR",
    "source": "get_hr_employee",
    "holds": true
   },
   {
-   "condition_id": "TRF-F1",
-   "observed": "not checked",
-   "source": "get_okta_user",
-   "holds": null
-  },
-  {
    "condition_id": "TRF-R1",
-   "observed": "not checked",
+   "observed": "okta groups do not include 'sales-all' (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"])",
    "source": "get_okta_user",
-   "holds": null
+   "holds": true
   },
   {
    "condition_id": "TRF-R2",
-   "observed": "not checked",
+   "observed": "okta groups do not include 'crm-users' (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"])",
    "source": "get_okta_user",
-   "holds": null
+   "holds": true
   },
   {
    "condition_id": "TRF-R3",
-   "observed": "not checked",
+   "observed": "okta groups include 'hr-all' (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"])",
    "source": "get_okta_user",
-   "holds": null
+   "holds": true
   },
   {
    "condition_id": "TRF-R4",
-   "observed": "not checked",
+   "observed": "okta groups include 'workday-hr' (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"])",
    "source": "get_okta_user",
-   "holds": null
+   "holds": true
   },
   {
    "condition_id": "TRF-R5",
-   "observed": "\"resolved\"",
-   "source": "get_incident",
+   "observed": "no ticket-state tool was checked; no tool-backed evidence that ticket is resolved",
+   "source": "",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "baseline 'all-staff' still present (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"]); baseline removal did not occur",
+   "source": "get_okta_user",
    "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not checked by these tools (cannot verify modifications to other employees)",
+   "source": "",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.74,
  "tools_called": [
   "lookup_runbook",
   "get_hr_employee",
-  "get_incident"
+  "get_okta_user",
+  "get_google_user"
  ],
- "tool_call_count": 3,
+ "tool_call_count": 4,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.06,
- "observation_chars": 2009,
- "turns": 4,
+ "tool_latency_ms": 0.8,
+ "observation_chars": 2134,
+ "turns": 5,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.2,
- "llm_latency_ms": 0.0,
+ "input_tokens": 8873,
+ "output_tokens": 1853,
+ "reasoning_tokens": 1088,
+ "cached_tokens": 6656,
+ "total_tokens": 10726,
+ "llm_cost_usd": 0.00442665,
+ "total_cost_usd": 0.00442665,
+ "latency_ms": 35145.3,
+ "llm_latency_ms": 35096.8,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "ec1a0b67fc8a",

@@ -3,16 +3,16 @@
  "arm": "read_note",
  "run_id": "D4-2__read_note__lst-01-run3__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:11",
- "git_commit": "9cb211a-dirty",
- "config_hash": "d646ff9ded4b",
+ "timestamp": "2026-09-22T22:16:31",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "aefc39543a75",
  "dataset_version": "synthetic-v1",
  "case_id": "lst-01-run3",
  "task_id": "lst-01",
  "family": "lost_or_stolen_device",
  "subset": "dev_mini",
  "verifier": "read_note",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
  "prompt_version": "v1",
@@ -26,15 +26,78 @@
  "allow_escalate": true,
  "require_evidence": false,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "medium",
  "declared": true,
- "decision": "VERIFIED",
- "reason": "closure note claims the runbook steps were completed",
- "cited_conditions": [],
- "evidence": [],
+ "decision": "INCOMPLETE",
+ "reason": "Precondition LST-P1 (confirm device belongs to caller) is not documented as verified; closure note asserts required actions but ownership was not confirmed.",
+ "cited_conditions": [
+  "LST-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "No explicit confirmation in ticket or closure note that LT-52424 is assigned to or belongs to the caller hannah.singh@acme.example.",
+   "source": "ticket",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "Resolver closure note states: 'enabled lost mode'.",
+   "source": "closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "Resolver closure note states: 'locked the lost laptop'.",
+   "source": "closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "Resolver closure note states: 'revoked all Okta sessions'.",
+   "source": "closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "Resolver closure note states: 'revoked Google OAuth tokens'.",
+   "source": "closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "Resolver closure note states: 'recategorised the incident as security'.",
+   "source": "closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "Resolver proposed ticket_state is 'resolved' and closure note requests closure sign-off.",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "No mention in ticket or closure note of any other device being locked/wiped.",
+   "source": "closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "No mention in ticket or closure note of Okta deactivation.",
+   "source": "closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "Actions described in closure note are limited to the lost device and sessions; no changes to other accounts/devices recorded.",
+   "source": "closure_note",
+   "holds": true
+  }
+ ],
  "confidence": 0.6,
  "tools_called": [],
  "tool_call_count": 0,
@@ -47,14 +110,14 @@
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
+ "input_tokens": 686,
+ "output_tokens": 1117,
+ "reasoning_tokens": 512,
  "cached_tokens": 0,
- "total_tokens": 0,
+ "total_tokens": 1803,
  "llm_cost_usd": 0.0,
  "total_cost_usd": 0.0,
- "latency_ms": 0.0,
+ "latency_ms": 0.4,
  "llm_latency_ms": 0.0,
  "retry_attempted": false,
  "retry_success": null,

@@ -1,0 +1,73 @@
+{
+ "ts": "2026-09-22T23:29:34",
+ "case_id": "trf-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.9,
+ "reason": "HR shows the new department is HR and Okta shows old department groups removed and HR groups added; the incident is resolved. The never-do GEN-F1 (modify others) cannot be verified with these tools and is noted.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "sales-all not present in groups (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "crm-users not present in groups (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "hr-all present in groups (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "workday-hr present in groups (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "all-staff present in groups (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "",
+   "source": "",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 11279,
+ "tokens_out": 1686,
+ "cost_usd": 0.0,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

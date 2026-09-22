@@ -1,0 +1,95 @@
+{
+ "ts": "2026-09-22T23:29:34",
+ "case_id": "off-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.85,
+ "reason": "The incident is still in_progress (OFF-R7 is false); all other required end states are evidenced as satisfied.",
+ "cited_conditions": [
+  "OFF-R7"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OFF-P1",
+   "observed": "terminated",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-P2",
+   "observed": "legal_hold=false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R1",
+   "observed": "DEACTIVATED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R2",
+   "observed": "groups=[]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "suspended=true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "data_transfer_to=zhiwei.lau@acme.example",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "deactivated=true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "all devices status = [\"wipe_pending\",\"wipe_pending\"]",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R7",
+   "observed": "state=in_progress",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "deleted=false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "",
+   "source": "",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 8,
+ "tokens_in": 16054,
+ "tokens_out": 1819,
+ "cost_usd": 0.0,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

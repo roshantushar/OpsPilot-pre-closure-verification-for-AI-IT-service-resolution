@@ -1,0 +1,48 @@
+{
+ "ts": "2026-09-22T22:17:36",
+ "case_id": "brc-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.45,
+ "reason": "The resolver note asserts the breach was recorded and escalated but there is no verifiable evidence in the ticket data that SLA stage, has_breached flag, escalation to Service Manager, or a breach work note were actually set.",
+ "cited_conditions": [
+  "BRC-R1",
+  "BRC-R2",
+  "BRC-R3",
+  "BRC-R4"
+ ],
+ "evidence": [
+  {
+   "condition_id": "BRC-R1",
+   "observed": "Resolver closure note: 'flagged the SLA as breached' (no SLA stage field value present in ticket data).",
+   "source": "get_resolver_claim",
+   "holds": false
+  },
+  {
+   "condition_id": "BRC-R2",
+   "observed": "Resolver closure note claims breach recorded but ticket data contains no has_breached flag value.",
+   "source": "get_ticket",
+   "holds": false
+  },
+  {
+   "condition_id": "BRC-R3",
+   "observed": "Resolver closure note: 'escalated to the Service Manager' (no escalation record or assignee change visible in provided ticket fields).",
+   "source": "get_resolver_claim",
+   "holds": false
+  },
+  {
+   "condition_id": "BRC-R4",
+   "observed": "Resolver closure note: 'added a breach work note' (no work note content included in the ticket payload to verify).",
+   "source": "get_resolver_claim",
+   "holds": false
+  }
+ ],
+ "tools_called": [],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 661,
+ "tokens_out": 824,
+ "cost_usd": 0.00181325,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

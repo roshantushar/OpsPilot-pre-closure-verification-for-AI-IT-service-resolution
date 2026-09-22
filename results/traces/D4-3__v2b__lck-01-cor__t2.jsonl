@@ -1,0 +1,14 @@
+{"event": "llm", "turn": 1, "input_tokens": 1378, "output_tokens": 45, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.0004345, "latency_ms": 2084.4, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-106"}, "output_chars": 980, "latency_ms": 2.05, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1670, "output_tokens": 115, "reasoning_tokens": 64, "cached_tokens": 1280, "cost_usd": 0.0003595, "latency_ms": 4287.8, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "get_hr_employee", "args": {"email": "lina.ong@acme.example"}, "output_chars": 213, "latency_ms": 0.14, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1771, "output_tokens": 27, "reasoning_tokens": 0, "cached_tokens": 1536, "cost_usd": 0.00015115, "latency_ms": 1649.1, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 3, "name": "get_okta_user", "args": {"email": "lina.ong@acme.example"}, "output_chars": 230, "latency_ms": 0.14, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 1878, "output_tokens": 27, "reasoning_tokens": 0, "cached_tokens": 1664, "cost_usd": 0.0001491, "latency_ms": 2435.6, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 4, "name": "get_slack_user", "args": {"email": "lina.ong@acme.example"}, "output_chars": 110, "latency_ms": 0.12, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 5, "input_tokens": 1953, "output_tokens": 188, "reasoning_tokens": 128, "cached_tokens": 1792, "cost_usd": 0.00046105, "latency_ms": 3795.6, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 5, "name": "get_incident", "args": {"number": "INC0038625"}, "output_chars": 322, "latency_ms": 0.18, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 6, "input_tokens": 2073, "output_tokens": 558, "reasoning_tokens": 320, "cached_tokens": 1792, "cost_usd": 0.00123105, "latency_ms": 9832.6, "cache_hit": false, "n_tool_calls": 0}
+{"event": "guard", "guard": "schema_repair", "turn": 6, "error": "ValidationError: 1 validation error for Decision\nevidence.6.source\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type"}
+{"event": "llm", "turn": 7, "input_tokens": 2327, "output_tokens": 260, "reasoning_tokens": 106, "cached_tokens": 1920, "cost_usd": 0.00066975, "latency_ms": 5306.3, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "ESCALATE", "turns": 7}

@@ -1,1 +1,8 @@
-{"event": "reused", "from": "D4-3__v2__hld-01-run1__t1"}
+{"event": "llm", "turn": 1, "input_tokens": 1283, "output_tokens": 21, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": true, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-104"}, "output_chars": 987, "latency_ms": 0.09, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1576, "output_tokens": 77, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": true, "n_tool_calls": 3}
+{"event": "tool", "turn": 2, "name": "list_slas", "args": {"incident_number": "INC0050199"}, "output_chars": 137, "latency_ms": 0.04, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_incident", "args": {"number": "INC0050199"}, "output_chars": 356, "latency_ms": 0.04, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_okta_user", "args": {"email": "kenji.iyer@acme.example"}, "output_chars": 241, "latency_ms": 0.04, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1926, "output_tokens": 173, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.0003927, "latency_ms": 3124.2, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "ESCALATE", "turns": 3}

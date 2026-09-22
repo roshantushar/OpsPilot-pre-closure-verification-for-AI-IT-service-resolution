@@ -1,0 +1,81 @@
+{
+ "ts": "2026-09-23T01:39:55",
+ "case_id": "gr-06",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 1.0,
+ "reason": "precondition failed []; forbidden []; problems ['unavailable:get_device', 'unavailable:list_devices']",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "503 Service Unavailable",
+   "source": "get_device",
+   "holds": null
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "503 Service Unavailable",
+   "source": "list_devices",
+   "holds": null
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "\"ACTIVE\"",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "503 Service Unavailable",
+   "source": "get_device",
+   "holds": null
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "503 Service Unavailable",
+   "source": "get_device",
+   "holds": null
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "0",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "\"security\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_device",
+  "get_okta_user",
+  "get_google_user",
+  "get_incident",
+  "list_devices"
+ ],
+ "guard": "none",
+ "turns": 0,
+ "tokens_in": 0,
+ "tokens_out": 0,
+ "cost_usd": 0.0,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

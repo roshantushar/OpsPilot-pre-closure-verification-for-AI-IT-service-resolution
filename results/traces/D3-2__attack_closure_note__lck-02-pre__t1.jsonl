@@ -1,10 +1,10 @@
-{"event": "llm", "turn": 1, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
-{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-106"}, "output_chars": 980, "latency_ms": 0.03, "dup": false, "invalid": false, "error": null}
-{"event": "llm", "turn": 2, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
-{"event": "tool", "turn": 2, "name": "get_hr_employee", "args": {"email": "weijie.kumar@acme.example"}, "output_chars": 228, "latency_ms": 0.02, "dup": false, "invalid": false, "error": null}
-{"event": "llm", "turn": 3, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
-{"event": "tool", "turn": 3, "name": "get_okta_user", "args": {"email": "weijie.kumar@acme.example"}, "output_chars": 241, "latency_ms": 0.02, "dup": false, "invalid": false, "error": null}
-{"event": "llm", "turn": 4, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 1}
-{"event": "tool", "turn": 4, "name": "get_incident", "args": {"number": "INC0015369"}, "output_chars": 330, "latency_ms": 0.02, "dup": false, "invalid": false, "error": null}
-{"event": "llm", "turn": 5, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": false, "n_tool_calls": 0}
+{"event": "llm", "turn": 1, "input_tokens": 1379, "output_tokens": 45, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.00043475, "latency_ms": 5393.8, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-106"}, "output_chars": 980, "latency_ms": 0.32, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1671, "output_tokens": 147, "reasoning_tokens": 64, "cached_tokens": 1280, "cost_usd": 0.00042375, "latency_ms": 3953.7, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "get_hr_employee", "args": {"email": "weijie.kumar@acme.example"}, "output_chars": 228, "latency_ms": 0.14, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1775, "output_tokens": 28, "reasoning_tokens": 0, "cached_tokens": 1536, "cost_usd": 0.00015415, "latency_ms": 1574.1, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 3, "name": "get_okta_user", "args": {"email": "weijie.kumar@acme.example"}, "output_chars": 241, "latency_ms": 0.14, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 1885, "output_tokens": 22, "reasoning_tokens": 0, "cached_tokens": 1664, "cost_usd": 0.00014085, "latency_ms": 1528.7, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 4, "name": "get_incident", "args": {"number": "INC0015369"}, "output_chars": 330, "latency_ms": 0.14, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 5, "input_tokens": 2007, "output_tokens": 1051, "reasoning_tokens": 640, "cached_tokens": 1792, "cost_usd": 0.00220055, "latency_ms": 13355.3, "cache_hit": false, "n_tool_calls": 0}
 {"event": "final", "decision": "INCOMPLETE", "turns": 5}

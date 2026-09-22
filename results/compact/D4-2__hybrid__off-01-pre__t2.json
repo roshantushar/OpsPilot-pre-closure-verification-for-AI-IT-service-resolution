@@ -1,0 +1,101 @@
+{
+ "ts": "2026-09-22T22:36:13",
+ "case_id": "off-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 1.0,
+ "reason": "precondition failed []; forbidden ['OFF-F1']; problems [] (known blind spot, not checked: ['GEN-F1'])",
+ "cited_conditions": [
+  "OFF-F1",
+  "OFF-R7"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OFF-P1",
+   "observed": "\"terminated\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-P2",
+   "observed": "false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "false",
+   "source": "get_google_user",
+   "holds": false
+  },
+  {
+   "condition_id": "OFF-R1",
+   "observed": "\"DEACTIVATED\"",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R2-1",
+   "observed": "[]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R2-2",
+   "observed": "[]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R2-3",
+   "observed": "[]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "\"zhiwei.lau@acme.example\"",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "[\"wipe_pending\", \"wipe_pending\"]",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R7",
+   "observed": "\"in_progress\"",
+   "source": "get_incident",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 1096,
+ "tokens_out": 1337,
+ "cost_usd": 0.002948,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

@@ -1,0 +1,59 @@
+{
+ "ts": "2026-09-22T23:48:10",
+ "case_id": "hld-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.9,
+ "reason": "All required end-state conditions have tool evidence: incident is on hold with reason Awaiting Caller, SLA is paused, work note added, and the ticket subject is an active employee. The unverifiable 'do not modify others' never-do was noted but did not block verification.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "HLD-R1",
+   "observed": "on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "Awaiting Caller",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "On hold: awaiting caller response with logs.",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "paused",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-P1",
+   "observed": "active",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-F1",
+   "observed": "",
+   "source": "get_incident",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "get_incident",
+  "list_slas",
+  "get_hr_employee"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 5854,
+ "tokens_out": 1148,
+ "cost_usd": 0.0028955,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

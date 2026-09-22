@@ -1,0 +1,67 @@
+{
+ "ts": "2026-09-22T22:37:58",
+ "case_id": "hld-01-run1",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 1.0,
+ "reason": "precondition failed ['HLD-P1']; forbidden []; problems [] (known blind spot, not checked: ['GEN-F1'])",
+ "cited_conditions": [
+  "HLD-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "true",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "GEN-P1",
+   "observed": "\"active\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-F1",
+   "observed": "\"on_hold\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R1",
+   "observed": "\"on_hold\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "\"Awaiting Caller\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "\"paused\"",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "[\"On hold: awaiting caller response with logs.\"]",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "list_slas",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 969,
+ "tokens_out": 814,
+ "cost_usd": 0.0,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

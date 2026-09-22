@@ -1,0 +1,69 @@
+{
+ "ts": "2026-09-22T23:20:32",
+ "case_id": "acc-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.9,
+ "reason": "User is not observed as a member of the requested group (ACC-R1 failed); other required end states are met.",
+ "cited_conditions": [
+  "ACC-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "ACC-P1",
+   "observed": "approval APR0073883 state=approved",
+   "source": "list_approvals",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-P2",
+   "observed": "hr record manager_email=kenji.ng@acme.example matches approval approver=kenji.ng@acme.example",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R1",
+   "observed": "groups=['all-staff','eng-all','github-developers'] (no 'finance-reporting-extended')",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "work_notes contains 'Access granted per approval APR0073883.'",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R3",
+   "observed": "state=resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-F1",
+   "observed": "groups do not include a '-admin' variant of the requested group",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify edits to other users' accounts/devices with these tools",
+   "source": "get_okta_user",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_approvals",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 10684,
+ "tokens_out": 1379,
+ "cost_usd": 0.0035858,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

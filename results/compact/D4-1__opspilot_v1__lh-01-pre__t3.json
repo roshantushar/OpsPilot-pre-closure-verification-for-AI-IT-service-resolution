@@ -1,0 +1,82 @@
+{
+ "ts": "2026-09-22T21:47:54",
+ "case_id": "lh-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.9,
+ "reason": "All technical and legal-hold conditions are met except the ticket state: the incident is still in_progress rather than on_hold, so the runbook's required end state is not satisfied.",
+ "cited_conditions": [
+  "LH-R7"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LH-R1",
+   "observed": "SUSPENDED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R2",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R3",
+   "observed": "/Legal Hold",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R4",
+   "observed": "0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R5",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R6",
+   "observed": "true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R7",
+   "observed": "in_progress",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "LH-R8",
+   "observed": "Legal Hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R9",
+   "observed": "Legal",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_security_exceptions",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 11703,
+ "tokens_out": 1185,
+ "cost_usd": 0.00322215,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

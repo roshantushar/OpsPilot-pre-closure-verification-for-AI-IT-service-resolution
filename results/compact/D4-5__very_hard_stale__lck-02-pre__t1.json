@@ -1,0 +1,68 @@
+{
+ "ts": "2026-09-23T00:28:57",
+ "case_id": "lck-02-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.8,
+ "reason": "Okta shows password_reset_required=false which fails required end state LCK-R2; all other checkable conditions have evidence. Never-do GEN-F1 is unverifiable with these tools (holds:null).",
+ "cited_conditions": [
+  "LCK-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LCK-P1",
+   "observed": "active",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R1",
+   "observed": "ACTIVE",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R2",
+   "observed": "false",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R3",
+   "observed": "true",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R4",
+   "observed": "[\"Identity verified via video call.\"]",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R5",
+   "observed": "resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not verifiable with available single-subject lookups",
+   "source": "get_hr_employee",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 9900,
+ "tokens_out": 883,
+ "cost_usd": 0.0020609,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

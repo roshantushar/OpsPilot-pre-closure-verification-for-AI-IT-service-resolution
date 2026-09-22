@@ -1,0 +1,34 @@
+{
+ "ts": "2026-09-22T22:15:54",
+ "case_id": "hld-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.33,
+ "reason": "Cannot confirm SLA status or that SLA timer was paused from provided ticket and closure note; precondition and required SLA-paused end state are unreadable.",
+ "cited_conditions": [
+  "HLD-P1",
+  "HLD-R3"
+ ],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "SLA breach status not provided in ticket or closure note",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "No explicit confirmation that SLA timer was paused; closure note only states 'per runbook'",
+   "source": "get_incident",
+   "holds": false
+  }
+ ],
+ "tools_called": [],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 627,
+ "tokens_out": 614,
+ "cost_usd": 0.00138475,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

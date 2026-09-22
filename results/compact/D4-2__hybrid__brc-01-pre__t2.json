@@ -1,0 +1,71 @@
+{
+ "ts": "2026-09-22T22:39:48",
+ "case_id": "brc-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.5,
+ "reason": "unmappable conditions ['RB-Forbid-Fabricate-BreachTime']; required conditions not met: ['RB-Req-SLA-Stage-BREACHED', 'RB-Req-SLA-Has_Breached-TRUE', 'RB-Req-SLA-BreachTime-PRESENT', 'RB-Req-Escalated-ServiceManager']",
+ "cited_conditions": [
+  "RB-Forbid-Fabricate-BreachTime",
+  "RB-Req-SLA-Stage-BREACHED",
+  "RB-Req-SLA-Has_Breached-TRUE",
+  "RB-Req-SLA-BreachTime-PRESENT",
+  "RB-Req-Escalated-ServiceManager"
+ ],
+ "evidence": [
+  {
+   "condition_id": "RB-Pre-PRIORITY",
+   "observed": "\"P1\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "RB-Forbid-Incident-ResolvedOrClosed",
+   "observed": "\"in_progress\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "RB-Req-SLA-Stage-BREACHED",
+   "observed": "\"in_progress\"",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "RB-Req-SLA-Has_Breached-TRUE",
+   "observed": "no matching record",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "RB-Req-SLA-BreachTime-PRESENT",
+   "observed": "null",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "RB-Req-Escalated-ServiceManager",
+   "observed": "\"Service Manager\"",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "RB-Req-WorkNote-Records-Breach",
+   "observed": "[\"SLA breach recorded; escalated to Service Manager.\"]",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_incident",
+  "list_slas"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 996,
+ "tokens_out": 1213,
+ "cost_usd": 0.002675,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

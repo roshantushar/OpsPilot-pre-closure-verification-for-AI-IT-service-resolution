@@ -1,0 +1,118 @@
+{
+ "ts": "2026-09-23T00:25:11",
+ "case_id": "lh-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.9,
+ "reason": "Ticket state is not 'on_hold' (currently in_progress), so required end state LH-R7 is false.",
+ "cited_conditions": [
+  "LH-R7"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LH-P1",
+   "observed": "one legal_hold exception found with active: true (SEC0044120)",
+   "source": "list_security_exceptions",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R1",
+   "observed": "Okta status: SUSPENDED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R2",
+   "observed": "Google suspended: true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R3",
+   "observed": "org_unit: /Legal Hold",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R4",
+   "observed": "oauth_tokens: 0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R5",
+   "observed": "force_password_reset: true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R6",
+   "observed": "Slack deactivated: true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R7",
+   "observed": "incident state: in_progress (not on_hold)",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "LH-R8",
+   "observed": "hold_reason: Legal Hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R9",
+   "observed": "escalated_to: Legal",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F1",
+   "observed": "Okta status is SUSPENDED (not DEACTIVATED)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F2",
+   "observed": "data_transfer_to: null (no transfer)",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F3",
+   "observed": "incident state: in_progress (not resolved/closed)",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F4",
+   "observed": "Google deleted: false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify modifications to other employees with available tools",
+   "source": "list_security_exceptions",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_security_exceptions",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 16642,
+ "tokens_out": 1712,
+ "cost_usd": 0.003528,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

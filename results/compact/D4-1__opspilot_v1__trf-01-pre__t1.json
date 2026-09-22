@@ -1,0 +1,65 @@
+{
+ "ts": "2026-09-22T21:29:09",
+ "case_id": "trf-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.84,
+ "reason": "Required group hr-all is not present in Okta and Google Workspace still shows the old Sales org unit, indicating a records conflict that requires human review.",
+ "cited_conditions": [
+  "TRF-R3",
+  "RECORDS_CONFLICT"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "sales-all not in groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "crm-users not in groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "hr-all not in groups (only workday-hr present)",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "workday-hr present in groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "RECORDS_CONFLICT",
+   "observed": "Google org_unit: /Staff/Sales (still shows Sales)",
+   "source": "get_google_user",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_security_exceptions",
+  "lookup_runbook"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 9005,
+ "tokens_out": 986,
+ "cost_usd": 0.00292725,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

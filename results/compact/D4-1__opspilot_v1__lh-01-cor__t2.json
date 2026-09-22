@@ -1,0 +1,87 @@
+{
+ "ts": "2026-09-22T21:38:09",
+ "case_id": "lh-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.9,
+ "reason": "All runbook preconditions and required end-state checks are met: legal hold active; Okta suspended (not deactivated); Google suspended and in /Legal Hold with no OAuth tokens and password reset forced; Slack deactivated; incident left on hold, hold reason set to Legal Hold and escalated to Legal.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "LH-P1",
+   "observed": "true",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R1",
+   "observed": "SUSPENDED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R2",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R3",
+   "observed": "/Legal Hold",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R4",
+   "observed": "0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R5",
+   "observed": "force_password_reset=true (Google)",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R6",
+   "observed": "deactivated=true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R7",
+   "observed": "state=on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R8",
+   "observed": "hold_reason=Legal Hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R9",
+   "observed": "escalated_to=Legal",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_security_exceptions",
+  "get_incident",
+  "lookup_runbook"
+ ],
+ "guard": "none",
+ "turns": 8,
+ "tokens_in": 11523,
+ "tokens_out": 1146,
+ "cost_usd": 0.00318555,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

@@ -1,0 +1,60 @@
+{
+ "ts": "2026-09-22T23:50:18",
+ "case_id": "brc-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.6,
+ "reason": "Tools show the incident is P1, the SLA is marked breached, escalation to Service Manager is set, and a breach work note exists; the unverifiable never-do about modifying others' records is noted but not required for verification. [evidence guard: missing ['BRC-R1', 'BRC-R2', 'BRC-R3', 'BRC-R4']]",
+ "cited_conditions": [
+  "P1",
+  "SLA-R1",
+  "ESC-R2",
+  "WN-R3",
+  "F1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "P1",
+   "observed": "P1",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "SLA-R1",
+   "observed": "has_breached=true, stage=in_progress",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "ESC-R2",
+   "observed": "escalated_to=Service Manager",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "WN-R3",
+   "observed": "work_notes contains 'SLA breach recorded; escalated to Service Manager.'",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "F1",
+   "observed": "",
+   "source": "get_hr_employee",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "get_incident",
+  "list_slas",
+  "list_approvals",
+  "get_hr_employee"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 7461,
+ "tokens_out": 1238,
+ "cost_usd": 0.00316045,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

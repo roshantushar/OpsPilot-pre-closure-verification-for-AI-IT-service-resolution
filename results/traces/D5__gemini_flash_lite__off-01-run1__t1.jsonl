@@ -1,1 +1,12 @@
-{"event": "reused", "from": "D4-3__v2__off-01-run1__t1"}
+{"event": "llm", "turn": 1, "input_tokens": 1307, "output_tokens": 306, "reasoning_tokens": 291, "cached_tokens": 0, "cost_usd": 0.0002531, "latency_ms": 13657.2, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-102"}, "output_chars": 1442, "latency_ms": 0.43, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1711, "output_tokens": 494, "reasoning_tokens": 383, "cached_tokens": 1382, "cost_usd": 0.00024432, "latency_ms": 24225.6, "cache_hit": false, "n_tool_calls": 7}
+{"event": "tool", "turn": 2, "name": "get_hr_employee", "args": {"email": "weijie.ng@acme.example"}, "output_chars": 221, "latency_ms": 0.14, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "list_security_exceptions", "args": {"employee_email": "weijie.ng@acme.example"}, "output_chars": 34, "latency_ms": 0.03, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_okta_user", "args": {"email": "weijie.ng@acme.example"}, "output_chars": 203, "latency_ms": 0.07, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_google_user", "args": {"email": "weijie.ng@acme.example"}, "output_chars": 218, "latency_ms": 0.06, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_slack_user", "args": {"email": "weijie.ng@acme.example"}, "output_chars": 110, "latency_ms": 0.05, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "list_devices", "args": {"owner_email": "weijie.ng@acme.example"}, "output_chars": 287, "latency_ms": 0.07, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_incident", "args": {"number": "INC0099381"}, "output_chars": 289, "latency_ms": 0.06, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 2184, "output_tokens": 834, "reasoning_tokens": 332, "cached_tokens": 1355, "cost_usd": 0.00043005, "latency_ms": 6732.4, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "VERIFIED", "turns": 3}

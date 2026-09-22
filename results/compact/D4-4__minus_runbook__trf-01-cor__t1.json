@@ -1,0 +1,50 @@
+{
+ "ts": "2026-09-22T23:49:38",
+ "case_id": "trf-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.46,
+ "reason": "Runbook conditions could not be fully validated because the Google org unit is still Sales (required end state unmet) and the runbook / all condition IDs were not available for a complete deterministic check.",
+ "cited_conditions": [
+  "R-GOOGLE-OU"
+ ],
+ "evidence": [
+  {
+   "condition_id": "P-HR-DPT",
+   "observed": "department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "R-OKTA-GROUPS",
+   "observed": "groups: [\"all-staff\",\"hr-all\",\"workday-hr\"] (no sales-all, no crm-users)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "R-GOOGLE-OU",
+   "observed": "org_unit: /Staff/Sales",
+   "source": "get_google_user",
+   "holds": false
+  },
+  {
+   "condition_id": "F-DO_NOT_MODIFY_OTHERS",
+   "observed": "not checked (requires scanning accounts/devices beyond the ticket subject)",
+   "source": "list_security_exceptions",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "list_approvals"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 7524,
+ "tokens_out": 1374,
+ "cost_usd": 0.0034194,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

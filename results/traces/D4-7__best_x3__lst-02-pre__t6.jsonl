@@ -1,0 +1,14 @@
+{"event": "llm", "turn": 1, "input_tokens": 1381, "output_tokens": 42, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.00042925, "latency_ms": 1579.7, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-105"}, "output_chars": 1125, "latency_ms": 0.14, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1716, "output_tokens": 213, "reasoning_tokens": 128, "cached_tokens": 1664, "cost_usd": 0.0004806, "latency_ms": 4658.6, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "get_device", "args": {"device_id": "LT-21464"}, "output_chars": 156, "latency_ms": 0.05, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1795, "output_tokens": 27, "reasoning_tokens": 0, "cached_tokens": 1664, "cost_usd": 0.00012835, "latency_ms": 1523.1, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 3, "name": "get_okta_user", "args": {"email": "imran.goh@acme.example"}, "output_chars": 243, "latency_ms": 0.22, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 1903, "output_tokens": 26, "reasoning_tokens": 0, "cached_tokens": 1792, "cost_usd": 0.00012455, "latency_ms": 1313.8, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 4, "name": "get_google_user", "args": {"email": "imran.goh@acme.example"}, "output_chars": 200, "latency_ms": 0.2, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 5, "input_tokens": 1996, "output_tokens": 22, "reasoning_tokens": 0, "cached_tokens": 1792, "cost_usd": 0.0001398, "latency_ms": 1287.8, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 5, "name": "get_incident", "args": {"number": "INC0057234"}, "output_chars": 293, "latency_ms": 0.21, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 6, "input_tokens": 2110, "output_tokens": 461, "reasoning_tokens": 384, "cached_tokens": 1920, "cost_usd": 0.0010175, "latency_ms": 6372.4, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 6, "name": "list_devices", "args": {"owner_email": "imran.goh@acme.example"}, "output_chars": 279, "latency_ms": 0.09, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 7, "input_tokens": 2229, "output_tokens": 997, "reasoning_tokens": 448, "cached_tokens": 2048, "cost_usd": 0.00209045, "latency_ms": 12476.1, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "INCOMPLETE", "turns": 7}

@@ -1,0 +1,29 @@
+{
+ "ts": "2026-09-23T01:33:14",
+ "case_id": "lck-01-run2",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.3,
+ "reason": "Could not retrieve the runbook KB-OPS-106 (tool returned an error after retry), so preconditions and required end states cannot be checked.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "KB-OPS-106 (runbook fetch)",
+   "observed": "get_doc returned error: missing argument 'runbook_id'",
+   "source": "get_doc",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "get_doc",
+  "get_doc",
+  "get_doc"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 4369,
+ "tokens_out": 675,
+ "cost_usd": 0.00198145,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

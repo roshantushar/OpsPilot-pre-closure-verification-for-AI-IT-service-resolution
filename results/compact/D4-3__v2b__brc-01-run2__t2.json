@@ -1,0 +1,75 @@
+{
+ "ts": "2026-09-22T23:27:36",
+ "case_id": "brc-01-run2",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.9,
+ "reason": "SLA records are internally inconsistent: SLA stage is 'breached' but has_breached is false, blocking closure; one required condition is false.",
+ "cited_conditions": [
+  "BRC-R1",
+  "BRC-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "BRC-P1",
+   "observed": "P1",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R1",
+   "observed": "stage: breached",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R2",
+   "observed": "has_breached: false",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "BRC-R3",
+   "observed": "escalated_to: Service Manager",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R4",
+   "observed": "work_notes contains: \"SLA breach recorded; escalated to Service Manager.\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-F1",
+   "observed": "breach_time: null",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-F2",
+   "observed": "state: in_progress",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify with available single-subject lookups",
+   "source": "get_incident",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas",
+  "list_approvals"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 8756,
+ "tokens_out": 1486,
+ "cost_usd": 0.0036922,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

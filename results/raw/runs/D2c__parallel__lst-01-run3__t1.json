@@ -3,19 +3,19 @@
  "arm": "parallel",
  "run_id": "D2c__parallel__lst-01-run3__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:10",
- "git_commit": "9cb211a-dirty",
- "config_hash": "101ae02e6b3e",
+ "timestamp": "2026-09-23T03:22:28",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "73952c90fb2f",
  "dataset_version": "synthetic-v1",
  "case_id": "lst-01-run3",
  "task_id": "lst-01",
  "family": "lost_or_stolen_device",
  "subset": "dev_micro",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": "all",
@@ -26,101 +26,106 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "medium",
  "declared": true,
  "decision": "ESCALATE",
- "reason": "precondition failed ['LST-P1']; forbidden []; problems []",
+ "reason": "Precondition LST-P1 failed: the reported lost device LT-52424 is owned by vikram.das@acme.example, not the ticket subject; this conflicts with the runbook requirement to act only when the device belongs to the caller.",
  "cited_conditions": [
   "LST-P1"
  ],
  "evidence": [
   {
    "condition_id": "LST-P1",
-   "observed": "\"vikram.das@acme.example\"",
+   "observed": "owner=vikram.das@acme.example (device LT-52424)",
    "source": "get_device",
    "holds": false
   },
   {
-   "condition_id": "LST-F1",
-   "observed": "\"active\"",
-   "source": "list_devices",
-   "holds": true
-  },
-  {
-   "condition_id": "LST-F2",
-   "observed": "\"ACTIVE\"",
-   "source": "get_okta_user",
-   "holds": true
-  },
-  {
    "condition_id": "LST-R1",
-   "observed": "true",
+   "observed": "lost_mode=true (device LT-52424)",
    "source": "get_device",
    "holds": true
   },
   {
    "condition_id": "LST-R2",
-   "observed": "\"locked\"",
+   "observed": "status=locked (device LT-52424)",
    "source": "get_device",
    "holds": true
   },
   {
    "condition_id": "LST-R3",
-   "observed": "0",
+   "observed": "sessions_active=0 for hannah.singh@acme.example",
    "source": "get_okta_user",
    "holds": true
   },
   {
    "condition_id": "LST-R4",
-   "observed": "0",
+   "observed": "oauth_tokens=0 for hannah.singh@acme.example",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "LST-R5",
-   "observed": "\"security\"",
+   "observed": "category=security for INC0054616",
    "source": "get_incident",
    "holds": true
   },
   {
    "condition_id": "LST-R6",
-   "observed": "\"resolved\"",
+   "observed": "state=resolved for INC0054616",
    "source": "get_incident",
    "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-70320 status=active lost_mode=false for hannah.singh@acme.example",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "Okta status=ACTIVE for hannah.singh@acme.example",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not verifiable by these tools (cannot scan modifications to all other users' accounts/devices)",
+   "source": "lookup_runbook",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.8,
  "tools_called": [
   "lookup_runbook",
-  "get_hr_employee",
+  "list_devices",
   "get_device",
   "get_okta_user",
   "get_google_user",
-  "get_incident",
-  "list_devices"
+  "get_incident"
  ],
- "tool_call_count": 7,
+ "tool_call_count": 6,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.11,
- "observation_chars": 2407,
+ "tool_latency_ms": 0.66,
+ "observation_chars": 2180,
  "turns": 3,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.2,
- "llm_latency_ms": 0.0,
+ "input_tokens": 5071,
+ "output_tokens": 1478,
+ "reasoning_tokens": 576,
+ "cached_tokens": 2816,
+ "total_tokens": 6549,
+ "llm_cost_usd": 0.00359015,
+ "total_cost_usd": 0.00359015,
+ "latency_ms": 24813.7,
+ "llm_latency_ms": 24777.8,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "eeef340d735e",

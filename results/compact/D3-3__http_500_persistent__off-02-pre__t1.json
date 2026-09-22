@@ -1,0 +1,97 @@
+{
+ "ts": "2026-09-23T03:04:32",
+ "case_id": "off-02-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.9,
+ "reason": "Okta could not be checked\u2014get_okta_user returned a 500 error after retry, leaving OFF-R1 and OFF-R2 unverifiable and blocking closure per the runbook escalation rules.",
+ "cited_conditions": [
+  "OFF-R1",
+  "OFF-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OFF-P1",
+   "observed": "terminated",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-P2",
+   "observed": "legal_hold: false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R1",
+   "observed": "500 Internal Server Error",
+   "source": "get_okta_user",
+   "holds": null
+  },
+  {
+   "condition_id": "OFF-R2",
+   "observed": "500 Internal Server Error",
+   "source": "get_okta_user",
+   "holds": null
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "suspended: true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "data_transfer_to: kenji.kumar@acme.example",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "deactivated: true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "[{\"device_id\":\"LT-39982\",\"status\":\"wipe_pending\"},{\"device_id\":\"LT-47191\",\"status\":\"wipe_pending\"}]",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R7",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "deleted: false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not verifiable with provided tools (single-subject lookups only)",
+   "source": "lookup_runbook",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_okta_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 9,
+ "tokens_in": 18196,
+ "tokens_out": 1943,
+ "cost_usd": 0.00328095,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

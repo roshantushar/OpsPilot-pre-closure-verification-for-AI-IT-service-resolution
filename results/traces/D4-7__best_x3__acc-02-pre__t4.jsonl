@@ -1,0 +1,14 @@
+{"event": "llm", "turn": 1, "input_tokens": 1365, "output_tokens": 45, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.00043125, "latency_ms": 4797.8, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-103"}, "output_chars": 1054, "latency_ms": 2.45, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1667, "output_tokens": 136, "reasoning_tokens": 64, "cached_tokens": 1280, "cost_usd": 0.00040075, "latency_ms": 2596.6, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "list_approvals", "args": {"ticket_number": "INC0043562"}, "output_chars": 178, "latency_ms": 0.17, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1754, "output_tokens": 26, "reasoning_tokens": 0, "cached_tokens": 1536, "cost_usd": 0.0001449, "latency_ms": 1681.5, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 3, "name": "get_hr_employee", "args": {"email": "aarav.lau@acme.example"}, "output_chars": 223, "latency_ms": 0.21, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 1857, "output_tokens": 27, "reasoning_tokens": 0, "cached_tokens": 1792, "cost_usd": 0.00011505, "latency_ms": 1546.2, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 4, "name": "get_okta_user", "args": {"email": "aarav.lau@acme.example"}, "output_chars": 239, "latency_ms": 0.22, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 5, "input_tokens": 1966, "output_tokens": 126, "reasoning_tokens": 64, "cached_tokens": 1920, "cost_usd": 0.0003115, "latency_ms": 3145.1, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 5, "name": "get_incident", "args": {"number": "INC0043562"}, "output_chars": 354, "latency_ms": 0.21, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 6, "input_tokens": 2092, "output_tokens": 672, "reasoning_tokens": 640, "cached_tokens": 1920, "cost_usd": 0.001435, "latency_ms": 10844.3, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 6, "name": "list_security_exceptions", "args": {"employee_email": "aarav.lau@acme.example"}, "output_chars": 34, "latency_ms": 0.09, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 7, "input_tokens": 2142, "output_tokens": 1379, "reasoning_tokens": 896, "cached_tokens": 2048, "cost_usd": 0.0028327, "latency_ms": 22877.3, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "INCOMPLETE", "turns": 7}

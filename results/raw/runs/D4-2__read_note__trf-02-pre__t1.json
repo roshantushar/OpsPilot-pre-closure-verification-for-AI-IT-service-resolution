@@ -3,16 +3,16 @@
  "arm": "read_note",
  "run_id": "D4-2__read_note__trf-02-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:11",
- "git_commit": "9cb211a-dirty",
- "config_hash": "d646ff9ded4b",
+ "timestamp": "2026-09-22T22:17:17",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "aefc39543a75",
  "dataset_version": "synthetic-v1",
  "case_id": "trf-02-pre",
  "task_id": "trf-02",
  "family": "role_transfer",
  "subset": "dev_mini",
  "verifier": "read_note",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
  "prompt_version": "v1",
@@ -26,15 +26,66 @@
  "allow_escalate": true,
  "require_evidence": false,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "easy",
  "declared": true,
- "decision": "VERIFIED",
- "reason": "closure note claims the runbook steps were completed",
- "cited_conditions": [],
- "evidence": [],
+ "decision": "INCOMPLETE",
+ "reason": "HR confirmation of the new department (TRF-P1) is not present in the ticket or resolver note, blocking safe closure.",
+ "cited_conditions": [
+  "TRF-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "No HR record or confirmation of new department present in ticket or closure note",
+   "source": "resolver_claim",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "Removed hr-all",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "Removed workday-hr",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "Added sales-all",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "Added crm-users",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "Ticket marked resolved in resolver claim",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "No mention of baseline all-staff being removed",
+   "source": "resolver_claim",
+   "holds": false
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "No mention of changes to other accounts or devices",
+   "source": "resolver_claim",
+   "holds": false
+  }
+ ],
  "confidence": 0.6,
  "tools_called": [],
  "tool_call_count": 0,
@@ -47,15 +98,15 @@
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
+ "input_tokens": 743,
+ "output_tokens": 1225,
+ "reasoning_tokens": 768,
  "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.0,
- "llm_latency_ms": 0.0,
+ "total_tokens": 1968,
+ "llm_cost_usd": 0.00263575,
+ "total_cost_usd": 0.00263575,
+ "latency_ms": 12189.4,
+ "llm_latency_ms": 12186.1,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "312694a70a7e",

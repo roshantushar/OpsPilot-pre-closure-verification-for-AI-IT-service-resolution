@@ -1,0 +1,74 @@
+{
+ "ts": "2026-09-22T22:25:24",
+ "case_id": "hld-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.5,
+ "reason": "unmappable conditions ['GEN_F1_no_unauthorized_account_or_device_mods']; precondition failed ['P1_sla_not_breached']; forbidden []; problems []",
+ "cited_conditions": [
+  "GEN_F1_no_unauthorized_account_or_device_mods",
+  "P1_sla_not_breached",
+  "R3_sla_paused"
+ ],
+ "evidence": [
+  {
+   "condition_id": "P1_sla_not_breached",
+   "observed": "null",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "P2_ticket_subject_exists_hr",
+   "observed": "\"kenji.iyer@acme.example\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "F1_not_resolved",
+   "observed": "\"on_hold\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "F1_not_closed",
+   "observed": "\"on_hold\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "R1_incident_on_hold",
+   "observed": "\"on_hold\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "R2_hold_reason_awaiting_caller",
+   "observed": "\"Awaiting Caller\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "R3_sla_paused",
+   "observed": "null",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "R4_work_note_mentions_awaiting_caller",
+   "observed": "[\"On hold: awaiting caller response with logs.\"]",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 697,
+ "tokens_out": 1279,
+ "cost_usd": 0.00273225,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

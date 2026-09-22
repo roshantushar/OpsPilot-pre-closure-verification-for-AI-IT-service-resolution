@@ -1,0 +1,69 @@
+{
+ "ts": "2026-09-22T22:57:03",
+ "case_id": "lck-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.85,
+ "reason": "Okta account is still LOCKED_OUT, so required end state LCK-R1 is not met; other required conditions have evidence.",
+ "cited_conditions": [
+  "LCK-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LCK-P1",
+   "observed": "active",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R1",
+   "observed": "LOCKED_OUT",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R2",
+   "observed": "true",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R3",
+   "observed": "true",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R4",
+   "observed": "[\"Identity verified via video call.\"]",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R5",
+   "observed": "resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "no evidence of modifications to other users or devices in returned records",
+   "source": "get_okta_user",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 9649,
+ "tokens_out": 1321,
+ "cost_usd": 0.00338385,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

@@ -1,0 +1,80 @@
+{
+ "ts": "2026-09-22T23:46:06",
+ "case_id": "lh-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.83,
+ "reason": "All required preconditions and end-state conditions from the runbook were observed in authoritative systems (HR, Okta, Google, Slack, security exceptions, incident) with values matching the runbook's required states. [evidence guard: missing ['LH-R1', 'LH-R2', 'LH-R3', 'LH-R4', 'LH-R5', 'LH-R6', 'LH-R7', 'LH-R8', 'LH-R9']]",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "P1",
+   "observed": "terminated",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "P2",
+   "observed": "true",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "R1",
+   "observed": "SUSPENDED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "R2",
+   "observed": "suspended, org_unit=/Legal Hold",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "R3",
+   "observed": "oauth_tokens=0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "R4",
+   "observed": "force_password_reset=true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "R5",
+   "observed": "deactivated=true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "R6",
+   "observed": "active legal_hold (SEC0044120)",
+   "source": "list_security_exceptions",
+   "holds": true
+  },
+  {
+   "condition_id": "R7",
+   "observed": "state=on_hold, hold_reason=Legal Hold, escalated_to=Legal",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_security_exceptions",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 11518,
+ "tokens_out": 1858,
+ "cost_usd": 0.0045507,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

@@ -1,0 +1,49 @@
+{
+ "ts": "2026-09-22T22:15:26",
+ "case_id": "acc-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.6,
+ "reason": "Resolver's closure note affirms that the user was added to the requested group, approval was recorded, and the ticket was resolved; preconditions and required end state are satisfied per runbook.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "ACC-P1",
+   "observed": "Manager approval present as stated in ticket description and referenced by resolver",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-P2",
+   "observed": "Approver identified as the user's manager in the ticket description",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R1",
+   "observed": "User was added to finance-reporting-extended per resolver closure note",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "Approval was recorded in the work notes per resolver closure note",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R3",
+   "observed": "Ticket state set to resolved per resolver proposed_ticket_state and closure note",
+   "source": "get_closure_note",
+   "holds": true
+  }
+ ],
+ "tools_called": [],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 648,
+ "tokens_out": 721,
+ "cost_usd": 0.001604,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

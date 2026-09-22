@@ -1,0 +1,55 @@
+{
+ "ts": "2026-09-22T23:49:23",
+ "case_id": "lck-01-run2",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.8,
+ "reason": "Okta account remains LOCKED_OUT and both password_reset_required and mfa_reset_issued are false per system lookup, so required end states were not met.",
+ "cited_conditions": [
+  "OKT-R1",
+  "OKT-R2",
+  "OKT-R3"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OKT-P1",
+   "observed": "service desk identity verification mentioned in ticket text but not recorded in any queried system",
+   "source": "get_okta_user",
+   "holds": null
+  },
+  {
+   "condition_id": "OKT-R1",
+   "observed": "LOCKED_OUT",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "OKT-R2",
+   "observed": "password_reset_required: false",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "OKT-R3",
+   "observed": "mfa_reset_issued: false",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "OKT-F1",
+   "observed": "do not modify others' accounts cannot be verified with available one-subject lookups",
+   "source": "get_okta_user",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "get_okta_user"
+ ],
+ "guard": "none",
+ "turns": 2,
+ "tokens_in": 2743,
+ "tokens_out": 880,
+ "cost_usd": 0.00215775,
+ "expected_decision": "ESCALATE",
+ "correct": false
+}

@@ -3,16 +3,16 @@
  "arm": "read_note",
  "run_id": "D4-2__read_note__lh-01-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:11",
- "git_commit": "9cb211a-dirty",
- "config_hash": "d646ff9ded4b",
+ "timestamp": "2026-09-22T22:14:27",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "aefc39543a75",
  "dataset_version": "synthetic-v1",
  "case_id": "lh-01-pre",
  "task_id": "lh-01",
  "family": "legal_hold_offboarding",
  "subset": "dev_mini",
  "verifier": "read_note",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
  "prompt_version": "v1",
@@ -26,16 +26,77 @@
  "allow_escalate": true,
  "require_evidence": false,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "medium",
  "declared": true,
  "decision": "VERIFIED",
- "reason": "closure note claims the runbook steps were completed",
+ "reason": "All preconditions and required end-state items in the runbook are satisfied per the ticket and resolver closure note; no forbidden actions reported.",
  "cited_conditions": [],
- "evidence": [],
- "confidence": 0.6,
+ "evidence": [
+  {
+   "condition_id": "LH-P1",
+   "observed": "Ticket description includes note from Legal: employee is under an active legal hold.",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R1",
+   "observed": "Suspended the Okta account.",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R2",
+   "observed": "Suspended the Google Workspace account.",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R3",
+   "observed": "Moved the Google account to the Legal Hold OU.",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R4",
+   "observed": "Revoked all third-party OAuth tokens.",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R5",
+   "observed": "Forced a password reset.",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R6",
+   "observed": "Deactivated Slack.",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R7",
+   "observed": "Placed the ticket on hold (proposed_ticket_state: on_hold).",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R8",
+   "observed": "Hold reason set to 'Legal Hold'.",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R9",
+   "observed": "Escalated to Legal.",
+   "source": "get_closure_note",
+   "holds": true
+  }
+ ],
+ "confidence": 0.8,
  "tools_called": [],
  "tool_call_count": 0,
  "duplicate_tool_calls": 0,
@@ -47,15 +108,15 @@
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
+ "input_tokens": 808,
+ "output_tokens": 1220,
+ "reasoning_tokens": 640,
  "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.0,
- "llm_latency_ms": 0.0,
+ "total_tokens": 2028,
+ "llm_cost_usd": 0.002642,
+ "total_cost_usd": 0.002642,
+ "latency_ms": 18655.5,
+ "llm_latency_ms": 18649.3,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "20a173764d95",

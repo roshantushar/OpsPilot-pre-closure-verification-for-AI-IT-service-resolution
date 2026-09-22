@@ -2,7 +2,7 @@
 experiment_id: A2
 tier: T1
 question: What does one verified case really cost and how many tokens?
-hypothesis: gpt-5-mini at low effort <= $0.008/case; otherwise switch primary to gpt-4o-mini
+hypothesis: gpt-5-mini at low effort <= $0.008/case; otherwise switch primary to gpt-4o-mini or gemini-2.5-flash-lite
 subset: smoke
 trials: 1
 manifest_cap_usd: 0.08
@@ -16,7 +16,7 @@ defaults:
   prompt_version: v1
   descriptor_version: v2
   compact_returns: true
-  step_cap: 8
+  step_cap: 10
   budget_cap_usd: 0.03
 arms:
 - arm: free_model
@@ -27,3 +27,6 @@ arms:
 - arm: gpt4omini
   overrides:
     model: openai/gpt-4o-mini
+- arm: gemini_flash_lite
+  overrides:
+    model: google/gemini-2.5-flash-lite

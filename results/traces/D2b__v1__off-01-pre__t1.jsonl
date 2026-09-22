@@ -1,0 +1,8 @@
+{"event": "llm", "turn": 1, "input_tokens": 1024, "output_tokens": 66, "reasoning_tokens": 98, "cached_tokens": 0, "cost_usd": 0.000388, "latency_ms": 2605.8, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "get_doc", "args": {"name": "KB-OPS-102"}, "output_chars": 55, "latency_ms": 0.06, "dup": false, "invalid": true, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1071, "output_tokens": 26, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.00031975, "latency_ms": 1240.6, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "get_doc", "args": {"name": "KB-OPS-102 - offboard employee"}, "output_chars": 55, "latency_ms": 0.05, "dup": false, "invalid": true, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1122, "output_tokens": 22, "reasoning_tokens": 0, "cached_tokens": 1024, "cost_usd": 9.41e-05, "latency_ms": 1207.1, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 3, "name": "get_doc", "args": {"name": "KB-OPS-102"}, "output_chars": 55, "latency_ms": 0.05, "dup": false, "invalid": true, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 1169, "output_tokens": 607, "reasoning_tokens": 448, "cached_tokens": 1024, "cost_usd": 0.00127585, "latency_ms": 7871.7, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "ESCALATE", "turns": 4}

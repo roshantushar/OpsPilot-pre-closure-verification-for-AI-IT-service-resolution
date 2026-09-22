@@ -1,0 +1,67 @@
+{
+ "ts": "2026-09-22T22:53:19",
+ "case_id": "hld-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.86,
+ "reason": "All preconditions and required end states are met with tool evidence; no never-do conditions occurred.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "has_breached=false",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R1",
+   "observed": "state=on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "hold_reason=Awaiting Caller",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "stage=paused",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "work_notes contains 'awaiting caller'",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-F1",
+   "observed": "state=on_hold (not resolved/closed)",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "caller and subject Okta status ACTIVE; password_reset_required=false; mfa_reset_issued=false",
+   "source": "get_okta_user",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas",
+  "get_okta_user",
+  "get_okta_user"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 9700,
+ "tokens_out": 2350,
+ "cost_usd": 0.0054834,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

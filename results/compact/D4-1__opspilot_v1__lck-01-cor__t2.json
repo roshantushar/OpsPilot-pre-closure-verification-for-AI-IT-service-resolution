@@ -1,0 +1,62 @@
+{
+ "ts": "2026-09-22T21:43:14",
+ "case_id": "lck-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.98,
+ "reason": "All runbook preconditions and required end-state items are met: HR active, Okta account active, password reset required, MFA reset issued, identity verification noted, and ticket marked resolved.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "LCK-P1",
+   "observed": "status: active",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R1",
+   "observed": "status: ACTIVE",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R2",
+   "observed": "password_reset_required: true",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R3",
+   "observed": "mfa_reset_issued: true",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R4",
+   "observed": "work_notes contains 'Identity verified via video call.'",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R5",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "lookup_runbook",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 9589,
+ "tokens_out": 725,
+ "cost_usd": 0.00243605,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

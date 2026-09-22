@@ -1,0 +1,25 @@
+{
+ "ts": "2026-09-22T20:37:12",
+ "case_id": "off-01-run1",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.0,
+ "reason": "fail-safe: schema validation failed twice: JSONDecodeError: Expecting ',' delimiter: line 43 column 4 (char 1041)",
+ "cited_conditions": [],
+ "evidence": [],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "lookup_runbook"
+ ],
+ "guard": "schema validation failed twice - fail-safe ESCALATE",
+ "turns": 3,
+ "tokens_in": 4661,
+ "tokens_out": 2068,
+ "cost_usd": 0.00116982,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

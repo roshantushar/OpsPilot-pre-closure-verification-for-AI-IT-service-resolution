@@ -14,7 +14,7 @@ import time
 from . import budget, scoring
 from .backends import make_backend
 from .config import SETTINGS, RunConfig
-from .data import declared, is_heldout, load_subset
+from .data import declared, is_heldout, load_subset, resolve_perturbation
 from .decision_log import append_master, compact_view, find_reusable, git_commit, write_compact, write_run, write_summary
 from .perturb import Perturber, describe, difficulty
 from .schema import NOT_DECLARED, apply_policy_flags, fail_safe
@@ -39,12 +39,15 @@ def projected_usd_per_case(cfg: RunConfig) -> float:
 
 def run_case(case: dict, cfg: RunConfig, trial: int = 1) -> tuple[dict, list[dict]]:
     run_id = f"{cfg.experiment_id}__{cfg.arm}__{case['case_id']}__t{trial}"
+    # {"fixture": "<name>"} -> this case's own real perturbation (F1); logged/scored as the
+    # resolved dict, never the bare fixture reference.
+    pert = resolve_perturbation(cfg.perturbation, case["case_id"])
     base = {"experiment_id": cfg.experiment_id, "arm": cfg.arm, "run_id": run_id, "trial": trial,
             "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S"), "git_commit": git_commit(),
             "config_hash": cfg.config_hash, "dataset_version": SETTINGS.dataset_version,
             "case_id": case["case_id"], "task_id": case["task_id"], "family": case["family"],
             **{k: v for k, v in cfg.__dict__.items() if k not in ("trials", "experiment_id", "arm")},
-            "perturbation": cfg.perturbation, "difficulty": difficulty(cfg.perturbation, case["family"]),
+            "perturbation": pert, "difficulty": difficulty(pert, case["family"]),
             "declared": declared(case)}
     reused = find_reusable(cfg.config_hash, case["case_id"], trial)
     if reused and reused["run_id"] == run_id:      # same arm re-run: keep the logged record
@@ -60,7 +63,7 @@ def run_case(case: dict, cfg: RunConfig, trial: int = 1) -> tuple[dict, list[dic
                "llm_cost_usd": 0.0, "total_cost_usd": 0.0, "latency_ms": 0.0}
         return rec, [{"event": "final", "decision": NOT_DECLARED}]
 
-    perturber = Perturber(cfg.perturbation)
+    perturber = Perturber(pert)
     view = perturber.case_view(case)
     runtime = ToolRuntime(view, cfg.descriptor_version, cfg.compact_returns, cfg.tool_subset,
                           cfg.use_runbook, cfg.dedup, perturber)
@@ -79,7 +82,8 @@ def run_case(case: dict, cfg: RunConfig, trial: int = 1) -> tuple[dict, list[dic
     latency_ms = (time.perf_counter() - t0) * 1000
     d = res.decision
     if cfg.verifier not in NO_POLICY_FLAGS:
-        d = apply_policy_flags(d, cfg.allow_escalate, cfg.require_evidence, required_ids(case["runbook_id"]))
+        d = apply_policy_flags(d, cfg.allow_escalate, cfg.require_evidence,
+                               required_ids(case["runbook_id"]), runtime.names_called)
     g = res.guard
     rec = {**base, "decision": d.decision, "reason": d.reason, "cited_conditions": d.cited_conditions,
            "evidence": [e.model_dump() for e in d.evidence], "confidence": d.confidence,

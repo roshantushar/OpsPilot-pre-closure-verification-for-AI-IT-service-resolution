@@ -118,8 +118,8 @@ def _tools_of(cfg):
 class LiveBackend:
     name = "live"
 
-    def __init__(self, client: LLMClient | None = None):
-        self.client = client or LLMClient()
+    def __init__(self, client: LLMClient | None = None, use_cache: bool = True):
+        self.client = client or LLMClient(use_cache=use_cache)
 
     def complete(self, messages, tools=None, purpose="agent", cfg=None, meta=None, context=None) -> LLMResponse:
         return self.client.chat(model=cfg.model, messages=messages, tools=tools,
@@ -128,4 +128,10 @@ class LiveBackend:
 
 
 def make_backend(cfg, case: dict | None = None):
-    return ScriptedBackend(case) if cfg.backend == "scripted" else LiveBackend()
+    if cfg.backend == "scripted":
+        return ScriptedBackend(case)
+    # The LLM cache key has no trial number: repeated trials of the same case+config would
+    # otherwise replay one cached conversation verbatim instead of independent live samples,
+    # silently making pass^k = 1.0 an artifact of caching rather than measured consistency
+    # (caught live on D4-7). trials > 1 means the point IS independent samples, so skip the cache.
+    return LiveBackend(use_cache=cfg.trials <= 1)

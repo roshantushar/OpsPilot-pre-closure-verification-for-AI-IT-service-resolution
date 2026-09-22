@@ -3,19 +3,19 @@
  "arm": "hard_conflict",
  "run_id": "D4-5__hard_conflict__lh-01-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:12",
- "git_commit": "9cb211a-dirty",
- "config_hash": "b107107f33bb",
+ "timestamp": "2026-09-23T00:18:17",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "49c8023de6df",
  "dataset_version": "synthetic-v1",
  "case_id": "lh-01-pre",
  "task_id": "lh-01",
  "family": "legal_hold_offboarding",
  "subset": "premature_dev",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": "all",
@@ -26,135 +26,141 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": {
-  "conflict": "okta",
-  "field": "status",
-  "value": "ACTIVE"
+  "conflict": "servicenow",
+  "field": "state",
+  "value": "on_hold"
  },
  "difficulty": "hard",
  "declared": true,
  "decision": "ESCALATE",
- "reason": "precondition failed []; forbidden []; problems ['duplicate:get_okta_user']",
+ "reason": "Duplicate records found for the legal-hold exception and the incident state (conflicting records) on runbook-listed conditions, which requires escalation.",
  "cited_conditions": [
+  "LH-P1",
   "LH-R7"
  ],
  "evidence": [
   {
    "condition_id": "LH-P1",
-   "observed": "true",
+   "observed": "count=2; two entries with type=legal_hold, active=true, same exception_id SEC0044120 (duplicate records)",
    "source": "list_security_exceptions",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F1",
-   "observed": "[\"SUSPENDED\", \"ACTIVE\"]",
-   "source": "get_okta_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F2",
-   "observed": "null",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F3",
-   "observed": "\"in_progress\"",
-   "source": "get_incident",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F4",
-   "observed": "false",
-   "source": "get_google_user",
-   "holds": true
+   "holds": false
   },
   {
    "condition_id": "LH-R1",
-   "observed": "[\"SUSPENDED\", \"ACTIVE\"]",
+   "observed": "status=SUSPENDED",
    "source": "get_okta_user",
    "holds": true
   },
   {
    "condition_id": "LH-R2",
-   "observed": "true",
+   "observed": "suspended=true",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "LH-R3",
-   "observed": "\"/Legal Hold\"",
+   "observed": "org_unit=/Legal Hold",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "LH-R4",
-   "observed": "0",
+   "observed": "oauth_tokens=0",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "LH-R5",
-   "observed": "true",
+   "observed": "force_password_reset=true",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "LH-R6",
-   "observed": "true",
+   "observed": "deactivated=true",
    "source": "get_slack_user",
    "holds": true
   },
   {
    "condition_id": "LH-R7",
-   "observed": "\"in_progress\"",
+   "observed": "two incident records returned: one state=in_progress and one state=on_hold (conflicting/duplicated incident records)",
    "source": "get_incident",
    "holds": false
   },
   {
    "condition_id": "LH-R8",
-   "observed": "\"Legal Hold\"",
+   "observed": "hold_reason=Legal Hold",
    "source": "get_incident",
    "holds": true
   },
   {
    "condition_id": "LH-R9",
-   "observed": "\"Legal\"",
+   "observed": "escalated_to=Legal",
    "source": "get_incident",
    "holds": true
+  },
+  {
+   "condition_id": "LH-F1",
+   "observed": "status=SUSPENDED (not DEACTIVATED)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F2",
+   "observed": "data_transfer_to=null (no transfer)",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F3",
+   "observed": "incident state not RESOLVED/CLOSED (states seen: in_progress, on_hold)",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F4",
+   "observed": "deleted=false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not verifiable with available per-subject lookups",
+   "source": "list_devices",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.9,
  "tools_called": [
   "lookup_runbook",
-  "get_hr_employee",
   "list_security_exceptions",
   "get_okta_user",
   "get_google_user",
   "get_slack_user",
   "get_incident"
  ],
- "tool_call_count": 7,
+ "tool_call_count": 6,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.13,
- "observation_chars": 2999,
- "turns": 8,
+ "tool_latency_ms": 0.72,
+ "observation_chars": 2996,
+ "turns": 7,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.3,
- "llm_latency_ms": 0.0,
+ "input_tokens": 14207,
+ "output_tokens": 1816,
+ "reasoning_tokens": 768,
+ "cached_tokens": 11264,
+ "total_tokens": 16023,
+ "llm_cost_usd": 0.00347285,
+ "total_cost_usd": 0.00347285,
+ "latency_ms": 28367.8,
+ "llm_latency_ms": 28327.3,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "20a173764d95",

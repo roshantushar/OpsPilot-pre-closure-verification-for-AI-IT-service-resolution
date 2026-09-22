@@ -1,0 +1,62 @@
+{
+ "ts": "2026-09-22T21:28:49",
+ "case_id": "trf-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.86,
+ "reason": "HR shows department as HR and Okta group membership matches the HR groups, but Google Workspace org_unit still indicates Sales \u2014 records conflict across systems, requiring human review before closure.",
+ "cited_conditions": [
+  "RECORD-CONFLICT"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "hr-all present in Okta groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "workday-hr present in Okta groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "sales-all not present in Okta groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "crm-users not present in Okta groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "RECORD-CONFLICT",
+   "observed": "Google org_unit: /Staff/Sales (conflicts with HR department: HR)",
+   "source": "get_google_user",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "lookup_runbook"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 6167,
+ "tokens_out": 1005,
+ "cost_usd": 0.00306215,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

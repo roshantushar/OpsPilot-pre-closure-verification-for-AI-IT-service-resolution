@@ -1,0 +1,70 @@
+{
+ "ts": "2026-09-22T23:54:55",
+ "case_id": "lck-01-run2",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.8,
+ "reason": "Several required end-state conditions are not met in Okta (account still locked, password reset not set, MFA reset not issued).",
+ "cited_conditions": [
+  "LCK-R1",
+  "LCK-R2",
+  "LCK-R3"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LCK-P1",
+   "observed": "status: active",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R1",
+   "observed": "status: LOCKED_OUT",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R2",
+   "observed": "password_reset_required: false",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R3",
+   "observed": "mfa_reset_issued: false",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R4",
+   "observed": "work_notes contains: \"Identity verified via video call.\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R5",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not verifiable with available single-subject lookup tools",
+   "source": "get_okta_user",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 8789,
+ "tokens_out": 940,
+ "cost_usd": 0.00335725,
+ "expected_decision": "ESCALATE",
+ "correct": false
+}

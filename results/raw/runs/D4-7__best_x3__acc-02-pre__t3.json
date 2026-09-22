@@ -3,19 +3,19 @@
  "arm": "best_x3",
  "run_id": "D4-7__best_x3__acc-02-pre__t3",
  "trial": 3,
- "timestamp": "2026-09-22T16:20:12",
- "git_commit": "9cb211a-dirty",
- "config_hash": "2866ff49da9a",
+ "timestamp": "2026-09-23T02:01:44",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "b2ca1772387e",
  "dataset_version": "synthetic-v1",
  "case_id": "acc-02-pre",
  "task_id": "acc-02",
  "family": "access_grant_with_approval",
  "subset": "hard_negatives",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": "all",
@@ -26,59 +26,65 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "easy",
  "declared": true,
  "decision": "INCOMPLETE",
- "reason": "required conditions not met: ['ACC-R1']",
+ "reason": "User is not a member of the requested group (ACC-R1 false).",
  "cited_conditions": [
   "ACC-R1"
  ],
  "evidence": [
   {
    "condition_id": "ACC-P1",
-   "observed": "\"approved\"",
+   "observed": "approved",
    "source": "list_approvals",
    "holds": true
   },
   {
    "condition_id": "ACC-P2",
-   "observed": "\"ethan.menon@acme.example\"",
-   "source": "list_approvals",
-   "holds": true
-  },
-  {
-   "condition_id": "ACC-F1",
-   "observed": "[\"all-staff\", \"eng-all\", \"github-developers\"]",
-   "source": "get_okta_user",
+   "observed": "ethan.menon@acme.example (matches HR manager_email)",
+   "source": "get_hr_employee",
    "holds": true
   },
   {
    "condition_id": "ACC-R1",
-   "observed": "[\"all-staff\", \"eng-all\", \"github-developers\"]",
+   "observed": "groups: [\"all-staff\",\"eng-all\",\"github-developers\"] (finance-reporting-extended not present)",
    "source": "get_okta_user",
    "holds": false
   },
   {
    "condition_id": "ACC-R2",
-   "observed": "[\"Access granted per approval APR0053925.\"]",
+   "observed": "work_notes contain \"Access granted per approval APR0053925.\"",
    "source": "get_incident",
    "holds": true
   },
   {
    "condition_id": "ACC-R3",
-   "observed": "\"resolved\"",
+   "observed": "state: resolved",
    "source": "get_incident",
    "holds": true
+  },
+  {
+   "condition_id": "ACC-F1",
+   "observed": "groups do not include any '-admin' variant",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not verifiable with single-subject lookups (cannot confirm no modifications to other accounts)",
+   "source": "get_okta_user",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.85,
  "tools_called": [
   "lookup_runbook",
-  "get_hr_employee",
   "list_approvals",
+  "get_hr_employee",
   "get_okta_user",
   "get_incident"
  ],
@@ -92,14 +98,14 @@
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
+ "input_tokens": 10701,
+ "output_tokens": 1160,
+ "reasoning_tokens": 704,
+ "cached_tokens": 6272,
+ "total_tokens": 11861,
  "llm_cost_usd": 0.0,
  "total_cost_usd": 0.0,
- "latency_ms": 0.2,
+ "latency_ms": 0.7,
  "llm_latency_ms": 0.0,
  "retry_attempted": false,
  "retry_success": null,

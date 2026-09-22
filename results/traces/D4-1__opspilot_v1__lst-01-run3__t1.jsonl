@@ -1,1 +1,12 @@
-{"event": "reused", "from": "A1__scripted_agent__lst-01-run3__t1"}
+{"event": "llm", "turn": 1, "input_tokens": 978, "output_tokens": 73, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": true, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-105"}, "output_chars": 1125, "latency_ms": 0.11, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1313, "output_tokens": 72, "reasoning_tokens": 106, "cached_tokens": 0, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": true, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "get_hr_employee", "args": {"email": "hannah.singh@acme.example"}, "output_chars": 227, "latency_ms": 0.05, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1416, "output_tokens": 27, "reasoning_tokens": 0, "cached_tokens": 1280, "cost_usd": 0.0, "latency_ms": 0.0, "cache_hit": true, "n_tool_calls": 1}
+{"event": "tool", "turn": 3, "name": "list_devices", "args": {"owner_email": "hannah.singh@acme.example"}, "output_chars": 155, "latency_ms": 0.05, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 1501, "output_tokens": 96, "reasoning_tokens": 64, "cached_tokens": 0, "cost_usd": 0.00056725, "latency_ms": 3196.6, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 4, "name": "get_okta_user", "args": {"email": "hannah.singh@acme.example"}, "output_chars": 242, "latency_ms": 0.2, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 5, "input_tokens": 1612, "output_tokens": 27, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.000457, "latency_ms": 1287.3, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 5, "name": "get_google_user", "args": {"email": "hannah.singh@acme.example"}, "output_chars": 207, "latency_ms": 0.17, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 6, "input_tokens": 1707, "output_tokens": 878, "reasoning_tokens": 256, "cached_tokens": 0, "cost_usd": 0.00218275, "latency_ms": 10068.7, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "ESCALATE", "turns": 6}

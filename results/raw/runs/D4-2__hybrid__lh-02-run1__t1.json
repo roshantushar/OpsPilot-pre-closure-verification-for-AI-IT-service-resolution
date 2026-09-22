@@ -3,16 +3,16 @@
  "arm": "hybrid",
  "run_id": "D4-2__hybrid__lh-02-run1__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:11",
- "git_commit": "9cb211a-dirty",
- "config_hash": "62959828b73e",
+ "timestamp": "2026-09-22T22:23:35",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "dbb711590ab3",
  "dataset_version": "synthetic-v1",
  "case_id": "lh-02-run1",
  "task_id": "lh-02",
  "family": "legal_hold_offboarding",
  "subset": "dev_mini",
  "verifier": "hybrid",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
  "prompt_version": "v1",
@@ -26,131 +26,145 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "medium",
  "declared": true,
  "decision": "ESCALATE",
- "reason": "precondition failed []; forbidden ['LH-F1']; problems []",
+ "reason": "unmappable conditions ['GEN-F1-subject-only-change-check', 'LH-F2-do-not-transfer-google-data']; precondition failed ['LH-P1']; forbidden []; problems []",
  "cited_conditions": [
-  "LH-F1",
-  "LH-R1"
+  "GEN-F1-subject-only-change-check",
+  "LH-F2-do-not-transfer-google-data",
+  "LH-P1",
+  "LH-R1-Okta-suspended",
+  "LH-R3-Google-OU",
+  "LH-R4-No-thirdparty-oauth",
+  "LH-R5-Password-reset-forced",
+  "LH-R9-escalated-to-legal-incident",
+  "LH-R9-escalated-to-legal-approvals"
  ],
  "evidence": [
   {
    "condition_id": "LH-P1",
-   "observed": "true",
+   "observed": "null",
    "source": "list_security_exceptions",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F1",
-   "observed": "\"DEACTIVATED\"",
-   "source": "get_okta_user",
    "holds": false
   },
   {
-   "condition_id": "LH-F2",
-   "observed": "null",
-   "source": "get_google_user",
+   "condition_id": "HR-terminated",
+   "observed": "\"terminated\"",
+   "source": "get_hr_employee",
    "holds": true
   },
   {
-   "condition_id": "LH-F3",
+   "condition_id": "LH-F1-Okta-not-deactivated",
+   "observed": "null",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F3-do-not-resolve-ticket",
    "observed": "\"on_hold\"",
    "source": "get_incident",
    "holds": true
   },
   {
-   "condition_id": "LH-F4",
+   "condition_id": "LH-F4-do-not-delete-google-account",
    "observed": "false",
    "source": "get_google_user",
    "holds": true
   },
   {
-   "condition_id": "LH-R1",
+   "condition_id": "LH-R1-Okta-suspended",
    "observed": "\"DEACTIVATED\"",
    "source": "get_okta_user",
    "holds": false
   },
   {
-   "condition_id": "LH-R2",
+   "condition_id": "LH-R2-Google-suspended",
    "observed": "true",
    "source": "get_google_user",
    "holds": true
   },
   {
-   "condition_id": "LH-R3",
-   "observed": "\"/Legal Hold\"",
+   "condition_id": "LH-R3-Google-OU",
+   "observed": "null",
    "source": "get_google_user",
-   "holds": true
+   "holds": false
   },
   {
-   "condition_id": "LH-R4",
-   "observed": "0",
+   "condition_id": "LH-R4-No-thirdparty-oauth",
+   "observed": "null",
    "source": "get_google_user",
-   "holds": true
+   "holds": false
   },
   {
-   "condition_id": "LH-R5",
-   "observed": "true",
-   "source": "get_google_user",
-   "holds": true
+   "condition_id": "LH-R5-Password-reset-forced",
+   "observed": "null",
+   "source": "get_okta_user",
+   "holds": false
   },
   {
-   "condition_id": "LH-R6",
+   "condition_id": "LH-R6-Slack-deactivated",
    "observed": "true",
    "source": "get_slack_user",
    "holds": true
   },
   {
-   "condition_id": "LH-R7",
+   "condition_id": "LH-R7-ticket-on-hold",
    "observed": "\"on_hold\"",
    "source": "get_incident",
    "holds": true
   },
   {
-   "condition_id": "LH-R8",
+   "condition_id": "LH-R8-hold-reason",
    "observed": "\"Legal Hold\"",
    "source": "get_incident",
    "holds": true
   },
   {
-   "condition_id": "LH-R9",
+   "condition_id": "LH-R9-escalated-to-legal-incident",
    "observed": "\"Legal\"",
    "source": "get_incident",
-   "holds": true
+   "holds": false
+  },
+  {
+   "condition_id": "LH-R9-escalated-to-legal-approvals",
+   "observed": "no matching record",
+   "source": "list_approvals",
+   "holds": false
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.5,
  "tools_called": [
   "get_hr_employee",
   "list_security_exceptions",
   "get_okta_user",
   "get_google_user",
   "get_slack_user",
-  "get_incident"
+  "get_incident",
+  "list_approvals"
  ],
- "tool_call_count": 6,
+ "tool_call_count": 7,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.07,
- "observation_chars": 1230,
+ "tool_latency_ms": 0.3,
+ "observation_chars": 1264,
  "turns": 1,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
+ "input_tokens": 865,
+ "output_tokens": 1997,
+ "reasoning_tokens": 640,
  "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.2,
- "llm_latency_ms": 0.0,
+ "total_tokens": 2862,
+ "llm_cost_usd": 0.00421025,
+ "total_cost_usd": 0.00421025,
+ "latency_ms": 18895.5,
+ "llm_latency_ms": 18889.1,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "da0e614fbc6a",

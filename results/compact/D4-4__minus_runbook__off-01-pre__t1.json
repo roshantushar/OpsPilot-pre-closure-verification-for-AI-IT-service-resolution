@@ -1,0 +1,88 @@
+{
+ "ts": "2026-09-22T23:47:03",
+ "case_id": "off-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.65,
+ "reason": "The incident is still in_progress (should be resolved). Other required offboarding items show completed in systems observed, but the ticket state remains open.",
+ "cited_conditions": [
+  "R-INC-7"
+ ],
+ "evidence": [
+  {
+   "condition_id": "P-HR-1",
+   "observed": "terminated",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "R-OKTA-1",
+   "observed": "DEACTIVATED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "R-OKTA-2",
+   "observed": "groups: []",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "R-OKTA-3",
+   "observed": "sessions_active: 3",
+   "source": "get_okta_user",
+   "holds": null
+  },
+  {
+   "condition_id": "R-GW-1",
+   "observed": "suspended: true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "R-GW-2",
+   "observed": "data_transfer_to: zhiwei.lau@acme.example",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "R-SLACK-1",
+   "observed": "deactivated: true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "R-INTUNE-1",
+   "observed": "[{\"device_id\":\"LT-51909\",\"status\":\"wipe_pending\"},{\"device_id\":\"LT-90609\",\"status\":\"wipe_pending\"}]",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "R-INC-7",
+   "observed": "state: in_progress",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "F-NOMOD-1",
+   "observed": "not verifiable with available per-subject lookup tools",
+   "source": "get_hr_employee",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 11333,
+ "tokens_out": 1277,
+ "cost_usd": 0.00337125,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

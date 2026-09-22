@@ -1,0 +1,129 @@
+{
+ "experiment_id": "D4-1",
+ "arm": "opspilot_v1",
+ "run_id": "D4-1__opspilot_v1__lst-01-pre__t2",
+ "trial": 2,
+ "timestamp": "2026-09-22T21:42:33",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "5516de86caf1",
+ "dataset_version": "synthetic-v1",
+ "case_id": "lst-01-pre",
+ "task_id": "lst-01",
+ "family": "lost_or_stolen_device",
+ "subset": "dev_mini",
+ "verifier": "agent",
+ "backend": "live",
+ "model": "openai/gpt-5-mini",
+ "reasoning_effort": "low",
+ "prompt_version": "v1",
+ "descriptor_version": "v2",
+ "compact_returns": true,
+ "tool_subset": "all",
+ "parallel_tools": false,
+ "early_exit": false,
+ "show_closure_note": true,
+ "use_runbook": true,
+ "allow_escalate": true,
+ "require_evidence": true,
+ "dedup": true,
+ "step_cap": 10,
+ "budget_cap_usd": 0.03,
+ "perturbation": null,
+ "difficulty": "medium",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "reason": "Lost mode is enabled but there is no evidence the lost device is 'locked' per the runbook; all other required end states that are checkable are met.",
+ "cited_conditions": [
+  "LST-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "device owner matches caller (hannah.singh@acme.example)",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "lost_mode=true for LT-52424",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "no explicit 'locked' attribute present for LT-52424 (status=active, lost_mode=true)",
+   "source": "get_device",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "Okta sessions_active=0 and status=ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "oauth_tokens=0 for Google account",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "incident category=security",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "incident state=resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-70320 status=active and lost_mode=false (no lock/wipe)",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "Okta account status=ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  }
+ ],
+ "confidence": 0.85,
+ "tools_called": [
+  "get_incident",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "list_devices",
+  "lookup_runbook",
+  "get_device"
+ ],
+ "tool_call_count": 7,
+ "duplicate_tool_calls": 0,
+ "invalid_tool_calls": 0,
+ "tool_latency_ms": 0.86,
+ "observation_chars": 2530,
+ "turns": 8,
+ "step_cap_hit": false,
+ "budget_cap_hit": false,
+ "early_exit_triggered": false,
+ "schema_validation_failed": false,
+ "input_tokens": 11689,
+ "output_tokens": 1020,
+ "reasoning_tokens": 490,
+ "cached_tokens": 8192,
+ "total_tokens": 12709,
+ "llm_cost_usd": 0.00311905,
+ "total_cost_usd": 0.00311905,
+ "latency_ms": 26180.8,
+ "llm_latency_ms": 26149.7,
+ "retry_attempted": false,
+ "retry_success": null,
+ "state_hash_before": "5a65cbe5d86e",
+ "state_hash_after": "5a65cbe5d86e",
+ "error_type": null
+}

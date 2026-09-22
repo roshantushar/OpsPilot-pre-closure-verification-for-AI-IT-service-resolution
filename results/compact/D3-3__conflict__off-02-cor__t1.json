@@ -1,0 +1,95 @@
+{
+ "ts": "2026-09-23T03:10:54",
+ "case_id": "off-02-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.8,
+ "reason": "Okta records for the subject are duplicated/conflicting (one ACTIVE and one DEACTIVATED), which is a runbook-listed conflict that requires human escalation.",
+ "cited_conditions": [
+  "OFF-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OFF-P1",
+   "observed": "terminated",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-P2",
+   "observed": "legal_hold: false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R1",
+   "observed": "[duplicate records: one status=DEACTIVATED, one status=ACTIVE]",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "OFF-R2",
+   "observed": "groups: []",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "suspended: true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "data_transfer_to: kenji.kumar@acme.example (matches HR manager)",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "deactivated: true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "devices: LT-39982 (wipe_pending), LT-47191 (wipe_pending)",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R7",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "deleted: false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot be verified with these tools (requires scanning other employees' records)",
+   "source": "get_okta_user",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 8,
+ "tokens_in": 16362,
+ "tokens_out": 1767,
+ "cost_usd": 0.003554,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

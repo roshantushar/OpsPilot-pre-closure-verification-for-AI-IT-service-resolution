@@ -1,0 +1,89 @@
+{
+ "ts": "2026-09-23T01:23:53",
+ "case_id": "lst-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.78,
+ "reason": "Lost device is in lost mode but not shown as locked, incident category is still 'hardware', and ticket resolution state is not verified by system tools.",
+ "cited_conditions": [
+  "LST-R2",
+  "LST-R5",
+  "LST-R6"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "owner=hannah.singh@acme.example",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "lost_mode=true",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "status=active (no 'locked' state reported)",
+   "source": "get_device",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "sessions_active=0",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "oauth_tokens=0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "ticket.category=hardware",
+   "source": "lookup_runbook",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "no ticket state available from tools (resolver_claim states 'resolved' but closure notes are not system evidence)",
+   "source": "lookup_runbook",
+   "holds": null
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-70320 status=active, lost_mode=false",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "okta status=ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify changes to accounts/devices belonging to other users with available tools",
+   "source": "list_devices",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_devices",
+  "get_device",
+  "get_okta_user",
+  "get_google_user"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 10736,
+ "tokens_out": 1510,
+ "cost_usd": 0.004696,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

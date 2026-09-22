@@ -1,0 +1,33 @@
+{
+ "ts": "2026-09-22T22:23:54",
+ "case_id": "off-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.5,
+ "reason": "unmappable conditions ['OFF-P1', 'OFF-P2', 'OFF-R1', 'OFF-R2', 'OFF-R3', 'OFF-R4', 'OFF-R5', 'OFF-R6', 'OFF-R7', 'OFF-F1', 'GEN-F1', 'HR-MGR-CHECK']; all preconditions hold, all required conditions met, nothing forbidden observed",
+ "cited_conditions": [
+  "OFF-P1",
+  "OFF-P2",
+  "OFF-R1",
+  "OFF-R2",
+  "OFF-R3",
+  "OFF-R4",
+  "OFF-R5",
+  "OFF-R6",
+  "OFF-R7",
+  "OFF-F1",
+  "GEN-F1",
+  "HR-MGR-CHECK"
+ ],
+ "evidence": [],
+ "tools_called": [
+  "get_hr_employee"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 824,
+ "tokens_out": 1387,
+ "cost_usd": 0.00298,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

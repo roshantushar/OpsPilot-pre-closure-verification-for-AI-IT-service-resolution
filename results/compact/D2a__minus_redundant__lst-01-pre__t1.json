@@ -1,0 +1,88 @@
+{
+ "ts": "2026-09-23T01:16:35",
+ "case_id": "lst-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.84,
+ "reason": "Device is in lost mode and sessions/tokens revoked, but the device is not reported as locked (required end state LST-R2 is false).",
+ "cited_conditions": [
+  "LST-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "LT-52424 owner: hannah.singh@acme.example (count 2 devices returned)",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "lost_mode: true",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "status: active (no locked state shown)",
+   "source": "get_device",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "sessions_active: 0",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "oauth_tokens: 0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "category: security",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-70320 status: active, lost_mode: false",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "Okta status: ACTIVE (not DEACTIVATED)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "",
+   "source": "",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_devices",
+  "get_device",
+  "get_okta_user",
+  "get_google_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 12994,
+ "tokens_out": 1979,
+ "cost_usd": 0.0049025,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

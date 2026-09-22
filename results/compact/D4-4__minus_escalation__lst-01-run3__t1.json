@@ -1,0 +1,88 @@
+{
+ "ts": "2026-09-22T23:54:25",
+ "case_id": "lst-01-run3",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.8,
+ "reason": "Precondition LST-P1 (lost device belongs to caller) is false: the device LT-52424 is owned by another user, so the runbook precondition fails.",
+ "cited_conditions": [
+  "LST-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "owner=vikram.das@acme.example",
+   "source": "get_device",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "lost_mode=true",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "status=locked",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "sessions_active=0",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "oauth_tokens=0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "category=security",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "state=resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-70320 status=active lost_mode=false",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "okta status=ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify modification of records/devices for all other users with these tools",
+   "source": "list_devices",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_devices",
+  "get_device",
+  "get_okta_user",
+  "get_google_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 13197,
+ "tokens_out": 1635,
+ "cost_usd": 0.00420765,
+ "expected_decision": "ESCALATE",
+ "correct": false
+}

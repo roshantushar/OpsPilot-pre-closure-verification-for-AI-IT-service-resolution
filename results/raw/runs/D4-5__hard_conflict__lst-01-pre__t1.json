@@ -3,19 +3,19 @@
  "arm": "hard_conflict",
  "run_id": "D4-5__hard_conflict__lst-01-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:12",
- "git_commit": "9cb211a-dirty",
- "config_hash": "b107107f33bb",
+ "timestamp": "2026-09-23T00:22:08",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "49c8023de6df",
  "dataset_version": "synthetic-v1",
  "case_id": "lst-01-pre",
  "task_id": "lst-01",
  "family": "lost_or_stolen_device",
  "subset": "premature_dev",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": "all",
@@ -26,105 +26,111 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": {
-  "conflict": "okta",
+  "conflict": "intune",
   "field": "status",
-  "value": "ACTIVE"
+  "value": "locked"
  },
  "difficulty": "hard",
  "declared": true,
  "decision": "ESCALATE",
- "reason": "precondition failed []; forbidden []; problems ['duplicate:get_okta_user']",
+ "reason": "Device records for LT-52424 are duplicated/conflicting (one entry active, one locked) for required device state, triggering escalation per runbook; precondition that device belongs to caller is true but duplicates block verification.",
  "cited_conditions": [
-  "LST-R2"
+  "LST-R2",
+  "LST-R1"
  ],
  "evidence": [
   {
    "condition_id": "LST-P1",
-   "observed": "\"hannah.singh@acme.example\"",
-   "source": "get_device",
-   "holds": true
-  },
-  {
-   "condition_id": "LST-F1",
-   "observed": "\"active\"",
+   "observed": "Owner of LT-52424 is hannah.singh@acme.example (device present in inventory)",
    "source": "list_devices",
    "holds": true
   },
   {
-   "condition_id": "LST-F2",
-   "observed": "[\"ACTIVE\", \"ACTIVE\"]",
-   "source": "get_okta_user",
-   "holds": true
-  },
-  {
    "condition_id": "LST-R1",
-   "observed": "true",
+   "observed": "lost_mode=true present in device records, but duplicate records exist",
    "source": "get_device",
    "holds": true
   },
   {
    "condition_id": "LST-R2",
-   "observed": "\"active\"",
+   "observed": "Two records for LT-52424: one status=\"active\", one status=\"locked\" (conflicting)",
    "source": "get_device",
    "holds": false
   },
   {
    "condition_id": "LST-R3",
-   "observed": "[0, 0]",
+   "observed": "sessions_active=0",
    "source": "get_okta_user",
    "holds": true
   },
   {
    "condition_id": "LST-R4",
-   "observed": "0",
+   "observed": "oauth_tokens=0",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "LST-R5",
-   "observed": "\"security\"",
+   "observed": "category=security",
    "source": "get_incident",
    "holds": true
   },
   {
    "condition_id": "LST-R6",
-   "observed": "\"resolved\"",
+   "observed": "state=resolved",
    "source": "get_incident",
    "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "Other listed device LT-70320 status=\"active\", not locked/wiped",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "Okta user status=ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "Cannot verify non-subject modifications with available single-subject queries",
+   "source": "list_devices",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.8,
  "tools_called": [
   "lookup_runbook",
-  "get_hr_employee",
+  "list_devices",
   "get_device",
   "get_okta_user",
   "get_google_user",
-  "get_incident",
-  "list_devices"
+  "get_incident"
  ],
- "tool_call_count": 7,
+ "tool_call_count": 6,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.13,
- "observation_chars": 2739,
- "turns": 8,
+ "tool_latency_ms": 0.92,
+ "observation_chars": 2545,
+ "turns": 7,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.4,
- "llm_latency_ms": 0.0,
+ "input_tokens": 13593,
+ "output_tokens": 1478,
+ "reasoning_tokens": 704,
+ "cached_tokens": 9216,
+ "total_tokens": 15071,
+ "llm_cost_usd": 0.0035034,
+ "total_cost_usd": 0.0035034,
+ "latency_ms": 21482.3,
+ "llm_latency_ms": 21440.6,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "5a65cbe5d86e",

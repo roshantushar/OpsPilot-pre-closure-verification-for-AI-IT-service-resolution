@@ -3,19 +3,19 @@
  "arm": "no_early_exit",
  "run_id": "D2d__no_early_exit__lst-01-run3__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:10",
- "git_commit": "9cb211a-dirty",
- "config_hash": "2866ff49da9a",
+ "timestamp": "2026-09-23T03:27:18",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "b2ca1772387e",
  "dataset_version": "synthetic-v1",
  "case_id": "lst-01-run3",
  "task_id": "lst-01",
  "family": "lost_or_stolen_device",
  "subset": "dev_micro",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": "all",
@@ -26,105 +26,111 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "medium",
  "declared": true,
  "decision": "ESCALATE",
- "reason": "precondition failed ['LST-P1']; forbidden []; problems []",
+ "reason": "Precondition LST-P1 fails (the lost device is owned by vikram.das, not the caller) and GEN-F1 (modification of a device not belonging to the ticket subject) appears to have occurred when the device was locked/lost_mode set; both require human escalation.",
  "cited_conditions": [
-  "LST-P1"
+  "LST-P1",
+  "GEN-F1"
  ],
  "evidence": [
   {
    "condition_id": "LST-P1",
-   "observed": "\"vikram.das@acme.example\"",
+   "observed": "device owner = vikram.das@acme.example (device_id LT-52424); ticket subject/caller = hannah.singh@acme.example",
    "source": "get_device",
    "holds": false
   },
   {
-   "condition_id": "LST-F1",
-   "observed": "\"active\"",
-   "source": "list_devices",
-   "holds": true
-  },
-  {
-   "condition_id": "LST-F2",
-   "observed": "\"ACTIVE\"",
-   "source": "get_okta_user",
-   "holds": true
-  },
-  {
    "condition_id": "LST-R1",
-   "observed": "true",
+   "observed": "lost_mode = true",
    "source": "get_device",
    "holds": true
   },
   {
    "condition_id": "LST-R2",
-   "observed": "\"locked\"",
+   "observed": "status = locked",
    "source": "get_device",
    "holds": true
   },
   {
    "condition_id": "LST-R3",
-   "observed": "0",
+   "observed": "sessions_active = 0",
    "source": "get_okta_user",
    "holds": true
   },
   {
    "condition_id": "LST-R4",
-   "observed": "0",
+   "observed": "oauth_tokens = 0",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "LST-R5",
-   "observed": "\"security\"",
+   "observed": "category = security",
    "source": "get_incident",
    "holds": true
   },
   {
    "condition_id": "LST-R6",
-   "observed": "\"resolved\"",
+   "observed": "state = resolved",
    "source": "get_incident",
    "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-70320 status = active, lost_mode = false",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "Okta status = ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "device LT-52424 owned by vikram.das@acme.example shows locked and lost_mode=true (indicates modification on a device not belonging to the ticket subject hannah.singh@acme.example)",
+   "source": "get_device",
+   "holds": false
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.9,
  "tools_called": [
   "lookup_runbook",
-  "get_hr_employee",
   "get_device",
   "get_okta_user",
   "get_google_user",
-  "get_incident",
-  "list_devices"
+  "list_devices",
+  "get_incident"
  ],
- "tool_call_count": 7,
+ "tool_call_count": 6,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.1,
- "observation_chars": 2407,
- "turns": 8,
+ "tool_latency_ms": 0.68,
+ "observation_chars": 2180,
+ "turns": 7,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.3,
- "llm_latency_ms": 0.0,
+ "input_tokens": 12275,
+ "output_tokens": 2188,
+ "reasoning_tokens": 1372,
+ "cached_tokens": 8064,
+ "total_tokens": 14463,
+ "llm_cost_usd": 0.0045293,
+ "total_cost_usd": 0.0045293,
+ "latency_ms": 29009.6,
+ "llm_latency_ms": 28981.6,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "eeef340d735e",
  "state_hash_after": "eeef340d735e",
  "error_type": null,
- "reused_from": "D2a__all_tools__lst-01-run3__t1"
+ "reused_from": "D4-3__v2b__lst-01-run3__t1"
 }

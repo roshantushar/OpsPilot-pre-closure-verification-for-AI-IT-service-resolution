@@ -3,19 +3,19 @@
  "arm": "minus_redundant",
  "run_id": "D2a__minus_redundant__brc-01-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:10",
- "git_commit": "9cb211a-dirty",
- "config_hash": "aa192be9e1c1",
+ "timestamp": "2026-09-23T01:19:18",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "c6bf9e477511",
  "dataset_version": "synthetic-v1",
  "case_id": "brc-01-pre",
  "task_id": "brc-01",
  "family": "sla_breach_escalation",
  "subset": "dev_micro",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": [
@@ -28,7 +28,7 @@
   "get_incident",
   "list_slas",
   "list_approvals",
-  "list_security_exceptions"
+  "lookup_runbook"
  ],
  "parallel_tools": false,
  "early_exit": false,
@@ -37,38 +37,26 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "easy",
  "declared": true,
  "decision": "INCOMPLETE",
- "reason": "required conditions not met: ['BRC-R1']",
+ "reason": "SLA stage is not 'breached' though has_breached is true; required condition BRC-R1 is false.",
  "cited_conditions": [
   "BRC-R1"
  ],
  "evidence": [
   {
    "condition_id": "BRC-P1",
-   "observed": "\"P1\"",
-   "source": "get_incident",
-   "holds": true
-  },
-  {
-   "condition_id": "BRC-F1",
-   "observed": "null",
-   "source": "list_slas",
-   "holds": true
-  },
-  {
-   "condition_id": "BRC-F2",
-   "observed": "\"in_progress\"",
+   "observed": "P1",
    "source": "get_incident",
    "holds": true
   },
   {
    "condition_id": "BRC-R1",
-   "observed": "\"in_progress\"",
+   "observed": "in_progress",
    "source": "list_slas",
    "holds": false
   },
@@ -80,42 +68,60 @@
   },
   {
    "condition_id": "BRC-R3",
-   "observed": "\"Service Manager\"",
+   "observed": "Service Manager",
    "source": "get_incident",
    "holds": true
   },
   {
    "condition_id": "BRC-R4",
-   "observed": "[\"SLA breach recorded; escalated to Service Manager.\"]",
+   "observed": "SLA breach recorded; escalated to Service Manager.",
    "source": "get_incident",
    "holds": true
+  },
+  {
+   "condition_id": "BRC-F1",
+   "observed": "breach_time: null",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-F2",
+   "observed": "state: in_progress",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not checkable with these tools",
+   "source": "get_incident",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.9,
  "tools_called": [
-  "get_hr_employee",
+  "lookup_runbook",
   "get_incident",
   "list_slas"
  ],
  "tool_call_count": 3,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.04,
- "observation_chars": 738,
+ "tool_latency_ms": 2.35,
+ "observation_chars": 1613,
  "turns": 4,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.1,
- "llm_latency_ms": 0.0,
+ "input_tokens": 6623,
+ "output_tokens": 1246,
+ "reasoning_tokens": 704,
+ "cached_tokens": 4480,
+ "total_tokens": 7869,
+ "llm_cost_usd": 0.00313975,
+ "total_cost_usd": 0.00313975,
+ "latency_ms": 25282.7,
+ "llm_latency_ms": 25243.9,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "37ce2c614c26",

@@ -1,0 +1,76 @@
+{
+ "ts": "2026-09-23T00:23:44",
+ "case_id": "trf-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.67,
+ "reason": "HR shows new department but the hr-all group was not added (TRF-R3), and the incident query returned duplicated records which is a conflicting record state requiring escalation.",
+ "cited_conditions": [
+  "TRF-R3",
+  "TRF-R5"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "groups: [\"all-staff\",\"workday-hr\"] (sales-all not present)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "groups: [\"all-staff\",\"workday-hr\"] (crm-users not present)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "groups: [\"all-staff\",\"workday-hr\"] (hr-all NOT present)",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "groups: [\"all-staff\",\"workday-hr\"] (workday-hr present)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "state: resolved (but get_incident returned 2 identical records for the same incident)",
+   "source": "get_incident",
+   "holds": null
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "groups: [\"all-staff\",\"workday-hr\"] (all-staff still present)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify modification to other accounts/devices with these tools",
+   "source": "get_okta_user",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 11321,
+ "tokens_out": 1860,
+ "cost_usd": 0.00271705,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

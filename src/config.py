@@ -58,6 +58,7 @@ class Settings:
     max_cost_per_case_usd: float = field(default_factory=lambda: _env("MAX_COST_PER_CASE_USD", 0.03, float))
     require_confirm_above_cap: bool = field(default_factory=lambda: _env("REQUIRE_CONFIRM_ABOVE_CAP", True, bool))
     max_tool_output_chars: int = field(default_factory=lambda: _env("MAX_TOOL_OUTPUT_CHARS", 4000, int))
+    step_cap: int = field(default_factory=lambda: _env("STEP_CAP", 8, int))
     data_dir: Path = field(default_factory=lambda: ROOT / _env("DATA_DIR", "data/opspilot_itsm_data"))
     subsets_dir: Path = field(default_factory=lambda: ROOT / _env("SUBSETS_DIR", "data/subsets"))
     results_dir: Path = field(default_factory=lambda: ROOT / _env("RESULTS_DIR", "results"))
@@ -93,7 +94,7 @@ class RunConfig:
     allow_escalate: bool = True
     require_evidence: bool = True
     dedup: bool = True
-    step_cap: int = 8
+    step_cap: int = field(default_factory=lambda: SETTINGS.step_cap)
     budget_cap_usd: float = 0.03
     perturbation: dict | None = None
     trials: int = 1

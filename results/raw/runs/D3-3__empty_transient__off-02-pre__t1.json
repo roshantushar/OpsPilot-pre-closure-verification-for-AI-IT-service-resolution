@@ -3,19 +3,19 @@
  "arm": "empty_transient",
  "run_id": "D3-3__empty_transient__off-02-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:11",
- "git_commit": "9cb211a-dirty",
- "config_hash": "eb657a2541e7",
+ "timestamp": "2026-09-23T03:05:37",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "e65b612bad8a",
  "dataset_version": "synthetic-v1",
  "case_id": "off-02-pre",
  "task_id": "off-02",
  "family": "standard_offboarding",
  "subset": "fault_base",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": "all",
@@ -34,8 +34,8 @@
  },
  "difficulty": "medium",
  "declared": true,
- "decision": "INCOMPLETE",
- "reason": "required conditions not met: ['OFF-R1', 'OFF-R2']",
+ "decision": "ESCALATE",
+ "reason": "Okta state and group membership for the subject are unreadable/missing (no Okta record returned), which blocks verification of OFF-R1 and OFF-R2 and requires human escalation per the runbook.",
  "cited_conditions": [
   "OFF-R1",
   "OFF-R2"
@@ -43,7 +43,7 @@
  "evidence": [
   {
    "condition_id": "OFF-P1",
-   "observed": "\"terminated\"",
+   "observed": "terminated",
    "source": "get_hr_employee",
    "holds": true
   },
@@ -54,55 +54,61 @@
    "holds": true
   },
   {
-   "condition_id": "OFF-F1",
-   "observed": "false",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
    "condition_id": "OFF-R1",
-   "observed": "no matching record",
+   "observed": "no okta user record returned (count:0)",
    "source": "get_okta_user",
    "holds": false
   },
   {
    "condition_id": "OFF-R2",
-   "observed": "no matching record",
+   "observed": "no okta user record returned (count:0) \u2014 cannot confirm groups removed",
    "source": "get_okta_user",
    "holds": false
   },
   {
    "condition_id": "OFF-R3",
-   "observed": "true",
+   "observed": "suspended",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R4",
-   "observed": "\"kenji.kumar@acme.example\"",
+   "observed": "data_transfer_to: kenji.kumar@acme.example",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R5",
-   "observed": "true",
+   "observed": "deactivated",
    "source": "get_slack_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R6",
-   "observed": "[\"wipe_pending\", \"wipe_pending\"]",
+   "observed": "[{\"device_id\":\"LT-39982\",\"status\":\"wipe_pending\"},{\"device_id\":\"LT-47191\",\"status\":\"wipe_pending\"}]",
    "source": "list_devices",
    "holds": true
   },
   {
    "condition_id": "OFF-R7",
-   "observed": "\"resolved\"",
+   "observed": "resolved",
    "source": "get_incident",
    "holds": true
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "deleted: false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not verifiable with these tools",
+   "source": "list_devices",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.75,
  "tools_called": [
   "lookup_runbook",
   "get_hr_employee",
@@ -115,22 +121,22 @@
  "tool_call_count": 7,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.11,
+ "tool_latency_ms": 0.86,
  "observation_chars": 2656,
  "turns": 8,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.3,
- "llm_latency_ms": 0.0,
+ "input_tokens": 15831,
+ "output_tokens": 2300,
+ "reasoning_tokens": 1508,
+ "cached_tokens": 12800,
+ "total_tokens": 18131,
+ "llm_cost_usd": 0.0046609,
+ "total_cost_usd": 0.0046609,
+ "latency_ms": 33835.6,
+ "llm_latency_ms": 33771.6,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "961b8201097a",

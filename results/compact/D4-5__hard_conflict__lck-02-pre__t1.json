@@ -1,0 +1,69 @@
+{
+ "ts": "2026-09-23T00:23:25",
+ "case_id": "lck-02-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.6,
+ "reason": "Okta records returned duplicated/conflicting values for a required condition (password_reset_required), which per the runbook requires escalation.",
+ "cited_conditions": [
+  "LCK-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LCK-P1",
+   "observed": "status: active",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R1",
+   "observed": "status: ACTIVE (Okta)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R2",
+   "observed": "conflicting records: password_reset_required=false and password_reset_required=true (duplicate results)",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R3",
+   "observed": "mfa_reset_issued: true",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R4",
+   "observed": "work_notes contains: \"Identity verified via video call.\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R5",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not checked by these tools; cannot verify modifications to other employees' accounts/devices/records",
+   "source": "get_okta_user",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 10885,
+ "tokens_out": 1543,
+ "cost_usd": 0.0032158,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

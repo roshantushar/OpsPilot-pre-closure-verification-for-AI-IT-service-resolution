@@ -3,19 +3,19 @@
  "arm": "best_x3",
  "run_id": "D4-7__best_x3__lst-02-pre__t2",
  "trial": 2,
- "timestamp": "2026-09-22T16:20:12",
- "git_commit": "9cb211a-dirty",
- "config_hash": "2866ff49da9a",
+ "timestamp": "2026-09-23T02:01:44",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "b2ca1772387e",
  "dataset_version": "synthetic-v1",
  "case_id": "lst-02-pre",
  "task_id": "lst-02",
  "family": "lost_or_stolen_device",
  "subset": "hard_negatives",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": "all",
@@ -26,100 +26,105 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "medium",
  "declared": true,
  "decision": "INCOMPLETE",
- "reason": "required conditions not met: ['LST-R1']",
+ "reason": "Lost mode is not enabled on LT-21464 (LST-R1 failed).",
  "cited_conditions": [
   "LST-R1"
  ],
  "evidence": [
   {
    "condition_id": "LST-P1",
-   "observed": "\"imran.goh@acme.example\"",
+   "observed": "owner=imran.goh@acme.example",
    "source": "get_device",
    "holds": true
   },
   {
-   "condition_id": "LST-F1",
-   "observed": "\"active\"",
-   "source": "list_devices",
-   "holds": true
-  },
-  {
-   "condition_id": "LST-F2",
-   "observed": "\"ACTIVE\"",
-   "source": "get_okta_user",
-   "holds": true
-  },
-  {
    "condition_id": "LST-R1",
-   "observed": "false",
+   "observed": "lost_mode=false",
    "source": "get_device",
    "holds": false
   },
   {
    "condition_id": "LST-R2",
-   "observed": "\"locked\"",
+   "observed": "status=locked",
    "source": "get_device",
    "holds": true
   },
   {
    "condition_id": "LST-R3",
-   "observed": "0",
+   "observed": "sessions_active=0",
    "source": "get_okta_user",
    "holds": true
   },
   {
    "condition_id": "LST-R4",
-   "observed": "0",
+   "observed": "oauth_tokens=0",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "LST-R5",
-   "observed": "\"security\"",
+   "observed": "category=security",
    "source": "get_incident",
    "holds": true
   },
   {
    "condition_id": "LST-R6",
-   "observed": "\"resolved\"",
+   "observed": "state=resolved",
    "source": "get_incident",
    "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-50303 status=active (not locked/wiped)",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "okta status=ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not verifiable with available single-subject lookups",
+   "source": "list_devices",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.9,
  "tools_called": [
   "lookup_runbook",
-  "get_hr_employee",
   "get_device",
   "get_okta_user",
   "get_google_user",
-  "get_incident",
-  "list_devices"
+  "list_devices",
+  "get_incident"
  ],
- "tool_call_count": 7,
+ "tool_call_count": 6,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.11,
- "observation_chars": 2514,
- "turns": 8,
+ "tool_latency_ms": 0.21,
+ "observation_chars": 2296,
+ "turns": 7,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
+ "input_tokens": 13135,
+ "output_tokens": 2032,
+ "reasoning_tokens": 1520,
+ "cached_tokens": 8576,
+ "total_tokens": 15167,
  "llm_cost_usd": 0.0,
  "total_cost_usd": 0.0,
- "latency_ms": 0.3,
+ "latency_ms": 3.0,
  "llm_latency_ms": 0.0,
  "retry_attempted": false,
  "retry_success": null,

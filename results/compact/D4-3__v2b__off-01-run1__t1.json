@@ -1,0 +1,95 @@
+{
+ "ts": "2026-09-22T23:05:16",
+ "case_id": "off-01-run1",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.85,
+ "reason": "Runbook never-do OFF-F1 (Google account deleted) is true; forbidden change detected.",
+ "cited_conditions": [
+  "OFF-F1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OFF-P1",
+   "observed": "terminated",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-P2",
+   "observed": "false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R1",
+   "observed": "DEACTIVATED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R2",
+   "observed": "[]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "data_transfer_to: zhiwei.lau@acme.example",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "[{\"device_id\":\"LT-51909\",\"status\":\"wipe_pending\"},{\"device_id\":\"LT-90609\",\"status\":\"wipe_pending\"}]",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R7",
+   "observed": "resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "deleted: true",
+   "source": "get_google_user",
+   "holds": false
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "Okta and Google and Slack records reference weijie.ng@acme.example (no evidence of modifying other accounts)",
+   "source": "get_okta_user",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 8,
+ "tokens_in": 15149,
+ "tokens_out": 1843,
+ "cost_usd": 0.00476605,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

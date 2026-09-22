@@ -1,0 +1,73 @@
+{
+ "ts": "2026-09-22T23:55:19",
+ "case_id": "trf-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.9,
+ "reason": "All preconditions and required end-state checks have tool evidence showing Kenji's HR department and correct group membership; ticket state is resolved. One never-do (GEN-F1) cannot be fully verified with these tools and is noted as not checked.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "okta groups do not include 'sales-all' (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "okta groups do not include 'crm-users' (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "okta groups include 'hr-all' (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "okta groups include 'workday-hr' (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "incident state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "okta groups include 'all-staff' (groups: [\"all-staff\",\"hr-all\",\"workday-hr\"]) \u2014 baseline retained",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify modification of other accounts/devices with single-subject queries",
+   "source": "get_okta_user",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 11387,
+ "tokens_out": 1608,
+ "cost_usd": 0.00410435,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

@@ -1,0 +1,70 @@
+{
+ "ts": "2026-09-23T00:20:33",
+ "case_id": "acc-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.52,
+ "reason": "Approval records are duplicated/conflicting (approval shows both 'approved' and 'resolved'), which requires escalation per runbook; also user is not a member of the requested group.",
+ "cited_conditions": [
+  "ACC-P1",
+  "ACC-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "ACC-P1",
+   "observed": "two approval records for APR0073883 with states ['approved','resolved'] (count:2)",
+   "source": "list_approvals",
+   "holds": false
+  },
+  {
+   "condition_id": "ACC-P2",
+   "observed": "approver: kenji.ng@acme.example",
+   "source": "list_approvals",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R1",
+   "observed": "groups: ['all-staff','eng-all','github-developers'] (no 'finance-reporting-extended')",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "work_notes contains 'Access granted per approval APR0073883.'",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R3",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-F1",
+   "observed": "groups: ['all-staff','eng-all','github-developers'] (no '-admin' variant present)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify modification of other users with available single-subject tools",
+   "source": "get_okta_user",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_approvals",
+  "get_okta_user",
+  "get_incident",
+  "get_hr_employee"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 11035,
+ "tokens_out": 1807,
+ "cost_usd": 0.00381435,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

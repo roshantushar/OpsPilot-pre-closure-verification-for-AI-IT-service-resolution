@@ -1,0 +1,24 @@
+{
+ "ts": "2026-09-22T23:25:03",
+ "case_id": "trf-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.0,
+ "reason": "fail-safe: schema validation failed twice: ValidationError: 1 validation error for Decision\nevidence.7.source\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type",
+ "cited_conditions": [],
+ "evidence": [],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "schema validation failed twice - fail-safe ESCALATE",
+ "turns": 7,
+ "tokens_in": 14000,
+ "tokens_out": 2275,
+ "cost_usd": 0.0056596,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

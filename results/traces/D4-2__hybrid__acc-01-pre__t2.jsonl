@@ -1,0 +1,2 @@
+{"event": "llm", "turn": 1, "input_tokens": 971, "output_tokens": 1164, "reasoning_tokens": 640, "cached_tokens": 0, "cost_usd": 0.00257075, "n_checks": 7}
+{"event": "final", "decision": "ESCALATE", "turns": 1}

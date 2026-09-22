@@ -1,0 +1,70 @@
+{
+ "ts": "2026-09-22T23:07:57",
+ "case_id": "hld-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.9,
+ "reason": "SLA is not paused (required end state HLD-R3 is false).",
+ "cited_conditions": [
+  "HLD-R3"
+ ],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "has_breached=false",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R1",
+   "observed": "state=on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "hold_reason=Awaiting Caller",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "stage=in_progress (SLA not paused)",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "work_notes contains 'awaiting caller' (\"On hold: awaiting caller response with logs.\")",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-F1",
+   "observed": "state=on_hold (not resolved/closed)",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "okta account present and active; no evidence of modifications to other accounts/devices",
+   "source": "get_okta_user",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas",
+  "list_approvals",
+  "list_security_exceptions",
+  "get_okta_user"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 11771,
+ "tokens_out": 1544,
+ "cost_usd": 0.00395715,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

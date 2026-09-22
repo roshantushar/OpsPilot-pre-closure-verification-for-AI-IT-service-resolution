@@ -1,0 +1,29 @@
+{
+ "ts": "2026-09-22T22:26:29",
+ "case_id": "lck-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.5,
+ "reason": "unmappable conditions ['LCK-P1', 'LCK-R1', 'LCK-R2', 'LCK-R3', 'LCK-R4', 'LCK-R5', 'LCK-CHK1', 'GEN-F1']; all preconditions hold, all required conditions met, nothing forbidden observed",
+ "cited_conditions": [
+  "LCK-P1",
+  "LCK-R1",
+  "LCK-R2",
+  "LCK-R3",
+  "LCK-R4",
+  "LCK-R5",
+  "LCK-CHK1",
+  "GEN-F1"
+ ],
+ "evidence": [],
+ "tools_called": [
+  "get_hr_employee"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 697,
+ "tokens_out": 1086,
+ "cost_usd": 0.00234625,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

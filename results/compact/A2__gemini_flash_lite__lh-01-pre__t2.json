@@ -1,0 +1,27 @@
+{
+ "ts": "2026-09-22T20:53:32",
+ "case_id": "lh-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.0,
+ "reason": "fail-safe: schema validation failed twice: ValidationError: 7 validation errors for Decision\nevidence.1.observed\n  Input should be a valid string [type=string_type, input_value=True, input_type=bool]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type\nevidence.3.observed\n  Input should be a valid string [type=string_type, input_v",
+ "cited_conditions": [],
+ "evidence": [],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_security_exceptions",
+  "get_incident",
+  "list_slas",
+  "list_approvals"
+ ],
+ "guard": "schema validation failed twice - fail-safe ESCALATE",
+ "turns": 3,
+ "tokens_in": 2318,
+ "tokens_out": 1532,
+ "cost_usd": 0.0008446,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

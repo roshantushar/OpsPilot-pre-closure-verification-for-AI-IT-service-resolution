@@ -1,2 +1,2 @@
-{"event": "llm", "turn": 1, "cost_usd": 0.0, "records_chars": 2990}
+{"event": "llm", "turn": 1, "input_tokens": 1296, "output_tokens": 622, "reasoning_tokens": 384, "cached_tokens": 0, "cost_usd": 0.001568, "records_chars": 2990}
 {"event": "final", "decision": "INCOMPLETE", "turns": 1}

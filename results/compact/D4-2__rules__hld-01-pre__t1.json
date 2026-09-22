@@ -1,0 +1,62 @@
+{
+ "ts": "2026-09-22T22:14:10",
+ "case_id": "hld-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 1.0,
+ "reason": "required conditions not met: ['HLD-R3']",
+ "cited_conditions": [
+  "HLD-R3"
+ ],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "false",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-F1",
+   "observed": "\"on_hold\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R1",
+   "observed": "\"on_hold\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "\"Awaiting Caller\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "\"in_progress\"",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "[\"On hold: awaiting caller response with logs.\"]",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "list_slas",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 0,
+ "tokens_in": 0,
+ "tokens_out": 0,
+ "cost_usd": 0.0,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

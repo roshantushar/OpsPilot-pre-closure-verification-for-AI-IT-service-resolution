@@ -1,0 +1,55 @@
+{
+ "ts": "2026-09-22T21:49:58",
+ "case_id": "acc-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.95,
+ "reason": "All preconditions and required end states from KB-OPS-103 are met: approval exists and is from the manager, the user is in the requested group, the approval is referenced in work notes, and the ticket is resolved.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "ACC-P1",
+   "observed": "approval APR0073883 state = approved",
+   "source": "list_approvals",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-P2",
+   "observed": "approver kenji.ng@acme.example matches HR manager kenji.ng@acme.example",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R1",
+   "observed": "groups include finance-reporting-extended",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "work_notes contains 'Access granted per approval APR0073883.'",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R3",
+   "observed": "incident state = resolved",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_okta_user",
+  "get_incident",
+  "list_approvals",
+  "get_hr_employee"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 8972,
+ "tokens_out": 1017,
+ "cost_usd": 0.0027506,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

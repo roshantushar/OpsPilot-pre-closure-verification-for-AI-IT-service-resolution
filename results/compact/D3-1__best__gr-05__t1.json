@@ -1,0 +1,96 @@
+{
+ "ts": "2026-09-23T01:41:52",
+ "case_id": "gr-05",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.56,
+ "reason": "Slack could not be checked (503) after one retry, which is a required end state (OFF-R5) and per runbook requires escalation when a needed system cannot be checked.",
+ "cited_conditions": [
+  "OFF-R5"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OFF-P1",
+   "observed": "status: terminated",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-P2",
+   "observed": "legal_hold: false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R1",
+   "observed": "status: DEACTIVATED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R2",
+   "observed": "groups: []",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "suspended: true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "data_transfer_to: kenji.kumar@acme.example",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "error: 503 Service Unavailable (after one retry)",
+   "source": "get_slack_user",
+   "holds": null
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "[{\"device_id\":\"LT-39982\",\"status\":\"wipe_pending\"},{\"device_id\":\"LT-47191\",\"status\":\"wipe_pending\"}]",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R7",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "deleted: false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not verifiable by single-subject lookups",
+   "source": "get_hr_employee",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 9,
+ "tokens_in": 18453,
+ "tokens_out": 1877,
+ "cost_usd": 0.00494005,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

@@ -1,0 +1,34 @@
+{
+ "ts": "2026-09-23T03:39:49",
+ "case_id": "brc-01-run2",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.8,
+ "reason": "The required condition BRC-R2 (SLA has_breached true) is false, indicating that the SLA breach has not been properly recorded as required by the runbook.",
+ "cited_conditions": [
+  "BRC-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "BRC-R2",
+   "observed": "false",
+   "source": "list_slas",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas",
+  "list_approvals",
+  "list_slas",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 6923,
+ "tokens_out": 237,
+ "cost_usd": 0.00073905,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

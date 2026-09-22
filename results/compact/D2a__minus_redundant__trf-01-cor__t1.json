@@ -1,0 +1,74 @@
+{
+ "ts": "2026-09-23T01:18:11",
+ "case_id": "trf-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.86,
+ "reason": "HR shows new department HR and Okta group membership matches HR groups while Sales groups are removed; ticket is resolved. The 'do not modify others' never-do cannot be checked with these tools and is noted null.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "okta groups do not include sales-all",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "okta groups do not include crm-users",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "okta groups include hr-all",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "okta groups include workday-hr",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "incident state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "okta groups include all-staff (baseline retained)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not verifiable with available single-subject lookups",
+   "source": "",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_slack_user",
+  "get_google_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 13273,
+ "tokens_out": 1667,
+ "cost_usd": 0.00469385,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

@@ -1,0 +1,46 @@
+{
+ "ts": "2026-09-22T21:44:25",
+ "case_id": "trf-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.9,
+ "reason": "The Okta account is missing the hr-all group required by the runbook, and Google Workspace org_unit still shows Sales, creating conflicting records that require human review.",
+ "cited_conditions": [
+  "TRF-R3",
+  "records_conflict"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-R3",
+   "observed": "okta groups: [\"all-staff\",\"workday-hr\"] (hr-all missing)",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "records_conflict",
+   "observed": "google org_unit: \"/Staff/Sales\" (does not match HR department)",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-P1",
+   "observed": "HR department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_slack_user",
+  "get_google_user"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 9080,
+ "tokens_out": 850,
+ "cost_usd": 0.0026452,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

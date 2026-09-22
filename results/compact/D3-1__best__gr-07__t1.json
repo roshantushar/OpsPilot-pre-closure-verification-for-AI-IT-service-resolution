@@ -1,0 +1,119 @@
+{
+ "ts": "2026-09-23T01:43:01",
+ "case_id": "gr-07",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.6,
+ "reason": "Okta account status value is unreadable/unexpected (tool returned 'SUSP?ENDED') which violates the runbook's required end state and triggers escalation rules.",
+ "cited_conditions": [
+  "LH-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LH-P1",
+   "observed": "{\"exception_id\":\"SEC0058499\",\"type\":\"legal_hold\",\"active\":true}",
+   "source": "list_security_exceptions",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R1",
+   "observed": "{\"okta_id\":\"00u5771644\",\"status\":\"SUSP?ENDED\",\"sessions_active\":1,\"password_reset_required\":false}",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LH-R2",
+   "observed": "{\"email\":\"mei.koh@acme.example\",\"suspended\":true}",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R3",
+   "observed": "{\"org_unit\":\"/Legal Hold\"}",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R4",
+   "observed": "{\"oauth_tokens\":0}",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R5",
+   "observed": "{\"force_password_reset\":true}",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R6",
+   "observed": "{\"slack_id\":\"U09028014\",\"deactivated\":true}",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R7",
+   "observed": "{\"number\":\"INC0070682\",\"state\":\"on_hold\"}",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R8",
+   "observed": "{\"hold_reason\":\"Legal Hold\"}",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R9",
+   "observed": "{\"escalated_to\":\"Legal\"}",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F1",
+   "observed": "{\"status\":\"SUSP?ENDED\"}",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F2",
+   "observed": "{\"data_transfer_to\":null}",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F3",
+   "observed": "{\"state\":\"on_hold\"}",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F4",
+   "observed": "{\"deleted\":false}",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "",
+   "source": "",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_security_exceptions",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "get_incident",
+  "get_okta_user"
+ ],
+ "guard": "none",
+ "turns": 8,
+ "tokens_in": 16296,
+ "tokens_out": 1893,
+ "cost_usd": 0.0048936,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

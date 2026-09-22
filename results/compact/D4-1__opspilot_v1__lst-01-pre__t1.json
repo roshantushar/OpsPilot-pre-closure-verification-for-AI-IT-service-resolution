@@ -1,0 +1,83 @@
+{
+ "ts": "2026-09-22T21:27:34",
+ "case_id": "lst-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.9,
+ "reason": "Lost mode is enabled but there is no evidence the lost device was locked; runbook requires both lost mode and device lock.",
+ "cited_conditions": [
+  "LST-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "owner=hannah.singh@acme.example",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "lost_mode=true for LT-52424",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "status=active, no 'locked' flag present for LT-52424",
+   "source": "get_device",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "sessions_active=0",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "oauth_tokens=0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "category=security",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "state=resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-70320 status=active, lost_mode=false",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "okta status=ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_device",
+  "list_devices",
+  "get_okta_user",
+  "get_google_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 8,
+ "tokens_in": 12314,
+ "tokens_out": 1031,
+ "cost_usd": 0.0031245,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

@@ -1,0 +1,78 @@
+{
+ "ts": "2026-09-22T22:27:50",
+ "case_id": "brc-01-run2",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.5,
+ "reason": "unmappable conditions ['FORB-BRC-F1', 'FORB-GEN-F1']; required conditions not met: ['REQ-BRC-R1', 'REQ-BRC-R2', 'REQ-BRC-R3']",
+ "cited_conditions": [
+  "FORB-BRC-F1",
+  "FORB-GEN-F1",
+  "REQ-BRC-R1",
+  "REQ-BRC-R2",
+  "REQ-BRC-R3"
+ ],
+ "evidence": [
+  {
+   "condition_id": "PRE-BRC-P1",
+   "observed": "\"P1\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "CHK-INC-ID",
+   "observed": "\"INC0035493\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HR-SUBJECT-ACTIVE",
+   "observed": "\"active\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "FORB-BRC-F2",
+   "observed": "\"in_progress\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "REQ-BRC-R1",
+   "observed": "\"breached\"",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "REQ-BRC-R2",
+   "observed": "false",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "REQ-BRC-R3",
+   "observed": "no matching record",
+   "source": "list_approvals",
+   "holds": false
+  },
+  {
+   "condition_id": "REQ-BRC-R4",
+   "observed": "[\"SLA breach recorded; escalated to Service Manager.\"]",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_incident",
+  "list_slas",
+  "list_approvals"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 731,
+ "tokens_out": 1233,
+ "cost_usd": 0.00264875,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

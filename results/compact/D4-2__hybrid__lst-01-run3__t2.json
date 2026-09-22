@@ -1,0 +1,95 @@
+{
+ "ts": "2026-09-22T22:38:34",
+ "case_id": "lst-01-run3",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 1.0,
+ "reason": "precondition failed ['LST-P1']; forbidden []; problems [] (known blind spot, not checked: ['GEN-F1'])",
+ "cited_conditions": [
+  "LST-P1",
+  "LST-R1",
+  "LST-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "\"LT-70320\"",
+   "source": "list_devices",
+   "holds": false
+  },
+  {
+   "condition_id": "HR-1",
+   "observed": "\"active\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1a",
+   "observed": "\"active\"",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1b",
+   "observed": "\"active\"",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "\"ACTIVE\"",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "no matching record",
+   "source": "list_devices",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "no matching record",
+   "source": "list_devices",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "0",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "\"security\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "list_devices",
+  "get_okta_user",
+  "get_google_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 1021,
+ "tokens_out": 1525,
+ "cost_usd": 0.0,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

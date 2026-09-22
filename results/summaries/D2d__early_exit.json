@@ -1,14 +1,14 @@
 {
  "experiment_id": "D2d",
  "arm": "early_exit",
- "config_hash": "66c3083b877b",
+ "config_hash": "91138ee30058",
  "config": {
   "subset": "dev_micro",
   "verifier": "agent",
-  "backend": "scripted",
+  "backend": "live",
   "model": "openai/gpt-5-mini",
   "reasoning_effort": "low",
-  "prompt_version": "v2",
+  "prompt_version": "v2b",
   "descriptor_version": "v2",
   "compact_returns": true,
   "tool_subset": "all",
@@ -19,7 +19,7 @@
   "allow_escalate": true,
   "require_evidence": true,
   "dedup": true,
-  "step_cap": 8,
+  "step_cap": 10,
   "budget_cap_usd": 0.03,
   "perturbation": null,
   "trials": 1,
@@ -38,21 +38,21 @@
   "escalation_rate": 0.16666666666666666,
   "accuracy": 0.9166666666666666,
   "detection_rate": 1.0,
-  "evidence_accuracy_L1": 0.75,
+  "evidence_accuracy_L1": 1.0,
   "attack_success_rate": null,
   "decisions": {
    "VERIFIED": 4,
    "INCOMPLETE": 6,
    "ESCALATE": 2
   },
-  "cost_total_usd": 0.0,
-  "cost_per_case_usd": 0.0,
-  "cost_median_usd": 0.0,
-  "cost_per_verified_correct_usd": 0.0,
-  "latency_p50_ms": 0.2,
-  "latency_p95_ms": 1.7,
+  "cost_total_usd": 0.039371,
+  "cost_per_case_usd": 0.0032809291666666667,
+  "cost_median_usd": 0.00327825,
+  "cost_per_verified_correct_usd": 0.0098427875,
+  "latency_p50_ms": 21980.8,
+  "latency_p95_ms": 35700.9,
   "turns_median": 6,
-  "tool_calls_mean": 5.416666666666667,
+  "tool_calls_mean": 4.75,
   "dup_calls_total": 0,
   "schema_failures": 0,
   "step_cap_hits": 0
@@ -146,5 +146,5 @@
    "accuracy": 1.0
   }
  },
- "spent_total_usd": 0.0
+ "spent_total_usd": 1.515324
 }

@@ -1,0 +1,108 @@
+{
+ "experiment_id": "D4-2",
+ "arm": "hybrid",
+ "run_id": "D4-2__hybrid__lck-01-pre__t2",
+ "trial": 2,
+ "timestamp": "2026-09-22T22:38:34",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "dbb711590ab3",
+ "dataset_version": "synthetic-v1",
+ "case_id": "lck-01-pre",
+ "task_id": "lck-01",
+ "family": "account_lockout_reset",
+ "subset": "dev_mini",
+ "verifier": "hybrid",
+ "backend": "live",
+ "model": "openai/gpt-5-mini",
+ "reasoning_effort": "low",
+ "prompt_version": "v1",
+ "descriptor_version": "v2",
+ "compact_returns": true,
+ "tool_subset": "all",
+ "parallel_tools": false,
+ "early_exit": false,
+ "show_closure_note": true,
+ "use_runbook": true,
+ "allow_escalate": true,
+ "require_evidence": true,
+ "dedup": true,
+ "step_cap": 10,
+ "budget_cap_usd": 0.03,
+ "perturbation": null,
+ "difficulty": "easy",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "reason": "required conditions not met: ['LCK-R1', 'LCK-R4'] (known blind spot, not checked: ['GEN-F1'])",
+ "cited_conditions": [
+  "LCK-R1",
+  "LCK-R4"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LCK-P1",
+   "observed": "\"active\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R1",
+   "observed": "\"LOCKED_OUT\"",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R2",
+   "observed": "true",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R3",
+   "observed": "true",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R4",
+   "observed": "[\"Identity verified via video call.\"]",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R5",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "confidence": 1.0,
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_incident"
+ ],
+ "tool_call_count": 3,
+ "duplicate_tool_calls": 0,
+ "invalid_tool_calls": 0,
+ "tool_latency_ms": 0.21,
+ "observation_chars": 769,
+ "turns": 1,
+ "step_cap_hit": false,
+ "budget_cap_hit": false,
+ "early_exit_triggered": false,
+ "schema_validation_failed": false,
+ "input_tokens": 969,
+ "output_tokens": 1071,
+ "reasoning_tokens": 704,
+ "cached_tokens": 0,
+ "total_tokens": 2040,
+ "llm_cost_usd": 0.00238425,
+ "total_cost_usd": 0.00238425,
+ "latency_ms": 15471.1,
+ "llm_latency_ms": 15467.5,
+ "retry_attempted": false,
+ "retry_success": null,
+ "state_hash_before": "21442bec6673",
+ "state_hash_after": "21442bec6673",
+ "error_type": null
+}

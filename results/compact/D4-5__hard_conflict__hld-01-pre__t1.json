@@ -1,0 +1,65 @@
+{
+ "ts": "2026-09-23T00:21:29",
+ "case_id": "hld-01-pre",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.9,
+ "reason": "All required end-state conditions are true with tool evidence; the one never-do that cannot be checked across all accounts is noted as unverifiable.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "has_breached:false (no SLA breach)",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R1",
+   "observed": "state:on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "hold_reason:Awaiting Caller",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "SLA stage:paused (one SLA entry)",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "work_notes contain 'awaiting caller' (\"On hold: awaiting caller response with logs.\")",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-F1",
+   "observed": "state:on_hold (not resolved/closed)",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not checked by available tools (cannot verify modifications to other accounts/devices)",
+   "source": "",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 6865,
+ "tokens_out": 1089,
+ "cost_usd": 0.0024173,
+ "expected_decision": "ESCALATE",
+ "correct": false
+}

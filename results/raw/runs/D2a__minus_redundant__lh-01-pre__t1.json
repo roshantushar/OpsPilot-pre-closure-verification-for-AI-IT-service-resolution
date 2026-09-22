@@ -3,19 +3,19 @@
  "arm": "minus_redundant",
  "run_id": "D2a__minus_redundant__lh-01-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:10",
- "git_commit": "9cb211a-dirty",
- "config_hash": "aa192be9e1c1",
+ "timestamp": "2026-09-23T01:14:07",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "c6bf9e477511",
  "dataset_version": "synthetic-v1",
  "case_id": "lh-01-pre",
  "task_id": "lh-01",
  "family": "legal_hold_offboarding",
  "subset": "dev_micro",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": [
@@ -28,7 +28,7 @@
   "get_incident",
   "list_slas",
   "list_approvals",
-  "list_security_exceptions"
+  "lookup_runbook"
  ],
  "parallel_tools": false,
  "early_exit": false,
@@ -37,13 +37,13 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "medium",
  "declared": true,
  "decision": "INCOMPLETE",
- "reason": "required conditions not met: ['LH-R7']",
+ "reason": "The ticket is not in the required on_hold state (LH-R7 is false); all other required conditions have evidence as satisfied.",
  "cited_conditions": [
   "LH-R7"
  ],
@@ -51,36 +51,12 @@
   {
    "condition_id": "LH-P1",
    "observed": "true",
-   "source": "list_security_exceptions",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F1",
-   "observed": "\"SUSPENDED\"",
-   "source": "get_okta_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F2",
-   "observed": "null",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F3",
-   "observed": "\"in_progress\"",
-   "source": "get_incident",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F4",
-   "observed": "false",
-   "source": "get_google_user",
+   "source": "get_hr_employee",
    "holds": true
   },
   {
    "condition_id": "LH-R1",
-   "observed": "\"SUSPENDED\"",
+   "observed": "SUSPENDED",
    "source": "get_okta_user",
    "holds": true
   },
@@ -92,7 +68,7 @@
   },
   {
    "condition_id": "LH-R3",
-   "observed": "\"/Legal Hold\"",
+   "observed": "/Legal Hold",
    "source": "get_google_user",
    "holds": true
   },
@@ -116,27 +92,57 @@
   },
   {
    "condition_id": "LH-R7",
-   "observed": "\"in_progress\"",
+   "observed": "in_progress",
    "source": "get_incident",
    "holds": false
   },
   {
    "condition_id": "LH-R8",
-   "observed": "\"Legal Hold\"",
+   "observed": "Legal Hold",
    "source": "get_incident",
    "holds": true
   },
   {
    "condition_id": "LH-R9",
-   "observed": "\"Legal\"",
+   "observed": "Legal",
    "source": "get_incident",
    "holds": true
+  },
+  {
+   "condition_id": "LH-F1",
+   "observed": "SUSPENDED (not DEACTIVATED)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F2",
+   "observed": "null",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F3",
+   "observed": "in_progress (not resolved/closed)",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F4",
+   "observed": "false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not checked by these tools",
+   "source": "get_hr_employee",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.8,
  "tools_called": [
+  "lookup_runbook",
   "get_hr_employee",
-  "list_security_exceptions",
   "get_okta_user",
   "get_google_user",
   "get_slack_user",
@@ -145,22 +151,22 @@
  "tool_call_count": 6,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.07,
- "observation_chars": 1260,
+ "tool_latency_ms": 0.6,
+ "observation_chars": 2626,
  "turns": 7,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.2,
- "llm_latency_ms": 0.0,
+ "input_tokens": 13714,
+ "output_tokens": 2086,
+ "reasoning_tokens": 1511,
+ "cached_tokens": 10752,
+ "total_tokens": 15800,
+ "llm_cost_usd": 0.0051813,
+ "total_cost_usd": 0.0051813,
+ "latency_ms": 43388.9,
+ "llm_latency_ms": 43341.4,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "20a173764d95",

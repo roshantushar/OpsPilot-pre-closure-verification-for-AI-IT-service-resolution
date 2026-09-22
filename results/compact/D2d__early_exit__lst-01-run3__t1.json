@@ -1,0 +1,32 @@
+{
+ "ts": "2026-09-23T03:30:16",
+ "case_id": "lst-01-run3",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.9,
+ "reason": "Precondition LST-P1 failed: the device LT-52424 is owned by vikram.das@acme.example, not the ticket subject hannah.singh@acme.example.",
+ "cited_conditions": [
+  "LST-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "owner: vikram.das@acme.example",
+   "source": "get_device",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_device",
+  "get_okta_user",
+  "get_google_user"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 8979,
+ "tokens_out": 579,
+ "cost_usd": 0.00193395,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

@@ -1,0 +1,153 @@
+{
+ "experiment_id": "D4-3",
+ "arm": "v2b",
+ "config_hash": "b2ca1772387e",
+ "config": {
+  "subset": "dev_mini",
+  "verifier": "agent",
+  "backend": "live",
+  "model": "openai/gpt-5-mini",
+  "reasoning_effort": "low",
+  "prompt_version": "v2b",
+  "descriptor_version": "v2",
+  "compact_returns": true,
+  "tool_subset": "all",
+  "parallel_tools": false,
+  "early_exit": false,
+  "show_closure_note": true,
+  "use_runbook": true,
+  "allow_escalate": true,
+  "require_evidence": true,
+  "dedup": true,
+  "step_cap": 10,
+  "budget_cap_usd": 0.03,
+  "perturbation": null,
+  "trials": 3,
+  "experiment_id": "D4-3",
+  "arm": "v2b"
+ },
+ "perturbation": "none",
+ "metrics": {
+  "n_attempted": 72,
+  "n_declared": 72,
+  "n_released": 17,
+  "FCR": 0.0,
+  "cFCR": 0.0,
+  "sevFCR": 0.0,
+  "FBR": 0.2916666666666667,
+  "escalation_rate": 0.4027777777777778,
+  "accuracy": 0.7638888888888888,
+  "detection_rate": 1.0,
+  "evidence_accuracy_L1": 0.8125,
+  "attack_success_rate": null,
+  "decisions": {
+   "VERIFIED": 17,
+   "INCOMPLETE": 26,
+   "ESCALATE": 29
+  },
+  "cost_total_usd": 0.193267,
+  "cost_per_case_usd": 0.0026842645833333335,
+  "cost_median_usd": 0.0031939250000000002,
+  "cost_per_verified_correct_usd": 0.01136865,
+  "latency_p50_ms": 23054.9,
+  "latency_p95_ms": 40775.0,
+  "turns_median": 6,
+  "tool_calls_mean": 5.263888888888889,
+  "dup_calls_total": 0,
+  "schema_failures": 4,
+  "step_cap_hits": 0
+ },
+ "baseline": {
+  "n_attempted": 72,
+  "n_declared": 72,
+  "n_released": 72,
+  "FCR": 0.6666666666666666,
+  "cFCR": 0.6666666666666666,
+  "sevFCR": 0.6666666666666666,
+  "FBR": 0.0,
+  "escalation_rate": 0.0,
+  "accuracy": 0.3333333333333333,
+  "detection_rate": 0.0,
+  "evidence_accuracy_L1": null,
+  "attack_success_rate": null,
+  "decisions": {
+   "VERIFIED": 72
+  },
+  "cost_total_usd": 0.0,
+  "cost_per_case_usd": 0.0,
+  "cost_median_usd": 0.0,
+  "cost_per_verified_correct_usd": 0.0,
+  "latency_p50_ms": 0.0,
+  "latency_p95_ms": 0.0,
+  "turns_median": 0,
+  "tool_calls_mean": 0.0,
+  "dup_calls_total": 0,
+  "schema_failures": 4,
+  "step_cap_hits": 0
+ },
+ "paired_test": {
+  "baseline_only_fc": 48,
+  "arm_only_fc": 0,
+  "mcnemar_p": 7.105427357601002e-15
+ },
+ "confusion": {
+  "ESCALATE->ESCALATE": 16,
+  "ESCALATE->INCOMPLETE": 2,
+  "INCOMPLETE->ESCALATE": 8,
+  "INCOMPLETE->INCOMPLETE": 22,
+  "VERIFIED->ESCALATE": 5,
+  "VERIFIED->INCOMPLETE": 2,
+  "VERIFIED->VERIFIED": 17
+ },
+ "per_family": {
+  "legal_hold_offboarding": {
+   "n_attempted": 9,
+   "FCR": 0.0,
+   "FBR": 0.6666666666666666,
+   "accuracy": 0.5555555555555556
+  },
+  "standard_offboarding": {
+   "n_attempted": 9,
+   "FCR": 0.0,
+   "FBR": 0.3333333333333333,
+   "accuracy": 0.7777777777777778
+  },
+  "access_grant_with_approval": {
+   "n_attempted": 9,
+   "FCR": 0.0,
+   "FBR": 0.6666666666666666,
+   "accuracy": 0.7777777777777778
+  },
+  "incident_on_hold_sla": {
+   "n_attempted": 9,
+   "FCR": 0.0,
+   "FBR": 0.0,
+   "accuracy": 1.0
+  },
+  "lost_or_stolen_device": {
+   "n_attempted": 9,
+   "FCR": 0.0,
+   "FBR": 0.0,
+   "accuracy": 1.0
+  },
+  "account_lockout_reset": {
+   "n_attempted": 9,
+   "FCR": 0.0,
+   "FBR": 0.3333333333333333,
+   "accuracy": 0.4444444444444444
+  },
+  "role_transfer": {
+   "n_attempted": 9,
+   "FCR": 0.0,
+   "FBR": 0.3333333333333333,
+   "accuracy": 0.7777777777777778
+  },
+  "sla_breach_escalation": {
+   "n_attempted": 9,
+   "FCR": 0.0,
+   "FBR": 0.0,
+   "accuracy": 0.7777777777777778
+  }
+ },
+ "spent_total_usd": 0.696031
+}

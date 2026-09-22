@@ -1,0 +1,61 @@
+{
+ "ts": "2026-09-23T01:39:55",
+ "case_id": "gr-10",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 1.0,
+ "reason": "all preconditions hold, all required conditions met, nothing forbidden observed",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "ACC-P1",
+   "observed": "\"approved\"",
+   "source": "list_approvals",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-P2",
+   "observed": "\"ethan.menon@acme.example\"",
+   "source": "list_approvals",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-F1",
+   "observed": "[\"all-staff\", \"eng-all\", \"github-developers\", \"finance-reporting-extended\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R1",
+   "observed": "[\"all-staff\", \"eng-all\", \"github-developers\", \"finance-reporting-extended\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "[\"Auto-sync heartbeat 399: no action required. [+399 similar entries collapsed]\", \"Access granted per approval APR005392",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R3",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "list_approvals",
+  "get_okta_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 0,
+ "tokens_in": 0,
+ "tokens_out": 0,
+ "cost_usd": 0.0,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

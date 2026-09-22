@@ -1,0 +1,64 @@
+{
+ "ts": "2026-09-22T21:54:02",
+ "case_id": "trf-02-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.86,
+ "reason": "Missing crm-users group and conflicting Google org unit (still HR) create a records conflict that blocks safe closure; a human should resolve the directory inconsistency and add crm-users before closing.",
+ "cited_conditions": [
+  "TRF-R4"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: Sales",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "okta groups do NOT contain 'hr-all' (groups: [\"all-staff\",\"sales-all\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "okta groups do NOT contain 'workday-hr' (groups: [\"all-staff\",\"sales-all\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "okta groups contain 'sales-all' (groups: [\"all-staff\",\"sales-all\"])",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "okta groups do NOT contain 'crm-users' (groups: [\"all-staff\",\"sales-all\"]) and Google org_unit remains '/Staff/HR'",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "incident state: resolved",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 11289,
+ "tokens_out": 1944,
+ "cost_usd": 0.00492465,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

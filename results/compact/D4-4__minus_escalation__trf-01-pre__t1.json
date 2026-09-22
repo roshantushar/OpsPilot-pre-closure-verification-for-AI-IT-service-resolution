@@ -1,0 +1,75 @@
+{
+ "ts": "2026-09-22T23:55:48",
+ "case_id": "trf-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.86,
+ "reason": "hr-all group (TRF-R3) is not present on the user's account; other required conditions are met.",
+ "cited_conditions": [
+  "TRF-R3"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "sales-all not in groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "crm-users not in groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "hr-all not in groups",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "workday-hr in groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "all-staff in groups (baseline retained)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify modification of other accounts with listed tools",
+   "source": "get_okta_user",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 11354,
+ "tokens_out": 1544,
+ "cost_usd": 0.0044001,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

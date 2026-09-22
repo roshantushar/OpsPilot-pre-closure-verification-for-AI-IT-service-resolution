@@ -3,16 +3,16 @@
  "arm": "workflow",
  "run_id": "D4-2__workflow__lh-01-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:11",
- "git_commit": "9cb211a-dirty",
- "config_hash": "982d6ebec9ae",
+ "timestamp": "2026-09-22T22:18:20",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "8d1a3be7f5d7",
  "dataset_version": "synthetic-v1",
  "case_id": "lh-01-pre",
  "task_id": "lh-01",
  "family": "legal_hold_offboarding",
  "subset": "dev_mini",
  "verifier": "workflow",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
  "prompt_version": "v1",
@@ -26,103 +26,25 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "medium",
  "declared": true,
  "decision": "INCOMPLETE",
- "reason": "required conditions not met: ['LH-R7']",
+ "reason": "All technical steps for legal hold are complete, but the incident state is not set to on_hold as required by the runbook.",
  "cited_conditions": [
   "LH-R7"
  ],
  "evidence": [
   {
-   "condition_id": "LH-P1",
-   "observed": "true",
-   "source": "list_security_exceptions",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F1",
-   "observed": "\"SUSPENDED\"",
-   "source": "get_okta_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F2",
-   "observed": "null",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F3",
-   "observed": "\"in_progress\"",
-   "source": "get_incident",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F4",
-   "observed": "false",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-R1",
-   "observed": "\"SUSPENDED\"",
-   "source": "get_okta_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-R2",
-   "observed": "true",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-R3",
-   "observed": "\"/Legal Hold\"",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-R4",
-   "observed": "0",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-R5",
-   "observed": "true",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-R6",
-   "observed": "true",
-   "source": "get_slack_user",
-   "holds": true
-  },
-  {
    "condition_id": "LH-R7",
-   "observed": "\"in_progress\"",
+   "observed": "state = in_progress (hold_reason = \"Legal Hold\", escalated_to = \"Legal\")",
    "source": "get_incident",
    "holds": false
-  },
-  {
-   "condition_id": "LH-R8",
-   "observed": "\"Legal Hold\"",
-   "source": "get_incident",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-R9",
-   "observed": "\"Legal\"",
-   "source": "get_incident",
-   "holds": true
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.86,
  "tools_called": [
   "lookup_runbook",
   "get_hr_employee",
@@ -138,22 +60,22 @@
  "tool_call_count": 10,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.11,
+ "tool_latency_ms": 0.37,
  "observation_chars": 3013,
  "turns": 1,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
+ "input_tokens": 1438,
+ "output_tokens": 636,
+ "reasoning_tokens": 512,
  "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.2,
- "llm_latency_ms": 0.0,
+ "total_tokens": 2074,
+ "llm_cost_usd": 0.0016315,
+ "total_cost_usd": 0.0016315,
+ "latency_ms": 10857.8,
+ "llm_latency_ms": 10851.5,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "20a173764d95",

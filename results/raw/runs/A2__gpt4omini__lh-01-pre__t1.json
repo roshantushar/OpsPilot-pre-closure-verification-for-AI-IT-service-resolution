@@ -3,16 +3,16 @@
  "arm": "gpt4omini",
  "run_id": "A2__gpt4omini__lh-01-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:10",
- "git_commit": "9cb211a-dirty",
- "config_hash": "4e79bdbb3b78",
+ "timestamp": "2026-09-22T21:12:15",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "a34de3e27f85",
  "dataset_version": "synthetic-v1",
  "case_id": "lh-01-pre",
  "task_id": "lh-01",
  "family": "legal_hold_offboarding",
  "subset": "smoke",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-4o-mini",
  "reasoning_effort": "low",
  "prompt_version": "v1",
@@ -26,135 +26,56 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "medium",
  "declared": true,
  "decision": "INCOMPLETE",
- "reason": "required conditions not met: ['LH-R7']",
+ "reason": "The incident is still in progress and has not been closed yet, indicating that the closure process is not complete.",
  "cited_conditions": [
-  "LH-R7"
+  "INC0095019 state is in_progress"
  ],
  "evidence": [
   {
-   "condition_id": "LH-P1",
-   "observed": "true",
-   "source": "list_security_exceptions",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F1",
-   "observed": "\"SUSPENDED\"",
-   "source": "get_okta_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F2",
-   "observed": "null",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F3",
-   "observed": "\"in_progress\"",
-   "source": "get_incident",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F4",
-   "observed": "false",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-R1",
-   "observed": "\"SUSPENDED\"",
-   "source": "get_okta_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-R2",
-   "observed": "true",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-R3",
-   "observed": "\"/Legal Hold\"",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-R4",
-   "observed": "0",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-R5",
-   "observed": "true",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-R6",
-   "observed": "true",
-   "source": "get_slack_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-R7",
-   "observed": "\"in_progress\"",
-   "source": "get_incident",
+   "condition_id": "INC0095019 state is in_progress",
+   "observed": "in_progress",
+   "source": "ServiceNow incident",
    "holds": false
-  },
-  {
-   "condition_id": "LH-R8",
-   "observed": "\"Legal Hold\"",
-   "source": "get_incident",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-R9",
-   "observed": "\"Legal\"",
-   "source": "get_incident",
-   "holds": true
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.9,
  "tools_called": [
-  "lookup_runbook",
   "get_hr_employee",
-  "list_security_exceptions",
   "get_okta_user",
   "get_google_user",
   "get_slack_user",
-  "get_incident"
+  "list_security_exceptions",
+  "get_incident",
+  "list_slas"
  ],
  "tool_call_count": 7,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.11,
- "observation_chars": 2788,
- "turns": 8,
+ "tool_latency_ms": 0.34,
+ "observation_chars": 1294,
+ "turns": 2,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
+ "input_tokens": 2507,
+ "output_tokens": 255,
  "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.4,
- "llm_latency_ms": 0.0,
+ "cached_tokens": 1024,
+ "total_tokens": 2762,
+ "llm_cost_usd": 0.00045225,
+ "total_cost_usd": 0.00045225,
+ "latency_ms": 5106.4,
+ "llm_latency_ms": 5102.2,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "20a173764d95",
  "state_hash_after": "20a173764d95",
- "error_type": null,
- "reused_from": "A2__free_model__lh-01-pre__t1"
+ "error_type": null
 }

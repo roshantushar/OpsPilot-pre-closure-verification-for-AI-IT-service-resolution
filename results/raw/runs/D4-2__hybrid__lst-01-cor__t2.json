@@ -1,0 +1,137 @@
+{
+ "experiment_id": "D4-2",
+ "arm": "hybrid",
+ "run_id": "D4-2__hybrid__lst-01-cor__t2",
+ "trial": 2,
+ "timestamp": "2026-09-22T22:37:58",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "dbb711590ab3",
+ "dataset_version": "synthetic-v1",
+ "case_id": "lst-01-cor",
+ "task_id": "lst-01",
+ "family": "lost_or_stolen_device",
+ "subset": "dev_mini",
+ "verifier": "hybrid",
+ "backend": "live",
+ "model": "openai/gpt-5-mini",
+ "reasoning_effort": "low",
+ "prompt_version": "v1",
+ "descriptor_version": "v2",
+ "compact_returns": true,
+ "tool_subset": "all",
+ "parallel_tools": false,
+ "early_exit": false,
+ "show_closure_note": true,
+ "use_runbook": true,
+ "allow_escalate": true,
+ "require_evidence": true,
+ "dedup": true,
+ "step_cap": 10,
+ "budget_cap_usd": 0.03,
+ "perturbation": null,
+ "difficulty": "medium",
+ "declared": true,
+ "decision": "VERIFIED",
+ "reason": "all preconditions hold, all required conditions met, nothing forbidden observed (known blind spot, not checked: ['GEN-F1'])",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "[\"LT-52424\", \"LT-70320\"]",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "HR-1",
+   "observed": "\"active\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1a",
+   "observed": "\"active\"",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1b",
+   "observed": "\"active\"",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "\"ACTIVE\"",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "true",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "\"locked\"",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "0",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "\"security\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "confidence": 1.0,
+ "tools_called": [
+  "get_hr_employee",
+  "list_devices",
+  "get_okta_user",
+  "get_google_user",
+  "get_incident"
+ ],
+ "tool_call_count": 5,
+ "duplicate_tool_calls": 0,
+ "invalid_tool_calls": 0,
+ "tool_latency_ms": 0.36,
+ "observation_chars": 1251,
+ "turns": 1,
+ "step_cap_hit": false,
+ "budget_cap_hit": false,
+ "early_exit_triggered": false,
+ "schema_validation_failed": false,
+ "input_tokens": 1021,
+ "output_tokens": 1525,
+ "reasoning_tokens": 896,
+ "cached_tokens": 0,
+ "total_tokens": 2546,
+ "llm_cost_usd": 0.00330525,
+ "total_cost_usd": 0.00330525,
+ "latency_ms": 17308.1,
+ "llm_latency_ms": 17303.6,
+ "retry_attempted": false,
+ "retry_success": null,
+ "state_hash_before": "b26e546b0d33",
+ "state_hash_after": "b26e546b0d33",
+ "error_type": null
+}

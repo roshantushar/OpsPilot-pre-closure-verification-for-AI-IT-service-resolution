@@ -1,14 +1,14 @@
 {
  "experiment_id": "D3-3",
  "arm": "pending_persistent",
- "config_hash": "4179ef06c419",
+ "config_hash": "d345403d3b70",
  "config": {
   "subset": "fault_base",
   "verifier": "agent",
-  "backend": "scripted",
+  "backend": "live",
   "model": "openai/gpt-5-mini",
   "reasoning_effort": "low",
-  "prompt_version": "v2",
+  "prompt_version": "v2b",
   "descriptor_version": "v2",
   "compact_returns": true,
   "tool_subset": "all",
@@ -38,23 +38,23 @@
   "cFCR": null,
   "sevFCR": 0.0,
   "FBR": 1.0,
-  "escalation_rate": 0.0,
-  "accuracy": 0.0,
+  "escalation_rate": 1.0,
+  "accuracy": 1.0,
   "detection_rate": 1.0,
   "evidence_accuracy_L1": 1.0,
   "attack_success_rate": null,
   "decisions": {
-   "INCOMPLETE": 2
+   "ESCALATE": 2
   },
-  "cost_total_usd": 0.0,
-  "cost_per_case_usd": 0.0,
-  "cost_median_usd": 0.0,
+  "cost_total_usd": 0.007164,
+  "cost_per_case_usd": 0.0035818,
+  "cost_median_usd": 0.0035818,
   "cost_per_verified_correct_usd": null,
-  "latency_p50_ms": 0.3,
-  "latency_p95_ms": 0.3,
-  "turns_median": 8,
-  "tool_calls_mean": 7.0,
-  "dup_calls_total": 0,
+  "latency_p50_ms": 25681.0,
+  "latency_p95_ms": 26487.2,
+  "turns_median": 9,
+  "tool_calls_mean": 8.0,
+  "dup_calls_total": 2,
   "schema_failures": 0,
   "step_cap_hits": 0
  },
@@ -82,7 +82,7 @@
   "latency_p95_ms": 0.0,
   "turns_median": 0,
   "tool_calls_mean": 0.0,
-  "dup_calls_total": 0,
+  "dup_calls_total": 2,
   "schema_failures": 0,
   "step_cap_hits": 0
  },
@@ -92,15 +92,15 @@
   "mcnemar_p": 1.0
  },
  "confusion": {
-  "ESCALATE->INCOMPLETE": 2
+  "ESCALATE->ESCALATE": 2
  },
  "per_family": {
   "standard_offboarding": {
    "n_attempted": 2,
    "FCR": 0.0,
    "FBR": 1.0,
-   "accuracy": 0.0
+   "accuracy": 1.0
   }
  },
- "spent_total_usd": 0.0
+ "spent_total_usd": 1.436695
 }

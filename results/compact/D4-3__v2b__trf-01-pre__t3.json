@@ -1,0 +1,75 @@
+{
+ "ts": "2026-09-22T23:29:34",
+ "case_id": "trf-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.85,
+ "reason": "HR shows the new department as HR and most group changes done, but the hr-all group (TRF-R3) is missing from Okta so required end state is not met.",
+ "cited_conditions": [
+  "TRF-R3"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "okta groups: [\"all-staff\",\"workday-hr\"] (no sales-all)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "okta groups: [\"all-staff\",\"workday-hr\"] (no crm-users)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "okta groups: [\"all-staff\",\"workday-hr\"] (missing hr-all)",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "okta groups: [\"all-staff\",\"workday-hr\"] (workday-hr present)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "incident state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "okta groups include all-staff (baseline retained)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not verifiable with these tools",
+   "source": "",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 11246,
+ "tokens_out": 1520,
+ "cost_usd": 0.0,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

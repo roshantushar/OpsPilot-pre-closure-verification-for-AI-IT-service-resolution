@@ -1,0 +1,38 @@
+{
+ "ts": "2026-09-22T22:18:20",
+ "case_id": "lh-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.86,
+ "reason": "All technical steps for legal hold are complete, but the incident state is not set to on_hold as required by the runbook.",
+ "cited_conditions": [
+  "LH-R7"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LH-R7",
+   "observed": "state = in_progress (hold_reason = \"Legal Hold\", escalated_to = \"Legal\")",
+   "source": "get_incident",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "list_security_exceptions",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident",
+  "list_slas",
+  "list_approvals"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 1438,
+ "tokens_out": 636,
+ "cost_usd": 0.0016315,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

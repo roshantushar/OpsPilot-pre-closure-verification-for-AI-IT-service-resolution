@@ -1,0 +1,91 @@
+{
+ "ts": "2026-09-22T22:37:58",
+ "case_id": "lst-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 1.0,
+ "reason": "all preconditions hold, all required conditions met, nothing forbidden observed (known blind spot, not checked: ['GEN-F1'])",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "[\"LT-52424\", \"LT-70320\"]",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "HR-1",
+   "observed": "\"active\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1a",
+   "observed": "\"active\"",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1b",
+   "observed": "\"active\"",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "\"ACTIVE\"",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "true",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "\"locked\"",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "0",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "\"security\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "list_devices",
+  "get_okta_user",
+  "get_google_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 1021,
+ "tokens_out": 1525,
+ "cost_usd": 0.00330525,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

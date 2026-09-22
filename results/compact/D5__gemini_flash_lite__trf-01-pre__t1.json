@@ -1,0 +1,64 @@
+{
+ "ts": "2026-09-23T03:44:09",
+ "case_id": "trf-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 1.0,
+ "reason": "The runbook requires removal from old department groups (Sales: sales-all, crm-users) and addition to new department groups (HR: hr-all, workday-hr). The user's Okta groups show 'workday-hr' but not 'hr-all', and it's unclear if 'sales-all' and 'crm-users' were removed, as the runbook implies two old groups should be removed and two new groups added.",
+ "cited_conditions": [
+  "TRF-R1",
+  "TRF-R2",
+  "TRF-R3",
+  "TRF-R4"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "HR shows new department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "User's groups: ['all-staff', 'workday-hr']",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "User's groups: ['all-staff', 'workday-hr']",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "User's groups: ['all-staff', 'workday-hr']",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "User's groups: ['all-staff', 'workday-hr']",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "User's groups: ['all-staff', 'workday-hr']",
+   "source": "get_okta_user",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 6553,
+ "tokens_out": 1718,
+ "cost_usd": 0.00121974,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

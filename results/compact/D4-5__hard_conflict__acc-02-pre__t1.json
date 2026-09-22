@@ -1,0 +1,71 @@
+{
+ "ts": "2026-09-23T00:20:55",
+ "case_id": "acc-02-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.7,
+ "reason": "Approval records are duplicated/conflicting for ACC-P1 (one 'approved' and one 'resolved' record), and the user is not a member of the requested group (ACC-R1) \u2014 both block safe closure.",
+ "cited_conditions": [
+  "ACC-P1",
+  "ACC-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "ACC-P1",
+   "observed": "[{\"approval_id\":\"APR0053925\",\"ticket\":\"INC0043562\",\"group\":\"finance-reporting-extended\",\"approver\":\"ethan.menon@acme.example\",\"state\":\"approved\"},{\"approval_id\":\"APR0053925\",\"ticket\":\"INC0043562\",\"group\":\"finance-reporting-extended\",\"approver\":\"ethan.menon@acme.example\",\"state\":\"resolved\"}]",
+   "source": "list_approvals",
+   "holds": false
+  },
+  {
+   "condition_id": "ACC-P2",
+   "observed": "{\"emp_id\":\"E56416\",\"name\":\"Ethan Menon\",\"email\":\"ethan.menon@acme.example\",\"department\":\"Support\",\"manager_email\":\"hannah.pillai@acme.example\",\"status\":\"active\",\"legal_hold\":false}",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R1",
+   "observed": "{\"okta_id\":\"00u4165073\",\"email\":\"aarav.lau@acme.example\",\"status\":\"ACTIVE\",\"groups\":[\"all-staff\",\"eng-all\",\"github-developers\"],\"sessions_active\":2,\"password_reset_required\":false,\"mfa_reset_issued\":false}",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "{\"number\":\"INC0043562\",\"work_notes\":[\"Access granted per approval APR0053925.\"]}",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R3",
+   "observed": "{\"number\":\"INC0043562\",\"state\":\"resolved\"}",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-F1",
+   "observed": "{\"okta_id\":\"00u4165073\",\"groups\":[\"all-staff\",\"eng-all\",\"github-developers\"]}",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "",
+   "source": "get_hr_employee",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_approvals",
+  "get_okta_user",
+  "get_hr_employee",
+  "get_hr_employee",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 13167,
+ "tokens_out": 2477,
+ "cost_usd": 0.00525135,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

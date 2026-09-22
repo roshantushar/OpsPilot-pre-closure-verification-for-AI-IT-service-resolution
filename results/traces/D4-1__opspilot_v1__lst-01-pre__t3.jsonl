@@ -1,0 +1,16 @@
+{"event": "llm", "turn": 1, "input_tokens": 1067, "output_tokens": 74, "reasoning_tokens": 121, "cached_tokens": 0, "cost_usd": 0.00041475, "latency_ms": 3055.2, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-105"}, "output_chars": 1125, "latency_ms": 0.3, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1402, "output_tokens": 66, "reasoning_tokens": 112, "cached_tokens": 1024, "cost_usd": 0.0002521, "latency_ms": 3167.2, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "get_hr_employee", "args": {"email": "hannah.singh@acme.example"}, "output_chars": 227, "latency_ms": 0.05, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1505, "output_tokens": 22, "reasoning_tokens": 0, "cached_tokens": 1280, "cost_usd": 0.00013225, "latency_ms": 1236.2, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 3, "name": "get_device", "args": {"device_id": "LT-52424"}, "output_chars": 154, "latency_ms": 0.18, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 1585, "output_tokens": 27, "reasoning_tokens": 0, "cached_tokens": 1408, "cost_usd": 0.00013345, "latency_ms": 1283.5, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 4, "name": "list_devices", "args": {"owner_email": "hannah.singh@acme.example"}, "output_chars": 276, "latency_ms": 0.2, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 5, "input_tokens": 1707, "output_tokens": 28, "reasoning_tokens": 0, "cached_tokens": 1536, "cost_usd": 0.00013715, "latency_ms": 1307.4, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 5, "name": "get_okta_user", "args": {"email": "hannah.singh@acme.example"}, "output_chars": 242, "latency_ms": 0.2, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 6, "input_tokens": 1818, "output_tokens": 27, "reasoning_tokens": 0, "cached_tokens": 1664, "cost_usd": 0.0001341, "latency_ms": 1375.1, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 6, "name": "get_google_user", "args": {"email": "hannah.singh@acme.example"}, "output_chars": 207, "latency_ms": 0.07, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 7, "input_tokens": 1913, "output_tokens": 224, "reasoning_tokens": 192, "cached_tokens": 1792, "cost_usd": 0.00052305, "latency_ms": 4116.2, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 7, "name": "get_incident", "args": {"number": "INC0054616"}, "output_chars": 299, "latency_ms": 0.18, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 8, "input_tokens": 2029, "output_tokens": 809, "reasoning_tokens": 448, "cached_tokens": 1792, "cost_usd": 0.00172205, "latency_ms": 10941.7, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "ESCALATE", "turns": 8}

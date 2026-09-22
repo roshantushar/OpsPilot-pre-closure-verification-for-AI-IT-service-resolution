@@ -1,0 +1,91 @@
+{
+ "ts": "2026-09-22T22:24:32",
+ "case_id": "off-01-run1",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.5,
+ "reason": "unmappable conditions ['GEN-F1']; precondition failed []; forbidden ['OFF-F1']; problems []",
+ "cited_conditions": [
+  "GEN-F1",
+  "OFF-F1",
+  "OFF-R4",
+  "OFF-R6"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OFF-P1",
+   "observed": "\"terminated\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-P2",
+   "observed": "false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": false
+  },
+  {
+   "condition_id": "OFF-R1",
+   "observed": "\"DEACTIVATED\"",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R2",
+   "observed": "[]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "null",
+   "source": "get_google_user",
+   "holds": false
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "[null, null]",
+   "source": "list_devices",
+   "holds": false
+  },
+  {
+   "condition_id": "OFF-R7",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 829,
+ "tokens_out": 1676,
+ "cost_usd": 0.00355925,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

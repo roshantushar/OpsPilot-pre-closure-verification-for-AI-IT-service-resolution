@@ -1,0 +1,64 @@
+{
+ "ts": "2026-09-23T01:39:55",
+ "case_id": "gr-09",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 1.0,
+ "reason": "required conditions not met: ['LCK-R1', 'LCK-R2', 'LCK-R3']",
+ "cited_conditions": [
+  "LCK-R1",
+  "LCK-R2",
+  "LCK-R3"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LCK-P1",
+   "observed": "\"active\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R1",
+   "observed": "\"LOCKED_OUT\"",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R2",
+   "observed": "false",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R3",
+   "observed": "false",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R4",
+   "observed": "[\"Identity verified via video call.\"]",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R5",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 0,
+ "tokens_in": 0,
+ "tokens_out": 0,
+ "cost_usd": 0.0,
+ "expected_decision": "ESCALATE",
+ "correct": false
+}

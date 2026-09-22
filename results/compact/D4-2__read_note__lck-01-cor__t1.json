@@ -1,0 +1,55 @@
+{
+ "ts": "2026-09-22T22:16:31",
+ "case_id": "lck-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.4,
+ "reason": "Precondition (HR active) is not confirmed and required end-state items cannot be independently verified from the ticket or closure note.",
+ "cited_conditions": [
+  "LCK-P1",
+  "LCK-R1",
+  "LCK-R2",
+  "LCK-R3",
+  "LCK-R4"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LCK-P1",
+   "observed": "No HR/employee status provided in ticket or closure note; cannot confirm user is an active employee.",
+   "source": "get_ticket",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R1",
+   "observed": "Resolver note states 'unlocked the Okta account' but no system verification provided.",
+   "source": "get_resolver_closure_note",
+   "holds": null
+  },
+  {
+   "condition_id": "LCK-R2",
+   "observed": "Resolver note states 'required a password reset at next sign-in' but no system verification provided.",
+   "source": "get_resolver_closure_note",
+   "holds": null
+  },
+  {
+   "condition_id": "LCK-R3",
+   "observed": "Resolver note states 'issued an MFA reset' but no system verification provided.",
+   "source": "get_resolver_closure_note",
+   "holds": null
+  },
+  {
+   "condition_id": "LCK-R4",
+   "observed": "Resolver note states 'recorded identity verification' but the ticket work notes or audit record are not shown to confirm.",
+   "source": "get_resolver_closure_note",
+   "holds": null
+  }
+ ],
+ "tools_called": [],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 641,
+ "tokens_out": 1032,
+ "cost_usd": 0.00222425,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

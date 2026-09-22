@@ -1,0 +1,120 @@
+{
+ "experiment_id": "A2",
+ "arm": "gemini_flash_lite",
+ "run_id": "A2__gemini_flash_lite__off-01-run1__t2",
+ "trial": 2,
+ "timestamp": "2026-09-22T20:53:48",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "fdddd2a3f6e1",
+ "dataset_version": "synthetic-v1",
+ "case_id": "off-01-run1",
+ "task_id": "off-01",
+ "family": "standard_offboarding",
+ "subset": "smoke",
+ "verifier": "agent",
+ "backend": "live",
+ "model": "google/gemini-2.5-flash-lite",
+ "reasoning_effort": "low",
+ "prompt_version": "v1",
+ "descriptor_version": "v2",
+ "compact_returns": true,
+ "tool_subset": "all",
+ "parallel_tools": false,
+ "early_exit": false,
+ "show_closure_note": true,
+ "use_runbook": true,
+ "allow_escalate": true,
+ "require_evidence": true,
+ "dedup": true,
+ "step_cap": 8,
+ "budget_cap_usd": 0.03,
+ "perturbation": null,
+ "difficulty": "medium",
+ "declared": true,
+ "decision": "ESCALATE",
+ "reason": "All conditions for standard employee offboarding per runbook KB-OPS-102 are met. The employee's HR status is terminated, there is no legal hold, their Okta and Slack accounts are deactivated, their Google account is suspended with data transferred, and all their devices are in a wipe_pending state. [evidence guard: missing ['OFF-R7']]",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "OFF-P1",
+   "observed": "HR status is 'terminated'",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-P2",
+   "observed": "legal_hold is false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R1",
+   "observed": "Okta status is 'DEACTIVATED'",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R2",
+   "observed": "Okta groups list is empty",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "Google account is suspended",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "Drive data transferred to 'zhiwei.lau@acme.example'",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "Slack account is deactivated",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "All 2 devices have status 'wipe_pending'",
+   "source": "list_devices",
+   "holds": true
+  }
+ ],
+ "confidence": 1.0,
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "lookup_runbook"
+ ],
+ "tool_call_count": 6,
+ "duplicate_tool_calls": 0,
+ "invalid_tool_calls": 0,
+ "tool_latency_ms": 0.64,
+ "observation_chars": 2481,
+ "turns": 2,
+ "step_cap_hit": false,
+ "budget_cap_hit": false,
+ "early_exit_triggered": false,
+ "schema_validation_failed": false,
+ "input_tokens": 2527,
+ "output_tokens": 1320,
+ "reasoning_tokens": 708,
+ "cached_tokens": 0,
+ "total_tokens": 3847,
+ "llm_cost_usd": 0.0007807,
+ "total_cost_usd": 0.0007807,
+ "latency_ms": 5463.6,
+ "llm_latency_ms": 5458.0,
+ "retry_attempted": false,
+ "retry_success": null,
+ "state_hash_before": "6d378aed9c01",
+ "state_hash_after": "6d378aed9c01",
+ "error_type": null
+}

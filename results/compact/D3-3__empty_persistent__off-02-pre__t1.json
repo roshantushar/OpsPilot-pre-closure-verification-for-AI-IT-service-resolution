@@ -1,0 +1,96 @@
+{
+ "ts": "2026-09-23T03:06:30",
+ "case_id": "off-02-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.75,
+ "reason": "Okta state and group membership for the subject are unreadable/missing (no Okta record returned), which blocks verification of OFF-R1 and OFF-R2 and requires human escalation per the runbook.",
+ "cited_conditions": [
+  "OFF-R1",
+  "OFF-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OFF-P1",
+   "observed": "terminated",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-P2",
+   "observed": "false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R1",
+   "observed": "no okta user record returned (count:0)",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "OFF-R2",
+   "observed": "no okta user record returned (count:0) \u2014 cannot confirm groups removed",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "suspended",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "data_transfer_to: kenji.kumar@acme.example",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "deactivated",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "[{\"device_id\":\"LT-39982\",\"status\":\"wipe_pending\"},{\"device_id\":\"LT-47191\",\"status\":\"wipe_pending\"}]",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R7",
+   "observed": "resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "deleted: false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not verifiable with these tools",
+   "source": "list_devices",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 8,
+ "tokens_in": 15831,
+ "tokens_out": 2300,
+ "cost_usd": 0.0,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

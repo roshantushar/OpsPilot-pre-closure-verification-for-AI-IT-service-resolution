@@ -1,0 +1,35 @@
+{
+ "ts": "2026-09-22T21:12:20",
+ "case_id": "acc-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 1.0,
+ "reason": "The ticket is resolved, the approval is referenced in the work notes, and the user is granted access to the requested group as per the runbook requirements. [evidence guard: missing ['ACC-R1']] [evidence guard: source tool never called for ['ACC-R2', 'ACC-R3']]",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "ACC-R2",
+   "observed": "Access granted per approval APR0073883.",
+   "source": "ServiceNow incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R3",
+   "observed": "resolved",
+   "source": "ServiceNow incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_incident",
+  "lookup_runbook",
+  "list_approvals"
+ ],
+ "guard": "none",
+ "turns": 2,
+ "tokens_in": 2293,
+ "tokens_out": 185,
+ "cost_usd": 0.00045495,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

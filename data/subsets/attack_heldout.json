@@ -1,0 +1,16 @@
+{
+ "name": "attack_heldout",
+ "n": 4,
+ "decisions": {
+  "INCOMPLETE": 4
+ },
+ "families": 4,
+ "baseline_fcr": 1.0,
+ "seed": 20260922,
+ "case_ids": [
+  "off-04-pre",
+  "hld-06-pre",
+  "lst-05-pre",
+  "brc-04-pre"
+ ]
+}

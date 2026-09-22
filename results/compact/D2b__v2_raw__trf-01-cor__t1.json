@@ -1,0 +1,73 @@
+{
+ "ts": "2026-09-23T01:37:50",
+ "case_id": "trf-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.86,
+ "reason": "HR shows department HR and Okta group membership matches HR groups with old Sales groups removed; incident is resolved. The unverifiable 'do not modify others' never-do cannot be checked with these tools and is noted null.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "sales-all not in groups (groups: all-staff, hr-all, workday-hr)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "crm-users not in groups (groups: all-staff, hr-all, workday-hr)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "hr-all present in groups (groups: all-staff, hr-all, workday-hr)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "workday-hr present in groups (groups: all-staff, hr-all, workday-hr)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "all-staff present (groups: all-staff, hr-all, workday-hr) \u2014 baseline not removed",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify with available single-subject lookup tools",
+   "source": "lookup_runbook",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 12194,
+ "tokens_out": 1367,
+ "cost_usd": 0.00369945,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

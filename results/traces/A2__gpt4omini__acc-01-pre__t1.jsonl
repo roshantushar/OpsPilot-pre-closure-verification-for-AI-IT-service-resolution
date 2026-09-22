@@ -1,1 +1,6 @@
-{"event": "reused", "from": "A2__free_model__acc-01-pre__t1"}
+{"event": "llm", "turn": 1, "input_tokens": 880, "output_tokens": 75, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.000177, "latency_ms": 1628.0, "cache_hit": false, "n_tool_calls": 3}
+{"event": "tool", "turn": 1, "name": "get_incident", "args": {"number": "INC0067740"}, "output_chars": 354, "latency_ms": 0.13, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-103"}, "output_chars": 1054, "latency_ms": 2.34, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 1, "name": "list_approvals", "args": {"ticket_number": "INC0067740"}, "output_chars": 175, "latency_ms": 0.05, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1413, "output_tokens": 110, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.00027795, "latency_ms": 3071.6, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "VERIFIED", "turns": 2}

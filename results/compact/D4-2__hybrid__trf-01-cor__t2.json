@@ -1,0 +1,65 @@
+{
+ "ts": "2026-09-22T22:38:50",
+ "case_id": "trf-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 1.0,
+ "reason": "all preconditions hold, all required conditions met, nothing forbidden observed (known blind spot, not checked: ['GEN-F1'])",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "\"HR\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "[\"all-staff\", \"hr-all\", \"workday-hr\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "[\"all-staff\", \"hr-all\", \"workday-hr\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "[\"all-staff\", \"hr-all\", \"workday-hr\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "[\"all-staff\", \"hr-all\", \"workday-hr\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "[\"all-staff\", \"hr-all\", \"workday-hr\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 1081,
+ "tokens_out": 878,
+ "cost_usd": 0.00202625,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

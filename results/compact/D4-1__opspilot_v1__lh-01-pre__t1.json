@@ -1,0 +1,89 @@
+{
+ "ts": "2026-09-22T21:25:04",
+ "case_id": "lh-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.9,
+ "reason": "All technical controls met per runbook except the ServiceNow ticket state is not 'on_hold' as required; ticket remains 'in_progress'.",
+ "cited_conditions": [
+  "LH-R7"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LH-P1",
+   "observed": "true (security exception SEC0044120 active; HR record legal_hold=true)",
+   "source": "list_security_exceptions / get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R1",
+   "observed": "SUSPENDED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R2",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R3",
+   "observed": "/Legal Hold",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R4",
+   "observed": "0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R5",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R6",
+   "observed": "true (deactivated)",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R7",
+   "observed": "in_progress",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "LH-R8",
+   "observed": "Legal Hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R9",
+   "observed": "Legal",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_security_exceptions",
+  "lookup_runbook",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 8,
+ "tokens_in": 11450,
+ "tokens_out": 1082,
+ "cost_usd": 0.0,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

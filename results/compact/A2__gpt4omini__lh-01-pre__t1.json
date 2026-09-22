@@ -1,0 +1,35 @@
+{
+ "ts": "2026-09-22T21:12:15",
+ "case_id": "lh-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.9,
+ "reason": "The incident is still in progress and has not been closed yet, indicating that the closure process is not complete.",
+ "cited_conditions": [
+  "INC0095019 state is in_progress"
+ ],
+ "evidence": [
+  {
+   "condition_id": "INC0095019 state is in_progress",
+   "observed": "in_progress",
+   "source": "ServiceNow incident",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_security_exceptions",
+  "get_incident",
+  "list_slas"
+ ],
+ "guard": "none",
+ "turns": 2,
+ "tokens_in": 2507,
+ "tokens_out": 255,
+ "cost_usd": 0.00045225,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

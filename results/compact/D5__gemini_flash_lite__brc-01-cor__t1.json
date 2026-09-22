@@ -1,0 +1,69 @@
+{
+ "ts": "2026-09-23T03:44:21",
+ "case_id": "brc-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 1.0,
+ "reason": "All required conditions for recording an SLA breach are met, and no forbidden actions occurred.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "BRC-P1",
+   "observed": "P1",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R1",
+   "observed": "breached",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R2",
+   "observed": "true",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R3",
+   "observed": "Service Manager",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R4",
+   "observed": "[\"SLA breach recorded; escalated to Service Manager.\"]",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-F1",
+   "observed": "",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-F2",
+   "observed": "in_progress",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas",
+  "get_hr_employee",
+  "get_device",
+  "list_approvals",
+  "list_security_exceptions"
+ ],
+ "guard": "none",
+ "turns": 3,
+ "tokens_in": 4782,
+ "tokens_out": 1497,
+ "cost_usd": 0.00095532,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

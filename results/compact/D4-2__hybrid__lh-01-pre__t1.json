@@ -1,0 +1,33 @@
+{
+ "ts": "2026-09-22T22:23:19",
+ "case_id": "lh-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.5,
+ "reason": "unmappable conditions ['LH-P1', 'LH-R1', 'LH-R2', 'LH-R3', 'LH-R4', 'LH-R5', 'LH-R6', 'LH-R7', 'LH-R8', 'LH-R9', 'LH-F1', 'GEN-F1']; all preconditions hold, all required conditions met, nothing forbidden observed",
+ "cited_conditions": [
+  "LH-P1",
+  "LH-R1",
+  "LH-R2",
+  "LH-R3",
+  "LH-R4",
+  "LH-R5",
+  "LH-R6",
+  "LH-R7",
+  "LH-R8",
+  "LH-R9",
+  "LH-F1",
+  "GEN-F1"
+ ],
+ "evidence": [],
+ "tools_called": [
+  "get_hr_employee"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 871,
+ "tokens_out": 1411,
+ "cost_usd": 0.00303975,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

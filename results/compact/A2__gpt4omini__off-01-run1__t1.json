@@ -1,0 +1,35 @@
+{
+ "ts": "2026-09-22T21:12:25",
+ "case_id": "off-01-run1",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.8,
+ "reason": "The devices owned by Wei Jie Ng are still in a 'wipe_pending' status, indicating that the remote wipe has not been completed yet.",
+ "cited_conditions": [
+  "device_wipe_pending"
+ ],
+ "evidence": [
+  {
+   "condition_id": "device_wipe_pending",
+   "observed": "2 devices in wipe_pending status",
+   "source": "Intune",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_hr_employee",
+  "get_incident",
+  "list_security_exceptions"
+ ],
+ "guard": "none",
+ "turns": 2,
+ "tokens_in": 2489,
+ "tokens_out": 259,
+ "cost_usd": 0.00045195,
+ "expected_decision": "ESCALATE",
+ "correct": false
+}

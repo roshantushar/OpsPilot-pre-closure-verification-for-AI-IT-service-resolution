@@ -1,0 +1,69 @@
+{
+ "ts": "2026-09-23T02:17:25",
+ "case_id": "acc-01-run2",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.7,
+ "reason": "Precondition ACC-P1 (approval approved) is false: approval record is in 'requested' state rather than approved.",
+ "cited_conditions": [
+  "ACC-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "ACC-P1",
+   "observed": "requested",
+   "source": "list_approvals",
+   "holds": false
+  },
+  {
+   "condition_id": "ACC-P2",
+   "observed": "kenji.ng@acme.example (matches manager_email)",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R1",
+   "observed": "[\"all-staff\",\"eng-all\",\"github-developers\",\"finance-reporting-extended\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "Access granted per approval APR0073883.",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R3",
+   "observed": "resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-F1",
+   "observed": "finance-reporting-extended-admin not present",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "",
+   "source": "",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_approvals",
+  "get_okta_user",
+  "get_incident",
+  "get_hr_employee"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 10797,
+ "tokens_out": 1378,
+ "cost_usd": 0.00355445,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

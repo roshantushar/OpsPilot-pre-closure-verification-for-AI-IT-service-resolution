@@ -1,0 +1,58 @@
+{
+ "ts": "2026-09-22T21:42:59",
+ "case_id": "lst-01-run3",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.9,
+ "reason": "Precondition LST-P1 fails: the reported device LT-52424 is not found among the caller's enrolled devices, so ownership cannot be confirmed before taking action.",
+ "cited_conditions": [
+  "LST-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "caller has devices: [LT-70320]; LT-52424 not present",
+   "source": "list_devices",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "incident category = security",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "ticket state = resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "Okta sessions_active = 0 (no active sessions)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "Google oauth_tokens = 0",
+   "source": "get_google_user",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "list_devices",
+  "get_incident",
+  "get_okta_user",
+  "get_google_user"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 10712,
+ "tokens_out": 916,
+ "cost_usd": 0.00213245,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

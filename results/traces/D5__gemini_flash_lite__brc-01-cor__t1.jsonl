@@ -1,1 +1,11 @@
-{"event": "reused", "from": "D4-3__v2__brc-01-cor__t1"}
+{"event": "llm", "turn": 1, "input_tokens": 1292, "output_tokens": 208, "reasoning_tokens": 193, "cached_tokens": 0, "cost_usd": 0.0002124, "latency_ms": 1898.2, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-108"}, "output_chars": 1097, "latency_ms": 0.71, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1599, "output_tokens": 524, "reasoning_tokens": 441, "cached_tokens": 1352, "cost_usd": 0.00024782, "latency_ms": 2617.6, "cache_hit": false, "n_tool_calls": 6}
+{"event": "tool", "turn": 2, "name": "get_incident", "args": {"number": "INC0035493"}, "output_chars": 374, "latency_ms": 0.04, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "list_slas", "args": {"incident_number": "INC0035493"}, "output_chars": 139, "latency_ms": 0.01, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_hr_employee", "args": {"email": "lucas.goh@acme.example"}, "output_chars": 222, "latency_ms": 0.02, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_device", "args": {"device_id": null}, "output_chars": 34, "latency_ms": 0.01, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "list_approvals", "args": {"ticket_number": "INC0035493"}, "output_chars": 34, "latency_ms": 0.01, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "list_security_exceptions", "args": {"employee_email": "lucas.goh@acme.example"}, "output_chars": 34, "latency_ms": 0.01, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1891, "output_tokens": 765, "reasoning_tokens": 377, "cached_tokens": 0, "cost_usd": 0.0004951, "latency_ms": 2435.9, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "VERIFIED", "turns": 3}

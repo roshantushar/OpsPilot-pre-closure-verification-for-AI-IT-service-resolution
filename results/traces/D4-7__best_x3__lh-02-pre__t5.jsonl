@@ -1,0 +1,14 @@
+{"event": "llm", "turn": 1, "input_tokens": 1401, "output_tokens": 52, "reasoning_tokens": 103, "cached_tokens": 1280, "cost_usd": 0.00016625, "latency_ms": 2575.8, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-101"}, "output_chars": 1528, "latency_ms": 0.38, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1833, "output_tokens": 247, "reasoning_tokens": 192, "cached_tokens": 1792, "cost_usd": 0.00054905, "latency_ms": 5115.3, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "list_security_exceptions", "args": {"employee_email": "mei.koh@acme.example"}, "output_chars": 159, "latency_ms": 0.14, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1920, "output_tokens": 26, "reasoning_tokens": 0, "cached_tokens": 1792, "cost_usd": 0.0001288, "latency_ms": 1315.6, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 3, "name": "get_okta_user", "args": {"email": "mei.koh@acme.example"}, "output_chars": 240, "latency_ms": 0.19, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 2029, "output_tokens": 25, "reasoning_tokens": 0, "cached_tokens": 1792, "cost_usd": 0.00015405, "latency_ms": 1251.7, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 4, "name": "get_google_user", "args": {"email": "mei.koh@acme.example"}, "output_chars": 193, "latency_ms": 0.15, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 5, "input_tokens": 2119, "output_tokens": 26, "reasoning_tokens": 0, "cached_tokens": 2048, "cost_usd": 0.00012095, "latency_ms": 1492.0, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 5, "name": "get_slack_user", "args": {"email": "mei.koh@acme.example"}, "output_chars": 108, "latency_ms": 0.21, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 6, "input_tokens": 2192, "output_tokens": 114, "reasoning_tokens": 64, "cached_tokens": 2048, "cost_usd": 0.0003152, "latency_ms": 3358.2, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 6, "name": "get_incident", "args": {"number": "INC0070682"}, "output_chars": 309, "latency_ms": 0.1, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 7, "input_tokens": 2309, "output_tokens": 1208, "reasoning_tokens": 704, "cached_tokens": 2176, "cost_usd": 0.00250365, "latency_ms": 14960.1, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "INCOMPLETE", "turns": 7}

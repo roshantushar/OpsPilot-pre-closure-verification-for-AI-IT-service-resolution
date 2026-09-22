@@ -3,19 +3,19 @@
  "arm": "hard_conflict",
  "run_id": "D4-5__hard_conflict__lst-02-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:12",
- "git_commit": "9cb211a-dirty",
- "config_hash": "b107107f33bb",
+ "timestamp": "2026-09-23T00:22:29",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "49c8023de6df",
  "dataset_version": "synthetic-v1",
  "case_id": "lst-02-pre",
  "task_id": "lst-02",
  "family": "lost_or_stolen_device",
  "subset": "premature_dev",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": "all",
@@ -26,105 +26,110 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": {
-  "conflict": "okta",
-  "field": "status",
-  "value": "ACTIVE"
+  "conflict": "intune",
+  "field": "lost_mode",
+  "value": true
  },
  "difficulty": "hard",
  "declared": true,
  "decision": "ESCALATE",
- "reason": "precondition failed []; forbidden []; problems ['duplicate:get_okta_user']",
+ "reason": "Device records for LT-21464 are duplicated/conflicting on lost_mode (one record shows lost_mode=true, another lost_mode=false), which the runbook lists and requires escalation.",
  "cited_conditions": [
   "LST-R1"
  ],
  "evidence": [
   {
    "condition_id": "LST-P1",
-   "observed": "\"imran.goh@acme.example\"",
+   "observed": "owner=imran.goh@acme.example (device LT-21464)",
    "source": "get_device",
    "holds": true
   },
   {
-   "condition_id": "LST-F1",
-   "observed": "\"active\"",
-   "source": "list_devices",
-   "holds": true
-  },
-  {
-   "condition_id": "LST-F2",
-   "observed": "[\"ACTIVE\", \"ACTIVE\"]",
-   "source": "get_okta_user",
-   "holds": true
-  },
-  {
    "condition_id": "LST-R1",
-   "observed": "false",
+   "observed": "two records for LT-21464: lost_mode=false and lost_mode=true (conflict/duplicate)",
    "source": "get_device",
    "holds": false
   },
   {
    "condition_id": "LST-R2",
-   "observed": "\"locked\"",
+   "observed": "status=locked",
    "source": "get_device",
    "holds": true
   },
   {
    "condition_id": "LST-R3",
-   "observed": "[0, 0]",
+   "observed": "sessions_active=0",
    "source": "get_okta_user",
    "holds": true
   },
   {
    "condition_id": "LST-R4",
-   "observed": "0",
+   "observed": "oauth_tokens=0",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "LST-R5",
-   "observed": "\"security\"",
+   "observed": "category=security",
    "source": "get_incident",
    "holds": true
   },
   {
    "condition_id": "LST-R6",
-   "observed": "\"resolved\"",
+   "observed": "state=resolved",
    "source": "get_incident",
    "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-50303 status=active (no other devices locked/wiped observed)",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "Okta status=ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify modifications to accounts/devices belonging to others with these tools",
+   "source": "list_devices",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.8,
  "tools_called": [
   "lookup_runbook",
-  "get_hr_employee",
   "get_device",
   "get_okta_user",
   "get_google_user",
   "get_incident",
   "list_devices"
  ],
- "tool_call_count": 7,
+ "tool_call_count": 6,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.14,
- "observation_chars": 2724,
- "turns": 8,
+ "tool_latency_ms": 0.89,
+ "observation_chars": 2540,
+ "turns": 7,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.3,
- "llm_latency_ms": 0.0,
+ "input_tokens": 13346,
+ "output_tokens": 2414,
+ "reasoning_tokens": 1648,
+ "cached_tokens": 8832,
+ "total_tokens": 15760,
+ "llm_cost_usd": 0.00546705,
+ "total_cost_usd": 0.00546705,
+ "latency_ms": 40925.6,
+ "llm_latency_ms": 40880.9,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "269104cbcbd9",

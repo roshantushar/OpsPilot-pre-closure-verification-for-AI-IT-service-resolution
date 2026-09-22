@@ -1,1 +1,9 @@
-{"event": "reused", "from": "D4-3__v2__lck-01-pre__t1"}
+{"event": "llm", "turn": 1, "input_tokens": 1291, "output_tokens": 21, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.00020625, "latency_ms": 987.5, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-106"}, "output_chars": 980, "latency_ms": 0.33, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1579, "output_tokens": 99, "reasoning_tokens": 0, "cached_tokens": 1280, "cost_usd": 0.00020025, "latency_ms": 2907.3, "cache_hit": false, "n_tool_calls": 4}
+{"event": "tool", "turn": 2, "name": "get_hr_employee", "args": {"email": "lina.ong@acme.example"}, "output_chars": 213, "latency_ms": 0.2, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_okta_user", "args": {"email": "lina.ong@acme.example"}, "output_chars": 234, "latency_ms": 0.13, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "list_approvals", "args": {"ticket_number": "INC0038625"}, "output_chars": 34, "latency_ms": 0.05, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 2, "name": "get_incident", "args": {"number": "INC0038625"}, "output_chars": 322, "latency_ms": 0.1, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1984, "output_tokens": 205, "reasoning_tokens": 0, "cached_tokens": 1536, "cost_usd": 0.0003054, "latency_ms": 3652.3, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "INCOMPLETE", "turns": 3}

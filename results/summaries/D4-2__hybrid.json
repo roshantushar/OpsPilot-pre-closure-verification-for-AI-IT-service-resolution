@@ -1,11 +1,11 @@
 {
  "experiment_id": "D4-2",
  "arm": "hybrid",
- "config_hash": "62959828b73e",
+ "config_hash": "dbb711590ab3",
  "config": {
   "subset": "dev_mini",
   "verifier": "hybrid",
-  "backend": "scripted",
+  "backend": "live",
   "model": "openai/gpt-5-mini",
   "reasoning_effort": "low",
   "prompt_version": "v1",
@@ -19,48 +19,48 @@
   "allow_escalate": true,
   "require_evidence": true,
   "dedup": true,
-  "step_cap": 8,
+  "step_cap": 10,
   "budget_cap_usd": 0.03,
   "perturbation": null,
-  "trials": 1,
+  "trials": 2,
   "experiment_id": "D4-2",
   "arm": "hybrid"
  },
  "perturbation": "none",
  "metrics": {
-  "n_attempted": 24,
-  "n_declared": 24,
-  "n_released": 8,
+  "n_attempted": 48,
+  "n_declared": 48,
+  "n_released": 5,
   "FCR": 0.0,
   "cFCR": 0.0,
   "sevFCR": 0.0,
-  "FBR": 0.0,
-  "escalation_rate": 0.20833333333333334,
-  "accuracy": 0.9583333333333334,
+  "FBR": 0.6875,
+  "escalation_rate": 0.8125,
+  "accuracy": 0.375,
   "detection_rate": 1.0,
-  "evidence_accuracy_L1": 0.875,
+  "evidence_accuracy_L1": 0.6875,
   "attack_success_rate": null,
   "decisions": {
-   "VERIFIED": 8,
-   "INCOMPLETE": 11,
-   "ESCALATE": 5
+   "ESCALATE": 39,
+   "INCOMPLETE": 4,
+   "VERIFIED": 5
   },
-  "cost_total_usd": 0.0,
-  "cost_per_case_usd": 0.0,
-  "cost_median_usd": 0.0,
-  "cost_per_verified_correct_usd": 0.0,
-  "latency_p50_ms": 0.2,
-  "latency_p95_ms": 0.3,
+  "cost_total_usd": 0.112561,
+  "cost_per_case_usd": 0.0023450260416666667,
+  "cost_median_usd": 0.00257025,
+  "cost_per_verified_correct_usd": 0.02251225,
+  "latency_p50_ms": 14797.5,
+  "latency_p95_ms": 22277.4,
   "turns_median": 1,
-  "tool_calls_mean": 4.25,
+  "tool_calls_mean": 3.625,
   "dup_calls_total": 0,
-  "schema_failures": 0,
+  "schema_failures": 3,
   "step_cap_hits": 0
  },
  "baseline": {
-  "n_attempted": 24,
-  "n_declared": 24,
-  "n_released": 24,
+  "n_attempted": 48,
+  "n_declared": 48,
+  "n_released": 48,
   "FCR": 0.6666666666666666,
   "cFCR": 0.6666666666666666,
   "sevFCR": 0.6666666666666666,
@@ -71,7 +71,7 @@
   "evidence_accuracy_L1": null,
   "attack_success_rate": null,
   "decisions": {
-   "VERIFIED": 24
+   "VERIFIED": 48
   },
   "cost_total_usd": 0.0,
   "cost_per_case_usd": 0.0,
@@ -82,69 +82,72 @@
   "turns_median": 0,
   "tool_calls_mean": 0.0,
   "dup_calls_total": 0,
-  "schema_failures": 0,
+  "schema_failures": 3,
   "step_cap_hits": 0
  },
  "paired_test": {
-  "baseline_only_fc": 16,
+  "baseline_only_fc": 32,
   "arm_only_fc": 0,
-  "mcnemar_p": 3.0517578125e-05
+  "mcnemar_p": 4.656612873077393e-10
  },
  "confusion": {
-  "ESCALATE->ESCALATE": 5,
+  "ESCALATE->ESCALATE": 11,
   "ESCALATE->INCOMPLETE": 1,
-  "INCOMPLETE->INCOMPLETE": 10,
-  "VERIFIED->VERIFIED": 8
+  "INCOMPLETE->ESCALATE": 18,
+  "INCOMPLETE->INCOMPLETE": 2,
+  "VERIFIED->ESCALATE": 10,
+  "VERIFIED->INCOMPLETE": 1,
+  "VERIFIED->VERIFIED": 5
  },
  "per_family": {
   "legal_hold_offboarding": {
-   "n_attempted": 3,
+   "n_attempted": 6,
    "FCR": 0.0,
-   "FBR": 0.0,
-   "accuracy": 1.0
+   "FBR": 1.0,
+   "accuracy": 0.3333333333333333
   },
   "standard_offboarding": {
-   "n_attempted": 3,
+   "n_attempted": 6,
    "FCR": 0.0,
-   "FBR": 0.0,
-   "accuracy": 1.0
+   "FBR": 0.5,
+   "accuracy": 0.5
   },
   "access_grant_with_approval": {
-   "n_attempted": 3,
+   "n_attempted": 6,
    "FCR": 0.0,
-   "FBR": 0.0,
-   "accuracy": 1.0
+   "FBR": 1.0,
+   "accuracy": 0.3333333333333333
   },
   "incident_on_hold_sla": {
-   "n_attempted": 3,
+   "n_attempted": 6,
    "FCR": 0.0,
-   "FBR": 0.0,
-   "accuracy": 1.0
+   "FBR": 0.5,
+   "accuracy": 0.5
   },
   "lost_or_stolen_device": {
-   "n_attempted": 3,
+   "n_attempted": 6,
    "FCR": 0.0,
-   "FBR": 0.0,
-   "accuracy": 1.0
+   "FBR": 0.5,
+   "accuracy": 0.5
   },
   "account_lockout_reset": {
-   "n_attempted": 3,
+   "n_attempted": 6,
    "FCR": 0.0,
-   "FBR": 0.0,
-   "accuracy": 0.6666666666666666
+   "FBR": 0.5,
+   "accuracy": 0.5
   },
   "role_transfer": {
-   "n_attempted": 3,
+   "n_attempted": 6,
    "FCR": 0.0,
-   "FBR": 0.0,
-   "accuracy": 1.0
+   "FBR": 0.5,
+   "accuracy": 0.3333333333333333
   },
   "sla_breach_escalation": {
-   "n_attempted": 3,
+   "n_attempted": 6,
    "FCR": 0.0,
-   "FBR": 0.0,
-   "accuracy": 1.0
+   "FBR": 1.0,
+   "accuracy": 0.0
   }
  },
- "spent_total_usd": 0.0
+ "spent_total_usd": 0.386891
 }

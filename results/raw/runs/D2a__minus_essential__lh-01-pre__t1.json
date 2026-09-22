@@ -3,28 +3,28 @@
  "arm": "minus_essential",
  "run_id": "D2a__minus_essential__lh-01-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:10",
- "git_commit": "9cb211a-dirty",
- "config_hash": "a33001eb59ee",
+ "timestamp": "2026-09-23T01:21:01",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "c20b994ad7f2",
  "dataset_version": "synthetic-v1",
  "case_id": "lh-01-pre",
  "task_id": "lh-01",
  "family": "legal_hold_offboarding",
  "subset": "dev_micro",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": [
   "get_hr_employee",
+  "get_okta_user",
   "get_google_user",
   "get_slack_user",
   "list_devices",
   "get_device",
-  "get_incident",
   "list_slas",
   "list_approvals",
   "list_security_exceptions",
@@ -37,130 +37,107 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "medium",
  "declared": true,
  "decision": "ESCALATE",
- "reason": "precondition failed []; forbidden []; problems ['not_checked:get_okta_user']",
+ "reason": "All systems for account and token state show the required suspension/deactivation and no-token state, and a legal hold exists, but required end-state evidence for ticket hold status, hold reason, and escalation to Legal cannot be verified with available tools.",
  "cited_conditions": [
-  "LH-R7"
+  "LH-R7",
+  "LH-R8",
+  "LH-R9"
  ],
  "evidence": [
   {
    "condition_id": "LH-P1",
-   "observed": "true",
+   "observed": "type: legal_hold, active: true, matter: M-2026-817",
    "source": "list_security_exceptions",
    "holds": true
   },
   {
-   "condition_id": "LH-F1",
-   "observed": "not checked",
-   "source": "get_okta_user",
-   "holds": null
-  },
-  {
-   "condition_id": "LH-F2",
-   "observed": "null",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F3",
-   "observed": "\"in_progress\"",
-   "source": "get_incident",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F4",
-   "observed": "false",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
    "condition_id": "LH-R1",
-   "observed": "not checked",
+   "observed": "status: SUSPENDED",
    "source": "get_okta_user",
-   "holds": null
+   "holds": true
   },
   {
    "condition_id": "LH-R2",
-   "observed": "true",
+   "observed": "suspended: true",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "LH-R3",
-   "observed": "\"/Legal Hold\"",
+   "observed": "org_unit: /Legal Hold",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "LH-R4",
-   "observed": "0",
+   "observed": "oauth_tokens: 0",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "LH-R5",
-   "observed": "true",
+   "observed": "force_password_reset: true",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "LH-R6",
-   "observed": "true",
+   "observed": "deactivated: true",
    "source": "get_slack_user",
    "holds": true
   },
   {
-   "condition_id": "LH-R7",
-   "observed": "\"in_progress\"",
-   "source": "get_incident",
-   "holds": false
-  },
-  {
-   "condition_id": "LH-R8",
-   "observed": "\"Legal Hold\"",
-   "source": "get_incident",
+   "condition_id": "LH-F1",
+   "observed": "status: SUSPENDED (not DEACTIVATED)",
+   "source": "get_okta_user",
    "holds": true
   },
   {
-   "condition_id": "LH-R9",
-   "observed": "\"Legal\"",
-   "source": "get_incident",
+   "condition_id": "LH-F2",
+   "observed": "data_transfer_to: null",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F4",
+   "observed": "deleted: false",
+   "source": "get_google_user",
    "holds": true
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.67,
  "tools_called": [
   "lookup_runbook",
-  "get_hr_employee",
   "list_security_exceptions",
+  "get_okta_user",
   "get_google_user",
-  "get_slack_user",
-  "get_incident"
+  "get_slack_user"
  ],
- "tool_call_count": 6,
+ "tool_call_count": 5,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.09,
- "observation_chars": 2541,
- "turns": 7,
+ "tool_latency_ms": 0.91,
+ "observation_chars": 2244,
+ "turns": 6,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.3,
- "llm_latency_ms": 0.0,
+ "input_tokens": 11301,
+ "output_tokens": 1937,
+ "reasoning_tokens": 1253,
+ "cached_tokens": 8704,
+ "total_tokens": 13238,
+ "llm_cost_usd": 0.00474085,
+ "total_cost_usd": 0.00474085,
+ "latency_ms": 40421.2,
+ "llm_latency_ms": 40363.5,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "20a173764d95",

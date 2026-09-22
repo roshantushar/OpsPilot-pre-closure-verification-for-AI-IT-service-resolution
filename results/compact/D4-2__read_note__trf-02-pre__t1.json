@@ -1,0 +1,69 @@
+{
+ "ts": "2026-09-22T22:17:17",
+ "case_id": "trf-02-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.6,
+ "reason": "HR confirmation of the new department (TRF-P1) is not present in the ticket or resolver note, blocking safe closure.",
+ "cited_conditions": [
+  "TRF-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "No HR record or confirmation of new department present in ticket or closure note",
+   "source": "resolver_claim",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "Removed hr-all",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "Removed workday-hr",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "Added sales-all",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "Added crm-users",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "Ticket marked resolved in resolver claim",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "No mention of baseline all-staff being removed",
+   "source": "resolver_claim",
+   "holds": false
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "No mention of changes to other accounts or devices",
+   "source": "resolver_claim",
+   "holds": false
+  }
+ ],
+ "tools_called": [],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 743,
+ "tokens_out": 1225,
+ "cost_usd": 0.00263575,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

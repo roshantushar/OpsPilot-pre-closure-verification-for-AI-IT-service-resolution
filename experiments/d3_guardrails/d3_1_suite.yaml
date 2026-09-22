@@ -12,10 +12,10 @@ frozen: false
 defaults:
   verifier: agent
   backend: live
-  prompt_version: v2
+  prompt_version: v2b
   descriptor_version: v2
   compact_returns: true
-  step_cap: 8
+  step_cap: 10
   budget_cap_usd: 0.03
 arms:
 - arm: best

@@ -1,0 +1,69 @@
+{
+ "ts": "2026-09-22T23:57:02",
+ "case_id": "acc-01-run2",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.8,
+ "reason": "Precondition ACC-P1 (approval approved) is false: the approval record is in 'requested' state, not approved.",
+ "cited_conditions": [
+  "ACC-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "ACC-P1",
+   "observed": "state: requested",
+   "source": "list_approvals",
+   "holds": false
+  },
+  {
+   "condition_id": "ACC-P2",
+   "observed": "approver kenji.ng@acme.example matches manager kenji.ng@acme.example",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R1",
+   "observed": "groups include finance-reporting-extended",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "work_notes contain reference to APR0073883",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R3",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-F1",
+   "observed": "no '-admin' variant present in user's groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify modification of other users' accounts with available single-subject lookup tools",
+   "source": "get_okta_user",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_approvals",
+  "get_okta_user",
+  "get_incident",
+  "get_hr_employee"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 10797,
+ "tokens_out": 1536,
+ "cost_usd": 0.0,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

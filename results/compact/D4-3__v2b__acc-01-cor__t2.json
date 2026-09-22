@@ -1,0 +1,67 @@
+{
+ "ts": "2026-09-22T23:20:07",
+ "case_id": "acc-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.9,
+ "reason": "All preconditions are met, required end states have tool-backed evidence, and the listed never-do (ACC-F1) was not observed; the unverifiable general never-do (GEN-F1) is noted as not checked. [evidence guard: source tool never called for ['GEN-F1']]",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "ACC-P1",
+   "observed": "approved",
+   "source": "list_approvals",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-P2",
+   "observed": "approver kenji.ng@acme.example matches HR manager kenji.ng@acme.example",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R1",
+   "observed": "groups include finance-reporting-extended",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "work_notes contain 'Access granted per approval APR0073883.'",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R3",
+   "observed": "state = resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-F1",
+   "observed": "no '-admin' variant present in groups list",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "",
+   "source": "list_devices",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_approvals",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 10756,
+ "tokens_out": 1158,
+ "cost_usd": 0.0031618,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

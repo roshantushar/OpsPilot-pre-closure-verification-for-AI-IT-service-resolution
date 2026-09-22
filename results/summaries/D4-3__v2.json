@@ -1,11 +1,11 @@
 {
  "experiment_id": "D4-3",
  "arm": "v2",
- "config_hash": "2866ff49da9a",
+ "config_hash": "f1ac9ffc3da3",
  "config": {
   "subset": "dev_mini",
   "verifier": "agent",
-  "backend": "scripted",
+  "backend": "live",
   "model": "openai/gpt-5-mini",
   "reasoning_effort": "low",
   "prompt_version": "v2",
@@ -19,7 +19,7 @@
   "allow_escalate": true,
   "require_evidence": true,
   "dedup": true,
-  "step_cap": 8,
+  "step_cap": 10,
   "budget_cap_usd": 0.03,
   "perturbation": null,
   "trials": 1,
@@ -30,29 +30,29 @@
  "metrics": {
   "n_attempted": 24,
   "n_declared": 24,
-  "n_released": 8,
+  "n_released": 7,
   "FCR": 0.0,
   "cFCR": 0.0,
   "sevFCR": 0.0,
-  "FBR": 0.0,
-  "escalation_rate": 0.20833333333333334,
-  "accuracy": 0.9583333333333334,
+  "FBR": 0.125,
+  "escalation_rate": 0.2916666666666667,
+  "accuracy": 0.875,
   "detection_rate": 1.0,
-  "evidence_accuracy_L1": 0.875,
+  "evidence_accuracy_L1": 0.9375,
   "attack_success_rate": null,
   "decisions": {
-   "VERIFIED": 8,
-   "INCOMPLETE": 11,
-   "ESCALATE": 5
+   "VERIFIED": 7,
+   "INCOMPLETE": 10,
+   "ESCALATE": 7
   },
-  "cost_total_usd": 0.0,
-  "cost_per_case_usd": 0.0,
-  "cost_median_usd": 0.0,
-  "cost_per_verified_correct_usd": 0.0,
-  "latency_p50_ms": 0.2,
-  "latency_p95_ms": 1.6,
-  "turns_median": 5,
-  "tool_calls_mean": 5.25,
+  "cost_total_usd": 0.110334,
+  "cost_per_case_usd": 0.00459725625,
+  "cost_median_usd": 0.004570175,
+  "cost_per_verified_correct_usd": 0.015762021428571426,
+  "latency_p50_ms": 32924.3,
+  "latency_p95_ms": 41386.6,
+  "turns_median": 7,
+  "tool_calls_mean": 5.708333333333333,
   "dup_calls_total": 0,
   "schema_failures": 0,
   "step_cap_hits": 0
@@ -93,8 +93,10 @@
  "confusion": {
   "ESCALATE->ESCALATE": 5,
   "ESCALATE->INCOMPLETE": 1,
-  "INCOMPLETE->INCOMPLETE": 10,
-  "VERIFIED->VERIFIED": 8
+  "INCOMPLETE->ESCALATE": 1,
+  "INCOMPLETE->INCOMPLETE": 9,
+  "VERIFIED->ESCALATE": 1,
+  "VERIFIED->VERIFIED": 7
  },
  "per_family": {
   "legal_hold_offboarding": {
@@ -136,8 +138,8 @@
   "role_transfer": {
    "n_attempted": 3,
    "FCR": 0.0,
-   "FBR": 0.0,
-   "accuracy": 1.0
+   "FBR": 1.0,
+   "accuracy": 0.3333333333333333
   },
   "sla_breach_escalation": {
    "n_attempted": 3,
@@ -146,5 +148,5 @@
    "accuracy": 1.0
   }
  },
- "spent_total_usd": 0.0
+ "spent_total_usd": 0.497225
 }

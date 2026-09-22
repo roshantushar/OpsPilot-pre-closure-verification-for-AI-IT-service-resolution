@@ -1,0 +1,47 @@
+{
+ "ts": "2026-09-22T21:54:36",
+ "case_id": "brc-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.9,
+ "reason": "All required end-state conditions from KB-OPS-108 are met: SLA stage is breached, has_breached is true, incident escalated to Service Manager, and a work note records the breach.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "BRC-R1",
+   "observed": "stage: breached",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R2",
+   "observed": "has_breached: true",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R3",
+   "observed": "escalated_to: Service Manager",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R4",
+   "observed": "work_notes contains: \"SLA breach recorded; escalated to Service Manager.\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 5539,
+ "tokens_out": 578,
+ "cost_usd": 0.00193595,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

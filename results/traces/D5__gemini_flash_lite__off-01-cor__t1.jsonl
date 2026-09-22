@@ -1,1 +1,14 @@
-{"event": "reused", "from": "D4-3__v2__off-01-cor__t1"}
+{"event": "llm", "turn": 1, "input_tokens": 0, "output_tokens": 0, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.0, "latency_ms": 2081.8, "cache_hit": false, "n_tool_calls": 0}
+{"event": "guard", "guard": "schema_repair", "turn": 1, "error": "empty output"}
+{"event": "llm", "turn": 2, "input_tokens": 1323, "output_tokens": 279, "reasoning_tokens": 264, "cached_tokens": 0, "cost_usd": 0.0002439, "latency_ms": 1844.9, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-102"}, "output_chars": 1442, "latency_ms": 1.77, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1727, "output_tokens": 509, "reasoning_tokens": 398, "cached_tokens": 0, "cost_usd": 0.0003763, "latency_ms": 2314.6, "cache_hit": false, "n_tool_calls": 7}
+{"event": "tool", "turn": 3, "name": "get_hr_employee", "args": {"email": "weijie.ng@acme.example"}, "output_chars": 221, "latency_ms": 0.03, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 3, "name": "list_security_exceptions", "args": {"employee_email": "weijie.ng@acme.example"}, "output_chars": 34, "latency_ms": 0.01, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 3, "name": "get_okta_user", "args": {"email": "weijie.ng@acme.example"}, "output_chars": 203, "latency_ms": 0.02, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 3, "name": "get_google_user", "args": {"email": "weijie.ng@acme.example"}, "output_chars": 219, "latency_ms": 0.01, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 3, "name": "get_slack_user", "args": {"email": "weijie.ng@acme.example"}, "output_chars": 110, "latency_ms": 0.01, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 3, "name": "list_devices", "args": {"owner_email": "weijie.ng@acme.example"}, "output_chars": 287, "latency_ms": 0.02, "dup": false, "invalid": false, "error": null}
+{"event": "tool", "turn": 3, "name": "get_incident", "args": {"number": "INC0099381"}, "output_chars": 289, "latency_ms": 0.01, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 2200, "output_tokens": 823, "reasoning_tokens": 340, "cached_tokens": 0, "cost_usd": 0.0005492, "latency_ms": 2677.9, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "VERIFIED", "turns": 4}

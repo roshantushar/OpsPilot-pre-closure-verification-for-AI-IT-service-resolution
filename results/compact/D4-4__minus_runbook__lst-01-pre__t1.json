@@ -1,0 +1,68 @@
+{
+ "ts": "2026-09-22T23:48:29",
+ "case_id": "lst-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.86,
+ "reason": "All required runbook end states have tool evidence showing sessions and tokens revoked, device in lost mode, and the incident recategorized and resolved; the unverifiable never-do was noted. [evidence guard: missing ['LST-R1', 'LST-R2', 'LST-R3', 'LST-R4', 'LST-R5', 'LST-R6']]",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "P1",
+   "observed": "active",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "R1",
+   "observed": "0",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "R2",
+   "observed": "0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "R3",
+   "observed": "security",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "R4",
+   "observed": "resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "R5",
+   "observed": "lost_mode=true, status=active",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "F1",
+   "observed": "",
+   "source": "list_devices",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "list_devices",
+  "get_device",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 11449,
+ "tokens_out": 1457,
+ "cost_usd": 0.00376025,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

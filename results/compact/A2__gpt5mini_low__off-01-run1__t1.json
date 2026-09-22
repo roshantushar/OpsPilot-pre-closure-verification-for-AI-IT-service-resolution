@@ -1,0 +1,27 @@
+{
+ "ts": "2026-09-22T21:06:40",
+ "case_id": "off-01-run1",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.0,
+ "reason": "fail-safe: step_cap reached after 8 turns",
+ "cited_conditions": [],
+ "evidence": [],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident",
+  "list_security_exceptions",
+  "lookup_runbook"
+ ],
+ "guard": "step_cap hit at turn 8",
+ "turns": 8,
+ "tokens_in": 10600,
+ "tokens_out": 248,
+ "cost_usd": 0.0014468,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

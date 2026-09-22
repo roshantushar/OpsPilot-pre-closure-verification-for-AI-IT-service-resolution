@@ -1,0 +1,89 @@
+{
+ "ts": "2026-09-22T23:53:54",
+ "case_id": "lst-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.78,
+ "reason": "Device is in lost mode and sessions/tokens revoked, but the device lock state is not shown, the incident category is still 'hardware', and ticket resolution state is not evidenced.",
+ "cited_conditions": [
+  "LST-R2",
+  "LST-R5",
+  "LST-R6"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "owner:hannah.singh@acme.example",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "lost_mode:true",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "status:active (no explicit locked flag)",
+   "source": "get_device",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "sessions_active:0",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "oauth_tokens:0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "category:hardware",
+   "source": "ticket",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "no ticket resolution state present in provided ticket data; resolver claim is not evidence",
+   "source": "ticket",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-70320 status:active, lost_mode:false",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "okta status:ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify modifications to accounts/devices for other employees with these tools",
+   "source": "list_devices",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_device",
+  "list_devices",
+  "get_okta_user",
+  "get_google_user"
+ ],
+ "guard": "none",
+ "turns": 6,
+ "tokens_in": 11084,
+ "tokens_out": 1640,
+ "cost_usd": 0.004179,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

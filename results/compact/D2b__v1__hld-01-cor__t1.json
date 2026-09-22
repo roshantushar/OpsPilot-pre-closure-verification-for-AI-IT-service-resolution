@@ -1,0 +1,30 @@
+{
+ "ts": "2026-09-23T01:32:28",
+ "case_id": "hld-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.2,
+ "reason": "Runbook KB-OPS-104 could not be retrieved (get_doc returned an error), so preconditions and required end states cannot be checked.",
+ "cited_conditions": [
+  "RUNBOOK-UNAVAILABLE"
+ ],
+ "evidence": [
+  {
+   "condition_id": "RUNBOOK-UNAVAILABLE",
+   "observed": "error: missing argument 'runbook_id'",
+   "source": "get_doc",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "get_doc",
+  "get_doc"
+ ],
+ "guard": "none",
+ "turns": 3,
+ "tokens_in": 3162,
+ "tokens_out": 664,
+ "cost_usd": 0.0018881,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

@@ -1,14 +1,14 @@
 {
  "experiment_id": "D4-5",
  "arm": "hard_conflict",
- "config_hash": "b107107f33bb",
+ "config_hash": "49c8023de6df",
  "config": {
   "subset": "premature_dev",
   "verifier": "agent",
-  "backend": "scripted",
+  "backend": "live",
   "model": "openai/gpt-5-mini",
   "reasoning_effort": "low",
-  "prompt_version": "v2",
+  "prompt_version": "v2b",
   "descriptor_version": "v2",
   "compact_returns": true,
   "tool_subset": "all",
@@ -19,42 +19,41 @@
   "allow_escalate": true,
   "require_evidence": true,
   "dedup": true,
-  "step_cap": 8,
+  "step_cap": 10,
   "budget_cap_usd": 0.03,
   "perturbation": {
-   "conflict": "okta",
-   "field": "status",
-   "value": "ACTIVE"
+   "fixture": "hard_conflict"
   },
   "trials": 1,
   "experiment_id": "D4-5",
   "arm": "hard_conflict"
  },
- "perturbation": "conflict=okta,field=status,value=ACTIVE",
+ "perturbation": "fixture=hard_conflict",
  "metrics": {
   "n_attempted": 16,
   "n_declared": 16,
-  "n_released": 0,
-  "FCR": 0.0,
-  "cFCR": null,
-  "sevFCR": 0.0,
+  "n_released": 2,
+  "FCR": 0.125,
+  "cFCR": 1.0,
+  "sevFCR": 0.058823529411764705,
   "FBR": null,
-  "escalation_rate": 0.75,
-  "accuracy": 0.75,
-  "detection_rate": 1.0,
+  "escalation_rate": 0.8125,
+  "accuracy": 0.8125,
+  "detection_rate": 0.875,
   "evidence_accuracy_L1": 1.0,
   "attack_success_rate": null,
   "decisions": {
-   "ESCALATE": 12,
-   "INCOMPLETE": 4
+   "ESCALATE": 13,
+   "VERIFIED": 2,
+   "INCOMPLETE": 1
   },
-  "cost_total_usd": 0.0,
-  "cost_per_case_usd": 0.0,
-  "cost_median_usd": 0.0,
+  "cost_total_usd": 0.059663,
+  "cost_per_case_usd": 0.003728934375,
+  "cost_median_usd": 0.003488125,
   "cost_per_verified_correct_usd": null,
-  "latency_p50_ms": 0.2,
-  "latency_p95_ms": 0.4,
-  "turns_median": 5,
+  "latency_p50_ms": 20441.5,
+  "latency_p95_ms": 62348.4,
+  "turns_median": 6,
   "tool_calls_mean": 5.25,
   "dup_calls_total": 0,
   "schema_failures": 0,
@@ -89,13 +88,14 @@
   "step_cap_hits": 0
  },
  "paired_test": {
-  "baseline_only_fc": 16,
+  "baseline_only_fc": 14,
   "arm_only_fc": 0,
-  "mcnemar_p": 3.0517578125e-05
+  "mcnemar_p": 0.0001220703125
  },
  "confusion": {
-  "ESCALATE->ESCALATE": 12,
-  "ESCALATE->INCOMPLETE": 4
+  "ESCALATE->ESCALATE": 13,
+  "ESCALATE->INCOMPLETE": 1,
+  "ESCALATE->VERIFIED": 2
  },
  "per_family": {
   "legal_hold_offboarding": {
@@ -118,7 +118,7 @@
   },
   "incident_on_hold_sla": {
    "n_attempted": 2,
-   "FCR": 0.0,
+   "FCR": 1.0,
    "FBR": null,
    "accuracy": 0.0
   },
@@ -138,14 +138,14 @@
    "n_attempted": 2,
    "FCR": 0.0,
    "FBR": null,
-   "accuracy": 1.0
+   "accuracy": 0.5
   },
   "sla_breach_escalation": {
    "n_attempted": 2,
    "FCR": 0.0,
    "FBR": null,
-   "accuracy": 0.0
+   "accuracy": 1.0
   }
  },
- "spent_total_usd": 0.0
+ "spent_total_usd": 0.91004
 }

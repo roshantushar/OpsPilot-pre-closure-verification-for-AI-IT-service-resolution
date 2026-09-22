@@ -1,0 +1,88 @@
+{
+ "ts": "2026-09-23T02:11:44",
+ "case_id": "lst-02-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.8,
+ "reason": "Lost mode is not enabled on LT-21464 (required LST-R1 is false).",
+ "cited_conditions": [
+  "LST-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "device LT-21464 owner is imran.goh@acme.example",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "lost_mode=false for LT-21464",
+   "source": "get_device",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "status=locked for LT-21464",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "sessions_active=0",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "oauth_tokens=0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "category=security",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "state=resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-50303 status=active, lost_mode=false",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "Okta status=ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify modifications to accounts/devices/records belonging to others with these tools",
+   "source": "lookup_runbook",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_devices",
+  "get_device",
+  "get_okta_user",
+  "get_google_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 13212,
+ "tokens_out": 1793,
+ "cost_usd": 0.0045274,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

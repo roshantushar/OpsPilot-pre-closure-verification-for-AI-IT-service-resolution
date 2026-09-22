@@ -1,0 +1,48 @@
+{
+ "ts": "2026-09-22T22:17:29",
+ "case_id": "brc-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.2,
+ "reason": "Cannot verify runbook-required end states from provided information; resolver's note is insufficient without system evidence.",
+ "cited_conditions": [
+  "BRC-R1",
+  "BRC-R2",
+  "BRC-R3",
+  "BRC-R4"
+ ],
+ "evidence": [
+  {
+   "condition_id": "BRC-R1",
+   "observed": "Not verifiable from ticket/closure note alone; resolver claims SLA stage set to breached but no system record provided",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "BRC-R2",
+   "observed": "Not verifiable from ticket/closure note alone; resolver claims SLA has_breached true but no system record provided",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "BRC-R3",
+   "observed": "Not verifiable from ticket/closure note alone; resolver claims escalation to Service Manager but no escalation record provided",
+   "source": "get_incident",
+   "holds": false
+  },
+  {
+   "condition_id": "BRC-R4",
+   "observed": "Not verifiable from ticket/closure note alone; resolver claims a work note was added but no work note content was provided",
+   "source": "get_incident",
+   "holds": false
+  }
+ ],
+ "tools_called": [],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 668,
+ "tokens_out": 683,
+ "cost_usd": 0.001533,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

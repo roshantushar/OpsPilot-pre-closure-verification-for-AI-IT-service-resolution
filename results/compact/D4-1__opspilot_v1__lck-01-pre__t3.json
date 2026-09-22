@@ -1,0 +1,62 @@
+{
+ "ts": "2026-09-22T21:52:50",
+ "case_id": "lck-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.87,
+ "reason": "Okta account is still LOCKED_OUT; runbook requires the Okta status be ACTIVE before closure.",
+ "cited_conditions": [
+  "LCK-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LCK-P1",
+   "observed": "active",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R1",
+   "observed": "LOCKED_OUT",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LCK-R2",
+   "observed": "true",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R3",
+   "observed": "true",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R4",
+   "observed": "Work note present: \"Identity verified via video call.\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LCK-R5",
+   "observed": "resolved",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 7089,
+ "tokens_out": 861,
+ "cost_usd": 0.00234225,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

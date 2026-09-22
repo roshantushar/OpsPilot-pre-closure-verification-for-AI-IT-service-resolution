@@ -1,0 +1,65 @@
+{
+ "ts": "2026-09-22T21:29:55",
+ "case_id": "brc-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.95,
+ "reason": "All runbook required end states are met: SLA stage is breached, has_breached is true, escalated to Service Manager, and a work note records the breach; incident remains in_progress. [evidence guard: source tool never called for ['BRC-P1', 'BRC-R1', 'BRC-R2', 'BRC-R3', 'BRC-R4', 'BRC-F1', 'BRC-F2']]",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "BRC-P1",
+   "observed": "priority P1",
+   "source": "ServiceNow INC0035493",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R1",
+   "observed": "stage: breached",
+   "source": "SLA record SLA0066170",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R2",
+   "observed": "has_breached: true",
+   "source": "SLA record SLA0066170",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R3",
+   "observed": "escalated_to: Service Manager",
+   "source": "ServiceNow INC0035493",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R4",
+   "observed": "work_notes contains 'SLA breach recorded; escalated to Service Manager.'",
+   "source": "ServiceNow INC0035493",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-F1",
+   "observed": "breach_time: null (no fabricated timestamp observed)",
+   "source": "SLA record SLA0066170",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-F2",
+   "observed": "state: in_progress (not resolved/closed)",
+   "source": "ServiceNow INC0035493",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 5183,
+ "tokens_out": 859,
+ "cost_usd": 0.00246655,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

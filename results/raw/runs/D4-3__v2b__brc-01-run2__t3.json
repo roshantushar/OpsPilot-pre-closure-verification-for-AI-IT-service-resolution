@@ -1,0 +1,121 @@
+{
+ "experiment_id": "D4-3",
+ "arm": "v2b",
+ "run_id": "D4-3__v2b__brc-01-run2__t3",
+ "trial": 3,
+ "timestamp": "2026-09-22T23:29:34",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "b2ca1772387e",
+ "dataset_version": "synthetic-v1",
+ "case_id": "brc-01-run2",
+ "task_id": "brc-01",
+ "family": "sla_breach_escalation",
+ "subset": "dev_mini",
+ "verifier": "agent",
+ "backend": "live",
+ "model": "openai/gpt-5-mini",
+ "reasoning_effort": "low",
+ "prompt_version": "v2b",
+ "descriptor_version": "v2",
+ "compact_returns": true,
+ "tool_subset": "all",
+ "parallel_tools": false,
+ "early_exit": false,
+ "show_closure_note": true,
+ "use_runbook": true,
+ "allow_escalate": true,
+ "require_evidence": true,
+ "dedup": true,
+ "step_cap": 10,
+ "budget_cap_usd": 0.03,
+ "perturbation": null,
+ "difficulty": "easy",
+ "declared": true,
+ "decision": "ESCALATE",
+ "reason": "SLA records are internally inconsistent: SLA stage is 'breached' but has_breached is false, blocking closure; one required condition is false.",
+ "cited_conditions": [
+  "BRC-R1",
+  "BRC-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "BRC-P1",
+   "observed": "P1",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R1",
+   "observed": "stage: breached",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R2",
+   "observed": "has_breached: false",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "BRC-R3",
+   "observed": "escalated_to: Service Manager",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R4",
+   "observed": "work_notes contains: \"SLA breach recorded; escalated to Service Manager.\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-F1",
+   "observed": "breach_time: null",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-F2",
+   "observed": "state: in_progress",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify with available single-subject lookups",
+   "source": "get_incident",
+   "holds": null
+  }
+ ],
+ "confidence": 0.9,
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas",
+  "list_approvals"
+ ],
+ "tool_call_count": 4,
+ "duplicate_tool_calls": 0,
+ "invalid_tool_calls": 0,
+ "tool_latency_ms": 0.07,
+ "observation_chars": 1645,
+ "turns": 5,
+ "step_cap_hit": false,
+ "budget_cap_hit": false,
+ "early_exit_triggered": false,
+ "schema_validation_failed": false,
+ "input_tokens": 8756,
+ "output_tokens": 1486,
+ "reasoning_tokens": 934,
+ "cached_tokens": 6528,
+ "total_tokens": 10242,
+ "llm_cost_usd": 0.0,
+ "total_cost_usd": 0.0,
+ "latency_ms": 0.9,
+ "llm_latency_ms": 0.0,
+ "retry_attempted": false,
+ "retry_success": null,
+ "state_hash_before": "c661d1238106",
+ "state_hash_after": "c661d1238106",
+ "error_type": null
+}

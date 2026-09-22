@@ -1,0 +1,32 @@
+{
+ "ts": "2026-09-23T01:33:42",
+ "case_id": "trf-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.3,
+ "reason": "Unable to load the runbook KB-OPS-107 (tool returned errors), so required conditions cannot be read and verified; this tool failure blocks verification.",
+ "cited_conditions": [
+  "RUNBOOK-LOAD-ERROR"
+ ],
+ "evidence": [
+  {
+   "condition_id": "RUNBOOK-LOAD-ERROR",
+   "observed": "{\"ok\": false, \"error\": \"missing argument 'runbook_id'\"}",
+   "source": "get_doc",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "get_doc",
+  "get_doc",
+  "get_user",
+  "get_doc"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 5522,
+ "tokens_out": 572,
+ "cost_usd": 0.0018333,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

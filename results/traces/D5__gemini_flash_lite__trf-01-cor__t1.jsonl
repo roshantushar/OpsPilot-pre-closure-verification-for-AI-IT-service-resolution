@@ -1,1 +1,6 @@
-{"event": "reused", "from": "D2a__all_tools__trf-01-cor__t1"}
+{"event": "llm", "turn": 1, "input_tokens": 0, "output_tokens": 0, "reasoning_tokens": 0, "cached_tokens": 0, "cost_usd": 0.0, "latency_ms": 1975.2, "cache_hit": false, "n_tool_calls": 0}
+{"event": "guard", "guard": "schema_repair", "turn": 1, "error": "empty output"}
+{"event": "llm", "turn": 2, "input_tokens": 1311, "output_tokens": 202, "reasoning_tokens": 187, "cached_tokens": 0, "cost_usd": 0.0002119, "latency_ms": 1797.0, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-107"}, "output_chars": 1485, "latency_ms": 0.22, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1708, "output_tokens": 703, "reasoning_tokens": 400, "cached_tokens": 1382, "cost_usd": 0.00032762, "latency_ms": 2795.9, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "VERIFIED", "turns": 3}

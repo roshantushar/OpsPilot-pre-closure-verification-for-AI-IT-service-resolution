@@ -6,16 +6,17 @@ hypothesis: removing a redundant tool changes nothing; removing an essential one
 subset: dev_micro
 trials: 1
 manifest_cap_usd: 0.15
-decision_rule: pick the two ablated tools from D4 usage logs first (edit tool_subset before committing)
+decision_rule: 'picked from D4 usage: get_incident is used by 8/8 runbooks (essential); list_security_exceptions
+  by only 1/8, legal-hold (most nearly redundant)'
 next_step: D2b
 frozen: false
 defaults:
   verifier: agent
   backend: live
-  prompt_version: v2
+  prompt_version: v2b
   descriptor_version: v2
   compact_returns: true
-  step_cap: 8
+  step_cap: 10
   budget_cap_usd: 0.03
 arms:
 - arm: all_tools
@@ -32,18 +33,19 @@ arms:
     - get_incident
     - list_slas
     - list_approvals
-    - list_security_exceptions
+    - lookup_runbook
 - arm: minus_essential
   overrides:
     tool_subset:
     - get_hr_employee
+    - get_okta_user
     - get_google_user
     - get_slack_user
     - list_devices
     - get_device
-    - get_incident
     - list_slas
     - list_approvals
     - list_security_exceptions
     - lookup_runbook
-note: 'placeholder choice: redundant=lookup_runbook?, essential=get_okta_user - confirm from logs'
+note: redundant=list_security_exceptions (used by 1/8 runbooks), essential=get_incident (used by 8/8 runbooks)
+  - see analysis in session notes

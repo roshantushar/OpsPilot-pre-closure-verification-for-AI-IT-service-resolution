@@ -1,0 +1,48 @@
+{
+ "ts": "2026-09-23T03:39:43",
+ "case_id": "brc-01-pre",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 1.0,
+ "reason": "All required conditions for the SLA breach have been met and verified against the tools.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "BRC-R1",
+   "observed": "in_progress",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R2",
+   "observed": "true",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R3",
+   "observed": "Service Manager",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R4",
+   "observed": "SLA breach recorded; escalated to Service Manager.",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_slas",
+  "get_incident",
+  "list_approvals"
+ ],
+ "guard": "none",
+ "turns": 3,
+ "tokens_in": 4771,
+ "tokens_out": 241,
+ "cost_usd": 0.00057225,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

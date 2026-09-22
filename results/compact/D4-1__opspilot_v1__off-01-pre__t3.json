@@ -1,0 +1,71 @@
+{
+ "ts": "2026-09-22T21:49:06",
+ "case_id": "off-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.93,
+ "reason": "All offboarding end-state items are met except the ticket is still In Progress in the incident system (OFF-R7).",
+ "cited_conditions": [
+  "OFF-R7"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OFF-R1",
+   "observed": "DEACTIVATED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R2",
+   "observed": "[]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "data_transfer_to = zhiwei.lau@acme.example (HR manager_email = zhiwei.lau@acme.example)",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "deactivated: true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "[{\"device_id\":\"LT-51909\",\"status\":\"wipe_pending\"},{\"device_id\":\"LT-90609\",\"status\":\"wipe_pending\"}]",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R7",
+   "observed": "state: in_progress",
+   "source": "get_incident",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 8,
+ "tokens_in": 13526,
+ "tokens_out": 1085,
+ "cost_usd": 0.0031035,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

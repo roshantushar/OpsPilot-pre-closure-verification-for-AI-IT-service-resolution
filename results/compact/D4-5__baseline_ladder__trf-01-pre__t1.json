@@ -1,0 +1,76 @@
+{
+ "ts": "2026-09-23T00:17:41",
+ "case_id": "trf-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.8,
+ "reason": "HR shows new department HR (precondition met) but the user is missing the hr-all group required by TRF-R3.",
+ "cited_conditions": [
+  "TRF-R3"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "groups: [\"all-staff\",\"workday-hr\"] (sales-all not present)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "groups: [\"all-staff\",\"workday-hr\"] (crm-users not present)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "groups: [\"all-staff\",\"workday-hr\"] (hr-all not present)",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "groups: [\"all-staff\",\"workday-hr\"] (workday-hr present)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "groups: [\"all-staff\",\"workday-hr\"] (all-staff still present)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "okta user record shows only the ticket subject's groups and active status; no evidence of other accounts modified",
+   "source": "get_okta_user",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 7,
+ "tokens_in": 12691,
+ "tokens_out": 1953,
+ "cost_usd": 0.00483235,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

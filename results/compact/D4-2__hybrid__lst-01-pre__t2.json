@@ -1,0 +1,20 @@
+{
+ "ts": "2026-09-22T22:38:15",
+ "case_id": "lst-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.5,
+ "reason": "checklist unparseable: Unterminated string starting at: line 99 column 16 (char 2126)",
+ "cited_conditions": [],
+ "evidence": [],
+ "tools_called": [
+  "get_hr_employee"
+ ],
+ "guard": "schema validation failed twice - fail-safe ESCALATE",
+ "turns": 1,
+ "tokens_in": 1021,
+ "tokens_out": 2000,
+ "cost_usd": 0.00425525,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

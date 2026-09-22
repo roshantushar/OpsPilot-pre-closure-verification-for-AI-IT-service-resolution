@@ -1,0 +1,73 @@
+{
+ "ts": "2026-09-23T03:29:23",
+ "case_id": "hld-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.9,
+ "reason": "All preconditions and required end states have tool-evidence showing the incident is on hold with reason Awaiting Caller, the SLA is paused and not breached, and a work note mentions awaiting caller; the cross-account modification never-do is unverifiable with these tools.",
+ "cited_conditions": [
+  "HLD-P1",
+  "HLD-R1",
+  "HLD-R2",
+  "HLD-R3",
+  "HLD-R4",
+  "HLD-F1",
+  "GEN-F1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "has_breached:false",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R1",
+   "observed": "state:on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "hold_reason:Awaiting Caller",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "stage:paused",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "work_notes:[\"On hold: awaiting caller response with logs.\"]",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-F1",
+   "observed": "state:on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot_verify_with_tools",
+   "source": "get_incident",
+   "holds": null
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 6815,
+ "tokens_out": 1052,
+ "cost_usd": 0.00308775,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

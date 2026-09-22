@@ -1,0 +1,56 @@
+{
+ "ts": "2026-09-22T21:45:33",
+ "case_id": "brc-01-run2",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.9,
+ "reason": "SLA record shows stage 'breached' but has_breached is false, so the required SLA breach flag (BRC-R2) is not set.",
+ "cited_conditions": [
+  "BRC-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "BRC-R1",
+   "observed": "stage: breached",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R2",
+   "observed": "has_breached: false",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "BRC-R3",
+   "observed": "escalated_to: Service Manager",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-R4",
+   "observed": "work_notes contains: 'SLA breach recorded; escalated to Service Manager.'",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "BRC-P1",
+   "observed": "priority: P1",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_incident",
+  "list_slas",
+  "list_approvals",
+  "lookup_runbook"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 6242,
+ "tokens_out": 767,
+ "cost_usd": 0.0023457,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

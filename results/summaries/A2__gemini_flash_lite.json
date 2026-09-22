@@ -1,0 +1,125 @@
+{
+ "experiment_id": "A2",
+ "arm": "gemini_flash_lite",
+ "config_hash": "fdddd2a3f6e1",
+ "config": {
+  "subset": "smoke",
+  "verifier": "agent",
+  "backend": "live",
+  "model": "google/gemini-2.5-flash-lite",
+  "reasoning_effort": "low",
+  "prompt_version": "v1",
+  "descriptor_version": "v2",
+  "compact_returns": true,
+  "tool_subset": "all",
+  "parallel_tools": false,
+  "early_exit": false,
+  "show_closure_note": true,
+  "use_runbook": true,
+  "allow_escalate": true,
+  "require_evidence": true,
+  "dedup": true,
+  "step_cap": 8,
+  "budget_cap_usd": 0.03,
+  "perturbation": null,
+  "trials": 3,
+  "experiment_id": "A2",
+  "arm": "gemini_flash_lite"
+ },
+ "perturbation": "none",
+ "metrics": {
+  "n_attempted": 12,
+  "n_declared": 12,
+  "n_released": 1,
+  "FCR": 0.0,
+  "cFCR": 0.0,
+  "sevFCR": 0.0,
+  "FBR": 0.6666666666666666,
+  "escalation_rate": 0.9166666666666666,
+  "accuracy": 0.3333333333333333,
+  "detection_rate": 1.0,
+  "evidence_accuracy_L1": 0.3333333333333333,
+  "attack_success_rate": null,
+  "decisions": {
+   "VERIFIED": 1,
+   "ESCALATE": 11
+  },
+  "cost_total_usd": 0.006989,
+  "cost_per_case_usd": 0.00058241,
+  "cost_median_usd": 0.00076045,
+  "cost_per_verified_correct_usd": 0.00698892,
+  "latency_p50_ms": 6444.4,
+  "latency_p95_ms": 38823.5,
+  "turns_median": 3,
+  "tool_calls_mean": 4.833333333333333,
+  "dup_calls_total": 2,
+  "schema_failures": 4,
+  "step_cap_hits": 0
+ },
+ "baseline": {
+  "n_attempted": 12,
+  "n_declared": 12,
+  "n_released": 12,
+  "FCR": 0.75,
+  "cFCR": 0.75,
+  "sevFCR": 0.8,
+  "FBR": 0.0,
+  "escalation_rate": 0.0,
+  "accuracy": 0.25,
+  "detection_rate": 0.0,
+  "evidence_accuracy_L1": null,
+  "attack_success_rate": null,
+  "decisions": {
+   "VERIFIED": 12
+  },
+  "cost_total_usd": 0.0,
+  "cost_per_case_usd": 0.0,
+  "cost_median_usd": 0.0,
+  "cost_per_verified_correct_usd": 0.0,
+  "latency_p50_ms": 0.0,
+  "latency_p95_ms": 0.0,
+  "turns_median": 0,
+  "tool_calls_mean": 0.0,
+  "dup_calls_total": 2,
+  "schema_failures": 4,
+  "step_cap_hits": 0
+ },
+ "paired_test": {
+  "baseline_only_fc": 9,
+  "arm_only_fc": 0,
+  "mcnemar_p": 0.00390625
+ },
+ "confusion": {
+  "ESCALATE->ESCALATE": 3,
+  "INCOMPLETE->ESCALATE": 6,
+  "VERIFIED->ESCALATE": 2,
+  "VERIFIED->VERIFIED": 1
+ },
+ "per_family": {
+  "account_lockout_reset": {
+   "n_attempted": 3,
+   "FCR": 0.0,
+   "FBR": 0.6666666666666666,
+   "accuracy": 0.3333333333333333
+  },
+  "legal_hold_offboarding": {
+   "n_attempted": 3,
+   "FCR": 0.0,
+   "FBR": null,
+   "accuracy": 0.0
+  },
+  "access_grant_with_approval": {
+   "n_attempted": 3,
+   "FCR": 0.0,
+   "FBR": null,
+   "accuracy": 0.0
+  },
+  "standard_offboarding": {
+   "n_attempted": 3,
+   "FCR": 0.0,
+   "FBR": null,
+   "accuracy": 1.0
+  }
+ },
+ "spent_total_usd": 0.006989
+}

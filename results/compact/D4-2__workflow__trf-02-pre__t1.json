@@ -1,0 +1,38 @@
+{
+ "ts": "2026-09-22T22:21:42",
+ "case_id": "trf-02-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.89,
+ "reason": "Okta shows sales-all but crm-users (the second Sales group) is not present, so the new-department group membership is incomplete.",
+ "cited_conditions": [
+  "TRF-R4"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-R4",
+   "observed": "\"groups\":[\"all-staff\",\"sales-all\"] (crm-users missing)",
+   "source": "get_okta_user",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "list_security_exceptions",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident",
+  "list_slas",
+  "list_approvals"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 1317,
+ "tokens_out": 564,
+ "cost_usd": 0.00145725,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

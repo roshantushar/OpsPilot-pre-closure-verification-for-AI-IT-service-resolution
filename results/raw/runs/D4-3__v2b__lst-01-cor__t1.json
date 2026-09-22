@@ -1,0 +1,133 @@
+{
+ "experiment_id": "D4-3",
+ "arm": "v2b",
+ "run_id": "D4-3__v2b__lst-01-cor__t1",
+ "trial": 1,
+ "timestamp": "2026-09-22T23:08:45",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "b2ca1772387e",
+ "dataset_version": "synthetic-v1",
+ "case_id": "lst-01-cor",
+ "task_id": "lst-01",
+ "family": "lost_or_stolen_device",
+ "subset": "dev_mini",
+ "verifier": "agent",
+ "backend": "live",
+ "model": "openai/gpt-5-mini",
+ "reasoning_effort": "low",
+ "prompt_version": "v2b",
+ "descriptor_version": "v2",
+ "compact_returns": true,
+ "tool_subset": "all",
+ "parallel_tools": false,
+ "early_exit": false,
+ "show_closure_note": true,
+ "use_runbook": true,
+ "allow_escalate": true,
+ "require_evidence": true,
+ "dedup": true,
+ "step_cap": 10,
+ "budget_cap_usd": 0.03,
+ "perturbation": null,
+ "difficulty": "medium",
+ "declared": true,
+ "decision": "VERIFIED",
+ "reason": "All preconditions and required end states have tool-backed evidence and no never-do conditions were observed.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "owner: hannah.singh@acme.example",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "lost_mode: true",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "status: locked",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "sessions_active: 0",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "oauth_tokens: 0",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "category: security",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-70320 status: active (not locked/wiped)",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "Okta status: ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "devices listed owned by hannah.singh@acme.example only; no evidence of changes to others",
+   "source": "list_devices",
+   "holds": true
+  }
+ ],
+ "confidence": 0.9,
+ "tools_called": [
+  "lookup_runbook",
+  "get_device",
+  "get_okta_user",
+  "get_google_user",
+  "get_hr_employee",
+  "list_devices",
+  "get_incident"
+ ],
+ "tool_call_count": 7,
+ "duplicate_tool_calls": 0,
+ "invalid_tool_calls": 0,
+ "tool_latency_ms": 3.35,
+ "observation_chars": 2530,
+ "turns": 8,
+ "step_cap_hit": false,
+ "budget_cap_hit": false,
+ "early_exit_triggered": false,
+ "schema_validation_failed": false,
+ "input_tokens": 14549,
+ "output_tokens": 2211,
+ "reasoning_tokens": 1436,
+ "cached_tokens": 11648,
+ "total_tokens": 16760,
+ "llm_cost_usd": 0.00543845,
+ "total_cost_usd": 0.00543845,
+ "latency_ms": 37278.4,
+ "llm_latency_ms": 37233.8,
+ "retry_attempted": false,
+ "retry_success": null,
+ "state_hash_before": "b26e546b0d33",
+ "state_hash_after": "b26e546b0d33",
+ "error_type": null
+}

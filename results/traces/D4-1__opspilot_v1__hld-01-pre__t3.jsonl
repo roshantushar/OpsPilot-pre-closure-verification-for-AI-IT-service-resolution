@@ -1,0 +1,8 @@
+{"event": "llm", "turn": 1, "input_tokens": 1043, "output_tokens": 66, "reasoning_tokens": 108, "cached_tokens": 0, "cost_usd": 0.00039275, "latency_ms": 3116.7, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 1, "name": "lookup_runbook", "args": {"runbook_id": "KB-OPS-104"}, "output_chars": 987, "latency_ms": 0.26, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 2, "input_tokens": 1340, "output_tokens": 76, "reasoning_tokens": 104, "cached_tokens": 0, "cost_usd": 0.000487, "latency_ms": 3564.7, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 2, "name": "get_incident", "args": {"number": "INC0050199"}, "output_chars": 356, "latency_ms": 0.12, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 3, "input_tokens": 1467, "output_tokens": 40, "reasoning_tokens": 100, "cached_tokens": 1280, "cost_usd": 0.00015875, "latency_ms": 2265.1, "cache_hit": false, "n_tool_calls": 1}
+{"event": "tool", "turn": 3, "name": "list_slas", "args": {"incident_number": "INC0050199"}, "output_chars": 143, "latency_ms": 0.11, "dup": false, "invalid": false, "error": null}
+{"event": "llm", "turn": 4, "input_tokens": 1546, "output_tokens": 463, "reasoning_tokens": 256, "cached_tokens": 1408, "cost_usd": 0.0009957, "latency_ms": 6649.4, "cache_hit": false, "n_tool_calls": 0}
+{"event": "final", "decision": "INCOMPLETE", "turns": 4}

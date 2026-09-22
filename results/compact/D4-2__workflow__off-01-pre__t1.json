@@ -1,0 +1,38 @@
+{
+ "ts": "2026-09-22T22:18:56",
+ "case_id": "off-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.9,
+ "reason": "All offboarding steps are satisfied except the incident is still in progress; the ticket must be marked resolved per the runbook.",
+ "cited_conditions": [
+  "OFF-R7"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OFF-R7",
+   "observed": "state: in_progress",
+   "source": "get_incident",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "list_security_exceptions",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident",
+  "list_slas",
+  "list_approvals"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 1379,
+ "tokens_out": 457,
+ "cost_usd": 0.00125875,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

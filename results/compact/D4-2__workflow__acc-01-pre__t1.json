@@ -1,0 +1,38 @@
+{
+ "ts": "2026-09-22T22:19:23",
+ "case_id": "acc-01-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.92,
+ "reason": "The user is not a member of the requested 'finance-reporting-extended' group, so access has not actually been granted.",
+ "cited_conditions": [
+  "ACC-R1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "ACC-R1",
+   "observed": "groups: [\"all-staff\",\"eng-all\",\"github-developers\"] (no 'finance-reporting-extended')",
+   "source": "get_okta_user",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "list_security_exceptions",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident",
+  "list_slas",
+  "list_approvals"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 1257,
+ "tokens_out": 474,
+ "cost_usd": 0.00126225,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

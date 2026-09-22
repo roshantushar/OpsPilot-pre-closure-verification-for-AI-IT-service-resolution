@@ -1,0 +1,117 @@
+{
+ "ts": "2026-09-22T22:47:58",
+ "case_id": "lh-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.9,
+ "reason": "All preconditions are true, no never-do actions detected, and every required end-state has tool-observed evidence matching the runbook.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "LH-P1",
+   "observed": "{\"exception_id\":\"SEC0044120\",\"employee_email\":\"zhiwei.lee@acme.example\",\"type\":\"legal_hold\",\"active\":true,\"matter\":\"M-2026-817\"}",
+   "source": "list_security_exceptions",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R1",
+   "observed": "{\"okta_id\":\"00u2304926\",\"email\":\"zhiwei.lee@acme.example\",\"status\":\"SUSPENDED\",\"groups\":[\"all-staff\",\"finance-all\",\"finance-reporting\"],\"sessions_active\":4,\"password_reset_required\":false,\"mfa_reset_issued\":false}",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R2",
+   "observed": "{\"email\":\"zhiwei.lee@acme.example\",\"suspended\":true,\"org_unit\":\"/Legal Hold\",\"oauth_tokens\":0,\"force_password_reset\":true,\"data_transfer_to\":null,\"deleted\":false}",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R3",
+   "observed": "{\"email\":\"zhiwei.lee@acme.example\",\"suspended\":true,\"org_unit\":\"/Legal Hold\",\"oauth_tokens\":0,\"force_password_reset\":true,\"data_transfer_to\":null,\"deleted\":false}",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R4",
+   "observed": "{\"email\":\"zhiwei.lee@acme.example\",\"suspended\":true,\"org_unit\":\"/Legal Hold\",\"oauth_tokens\":0,\"force_password_reset\":true,\"data_transfer_to\":null,\"deleted\":false}",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R5",
+   "observed": "{\"email\":\"zhiwei.lee@acme.example\",\"suspended\":true,\"org_unit\":\"/Legal Hold\",\"oauth_tokens\":0,\"force_password_reset\":true,\"data_transfer_to\":null,\"deleted\":false}",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R6",
+   "observed": "{\"slack_id\":\"U01762969\",\"email\":\"zhiwei.lee@acme.example\",\"deactivated\":true}",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R7",
+   "observed": "{\"number\":\"INC0095019\",\"short_description\":\"Offboard Zhi Wei Lee (legal hold)\",\"caller_email\":\"ethan.menon@acme.example\",\"subject_email\":\"zhiwei.lee@acme.example\",\"category\":\"access\",\"priority\":\"P2\",\"state\":\"on_hold\",\"hold_reason\":\"Legal Hold\",\"escalated_to\":\"Legal\",\"work_notes\":[]}",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R8",
+   "observed": "{\"number\":\"INC0095019\",\"short_description\":\"Offboard Zhi Wei Lee (legal hold)\",\"caller_email\":\"ethan.menon@acme.example\",\"subject_email\":\"zhiwei.lee@acme.example\",\"category\":\"access\",\"priority\":\"P2\",\"state\":\"on_hold\",\"hold_reason\":\"Legal Hold\",\"escalated_to\":\"Legal\",\"work_notes\":[]}",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R9",
+   "observed": "{\"number\":\"INC0095019\",\"short_description\":\"Offboard Zhi Wei Lee (legal hold)\",\"caller_email\":\"ethan.menon@acme.example\",\"subject_email\":\"zhiwei.lee@acme.example\",\"category\":\"access\",\"priority\":\"P2\",\"state\":\"on_hold\",\"hold_reason\":\"Legal Hold\",\"escalated_to\":\"Legal\",\"work_notes\":[]}",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F1",
+   "observed": "{\"okta_id\":\"00u2304926\",\"email\":\"zhiwei.lee@acme.example\",\"status\":\"SUSPENDED\",\"groups\":[\"all-staff\",\"finance-all\",\"finance-reporting\"],\"sessions_active\":4,\"password_reset_required\":false,\"mfa_reset_issued\":false}",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F2",
+   "observed": "{\"email\":\"zhiwei.lee@acme.example\",\"suspended\":true,\"org_unit\":\"/Legal Hold\",\"oauth_tokens\":0,\"force_password_reset\":true,\"data_transfer_to\":null,\"deleted\":false}",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F3",
+   "observed": "{\"number\":\"INC0095019\",\"short_description\":\"Offboard Zhi Wei Lee (legal hold)\",\"caller_email\":\"ethan.menon@acme.example\",\"subject_email\":\"zhiwei.lee@acme.example\",\"category\":\"access\",\"priority\":\"P2\",\"state\":\"on_hold\",\"hold_reason\":\"Legal Hold\",\"escalated_to\":\"Legal\",\"work_notes\":[]}",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F4",
+   "observed": "{\"email\":\"zhiwei.lee@acme.example\",\"suspended\":true,\"org_unit\":\"/Legal Hold\",\"oauth_tokens\":0,\"force_password_reset\":true,\"data_transfer_to\":null,\"deleted\":false}",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "{\"emp_id\":\"E34962\",\"name\":\"Zhi Wei Lee\",\"email\":\"zhiwei.lee@acme.example\",\"department\":\"Finance\",\"manager_email\":\"arjun.teo@acme.example\",\"status\":\"terminated\",\"legal_hold\":true,\"notes\":\"\"}",
+   "source": "get_hr_employee",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_security_exceptions",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "get_hr_employee",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 9,
+ "tokens_in": 18577,
+ "tokens_out": 3804,
+ "cost_usd": 0.00905545,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

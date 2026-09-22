@@ -3,16 +3,16 @@
  "arm": "opspilot_v1",
  "run_id": "D4-1__opspilot_v1__acc-01-run2__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:11",
- "git_commit": "9cb211a-dirty",
- "config_hash": "4e79bdbb3b78",
+ "timestamp": "2026-09-22T21:26:38",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "5516de86caf1",
  "dataset_version": "synthetic-v1",
  "case_id": "acc-01-run2",
  "task_id": "acc-01",
  "family": "access_grant_with_approval",
  "subset": "dev_mini",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
  "prompt_version": "v1",
@@ -26,85 +26,69 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "easy",
  "declared": true,
- "decision": "ESCALATE",
- "reason": "precondition failed ['ACC-P1']; forbidden []; problems []",
- "cited_conditions": [
-  "ACC-P1"
- ],
+ "decision": "VERIFIED",
+ "reason": "All required end-state conditions from KB-OPS-103 are met: the user is in the requested group, the approval ID is recorded in work notes, and the ticket is resolved; no forbidden '-admin' group was granted.",
+ "cited_conditions": [],
  "evidence": [
   {
-   "condition_id": "ACC-P1",
-   "observed": "\"requested\"",
-   "source": "list_approvals",
-   "holds": false
-  },
-  {
-   "condition_id": "ACC-P2",
-   "observed": "\"kenji.ng@acme.example\"",
-   "source": "list_approvals",
-   "holds": true
-  },
-  {
-   "condition_id": "ACC-F1",
-   "observed": "[\"all-staff\", \"eng-all\", \"github-developers\", \"finance-reporting-extended\"]",
-   "source": "get_okta_user",
-   "holds": true
-  },
-  {
    "condition_id": "ACC-R1",
-   "observed": "[\"all-staff\", \"eng-all\", \"github-developers\", \"finance-reporting-extended\"]",
+   "observed": "groups include finance-reporting-extended",
    "source": "get_okta_user",
    "holds": true
   },
   {
    "condition_id": "ACC-R2",
-   "observed": "[\"Access granted per approval APR0073883.\"]",
+   "observed": "work_notes contain 'Access granted per approval APR0073883.'",
    "source": "get_incident",
    "holds": true
   },
   {
    "condition_id": "ACC-R3",
-   "observed": "\"resolved\"",
+   "observed": "incident state is resolved",
    "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-F1",
+   "observed": "no group with '-admin' variant present",
+   "source": "get_okta_user",
    "holds": true
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.8,
  "tools_called": [
   "lookup_runbook",
-  "get_hr_employee",
-  "list_approvals",
   "get_okta_user",
-  "get_incident"
+  "get_incident",
+  "list_security_exceptions"
  ],
- "tool_call_count": 5,
+ "tool_call_count": 4,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.08,
- "observation_chars": 2072,
- "turns": 6,
+ "tool_latency_ms": 0.21,
+ "observation_chars": 1710,
+ "turns": 5,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
+ "input_tokens": 6705,
+ "output_tokens": 821,
+ "reasoning_tokens": 448,
+ "cached_tokens": 3840,
+ "total_tokens": 7526,
  "llm_cost_usd": 0.0,
  "total_cost_usd": 0.0,
- "latency_ms": 0.2,
+ "latency_ms": 1.6,
  "llm_latency_ms": 0.0,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "e8669976e776",
  "state_hash_after": "e8669976e776",
- "error_type": null,
- "reused_from": "A1__scripted_agent__acc-01-run2__t1"
+ "error_type": null
 }

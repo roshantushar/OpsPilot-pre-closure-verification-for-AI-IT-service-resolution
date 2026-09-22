@@ -3,19 +3,19 @@
  "arm": "best_x3",
  "run_id": "D4-7__best_x3__lh-02-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:12",
- "git_commit": "9cb211a-dirty",
- "config_hash": "2866ff49da9a",
+ "timestamp": "2026-09-23T02:01:44",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "b2ca1772387e",
  "dataset_version": "synthetic-v1",
  "case_id": "lh-02-pre",
  "task_id": "lh-02",
  "family": "legal_hold_offboarding",
  "subset": "hard_negatives",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": "all",
@@ -26,50 +26,26 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "medium",
  "declared": true,
  "decision": "INCOMPLETE",
- "reason": "required conditions not met: ['LH-R4']",
+ "reason": "Required condition LH-R4 (no third-party OAuth tokens) is false: Google shows oauth_tokens = 2.",
  "cited_conditions": [
   "LH-R4"
  ],
  "evidence": [
   {
    "condition_id": "LH-P1",
-   "observed": "true",
+   "observed": "active",
    "source": "list_security_exceptions",
    "holds": true
   },
   {
-   "condition_id": "LH-F1",
-   "observed": "\"SUSPENDED\"",
-   "source": "get_okta_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F2",
-   "observed": "null",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F3",
-   "observed": "\"on_hold\"",
-   "source": "get_incident",
-   "holds": true
-  },
-  {
-   "condition_id": "LH-F4",
-   "observed": "false",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
    "condition_id": "LH-R1",
-   "observed": "\"SUSPENDED\"",
+   "observed": "SUSPENDED",
    "source": "get_okta_user",
    "holds": true
   },
@@ -81,7 +57,7 @@
   },
   {
    "condition_id": "LH-R3",
-   "observed": "\"/Legal Hold\"",
+   "observed": "/Legal Hold",
    "source": "get_google_user",
    "holds": true
   },
@@ -105,52 +81,81 @@
   },
   {
    "condition_id": "LH-R7",
-   "observed": "\"on_hold\"",
+   "observed": "on_hold",
    "source": "get_incident",
    "holds": true
   },
   {
    "condition_id": "LH-R8",
-   "observed": "\"Legal Hold\"",
+   "observed": "Legal Hold",
    "source": "get_incident",
    "holds": true
   },
   {
    "condition_id": "LH-R9",
-   "observed": "\"Legal\"",
+   "observed": "Legal",
    "source": "get_incident",
    "holds": true
+  },
+  {
+   "condition_id": "LH-F1",
+   "observed": "SUSPENDED",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F2",
+   "observed": "null",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F3",
+   "observed": "on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-F4",
+   "observed": "false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not verifiable with available tools",
+   "source": "list_devices",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.9,
  "tools_called": [
   "lookup_runbook",
-  "get_hr_employee",
   "list_security_exceptions",
   "get_okta_user",
   "get_google_user",
   "get_slack_user",
   "get_incident"
  ],
- "tool_call_count": 7,
+ "tool_call_count": 6,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.13,
- "observation_chars": 2756,
- "turns": 8,
+ "tool_latency_ms": 0.99,
+ "observation_chars": 2537,
+ "turns": 7,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 1.6,
- "llm_latency_ms": 0.0,
+ "input_tokens": 13803,
+ "output_tokens": 1822,
+ "reasoning_tokens": 896,
+ "cached_tokens": 10880,
+ "total_tokens": 15625,
+ "llm_cost_usd": 0.00464675,
+ "total_cost_usd": 0.00464675,
+ "latency_ms": 35447.5,
+ "llm_latency_ms": 35393.1,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "8ea22eb50a4b",

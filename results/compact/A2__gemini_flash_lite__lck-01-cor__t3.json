@@ -1,0 +1,46 @@
+{
+ "ts": "2026-09-22T20:56:15",
+ "case_id": "lck-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 1.0,
+ "reason": "The user's HR status is active, and their Okta account is active with a password reset required and MFA reset issued, matching the resolver's claim. [evidence guard: missing ['LCK-R1', 'LCK-R2', 'LCK-R3', 'LCK-R4', 'LCK-R5']]",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "HR_STATUS_ACTIVE",
+   "observed": "active",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OKTA_ACCOUNT_ACTIVE",
+   "observed": "ACTIVE",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OKTA_PASSWORD_RESET_REQUIRED",
+   "observed": "true",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OKTA_MFA_RESET_ISSUED",
+   "observed": "true",
+   "source": "get_okta_user",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user"
+ ],
+ "guard": "none",
+ "turns": 2,
+ "tokens_in": 1885,
+ "tokens_out": 984,
+ "cost_usd": 0.0,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

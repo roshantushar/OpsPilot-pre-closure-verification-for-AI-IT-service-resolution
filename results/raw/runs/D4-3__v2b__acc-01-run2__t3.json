@@ -1,0 +1,115 @@
+{
+ "experiment_id": "D4-3",
+ "arm": "v2b",
+ "run_id": "D4-3__v2b__acc-01-run2__t3",
+ "trial": 3,
+ "timestamp": "2026-09-22T23:29:34",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "b2ca1772387e",
+ "dataset_version": "synthetic-v1",
+ "case_id": "acc-01-run2",
+ "task_id": "acc-01",
+ "family": "access_grant_with_approval",
+ "subset": "dev_mini",
+ "verifier": "agent",
+ "backend": "live",
+ "model": "openai/gpt-5-mini",
+ "reasoning_effort": "low",
+ "prompt_version": "v2b",
+ "descriptor_version": "v2",
+ "compact_returns": true,
+ "tool_subset": "all",
+ "parallel_tools": false,
+ "early_exit": false,
+ "show_closure_note": true,
+ "use_runbook": true,
+ "allow_escalate": true,
+ "require_evidence": true,
+ "dedup": true,
+ "step_cap": 10,
+ "budget_cap_usd": 0.03,
+ "perturbation": null,
+ "difficulty": "easy",
+ "declared": true,
+ "decision": "ESCALATE",
+ "reason": "Precondition ACC-P1 (approval approved) is false: the approval record is in 'requested' state, not approved.",
+ "cited_conditions": [
+  "ACC-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "ACC-P1",
+   "observed": "state: requested",
+   "source": "list_approvals",
+   "holds": false
+  },
+  {
+   "condition_id": "ACC-P2",
+   "observed": "approver kenji.ng@acme.example matches manager kenji.ng@acme.example",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R1",
+   "observed": "groups include finance-reporting-extended",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "work_notes contain reference to APR0073883",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R3",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-F1",
+   "observed": "no '-admin' variant present in user's groups",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify modification of other users' accounts with available single-subject lookup tools",
+   "source": "get_okta_user",
+   "holds": null
+  }
+ ],
+ "confidence": 0.8,
+ "tools_called": [
+  "lookup_runbook",
+  "list_approvals",
+  "get_okta_user",
+  "get_incident",
+  "get_hr_employee"
+ ],
+ "tool_call_count": 5,
+ "duplicate_tool_calls": 0,
+ "invalid_tool_calls": 0,
+ "tool_latency_ms": 0.1,
+ "observation_chars": 2072,
+ "turns": 6,
+ "step_cap_hit": false,
+ "budget_cap_hit": false,
+ "early_exit_triggered": false,
+ "schema_validation_failed": false,
+ "input_tokens": 10797,
+ "output_tokens": 1536,
+ "reasoning_tokens": 1010,
+ "cached_tokens": 6656,
+ "total_tokens": 12333,
+ "llm_cost_usd": 0.0,
+ "total_cost_usd": 0.0,
+ "latency_ms": 1.2,
+ "llm_latency_ms": 0.0,
+ "retry_attempted": false,
+ "retry_success": null,
+ "state_hash_before": "e8669976e776",
+ "state_hash_after": "e8669976e776",
+ "error_type": null
+}

@@ -1,0 +1,123 @@
+{
+ "experiment_id": "D4-1",
+ "arm": "opspilot_v1",
+ "run_id": "D4-1__opspilot_v1__off-01-run1__t2",
+ "trial": 2,
+ "timestamp": "2026-09-22T21:40:09",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "5516de86caf1",
+ "dataset_version": "synthetic-v1",
+ "case_id": "off-01-run1",
+ "task_id": "off-01",
+ "family": "standard_offboarding",
+ "subset": "dev_mini",
+ "verifier": "agent",
+ "backend": "live",
+ "model": "openai/gpt-5-mini",
+ "reasoning_effort": "low",
+ "prompt_version": "v1",
+ "descriptor_version": "v2",
+ "compact_returns": true,
+ "tool_subset": "all",
+ "parallel_tools": false,
+ "early_exit": false,
+ "show_closure_note": true,
+ "use_runbook": true,
+ "allow_escalate": true,
+ "require_evidence": true,
+ "dedup": true,
+ "step_cap": 10,
+ "budget_cap_usd": 0.03,
+ "perturbation": null,
+ "difficulty": "medium",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "reason": "Okta account shows active sessions remaining and Google account still has OAuth tokens; these indicate not all access was fully terminated per runbook.",
+ "cited_conditions": [
+  "okta_sessions_terminated",
+  "google_oauth_tokens_revoked"
+ ],
+ "evidence": [
+  {
+   "condition_id": "okta_sessions_terminated",
+   "observed": "sessions_active: 3",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "okta_account_deactivated",
+   "observed": "status: DEACTIVATED, groups: []",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "google_account_suspended_and_deleted",
+   "observed": "suspended: true, deleted: true, data_transfer_to: zhiwei.lau@acme.example",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "google_oauth_tokens_revoked",
+   "observed": "oauth_tokens: 16",
+   "source": "get_google_user",
+   "holds": false
+  },
+  {
+   "condition_id": "slack_deactivated",
+   "observed": "deactivated: true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "devices_wipe_queued",
+   "observed": "devices: [{device_id: LT-51909, status: wipe_pending}, {device_id: LT-90609, status: wipe_pending}]",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "hr_status_terminated",
+   "observed": "status: terminated, legal_hold: false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "incident_resolved",
+   "observed": "state: resolved",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "confidence": 0.85,
+ "tools_called": [
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident"
+ ],
+ "tool_call_count": 6,
+ "duplicate_tool_calls": 0,
+ "invalid_tool_calls": 0,
+ "tool_latency_ms": 0.66,
+ "observation_chars": 1328,
+ "turns": 7,
+ "step_cap_hit": false,
+ "budget_cap_hit": false,
+ "early_exit_triggered": false,
+ "schema_validation_failed": false,
+ "input_tokens": 9295,
+ "output_tokens": 911,
+ "reasoning_tokens": 192,
+ "cached_tokens": 6144,
+ "total_tokens": 10206,
+ "llm_cost_usd": 0.00276335,
+ "total_cost_usd": 0.00276335,
+ "latency_ms": 19843.7,
+ "llm_latency_ms": 19820.0,
+ "retry_attempted": false,
+ "retry_success": null,
+ "state_hash_before": "6d378aed9c01",
+ "state_hash_after": "6d378aed9c01",
+ "error_type": null
+}

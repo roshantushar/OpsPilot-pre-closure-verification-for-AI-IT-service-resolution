@@ -3,19 +3,19 @@
  "arm": "minus_redundant",
  "run_id": "D2a__minus_redundant__off-01-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:10",
- "git_commit": "9cb211a-dirty",
- "config_hash": "aa192be9e1c1",
+ "timestamp": "2026-09-23T01:14:51",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "c6bf9e477511",
  "dataset_version": "synthetic-v1",
  "case_id": "off-01-pre",
  "task_id": "off-01",
  "family": "standard_offboarding",
  "subset": "dev_micro",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": [
@@ -28,7 +28,7 @@
   "get_incident",
   "list_slas",
   "list_approvals",
-  "list_security_exceptions"
+  "lookup_runbook"
  ],
  "parallel_tools": false,
  "early_exit": false,
@@ -37,80 +37,87 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "medium",
  "declared": true,
  "decision": "INCOMPLETE",
- "reason": "required conditions not met: ['OFF-R7']",
+ "reason": "Ticket is not resolved per the incident record (OFF-R7 false); all other required end states are met and preconditions hold.",
  "cited_conditions": [
   "OFF-R7"
  ],
  "evidence": [
   {
    "condition_id": "OFF-P1",
-   "observed": "\"terminated\"",
+   "observed": "terminated",
    "source": "get_hr_employee",
    "holds": true
   },
   {
    "condition_id": "OFF-P2",
-   "observed": "false",
+   "observed": "legal_hold: false",
    "source": "get_hr_employee",
    "holds": true
   },
   {
-   "condition_id": "OFF-F1",
-   "observed": "false",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
    "condition_id": "OFF-R1",
-   "observed": "\"DEACTIVATED\"",
+   "observed": "DEACTIVATED",
    "source": "get_okta_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R2",
-   "observed": "[]",
+   "observed": "groups: []",
    "source": "get_okta_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R3",
-   "observed": "true",
+   "observed": "suspended: true",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R4",
-   "observed": "\"zhiwei.lau@acme.example\"",
+   "observed": "data_transfer_to: zhiwei.lau@acme.example",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R5",
-   "observed": "true",
+   "observed": "deactivated: true",
    "source": "get_slack_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R6",
-   "observed": "[\"wipe_pending\", \"wipe_pending\"]",
+   "observed": "devices statuses: [\"wipe_pending\",\"wipe_pending\"]",
    "source": "list_devices",
    "holds": true
   },
   {
    "condition_id": "OFF-R7",
-   "observed": "\"in_progress\"",
+   "observed": "state: in_progress",
    "source": "get_incident",
    "holds": false
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "deleted: false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not checked (tools only return subject's records)",
+   "source": "list_devices",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.86,
  "tools_called": [
+  "lookup_runbook",
   "get_hr_employee",
   "get_okta_user",
   "get_google_user",
@@ -118,25 +125,25 @@
   "list_devices",
   "get_incident"
  ],
- "tool_call_count": 6,
+ "tool_call_count": 7,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.07,
- "observation_chars": 1332,
- "turns": 7,
+ "tool_latency_ms": 1.09,
+ "observation_chars": 2774,
+ "turns": 8,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.2,
- "llm_latency_ms": 0.0,
+ "input_tokens": 15750,
+ "output_tokens": 1748,
+ "reasoning_tokens": 960,
+ "cached_tokens": 12800,
+ "total_tokens": 17498,
+ "llm_cost_usd": 0.0045535,
+ "total_cost_usd": 0.0045535,
+ "latency_ms": 37897.0,
+ "llm_latency_ms": 37828.1,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "d000cc155094",

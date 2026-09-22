@@ -1,0 +1,31 @@
+{
+ "ts": "2026-09-23T01:33:56",
+ "case_id": "brc-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.29,
+ "reason": "Unable to read required runbook KB-OPS-108 due to repeated get_doc errors; cannot verify runbook conditions.",
+ "cited_conditions": [
+  "KB-OPS-108:runbook_unavailable"
+ ],
+ "evidence": [
+  {
+   "condition_id": "KB-OPS-108:runbook_unavailable",
+   "observed": "get_doc returned error: \"missing argument 'runbook_id'\" on repeated attempts",
+   "source": "get_doc",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "get_doc",
+  "get_doc",
+  "get_doc"
+ ],
+ "guard": "none",
+ "turns": 4,
+ "tokens_in": 4310,
+ "tokens_out": 584,
+ "cost_usd": 0.0017847,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

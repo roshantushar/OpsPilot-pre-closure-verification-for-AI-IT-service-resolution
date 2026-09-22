@@ -1,0 +1,76 @@
+{
+ "ts": "2026-09-22T22:14:55",
+ "case_id": "off-01-cor",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.65,
+ "reason": "Preconditions OFF-P1 and OFF-P2 were not confirmed in the resolver's closure note, so required confirmation before acting is missing.",
+ "cited_conditions": [
+  "OFF-P1",
+  "OFF-P2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OFF-P1",
+   "observed": "HR termination status not stated in closure note",
+   "source": "get_closure_note",
+   "holds": false
+  },
+  {
+   "condition_id": "OFF-P2",
+   "observed": "No statement in closure note about absence of legal hold",
+   "source": "get_closure_note",
+   "holds": false
+  },
+  {
+   "condition_id": "OFF-R1",
+   "observed": "Resolver states: deactivated the Okta account",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R2",
+   "observed": "Resolver states: removed all Okta group memberships",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "Resolver states: suspended Google Workspace",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "Resolver states: transferred Drive files to the manager",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "Resolver states: deactivated Slack",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "Resolver states: queued remote wipe on all devices",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R7",
+   "observed": "Resolver set ticket to resolved and requested closure sign-off",
+   "source": "get_closure_note",
+   "holds": true
+  }
+ ],
+ "tools_called": [],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 762,
+ "tokens_out": 900,
+ "cost_usd": 0.0019905,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

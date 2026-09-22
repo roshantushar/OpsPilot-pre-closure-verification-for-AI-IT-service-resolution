@@ -1,0 +1,50 @@
+{
+ "ts": "2026-09-23T03:37:56",
+ "case_id": "acc-01-run2",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.5,
+ "reason": "The approval for the access request is still in 'requested' state, which does not meet the precondition for closure. Additionally, the approval is not referenced in the work notes as required.",
+ "cited_conditions": [
+  "ACC-P1",
+  "ACC-P2",
+  "ACC-R2"
+ ],
+ "evidence": [
+  {
+   "condition_id": "ACC-P1",
+   "observed": "requested",
+   "source": "list_approvals",
+   "holds": false
+  },
+  {
+   "condition_id": "ACC-P2",
+   "observed": "kenji.ng@acme.example",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "Access granted per approval APR0073883.",
+   "source": "get_incident",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "list_approvals",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_hr_employee",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 3,
+ "tokens_in": 5183,
+ "tokens_out": 346,
+ "cost_usd": 0.00030555,
+ "expected_decision": "ESCALATE",
+ "correct": false
+}

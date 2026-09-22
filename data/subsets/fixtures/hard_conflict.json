@@ -1,0 +1,82 @@
+{
+ "lh-01-pre": {
+  "conflict": "servicenow",
+  "field": "state",
+  "value": "on_hold"
+ },
+ "lh-02-pre": {
+  "conflict": "google_workspace",
+  "field": "oauth_tokens",
+  "value": 0
+ },
+ "off-01-pre": {
+  "conflict": "servicenow",
+  "field": "state",
+  "value": "resolved"
+ },
+ "off-02-pre": {
+  "conflict": "okta",
+  "field": "status",
+  "value": "DEACTIVATED"
+ },
+ "acc-01-pre": {
+  "conflict": "servicenow",
+  "field": "state",
+  "value": "resolved"
+ },
+ "acc-02-pre": {
+  "conflict": "servicenow",
+  "field": "state",
+  "value": "resolved"
+ },
+ "hld-01-pre": {
+  "conflict": "servicenow",
+  "field": "stage",
+  "value": "paused"
+ },
+ "hld-02-pre": {
+  "conflict": "servicenow",
+  "field": "stage",
+  "value": "paused"
+ },
+ "lst-01-pre": {
+  "conflict": "intune",
+  "field": "status",
+  "value": "locked"
+ },
+ "lst-02-pre": {
+  "conflict": "intune",
+  "field": "lost_mode",
+  "value": true
+ },
+ "lck-01-pre": {
+  "conflict": "okta",
+  "field": "status",
+  "value": "ACTIVE"
+ },
+ "lck-02-pre": {
+  "conflict": "okta",
+  "field": "password_reset_required",
+  "value": true
+ },
+ "trf-01-pre": {
+  "conflict": "servicenow",
+  "field": "state",
+  "value": "resolved"
+ },
+ "trf-02-pre": {
+  "conflict": "servicenow",
+  "field": "state",
+  "value": "resolved"
+ },
+ "brc-01-pre": {
+  "conflict": "servicenow",
+  "field": "stage",
+  "value": "breached"
+ },
+ "brc-02-pre": {
+  "conflict": "servicenow",
+  "field": "escalated_to",
+  "value": "Service Manager"
+ }
+}

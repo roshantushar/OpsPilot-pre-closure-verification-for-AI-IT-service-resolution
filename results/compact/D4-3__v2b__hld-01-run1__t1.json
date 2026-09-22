@@ -1,0 +1,68 @@
+{
+ "ts": "2026-09-22T23:08:27",
+ "case_id": "hld-01-run1",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.9,
+ "reason": "Precondition HLD-P1 failed: SLA has already breached for this incident.",
+ "cited_conditions": [
+  "HLD-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "HLD-P1",
+   "observed": "has_breached=true",
+   "source": "list_slas",
+   "holds": false
+  },
+  {
+   "condition_id": "HLD-R1",
+   "observed": "state=on_hold",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R2",
+   "observed": "hold_reason=Awaiting Caller",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R3",
+   "observed": "stage=paused",
+   "source": "list_slas",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-R4",
+   "observed": "work_notes contains 'awaiting caller'",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "HLD-F1",
+   "observed": "state=on_hold (not resolved/closed)",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "no modifications detected to accounts/devices outside ticket subject; device owner=kenji.iyer",
+   "source": "list_devices",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_incident",
+  "list_slas",
+  "list_devices"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 8040,
+ "tokens_out": 2430,
+ "cost_usd": 0.00286285,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

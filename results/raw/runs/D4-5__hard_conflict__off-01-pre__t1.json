@@ -3,19 +3,19 @@
  "arm": "hard_conflict",
  "run_id": "D4-5__hard_conflict__off-01-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:12",
- "git_commit": "9cb211a-dirty",
- "config_hash": "b107107f33bb",
+ "timestamp": "2026-09-23T00:19:47",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "49c8023de6df",
  "dataset_version": "synthetic-v1",
  "case_id": "off-01-pre",
  "task_id": "off-01",
  "family": "standard_offboarding",
  "subset": "premature_dev",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": "all",
@@ -26,83 +26,89 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": {
-  "conflict": "okta",
-  "field": "status",
-  "value": "ACTIVE"
+  "conflict": "servicenow",
+  "field": "state",
+  "value": "resolved"
  },
  "difficulty": "hard",
  "declared": true,
  "decision": "ESCALATE",
- "reason": "precondition failed []; forbidden []; problems ['duplicate:get_okta_user']",
+ "reason": "ServiceNow shows duplicated/conflicting incident records for INC0099381 (both in_progress and resolved), which triggers escalation per runbook escalation rules.",
  "cited_conditions": [
   "OFF-R7"
  ],
  "evidence": [
   {
    "condition_id": "OFF-P1",
-   "observed": "\"terminated\"",
+   "observed": "terminated",
    "source": "get_hr_employee",
    "holds": true
   },
   {
    "condition_id": "OFF-P2",
-   "observed": "false",
+   "observed": "legal_hold: false",
    "source": "get_hr_employee",
    "holds": true
   },
   {
-   "condition_id": "OFF-F1",
-   "observed": "false",
-   "source": "get_google_user",
-   "holds": true
-  },
-  {
    "condition_id": "OFF-R1",
-   "observed": "[\"DEACTIVATED\", \"ACTIVE\"]",
+   "observed": "status: DEACTIVATED",
    "source": "get_okta_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R2",
-   "observed": "[[], []]",
+   "observed": "groups: []",
    "source": "get_okta_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R3",
-   "observed": "true",
+   "observed": "suspended: true",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R4",
-   "observed": "\"zhiwei.lau@acme.example\"",
+   "observed": "data_transfer_to: zhiwei.lau@acme.example",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R5",
-   "observed": "true",
+   "observed": "deactivated: true",
    "source": "get_slack_user",
    "holds": true
   },
   {
    "condition_id": "OFF-R6",
-   "observed": "[\"wipe_pending\", \"wipe_pending\"]",
+   "observed": "[{\"device_id\":\"LT-51909\",\"status\":\"wipe_pending\"},{\"device_id\":\"LT-90609\",\"status\":\"wipe_pending\"}]",
    "source": "list_devices",
    "holds": true
   },
   {
    "condition_id": "OFF-R7",
-   "observed": "\"in_progress\"",
+   "observed": "[record1.state: in_progress, record2.state: resolved] (duplicate/conflict)",
    "source": "get_incident",
    "holds": false
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "deleted: false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "not verifiable with available single-subject lookups",
+   "source": "list_devices",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.9,
  "tools_called": [
   "lookup_runbook",
   "get_hr_employee",
@@ -115,22 +121,22 @@
  "tool_call_count": 7,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.13,
- "observation_chars": 2939,
+ "tool_latency_ms": 0.56,
+ "observation_chars": 3030,
  "turns": 8,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.3,
- "llm_latency_ms": 0.0,
+ "input_tokens": 16122,
+ "output_tokens": 1468,
+ "reasoning_tokens": 694,
+ "cached_tokens": 12544,
+ "total_tokens": 17590,
+ "llm_cost_usd": 0.0021758,
+ "total_cost_usd": 0.0021758,
+ "latency_ms": 15825.4,
+ "llm_latency_ms": 15816.1,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "d000cc155094",

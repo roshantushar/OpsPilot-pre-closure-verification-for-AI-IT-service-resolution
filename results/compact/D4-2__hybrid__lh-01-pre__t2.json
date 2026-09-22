@@ -1,0 +1,20 @@
+{
+ "ts": "2026-09-22T22:35:24",
+ "case_id": "lh-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.5,
+ "reason": "checklist unparseable: Expecting property name enclosed in double quotes: line 182 column 21 (char 3996)",
+ "cited_conditions": [],
+ "evidence": [],
+ "tools_called": [
+  "get_hr_employee"
+ ],
+ "guard": "schema validation failed twice - fail-safe ESCALATE",
+ "turns": 1,
+ "tokens_in": 1143,
+ "tokens_out": 2000,
+ "cost_usd": 0.00428575,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

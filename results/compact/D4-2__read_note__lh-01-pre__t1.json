@@ -1,0 +1,79 @@
+{
+ "ts": "2026-09-22T22:14:27",
+ "case_id": "lh-01-pre",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.8,
+ "reason": "All preconditions and required end-state items in the runbook are satisfied per the ticket and resolver closure note; no forbidden actions reported.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "LH-P1",
+   "observed": "Ticket description includes note from Legal: employee is under an active legal hold.",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R1",
+   "observed": "Suspended the Okta account.",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R2",
+   "observed": "Suspended the Google Workspace account.",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R3",
+   "observed": "Moved the Google account to the Legal Hold OU.",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R4",
+   "observed": "Revoked all third-party OAuth tokens.",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R5",
+   "observed": "Forced a password reset.",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R6",
+   "observed": "Deactivated Slack.",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R7",
+   "observed": "Placed the ticket on hold (proposed_ticket_state: on_hold).",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R8",
+   "observed": "Hold reason set to 'Legal Hold'.",
+   "source": "get_closure_note",
+   "holds": true
+  },
+  {
+   "condition_id": "LH-R9",
+   "observed": "Escalated to Legal.",
+   "source": "get_closure_note",
+   "holds": true
+  }
+ ],
+ "tools_called": [],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 808,
+ "tokens_out": 1220,
+ "cost_usd": 0.002642,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}

@@ -3,28 +3,28 @@
  "arm": "minus_essential",
  "run_id": "D2a__minus_essential__lst-01-pre__t1",
  "trial": 1,
- "timestamp": "2026-09-22T16:20:10",
- "git_commit": "9cb211a-dirty",
- "config_hash": "a33001eb59ee",
+ "timestamp": "2026-09-23T01:23:53",
+ "git_commit": "501b5cf-dirty",
+ "config_hash": "c20b994ad7f2",
  "dataset_version": "synthetic-v1",
  "case_id": "lst-01-pre",
  "task_id": "lst-01",
  "family": "lost_or_stolen_device",
  "subset": "dev_micro",
  "verifier": "agent",
- "backend": "scripted",
+ "backend": "live",
  "model": "openai/gpt-5-mini",
  "reasoning_effort": "low",
- "prompt_version": "v2",
+ "prompt_version": "v2b",
  "descriptor_version": "v2",
  "compact_returns": true,
  "tool_subset": [
   "get_hr_employee",
+  "get_okta_user",
   "get_google_user",
   "get_slack_user",
   "list_devices",
   "get_device",
-  "get_incident",
   "list_slas",
   "list_approvals",
   "list_security_exceptions",
@@ -37,100 +37,107 @@
  "allow_escalate": true,
  "require_evidence": true,
  "dedup": true,
- "step_cap": 8,
+ "step_cap": 10,
  "budget_cap_usd": 0.03,
  "perturbation": null,
  "difficulty": "medium",
  "declared": true,
- "decision": "ESCALATE",
- "reason": "precondition failed []; forbidden []; problems ['not_checked:get_okta_user']",
+ "decision": "INCOMPLETE",
+ "reason": "Lost device is in lost mode but not shown as locked, incident category is still 'hardware', and ticket resolution state is not verified by system tools.",
  "cited_conditions": [
-  "LST-R2"
+  "LST-R2",
+  "LST-R5",
+  "LST-R6"
  ],
  "evidence": [
   {
    "condition_id": "LST-P1",
-   "observed": "\"hannah.singh@acme.example\"",
-   "source": "get_device",
-   "holds": true
-  },
-  {
-   "condition_id": "LST-F1",
-   "observed": "\"active\"",
+   "observed": "owner=hannah.singh@acme.example",
    "source": "list_devices",
    "holds": true
   },
   {
-   "condition_id": "LST-F2",
-   "observed": "not checked",
-   "source": "get_okta_user",
-   "holds": null
-  },
-  {
    "condition_id": "LST-R1",
-   "observed": "true",
+   "observed": "lost_mode=true",
    "source": "get_device",
    "holds": true
   },
   {
    "condition_id": "LST-R2",
-   "observed": "\"active\"",
+   "observed": "status=active (no 'locked' state reported)",
    "source": "get_device",
    "holds": false
   },
   {
    "condition_id": "LST-R3",
-   "observed": "not checked",
+   "observed": "sessions_active=0",
    "source": "get_okta_user",
-   "holds": null
+   "holds": true
   },
   {
    "condition_id": "LST-R4",
-   "observed": "0",
+   "observed": "oauth_tokens=0",
    "source": "get_google_user",
    "holds": true
   },
   {
    "condition_id": "LST-R5",
-   "observed": "\"security\"",
-   "source": "get_incident",
-   "holds": true
+   "observed": "ticket.category=hardware",
+   "source": "lookup_runbook",
+   "holds": false
   },
   {
    "condition_id": "LST-R6",
-   "observed": "\"resolved\"",
-   "source": "get_incident",
+   "observed": "no ticket state available from tools (resolver_claim states 'resolved' but closure notes are not system evidence)",
+   "source": "lookup_runbook",
+   "holds": null
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "other device LT-70320 status=active, lost_mode=false",
+   "source": "list_devices",
    "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "okta status=ACTIVE (not deactivated)",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "GEN-F1",
+   "observed": "cannot verify changes to accounts/devices belonging to other users with available tools",
+   "source": "list_devices",
+   "holds": null
   }
  ],
- "confidence": 1.0,
+ "confidence": 0.78,
  "tools_called": [
   "lookup_runbook",
-  "get_hr_employee",
+  "list_devices",
   "get_device",
-  "get_google_user",
-  "get_incident",
-  "list_devices"
+  "get_okta_user",
+  "get_google_user"
  ],
- "tool_call_count": 6,
+ "tool_call_count": 5,
  "duplicate_tool_calls": 0,
  "invalid_tool_calls": 0,
- "tool_latency_ms": 0.09,
- "observation_chars": 2288,
- "turns": 7,
+ "tool_latency_ms": 3.0,
+ "observation_chars": 2004,
+ "turns": 6,
  "step_cap_hit": false,
  "budget_cap_hit": false,
  "early_exit_triggered": false,
  "schema_validation_failed": false,
- "input_tokens": 0,
- "output_tokens": 0,
- "reasoning_tokens": 0,
- "cached_tokens": 0,
- "total_tokens": 0,
- "llm_cost_usd": 0.0,
- "total_cost_usd": 0.0,
- "latency_ms": 0.2,
- "llm_latency_ms": 0.0,
+ "input_tokens": 10736,
+ "output_tokens": 1510,
+ "reasoning_tokens": 801,
+ "cached_tokens": 4480,
+ "total_tokens": 12246,
+ "llm_cost_usd": 0.004696,
+ "total_cost_usd": 0.004696,
+ "latency_ms": 29156.5,
+ "llm_latency_ms": 29099.6,
  "retry_attempted": false,
  "retry_success": null,
  "state_hash_before": "5a65cbe5d86e",

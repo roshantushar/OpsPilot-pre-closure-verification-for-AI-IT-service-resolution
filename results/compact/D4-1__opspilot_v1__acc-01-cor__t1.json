@@ -1,0 +1,48 @@
+{
+ "ts": "2026-09-22T21:26:21",
+ "case_id": "acc-01-cor",
+ "declared": true,
+ "decision": "VERIFIED",
+ "confidence": 0.8,
+ "reason": "All required end-state conditions from KB-OPS-103 are met: the user is in the requested group, the approval ID is recorded in work notes, and the ticket is resolved; no forbidden '-admin' group was granted.",
+ "cited_conditions": [],
+ "evidence": [
+  {
+   "condition_id": "ACC-R1",
+   "observed": "groups include finance-reporting-extended",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R2",
+   "observed": "work_notes contain 'Access granted per approval APR0073883.'",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-R3",
+   "observed": "incident state is resolved",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "ACC-F1",
+   "observed": "no group with '-admin' variant present",
+   "source": "get_okta_user",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_okta_user",
+  "get_incident",
+  "list_security_exceptions"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 6705,
+ "tokens_out": 821,
+ "cost_usd": 0.00245425,
+ "expected_decision": "VERIFIED",
+ "correct": true
+}

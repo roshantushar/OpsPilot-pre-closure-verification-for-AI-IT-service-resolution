@@ -1,0 +1,32 @@
+{
+ "ts": "2026-09-23T01:33:26",
+ "case_id": "trf-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.6,
+ "reason": "Unable to retrieve the runbook KB-OPS-107 (get_doc returned errors after retries), so I cannot list or verify its conditions.",
+ "cited_conditions": [
+  "KB-OPS-107"
+ ],
+ "evidence": [
+  {
+   "condition_id": "KB-OPS-107",
+   "observed": "get_doc returned error: \"missing argument 'runbook_id'\"",
+   "source": "get_doc",
+   "holds": false
+  }
+ ],
+ "tools_called": [
+  "get_doc",
+  "get_doc",
+  "get_doc",
+  "get_doc"
+ ],
+ "guard": "none",
+ "turns": 5,
+ "tokens_in": 5529,
+ "tokens_out": 761,
+ "cost_usd": 0.00221305,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

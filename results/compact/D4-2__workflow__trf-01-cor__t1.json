@@ -1,0 +1,38 @@
+{
+ "ts": "2026-09-22T22:21:12",
+ "case_id": "trf-01-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.46,
+ "reason": "HR shows department = HR but Google org_unit still lists Sales, a records conflict that requires human escalation before closure.",
+ "cited_conditions": [
+  "TRF-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "department: HR",
+   "source": "get_hr_employee",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "list_security_exceptions",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident",
+  "list_slas",
+  "list_approvals"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 1341,
+ "tokens_out": 1250,
+ "cost_usd": 0.00283525,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

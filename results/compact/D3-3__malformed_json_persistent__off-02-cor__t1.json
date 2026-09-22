@@ -1,0 +1,29 @@
+{
+ "ts": "2026-09-23T03:07:40",
+ "case_id": "off-02-cor",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.0,
+ "reason": "fail-safe: step_cap reached after 10 turns",
+ "cited_conditions": [],
+ "evidence": [],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_okta_user",
+  "get_okta_user",
+  "get_okta_user",
+  "get_okta_user",
+  "get_okta_user",
+  "get_okta_user",
+  "get_okta_user"
+ ],
+ "guard": "step_cap hit at turn 10",
+ "turns": 10,
+ "tokens_in": 19986,
+ "tokens_out": 627,
+ "cost_usd": 0.0012308,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}

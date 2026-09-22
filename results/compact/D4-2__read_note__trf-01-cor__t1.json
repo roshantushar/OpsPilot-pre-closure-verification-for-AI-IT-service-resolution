@@ -1,0 +1,57 @@
+{
+ "ts": "2026-09-22T22:16:58",
+ "case_id": "trf-01-cor",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 0.6,
+ "reason": "HR confirmation of the new department (precondition TRF-P1) is not provided; closure cannot be verified without that precondition.",
+ "cited_conditions": [
+  "TRF-P1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "No confirmation from HR present in the ticket or closure note that HR shows the new department.",
+   "source": "ticket",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "Resolver note states 'removed sales-all'.",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "Resolver note states 'removed crm-users'.",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "Resolver note states 'added hr-all'.",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "Resolver note states 'added workday-hr'.",
+   "source": "resolver_claim",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "Proposed ticket state is 'resolved'.",
+   "source": "resolver_claim",
+   "holds": true
+  }
+ ],
+ "tools_called": [],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 744,
+ "tokens_out": 1028,
+ "cost_usd": 0.002242,
+ "expected_decision": "VERIFIED",
+ "correct": false
+}

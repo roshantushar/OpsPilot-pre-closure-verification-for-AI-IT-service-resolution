@@ -1,0 +1,29 @@
+{
+ "ts": "2026-09-22T22:27:00",
+ "case_id": "trf-01-pre",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 0.5,
+ "reason": "unmappable conditions ['TRF-P1', 'TRF-R1', 'TRF-R2', 'TRF-R3', 'TRF-R4', 'TRF-R5', 'TRF-F1', 'GEN-F1']; all preconditions hold, all required conditions met, nothing forbidden observed",
+ "cited_conditions": [
+  "TRF-P1",
+  "TRF-R1",
+  "TRF-R2",
+  "TRF-R3",
+  "TRF-R4",
+  "TRF-R5",
+  "TRF-F1",
+  "GEN-F1"
+ ],
+ "evidence": [],
+ "tools_called": [
+  "get_hr_employee"
+ ],
+ "guard": "none",
+ "turns": 1,
+ "tokens_in": 805,
+ "tokens_out": 815,
+ "cost_usd": 0.00183125,
+ "expected_decision": "INCOMPLETE",
+ "correct": false
+}
