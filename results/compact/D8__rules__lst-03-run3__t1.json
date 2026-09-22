@@ -1,0 +1,83 @@
+{
+ "ts": "2026-09-23T04:05:35",
+ "case_id": "lst-03-run3",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 1.0,
+ "reason": "required conditions not met: ['LST-R4']",
+ "cited_conditions": [
+  "LST-R4"
+ ],
+ "evidence": [
+  {
+   "condition_id": "LST-P1",
+   "observed": "\"lucas.ong@acme.example\"",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F1",
+   "observed": "\"active\"",
+   "source": "list_devices",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-F2",
+   "observed": "\"ACTIVE\"",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R1",
+   "observed": "true",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R2",
+   "observed": "\"locked\"",
+   "source": "get_device",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R3",
+   "observed": "0",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R4",
+   "observed": "3",
+   "source": "get_google_user",
+   "holds": false
+  },
+  {
+   "condition_id": "LST-R5",
+   "observed": "\"security\"",
+   "source": "get_incident",
+   "holds": true
+  },
+  {
+   "condition_id": "LST-R6",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_device",
+  "get_okta_user",
+  "get_google_user",
+  "get_incident",
+  "list_devices"
+ ],
+ "guard": "none",
+ "turns": 0,
+ "tokens_in": 0,
+ "tokens_out": 0,
+ "cost_usd": 0.0,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

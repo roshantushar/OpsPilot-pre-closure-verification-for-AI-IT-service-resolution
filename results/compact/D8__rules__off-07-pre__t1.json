@@ -1,0 +1,89 @@
+{
+ "ts": "2026-09-23T04:05:35",
+ "case_id": "off-07-pre",
+ "declared": true,
+ "decision": "INCOMPLETE",
+ "confidence": 1.0,
+ "reason": "required conditions not met: ['OFF-R6']",
+ "cited_conditions": [
+  "OFF-R6"
+ ],
+ "evidence": [
+  {
+   "condition_id": "OFF-P1",
+   "observed": "\"terminated\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-P2",
+   "observed": "false",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-F1",
+   "observed": "false",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R1",
+   "observed": "\"DEACTIVATED\"",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R2",
+   "observed": "[]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R3",
+   "observed": "true",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R4",
+   "observed": "\"grace.sharma@acme.example\"",
+   "source": "get_google_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R5",
+   "observed": "true",
+   "source": "get_slack_user",
+   "holds": true
+  },
+  {
+   "condition_id": "OFF-R6",
+   "observed": "[\"active\", \"active\"]",
+   "source": "list_devices",
+   "holds": false
+  },
+  {
+   "condition_id": "OFF-R7",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_google_user",
+  "get_slack_user",
+  "list_devices",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 0,
+ "tokens_in": 0,
+ "tokens_out": 0,
+ "cost_usd": 0.0,
+ "expected_decision": "INCOMPLETE",
+ "correct": true
+}

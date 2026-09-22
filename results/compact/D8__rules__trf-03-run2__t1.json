@@ -1,0 +1,68 @@
+{
+ "ts": "2026-09-23T04:05:35",
+ "case_id": "trf-03-run2",
+ "declared": true,
+ "decision": "ESCALATE",
+ "confidence": 1.0,
+ "reason": "precondition failed []; forbidden ['TRF-F1']; problems []",
+ "cited_conditions": [
+  "TRF-F1"
+ ],
+ "evidence": [
+  {
+   "condition_id": "TRF-P1",
+   "observed": "\"Sales\"",
+   "source": "get_hr_employee",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-F1",
+   "observed": "[\"sales-all\", \"crm-users\"]",
+   "source": "get_okta_user",
+   "holds": false
+  },
+  {
+   "condition_id": "TRF-R1",
+   "observed": "[\"sales-all\", \"crm-users\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R2",
+   "observed": "[\"sales-all\", \"crm-users\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R3",
+   "observed": "[\"sales-all\", \"crm-users\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R4",
+   "observed": "[\"sales-all\", \"crm-users\"]",
+   "source": "get_okta_user",
+   "holds": true
+  },
+  {
+   "condition_id": "TRF-R5",
+   "observed": "\"resolved\"",
+   "source": "get_incident",
+   "holds": true
+  }
+ ],
+ "tools_called": [
+  "lookup_runbook",
+  "get_hr_employee",
+  "get_okta_user",
+  "get_incident"
+ ],
+ "guard": "none",
+ "turns": 0,
+ "tokens_in": 0,
+ "tokens_out": 0,
+ "cost_usd": 0.0,
+ "expected_decision": "ESCALATE",
+ "correct": true
+}
